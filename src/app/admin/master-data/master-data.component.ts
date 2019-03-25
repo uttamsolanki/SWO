@@ -15,7 +15,8 @@ import {ModalDirective} from 'ngx-bootstrap';
 export class MasterDataComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router,  private route: ActivatedRoute, private fb :FormBuilder) { }
-
+  modelMsg:any;
+  iconCollapse = 'icon-arrow-up';
   sizeForm: FormGroup;
   liquidForm: FormGroup;
   liquidSludgeForm: FormGroup;
@@ -23,6 +24,8 @@ export class MasterDataComponent implements OnInit {
   solidsDewateringForm: FormGroup;
   diosolidsDisposalForm: FormGroup;
   resultForm:FormGroup;
+  isCollapsed = false;
+  i:any=0;
 
   // ****************** This for data related variable ***********************//
 
@@ -118,6 +121,15 @@ export class MasterDataComponent implements OnInit {
       console.log(rep);
       //this.logKeyValuePair(this.sizeForm,rep);
     });
+  }
+
+  toggleCollapse(): void {
+    this.isCollapsed = !this.isCollapsed;
+    this.iconCollapse = this.isCollapsed ? 'icon-arrow-down' : 'icon-arrow-up';
+  }
+  successOk() {
+  //  this.modal.hide();
+    // this.router.navigateByUrl('/report/view');
   }
 
   onSubmit():void {

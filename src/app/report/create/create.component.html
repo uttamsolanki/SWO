@@ -58,7 +58,7 @@
                   <!--<span  *ngIf="size.data.suggested!==0" class="help-block" style="color:#4dbd74">Suggested value {{size.data.suggested}}</span>-->
                 </div>
                 <div class="col-md-1">
-                  <span class="help-block">kWh/m<sup>3</sup></span>
+                  <span class="help-block">m<sup>3</sup>/d</span>
                 </div>
 
               </div>
@@ -317,7 +317,7 @@
             <p class="msg-text-center">You have not selected from anything liquid line.</p>
           </div>
           <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
-            <div class="form-group row">
+            <div class="form-group row" *ngIf="primary.pumping.sel_type != '0' ">
               <label class="col-md-12 col-form-label" ><strong> Pumping</strong></label>
               <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{primary.pumping.sel_type}}</p></label>
               <div class="offset-md-1 col-md-11 row">
@@ -326,10 +326,10 @@
                   <input type="text" id="pumping_rate"  name="pumping_rate" [(ngModel)]="primary.pumping.data.default" class="form-control" placeholder="0.0" (ngModelChange)="updateWWTPsize()">
                   <div class="p-1">
                     <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{primary.pumping.data.suggested}}</span>
-                  <span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                     placement="left" style="float: right;color: black;background: yellow;"></i></span></p>
+                  <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
+                     <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
+                    </p>
                   </div>
-
                 </div>
                 <div class="col-md-2 p-0">
                   <span class="help-block">kWh/m<sup>3</sup></span>
@@ -1171,11 +1171,11 @@
           <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
 
 
-            <div class="form-group row">
-              <div class="offset-md-9 col-md-2">
-                <button type="button" class="btn btn-block btn-success" (click)='generatePdf()'>Generate PDF</button>
-              </div>
-            </div>
+            <!--<div class="form-group row">-->
+              <!--<div class="offset-md-9 col-md-2">-->
+                <!--<button type="button" class="btn btn-block btn-success" (click)='generatePdf()'>Generate PDF</button>-->
+              <!--</div>-->
+            <!--</div>-->
             <div id="printSection">
               <div class="form-group row">
                 <div class="offset-md-2 col-md-9 row">
@@ -1194,42 +1194,42 @@
               <div class="form-group row">
                 <div class="offset-md-2 col-md-9 row">
                   <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Electrical Emissions:</label>
-                  <label class="col-md-3 col-form-label" for="text-input"> {{totalElecricalCo2.toFixed(1)}} <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>
+                  <label class="col-md-3 col-form-label" for="text-input"> {{totalElecricalCo2.toFixed(1)}} <span class="ml-2 help-block">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="offset-md-2 col-md-9 row">
                   <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from On-site Process Emissions:</label>
-                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>
+                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="offset-md-2 col-md-9 row">
                   <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Biosolids Disposal Emissions:  </label>
-                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>
+                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="offset-md-2 col-md-9 row">
                   <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Energy Recovery:</label>
-                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>
+                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="offset-md-2 col-md-9 row">
                   <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Chemical Usage:</label>
-                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>
+                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="offset-md-2 col-md-9 row">
                   <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Transportation:</label>
-                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>
+                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
                 </div>
               </div>
 

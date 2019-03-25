@@ -109,7 +109,8 @@
               <accordion>
                 <accordion-group heading="Pumping">
                   <button type="button" (click)="addField()" class="btn btn-success offset-md-10 col-md-2">New</button>
-                  <div class="row" formArrayName="pumping" *ngFor="let p of liquidForm.get('pumping').controls; let i=index">
+                  <div class="row" formArrayName="pumping">
+                    <!--*ngFor="let p of liquidForm.get('pumping').controls; let i=index"-->
                     <div class="form-group row" [formGroupName]="i">
                       <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
                       <div class="offset-md-1 col-md-11 row m-1">
