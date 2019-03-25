@@ -1,0 +1,979 @@
+{
+  "size": [
+    {
+      "title": "Small WWTP",
+      "default": 5000,
+      "suggested":5000
+    },
+    {
+      "title": "Large WWTP",
+      "default": 50000,
+      "suggested":50000
+    }
+  ],
+  "primary":{
+    "pumping":[
+      {
+      "title": "Influent Pumping",
+      "default":0.0589,
+      "suggested":0.0589,
+      "ref":{
+        "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation"
+      },
+      "range":{
+        "min":null,
+        "max":1,
+        "ref":{
+
+        }
+      },
+      "co2":""
+    },
+      {
+        "title": "User Specified",
+        "default":0,
+        "suggested":0,
+        "ref":{
+          "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation"
+        },
+        "range":{
+          "min":null,
+          "max":1,
+          "ref":{
+
+          }
+        },
+        "co2":""
+      }
+    ],
+    "prilimary_treatment":[
+        {
+          "title":"Grit Removal",
+          "default":0.005,
+          "suggested":0.005,
+          "ref":{
+            "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by HydromantisInc. in Association with XCG Consultants Ltd.",
+            "*":"value"
+          },
+          "range":{
+            "min":0,
+            "max":0.6037,
+            "ref":{
+              "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by HydromantisInc. in Association with XCG Consultants Ltd"
+            }
+          },
+          "co2":""
+        },
+        {
+          "title":"Grit Removal with Aeration",
+          "default":0.05,
+          "suggested":0.05,
+          "ref":{
+            "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by HydromantisInc. in Association with XCG Consultants Ltd",
+            "**":"value"
+          },
+          "range":{
+            "min":0,
+            "max":0.6037,
+            "ref":{
+
+            }
+          },
+          "co2":""
+        },
+        {
+          "title": "User Specified",
+          "default":0,
+          "suggested":0,
+          "ref":{
+            },
+          "range":{
+            "min":null,
+            "max":1,
+            "ref":{
+
+            }
+          },
+          "co2":""
+        }
+      ],
+    "primary_treatment":[
+        {
+          "title":"Primary Clarifier",
+          "default":0.0061,
+          "suggested":0.0061,
+          "ref":{
+            "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation."
+          },
+          "range":{
+            "min":0.0009,
+            "max":0.008,
+            "ref":{
+              "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by HydromantisInc. in Association with XCG Consultants Ltd."
+            }
+          },
+          "co2":""
+        },
+        {
+          "title":"Primary Clarifier wish chemicals",
+          "default":0.0181,
+          "suggested":0.0181,
+          "ref":{
+            "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation."
+          },
+          "range":{
+            "min":null,
+            "max":null,
+            "ref":{
+
+            }
+          },
+          "co2":""
+        },
+        {
+          "title": "User Specified",
+          "default":0,
+          "suggested":0,
+          "ref":{
+          },
+          "range":{
+            "min":null,
+            "max":1,
+            "ref":{
+
+            }
+          },
+          "co2":""
+        }
+      ]
+  },
+  "secondary":{
+    "growth_type":[
+      {
+        "title":"Attached Growth System",
+        "treatment_type":[
+          {
+            "title":"Trickling Filter",
+            "default":0.134,
+            "suggested":0.134,
+            "ref":{
+              "5":"value"
+            },
+            "range":{
+              "min":0.1,
+              "max":0.425,
+              "ref":{
+                "7":"value"
+              }
+            },
+            "co2":""
+          },
+          {
+            "title":"Rotating Biological Contactor (RBC)",
+            "default":0.28,
+            "suggested":0.134,
+            "ref":{
+              "8":"value",
+              "*":"*"
+            },
+            "range":{
+              "min":0.2,
+              "max":0.35,
+              "ref":{
+                "7":"value"
+              }
+            },
+            "co2":""
+          },
+          {
+            "title":"Biological Aerated Filter (BAF)",
+            "default":0.65,
+            "suggested":0.134,
+            "ref":{
+              "8":"value"
+            },
+            "range":{
+              "min":null,
+              "max":1,
+              "ref":{
+
+              }
+            },
+            "co2":""
+          },
+          {
+            "title":"MBBR",
+            "default":0.8,
+            "suggested":0.134,
+            "ref":{
+              "8":"value"
+            },
+            "range":{
+              "min":null,
+              "max":1,
+              "ref":{
+
+              }
+            },
+            "co2":""
+          },
+          {
+            "title":"User Specified",
+            "default":0,
+            "suggested":0,
+            "ref":{
+              "6":"value",
+              "*":""
+            },
+            "range":{
+              "min":0.22,
+              "max":0.42,
+              "ref":{
+                "7":"value"
+              }
+            },
+            "co2": ""
+          }
+        ]
+      },
+      {
+        "title":"Suspended Growth - Aeration with Nitrification",
+        "treatment_type":[
+          {
+            "title":"Jet Aerator",
+            "default":0.301582,
+            "suggested":0.301582,
+            "ref":{
+              "6":"value",
+              "*":""
+            },
+            "range":{
+              "min":0.2438,
+              "max":0.548,
+              "ref":{
+                "6":"value"
+              }
+            },
+            "co2":""
+          },
+          {
+            "title":"Fine Bubble",
+            "default":0.32,
+            "suggested":0.32,
+            "ref":{
+              "6":"value",
+              "**":"*"
+            },
+            "range":{
+              "min":0.2503,
+              "max":0.3951,
+              "ref":{
+                "6":"value"
+              }
+            },
+            "co2":""
+          },
+          {
+            "title":"Coarse Bubble",
+            "default":0.6166,
+            "suggested":0.6166,
+            "ref":{
+              "6":"value",
+              "***":""
+            },
+            "range":{
+              "min":null,
+              "max":1,
+              "ref":{
+
+              }
+            },
+            "co2":""
+          },
+          {
+            "title":"Fine Bubble + Mechanical Mixing",
+            "default":null,
+            "suggested":null,
+            "ref":{
+
+            },
+            "range":{
+              "min":null,
+              "max":null,
+              "ref":{
+
+              }
+            },
+            "co2":""
+          },
+          {
+            "title":"Coarse Bubble + Mechanical Mixing",
+            "default":null,
+            "suggested":null,
+            "ref":{
+
+            },
+            "range":{
+              "min":null,
+              "max":null,
+              "ref":{
+
+              }
+            },
+            "co2":""
+          },
+          {
+            "title":"User Specified",
+            "default":0,
+            "suggested":0,
+            "ref":{
+              "6":"value",
+              "*":""
+            },
+            "range":{
+              "min":0.22,
+              "max":0.42,
+              "ref":{
+                "7":"value"
+              }
+            },
+            "co2": ""
+          }
+        ]
+      },
+      {
+        "title":"Suspended Growth - Aeration without Nitrification",
+        "treatment_type":[
+          {
+            "title":"Jet Aerator",
+            "default":0.24514,
+            "suggested":0.24514,
+            "ref":{
+              "6":"value",
+              "*":""
+            },
+            "range":{
+              "min":0.0641,
+              "max":0.628,
+              "ref":{
+                "6":"value"
+              }
+            },
+            "co2":""
+          },
+          {
+            "title":"Fine Bubble",
+            "default":0.33,
+            "suggested":0.33,
+            "ref":{
+              "6":"value",
+              "**":"*"
+            },
+            "range":{
+              "min":0.107,
+              "max":0.628,
+              "ref":{
+                "6":"value"
+              }
+            },
+            "co2":""
+          },
+          {
+            "title":"Coarse Bubble",
+            "default":0.6166,
+            "suggested":0.6166,
+            "ref":{
+
+            },
+            "range":{
+              "min":null,
+              "max":null,
+              "ref":{
+
+              }
+            },
+            "co2":""
+          },
+          {
+            "title":"Fine Bubble + Mechanical Mixing",
+            "default":null,
+            "suggested":null,
+            "ref":{
+
+            },
+            "range":{
+              "min":null,
+              "max":null,
+              "ref":{
+
+              }
+            },
+            "co2":""
+          },
+          {
+            "title":"Coarse Bubble + Mechanical Mixing",
+            "default":null,
+            "suggested":null,
+            "ref":{
+
+            },
+            "range":{
+              "min":null,
+              "max":null,
+              "ref":{
+
+              }
+            },
+            "co2":""
+          }
+        ]
+      }
+    ]
+  },
+  "secondary_clarification":[
+    {
+      "title":"Secondary Clarifier",
+      "default":0.0185,
+      "suggested":0.0185,
+      "ref":{
+        "5":""
+      },
+      "range":{
+        "min":null,
+        "max":1,
+        "ref":{
+
+        }
+      },
+      "co2":""
+    },
+    {
+      "title":"User Specified",
+      "default":0,
+      "suggested":0,
+      "ref":{
+        "5":""
+      },
+      "range":{
+        "min":null,
+        "max":1,
+        "ref":{
+
+        }
+      },
+      "co2":""
+    }],
+  "tertiary":[
+    {
+      "title":"Filtration - Granular media",
+      "default":0.029,
+      "suggested":0.029,
+      "ref":{
+        "6":"value"
+      },
+      "range":{
+        "min":null,
+        "max":null,
+        "ref":{
+
+        }
+      },
+      "co2": ""
+    },
+    {
+      "title":"Filtration - Micro Filtration (MF)",
+      "default":0.4,
+      "suggested":0.4,
+      "ref":{
+        "9":"value"
+      },
+      "range":{
+        "min":null,
+        "max":null,
+        "ref":{
+          "9":"value"
+        }
+      },
+      "co2": ""
+    },
+    {
+      "title":"Filtration - Ultra Filgration (UF)",
+      "default":0.4,
+      "suggested":0.4,
+      "ref":{
+        "9":"value"
+      },
+      "range":{
+        "min":0.4,
+        "max":3,
+        "ref":{
+          "9":"value"
+        }
+      },
+      "co2": ""
+    },
+    {
+      "title":"Advanced Oxidation",
+      "default":0.32,
+      "suggested":0.32,
+      "ref":{
+        "6":"value",
+        "*":""
+      },
+      "range":{
+        "min":0.22,
+        "max":0.42,
+        "ref":{
+          "7":"value"
+        }
+      },
+      "co2": ""
+    },
+    {
+      "title":"User Specified",
+      "default":0,
+      "suggested":0,
+      "ref":{
+        "6":"value",
+        "*":""
+      },
+      "range":{
+        "min":0.22,
+        "max":0.42,
+        "ref":{
+          "7":"value"
+        }
+      },
+      "co2": ""
+    }
+  ],
+  "disinfection":[
+    {
+      "title":"Chlorination/De-Chlorination",
+      "default":0.0041,
+      "suggested":0.0041,
+      "ref":{
+        "6":"value",
+        "*":""
+      },
+      "range":{
+        "min":0.0003,
+        "max":0.0079,
+        "ref":{
+          "6":"value",
+          "10":"value",
+          "11":"value"
+        }
+      },
+      "co2": ""
+    },
+    {
+      "title":"UV",
+      "default":0.056,
+      "suggested":0.056,
+      "ref":{
+        "6":"value",
+        "*":""
+      },
+      "range":{
+        "min":0.0451,
+        "max":0.066,
+        "ref":{
+          "6":"value"
+        }
+      },
+      "co2": ""
+    },
+    {
+      "title":"Advanced Oxidation",
+      "default":0.32,
+      "suggested":0.32,
+      "ref":{
+        "6":"value",
+        "*":""
+      },
+      "range":{
+        "min":0.22,
+        "max":0.42,
+        "ref":{
+          "7":"value"
+        }
+      },
+      "co2": ""
+    },
+    {
+      "title":"User Specified",
+      "default":0,
+      "suggested":0,
+      "ref":{
+        "6":"value",
+        "*":""
+      },
+      "range":{
+        "min":0.22,
+        "max":0.42,
+        "ref":{
+          "7":"value"
+        }
+      },
+      "co2": ""
+    }
+  ],
+  "biosolids":{
+    "aerobic_digester":[
+      {
+      "title":"Aerobic Digester",
+      "default":0.1901,
+      "suggested":0.1901,
+      "ref":{
+        "6":"value"
+      },
+      "range":{
+        "min":null,
+        "max":1,
+        "ref":{
+
+        }
+      },
+      "co2": ""
+    },
+    {
+      "title":"User Specified",
+      "default":0.1901,
+      "suggested":0.1901,
+      "ref":{
+        "6":"value"
+      },
+      "range":{
+        "min":null,
+        "max":1,
+        "ref":{
+
+        }
+      },
+      "co2": ""
+    }
+    ],
+    "anaerobic_digester": [
+    {
+      "title":"Anaerobic Digester",
+      "default":0.0643,
+      "suggested":0.0643,
+      "ref":{
+        "6":"value",
+        "*":""
+      },
+      "range":{
+        "min":0.0149,
+        "max":0.1137,
+        "ref":{
+          "6":"value",
+          "12":""
+        }
+      },
+      "co2": ""
+    },
+    {
+      "title":"User Specified",
+      "default":0.1901,
+      "suggested":0.1901,
+      "ref":{
+        "6":"value"
+      },
+      "range":{
+        "min":null,
+        "max":1,
+        "ref":{
+
+        }
+      },
+      "co2": ""
+    }
+    ],
+    "thickener":[
+      {
+        "title":"Centrifuge",
+        "default":0.0103,
+        "suggested":0.0103,
+        "ref":{
+          "5":"value"
+        },
+        "range":{
+          "min":null,
+          "max":null,
+          "ref":{
+
+          }
+        },
+        "co2": ""
+      },
+      {
+        "title":"Gravity Belt Thickening",
+        "default":0.0064,
+        "suggested":0.0064,
+        "ref":{
+          "5":"value"
+        },
+        "range":{
+          "min":null,
+          "max":null,
+          "ref":{
+
+          }
+        },
+        "co2": ""
+      },
+      {
+        "title":"Dissolved Air Floatation Thickening",
+        "default":0.044,
+        "suggested":0.044,
+        "ref":{
+          "5":"value"
+        },
+        "range":{
+          "min":0.0331,
+          "max":0.0505,
+          "ref":{
+            "12":"value"
+          }
+        },
+        "co2": ""
+      },
+      {
+        "title":"User Specified",
+        "default":0.1901,
+        "suggested":0.1901,
+        "ref":{
+          "6":"value"
+        },
+        "range":{
+          "min":null,
+          "max":1,
+          "ref":{
+
+          }
+        },
+        "co2": ""
+      }
+    ]
+  },
+  "biogas":[
+    {
+      "title":"Energy Recovery",
+      "default":0.11575,
+      "ref":{
+        "*":"value"
+      },
+      "range":{
+        "min":0.0925,
+        "max":0.139,
+        "ref":{
+          "1":"value"
+        }
+      }
+    },
+    {
+      "title":"Flaring",
+      "default":null,
+      "ref":{
+        "*":"value"
+      },
+      "range":{
+        "min":null,
+        "max":null,
+        "ref":{
+          "1":"value"
+        }
+      }
+    },
+    {
+      "title":"User Specified",
+      "default":0,
+      "suggested":0,
+      "ref":{
+        "6":"value"
+      },
+      "range":{
+        "min":null,
+        "max":1,
+        "ref":{
+
+        }
+      },
+      "co2": ""
+    }
+  ],
+  "dewatering":[
+    {
+      "title":"Belt Filter Press",
+      "default":0.0051,
+      "suggested":0.0051,
+      "ref":{
+        "5":"value"
+      },
+      "range":{
+        "min":0.0041,
+        "max":0.0111,
+        "ref":{
+          "10":"value",
+          "12":"value",
+          "13":"value"
+        }
+      },
+      "co2": ""
+    },
+    {
+      "title":"Screw Press",
+      "default":0.0027,
+      "suggested":0.0027,
+      "ref":{
+        "5":"value"
+      },
+      "range":{
+        "min":null,
+        "max":null,
+        "ref":{
+
+        }
+      },
+      "co2": ""
+    },
+    {
+      "title":"Centrifuge",
+      "default":0.0689,
+      "suggested":0.0689,
+      "ref":{
+        "5":"value"
+      },
+      "range":{
+        "min":0.0413,
+        "max":0.1888,
+        "ref":{
+          "10":"value",
+          "11":"value"
+        }
+      },
+      "co2": ""
+    },
+    {
+      "title":"User Specified",
+      "default":0.0689,
+      "suggested":0.0689,
+      "ref":{
+        "5":"value"
+      },
+      "range":{
+        "min":0.0413,
+        "max":0.1888,
+        "ref":{
+          "10":"value",
+          "11":"value"
+        }
+      },
+      "co2": ""
+    }
+  ],
+  "biosolids_disposals": {
+    "transportation":[
+      {
+        "title":"Time Based (Hours for transporting)",
+        "default":null,
+        "ref":{
+
+        },
+        "range":{
+          "min":null,
+          "max":null,
+          "ref":{
+
+          }
+        }
+      },
+      {
+        "title":"Distance Based (km)",
+        "default":null,
+        "ref":{
+
+        },
+        "range":{
+          "min":null,
+          "max":null,
+          "ref":{
+
+          }
+        }
+      }],
+    "disposal":[
+      {
+        "title":"Disposal",
+        "default":null,
+        "ref":{
+
+        },
+        "range":{
+          "min":null,
+          "max":null,
+          "ref":{
+
+          }
+        }
+      },
+      {
+        "title":"Incineration",
+        "default":null,
+        "ref":{
+
+        },
+        "range":{
+          "min":null,
+          "max":null,
+          "ref":{
+
+          }
+        }
+      },
+      {
+        "title":"Landfill",
+        "default":null,
+        "ref":{
+
+        },
+        "range":{
+          "min":null,
+          "max":null,
+          "ref":{
+
+          }
+        }
+      },
+      {
+        "title":"Overland Application",
+        "default":null,
+        "ref":{
+
+        },
+        "range":{
+          "min":null,
+          "max":null,
+          "ref":{
+
+          }
+        }
+      },
+      {
+        "title":"User Specified",
+        "default":null,
+        "ref":{
+
+        },
+        "range":{
+          "min":null,
+          "max":null,
+          "ref":{
+
+          }
+        }
+      }
+    ]
+  }
+}

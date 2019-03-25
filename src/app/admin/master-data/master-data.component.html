@@ -1,0 +1,737 @@
+
+
+<div class="animated fadeIn">
+    <div bsModal  #successModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-success" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Success</h4>
+            <button type="button" class="close" (click)="successModal.hide()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>{{modelMsg}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="successModal.hide()">Close</button>
+            <button type="button" class="btn btn-success" (click)="successOk()">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          Basic Details
+          <div class="card-header-actions">
+            <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+          </div>
+        </div>
+        <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+          <form class="form-horizontal ng-untouched ng-pristine ng-valid" role="form" [formGroup]="sizeForm"  novalidate="">
+            <div class="form-group row ">
+            <label class="col-md-3 col-form-label" for="sel_size" >Select WWTP Size</label>
+            <div class="col-md-6">
+              <div class="form-check form-check-inline mr-1">
+                  <input class="form-check-input m-2" type="radio" formControlName="sel_size" id="small" value="small" [(ngModel)]="sel_size" >
+                  <label class="form-check-label" for="small">Small WWTP</label>
+              </div>
+
+              <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input m-2" type="radio" formControlName="sel_size" id="large" value="large" [(ngModel)]="sel_size" >
+                <label class="form-check-label" for="large">Large WWTP</label>
+              </div>
+
+
+            </div>
+            </div>
+            <div class="form-group row" formGroupName="small" *ngIf="sel_size=='small'">
+              <div class="offset-md-3 col-md-9 row p-1">
+                <label class="col-md-4 col-form-label" for="text-input">Actaul WWTP inflow(Qin)</label>
+                <div class="col-md-4">
+                  <input type="text" id="WWTP_size" name="WWTP_size" class="form-control" placeholder="0.0" formControlName="default">
+                </div>
+                <div class="col-md-1">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+              </div>
+              <div class="offset-md-3 col-md-9 row p-1">
+                <label class="col-md-4 col-form-label" for="text-input">Suggested value</label>
+                <div class="col-md-4">
+                  <input type="text" id="WWTP_suggested" name="WWTP_suggested" class="form-control" placeholder="0.0" formControlName="suggested">
+                </div>
+                <div class="col-md-1">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group row" formGroupName="large" *ngIf="sel_size=='large'">
+            <div class="offset-md-3 col-md-9 row p-1">
+              <label class="col-md-4 col-form-label" for="text-input">Actaul WWTP inflow(Qin)</label>
+              <div class="col-md-4">
+                <input type="text" id="WWTP_size" name="WWTP_size" class="form-control" placeholder="0.0" formControlName="default">
+              </div>
+              <div class="col-md-1">
+                <span class="help-block">kWh/m<sup>3</sup></span>
+              </div>
+            </div>
+            <div class="offset-md-3 col-md-9 row p-1">
+              <label class="col-md-4 col-form-label" for="text-input">Suggested value</label>
+              <div class="col-md-4">
+                <input type="text" id="WWTP_suggested" name="WWTP_suggested" class="form-control" placeholder="0.0" formControlName="suggested">
+              </div>
+              <div class="col-md-1">
+                <span class="help-block">kWh/m<sup>3</sup></span>
+              </div>
+
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            Liquid Line
+            <div class="card-header-actions">
+              <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal ng-untouched ng-pristine ng-valid" role="form" [formGroup]="liquidForm" novalidate="">
+              <accordion>
+                <accordion-group heading="Pumping">
+                  <button type="button" (click)="addField()" class="btn btn-success offset-md-10 col-md-2">New</button>
+                  <div class="row" formArrayName="pumping" *ngFor="let p of liquidForm.get('pumping').controls; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">References</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="ref"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1" formGroupName="range">
+                        <label class="col-md-5 col-form-label" for="text-input">Range value:</label>
+                        <div class="col-md-5 row">
+                          <label class="col-md-4 col-form-label" for="text-input">Min:</label>
+                            <div class="col-md-8">
+                              <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="min"  class="form-control" placeholder="0.0">
+                            </div>
+                          <label class="col-md-4 col-form-label" for="text-input">Max:</label>
+                          <div class="col-md-8">
+                            <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="max"  class="form-control" placeholder="0.0">
+                          </div>
+                          <label class="col-md-12 col-form-label" for="text-input">References:</label>
+                          <div class="col-md-8">
+                            <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="ref"  class="form-control" placeholder="0.0">
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Information</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Tips</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+                <accordion-group heading="Preliminary Treatment">
+                  <div class="row" formArrayName="prilimary_treatment" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+                <accordion-group heading="Primary Treatment">
+                  <div class="row" formArrayName="primary_treatment" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+                <accordion-group heading="Secondary Treatment">
+                  <div class="row" formArrayName="primary_treatment" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+                <accordion-group heading="Secondary Clarification">
+                  <div class="row" formArrayName="secondary_clarification" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+                <accordion-group heading="Tertiary Treatment">
+                  <div class="row" formArrayName="primary_treatment" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+                <accordion-group heading="Disinfection">
+                  <div class="row" formArrayName="primary_treatment" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+              </accordion>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            Liquid sludge
+            <div class="card-header-actions">
+              <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal ng-untouched ng-pristine ng-valid" role="form" [formGroup]="liquidSludgeForm" novalidate="">
+              <accordion>
+                <accordion-group heading="Aerobic Digestion">
+                  <div class="row" formArrayName="aerobic_digester" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+                <accordion-group heading="Sludge Thickening">
+                  <div class="row" formArrayName="thickener" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+                <accordion-group heading="Anaerobic Digestion">
+                  <div class="row" formArrayName="anaerobic_digester" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+              </accordion>
+            </form>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            Biosolids Disposal Line
+            <div class="card-header-actions">
+              <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal ng-untouched ng-pristine ng-valid" role="form" [formGroup]="diosolidsDisposalForm" novalidate="">
+              <accordion>
+                <accordion-group heading="Biosolids Transportation">
+                  <div class="row" formArrayName="transportation" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+                <accordion-group heading="Biosolids Disposal">
+                  <div class="row" formArrayName="disposal" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+              </accordion>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            Biogas Line
+            <div class="card-header-actions">
+              <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal ng-untouched ng-pristine ng-valid" role="form" [formGroup]="biogasForm" novalidate="">
+              <accordion>
+                <accordion-group heading="Biogas">
+                  <div class="row" formArrayName="biogas" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+              </accordion>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            Solids Dewatering Line
+            <div class="card-header-actions">
+              <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal ng-untouched ng-pristine ng-valid" role="form" [formGroup]="solidsDewateringForm" novalidate="">
+              <accordion>
+                <accordion-group heading="Dewatering">
+                  <div class="row" formArrayName="dewatering" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+              </accordion>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            Biosolids Disposal Line
+            <div class="card-header-actions">
+              <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal ng-untouched ng-pristine ng-valid" role="form" [formGroup]="diosolidsDisposalForm" novalidate="">
+              <accordion>
+                <accordion-group heading="Biosolids Transportation">
+                  <div class="row" formArrayName="transportation" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+                <accordion-group heading="Biosolids Disposal">
+                  <div class="row" formArrayName="disposal" *ngFor="let p of [0,1]; let i=index">
+                    <div class="form-group row" [formGroupName]="i">
+                      <label class="col-md-12 col-form-label" ><strong>{{i+1}})</strong></label>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Title</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="title" class="form-control" placeholder="Titile">
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Default value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate"  formControlName="default" class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2">
+                          <span class="help-block">kWh/m<sup>3</sup></span>
+                        </div>
+                      </div>
+                      <div class="offset-md-1 col-md-11 row m-1">
+                        <label class="col-md-5 col-form-label" for="text-input">Suggested value:</label>
+                        <div class="col-md-5">
+                          <input type="text" id="pumping_rate"  name="pumping_rate" formControlName="suggested"  class="form-control" placeholder="0.0">
+                        </div>
+                        <div class="col-md-2 p-2">
+                          <p class="m-0">kWh/m<sup>3</sup></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </accordion-group>
+              </accordion>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" (click)="onSubmit()" class="btn btn-success"><i class="fa fa-user-plus"></i> Register</button>
+</div>

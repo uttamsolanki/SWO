@@ -6,14 +6,26 @@ import { DefaultLayoutComponent } from './containers';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ReportComponent } from './report/report.component';
+
+import { HomeComponent } from './home/home.component';
+import {AuthGuard} from './auth/auth.guard';
+import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
+import {ViewComponent} from './report/view/view.component';
+import {CreateComponent} from './report/create/create.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {AdminComponent} from './admin/admin.component';
+import {MasterDataComponent} from './admin/master-data/master-data.component';
+import {reference} from '@angular/core/src/render3';
+import {ReferenceComponent} from './admin/reference/reference.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
+    path: 'forgotPassword',
+    component: ForgotPasswordComponent,
+    pathMatch: 'full'
   },
   {
     path: '404',
@@ -45,11 +57,40 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: DefaultLayoutComponent,
+    component: HomeComponent,
     data: {
       title: 'Home'
     },
+    canActivate: [AuthGuard],
     children: [
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        data: {
+          title: 'Dashboard'
+        }
+      },
+      {
+        path: 'report',
+        component: ReportComponent,
+        children: [
+          { path: '',  redirectTo: 'view' , pathMatch: 'full'},
+          { path: 'view', component: ViewComponent  },
+          { path: 'create', component: CreateComponent}
+          ]
+      },
+      {
+        path: 'admin',
+        component: AdminComponent,
+        data: {
+          title: 'view'
+        },
+        children: [
+          { path: '',  redirectTo: 'update' , pathMatch: 'full'},
+          { path: 'update', component: MasterDataComponent , data: { title: 'Update master' } },
+          { path: 'reference', component: ReferenceComponent , data: { title: 'Add/Edit Reference' } },
+        ]
+      },
       {
         path: 'base',
         loadChildren: './views/base/base.module#BaseModule'

@@ -23,6 +23,34 @@ export const navItems: NavData[] = [
   },
   {
     title: true,
+    name: 'Report'
+  },
+  {
+    name: 'New Project',
+    url: '/report/create',
+    icon: 'icon-pencil'
+  },
+  {
+    name: 'View Project',
+    url: '/report/view',
+    icon: 'fa fa-eye'
+  },
+  {
+    title: true,
+    name: 'Admin'
+  },
+  {
+    name: 'Update Master',
+    url: '/admin/update',
+    icon: 'fa fa-eye'
+  },
+  {
+    name: 'Add/Edit References',
+    url: '/admin/reference',
+    icon: 'fa fa-eye'
+  },
+  {
+    title: true,
     name: 'Theme'
   },
   {

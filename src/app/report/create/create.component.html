@@ -1,0 +1,1780 @@
+
+
+<div class="animated fadeIn">
+  <div bsModal  #successModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-success" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Success</h4>
+          <button type="button" class="close" (click)="successModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>{{modelMsg}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="successModal.hide()">Close</button>
+          <button type="button" class="btn btn-success" (click)="successOk()">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          Basic Details
+          <div class="card-header-actions">
+            <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+          </div>
+        </div>
+        <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+          <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="p_name" >Enter project name</label>
+              <div class="col-md-4">
+                <input type="text" id="p_name" name="p_name" class="form-control" placeholder="Project Name"  [(ngModel)]="projecName">
+              </div>
+            </div>
+            <!--<div class="form-group row ">-->
+              <!--<label class="col-md-3 col-form-label" for="sel_size" >Select WWTP Size</label>-->
+              <!--<div class="col-md-6">-->
+                <!--<div class="form-check form-check-inline mr-1" *ngFor="let type of size_types">-->
+                  <!--<input class="form-check-input m-2" type="radio" name="sel_size" id="sel_size" value="{{type.title}}" [(ngModel)]="size.sel_size"  (change)="selectSize(size_types)">-->
+                  <!--<label class="form-check-label" for="sel_size">{{type.title}}</label>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <div class="form-group row">
+              <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+              <label class="col-md-3 col-form-label" for="text-input">Actaul WWTP inflow(Qin)</label>
+              <div class="col-md-9 row">
+
+                <!--<label class="col-md-4 col-form-label" for="text-input">Actaul WWTP inflow(Qin)</label>-->
+                <div class="col-md-4">
+                  <input type="text" id="WWTP_size" name="WWTP_size" class="form-control" placeholder="0.0" [(ngModel)]="size.data.default" (ngModelChange)="updateWWTPsize()">
+                  <!--<span  *ngIf="size.data.suggested!==0" class="help-block" style="color:#4dbd74">Suggested value {{size.data.suggested}}</span>-->
+                </div>
+                <div class="col-md-1">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          Liquid Line
+          <div class="card-header-actions">
+            <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
+          </div>
+        </div>
+        <div class="card-body">
+          <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+            <accordion>
+              <accordion-group heading="Pumping">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios_pumping">Please select</label>
+                  <div class="col-md-9 col-form-label" id="inline-radios_pumping" >
+                    <div class="form-check form-check-inline mr-1" >
+                      <input class="form-check-input m-2" type="radio" name="pumping_0" id="pumping_0" value="0" [(ngModel)]="primary.pumping.sel_type" (change)="selectTreatmentType('primary','pumping',pumping_types)">
+                      <label class="form-check-label" for="pumping_0">None</label>
+                    </div>
+                    <div class="form-check form-check-inline mr-1"  *ngFor="let type of pumping_types">
+                      <input class="form-check-input m-2" type="radio" name="pumping_{{type.title}}" id="pumping_{{type.title}}" value="{{type.title}}" [(ngModel)]="primary.pumping.sel_type" (change)="selectTreatmentType('primary','pumping',pumping_types)">
+                      <label class="form-check-label" for="pumping_{{type.title}}">{{type.title}}</label>
+                    </div>
+                  </div>
+                </div>
+              </accordion-group>
+              <accordion-group heading="Preliminary Treatment">
+
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios_preliminary">Please select</label>
+                  <div class="col-md-9 col-form-label" id="inline-radios_preliminary" >
+                    <div class="form-check form-check-inline mr-1">
+                      <input class="form-check-input m-2" type="radio" name="preliminary_0" id="preliminary_0" value="0" [(ngModel)]="primary.prili_treat.sel_type" (change)="selectTreatmentType('primary','prili_treat',prili_treat_types)">
+                      <label class="form-check-label" for="preliminary_0">None</label>
+                    </div>
+
+                    <div class="form-check form-check-inline mr-1"  *ngFor="let type of prili_treat_types">
+                      <input class="form-check-input m-2" type="radio" name="preliminary_{{type.title}}" id="preliminary_{{type.title}}" value="{{type.title}}" [(ngModel)]="primary.prili_treat.sel_type" (change)="selectTreatmentType('primary','prili_treat',prili_treat_types)" >
+                      <label class="form-check-label" for="preliminary_{{type.title}}">{{type.title}}</label>
+                    </div>
+                  </div>
+                </div>
+
+              </accordion-group>
+              <accordion-group heading="Primary Treatment">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios_primary">Please select</label>
+                  <div class="col-md-9 col-form-label" id="inline-radios_primary">
+                    <div class="form-check form-check-inline mr-1">
+                      <input class="form-check-input m-2" type="radio" name="primary_0" id="primary_0" value="0" [(ngModel)]="primary.pri_treat.sel_type" (change)="selectTreatmentType('primary','pri_treat',pri_treat_types)">
+                      <label class="form-check-label" for="primary_0">None</label>
+                    </div>
+                    <div class="form-check form-check-inline mr-1"  *ngFor="let type of pri_treat_types">
+                      <input class="form-check-input m-2" type="radio" name="inline-radios" id="primary_{{type.title}}" value="{{type.title}}" [(ngModel)]="primary.pri_treat.sel_type" (change)="selectTreatmentType('primary','pri_treat',pri_treat_types)">
+                      <label class="form-check-label" for="primary_{{type.title}}">{{type.title}}</label>
+                    </div>
+                  </div>
+                </div>
+              </accordion-group>
+              <accordion-group heading="Secondary Treatment">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="sec_growth_type"><strong>Select type of growth</strong></label>
+                  <div class="col-md-6">
+                    <select id="sec_growth_type" name="sec_growth_type" class="form-control" (change)="selectGrowthTypeChange($event,growth_types)" [(ngModel)]="secondary.sel_growth_type">
+                      <option value="0" >Please select growth type</option>
+                      <option *ngFor="let type of growth_types" value={{type.title}} >{{type.title}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row" *ngIf="secondary.sel_growth_type!='0'">
+                  <label class="col-md-3 col-form-label" for="inline-radios_secondary_types">Please select</label>
+                  <div class="col-md-9 col-form-label" id="inline-radios_secondary_types">
+                    <div class="form-check form-check-inline mr-1">
+                      <input class="form-check-input m-2" type="radio" name="sec_types_0" id="sec_types_0" value="0" (change)="selectTreatmentType('','secondary',secondary_types)" [(ngModel)]="secondary.sel_type">
+                      <label class="form-check-label" for="sec_types_0">None</label>
+                    </div>
+                    <div class="form-check form-check-inline mr-1"  *ngFor="let type of secondary_types">
+                      <input class="form-check-input m-2" type="radio" name="sec_types_{{type.title}}" id="sec_types_{{type.title}}" value="{{type.title}}" (change)="selectTreatmentType('','secondary',secondary_types)" [(ngModel)]="secondary.sel_type">
+                      <label class="form-check-label" for="sec_types_{{type.title}}">{{type.title}}</label>
+                    </div>
+                  </div>
+                </div>
+              </accordion-group>
+              <accordion-group heading="Secondary Clarification">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios_clari">Please select</label>
+                  <div class="col-md-9 col-form-label" id="inline-radios_clari">
+                    <div class="form-check form-check-inline mr-1">
+                      <input class="form-check-input" type="radio" name="sec_clari_0" id="sec_clari_0" value="0" [(ngModel)]="sec_clr.sel_type" (change)="selectTreatmentType('','sec_clr',sec_clr_types)">
+                      <label class="form-check-label" for="sec_clari_0">None</label>
+                    </div>
+                    <div class="form-check form-check-inline mr-1" *ngFor="let type of sec_clr_types">
+                      <input class="form-check-input m-2" type="radio" name="sec_clari_{{type.title}}" id="sec_clari_{{type.title}}" value="{{type.title}}" [(ngModel)]="sec_clr.sel_type" (change)="selectTreatmentType('','sec_clr',sec_clr_types)">
+                      <label class="form-check-label" for="sec_clari_{{type.title}}">{{type.title}}</label>
+                    </div>
+                  </div>
+                </div>
+              </accordion-group>
+              <accordion-group heading="Tertiary Treatment">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios_tertiary">Please select</label>
+                  <div class="col-md-9 col-form-label" id="inline-radios_tertiary">
+                    <div class="form-check form-check-inline mr-1">
+                      <input class="form-check-input m-2" type="radio" name="tertiary_0" id="tertiary_0" value="0" (change)="selectTreatmentType('','tertiary',tertiary_types)" [(ngModel)]="tertiary.sel_type">
+                      <label class="form-check-label" for="tertiary_0">None</label>
+                    </div>
+                    <div class="form-check form-check-inline mr-1" *ngFor="let type of tertiary_types">
+                      <input class="form-check-input m-2" type="radio" name="tertiary_{{type.title}}" id="tertiary_{{type.title}}" value="{{type.title}}" (change)="selectTreatmentType('','tertiary',tertiary_types)" [(ngModel)]="tertiary.sel_type">
+                      <label class="form-check-label" for="tertiary_{{type.title}}">{{type.title}}</label>
+                    </div>
+                  </div>
+                </div>
+              </accordion-group>
+              <accordion-group heading="Disinfection">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios_disinfection">Please select</label>
+                  <div class="col-md-9 col-form-label" id="inline-radios_disinfection">
+
+                    <div class="form-check form-check-inline mr-1">
+                      <input class="form-check-input m-2" type="radio" name="disinfection_0" id="disinfection_0" value="0" (change)="selectTreatmentType('','disinfection',disinfection_types)" [(ngModel)]="disinfection.sel_type">
+                      <label class="form-check-label" for="disinfection_0">None</label>
+                    </div>
+                      <div class="form-check form-check-inline mr-1"  *ngFor="let type of disinfection_types">
+                        <input class="form-check-input m-2" type="radio" name="disinfection_{{type.title}}" id="disinfection_{{type.title}}" value="{{type.title}}" (change)="selectTreatmentType('','disinfection',disinfection_types)" [(ngModel)]="disinfection.sel_type">
+                        <label class="form-check-label" for="disinfection_{{type.title}}">{{type.title}}</label>
+                      </div>
+                  </div>
+                </div>
+              </accordion-group>
+            </accordion>
+
+            <div class="row">
+              <div class="col-sm-6 col-lg-3" *ngIf="primary.pumping.sel_type != '0' ">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-header-liquid brand-card-header-ct">
+                    Pumping
+                  </div>
+                  <div class="brand-card-body bg-header-selected">
+                    <div>
+                      {{primary.pumping.sel_type}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-lg-3" *ngIf="primary.prili_treat.sel_type != '0' ">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-header-liquid brand-card-header-ct">
+                   Prilimary Treatment
+                  </div>
+                  <div class="brand-card-body bg-header-selected">
+                    <div>
+                     {{primary.prili_treat.sel_type}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-lg-3" *ngIf="primary.pri_treat.sel_type != '0' ">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-header-liquid brand-card-header-ct">
+                    Primary Treatment
+                  </div>
+                  <div class="brand-card-body bg-header-selected">
+                    <div>
+                      {{primary.pri_treat.sel_type}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-lg-4" *ngIf="secondary.sel_growth_type != '0' ">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-header-liquid brand-card-header-ct">
+                    Secondary Treatment
+                  </div>
+                  <div class="brand-card-header bg-header-selected brand-card-header-ct">
+                    {{secondary.sel_growth_type}}
+                  </div>
+                  <div class="brand-card-body bg-header-sub-selected " *ngIf="secondary.sel_type != '0' ">
+                    <div>
+                      <div>{{secondary.sel_type}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-lg-4" *ngIf="sec_clr.sel_type != '0'">
+                <div class="brand-card bg-header-selected">
+                  <div class="brand-card-header bg-header-liquid brand-card-header-ct">
+                    Secondary Clarification
+                  </div>
+                  <div class="brand-card-body">
+                    <div>
+                      {{sec_clr.sel_type}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-lg-3" *ngIf="tertiary.sel_type != '0' ">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-header-liquid brand-card-header-ct">
+                    Tertiary Treatment
+                  </div>
+                  <div class="brand-card-body bg-header-selected">
+                    <div>
+                      {{tertiary.sel_type}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-lg-3" *ngIf="disinfection.sel_type != '0' ">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-header-liquid brand-card-header-ct">
+                    Disinfection
+                  </div>
+                  <div class="brand-card-body bg-header-selected">
+                    <div>
+                      {{disinfection.sel_type}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--*ngIf="this.primary.pumping.sel_type != '0' || this.primary.prili_treat.sel_type != '0' || this.primary.pri_treat.sel_type != '0' || this.secondary.sel_growth_type != '0' || this.sec_clr.sel_type != '0' || this.tertiary.sel_type != '0' || this.disinfection.sel_type != '0'"-->
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          Liquid Line Fields
+          <div class="card-header-actions">
+            <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+          </div>
+        </div>
+        <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+          <div class="form-group row" *ngIf="this.primary.pumping.sel_type == '0' && this.primary.prili_treat.sel_type == '0' && this.primary.pri_treat.sel_type == '0' && this.secondary.sel_type == '0' && this.sec_clr.sel_type == '0' && this.tertiary.sel_type == '0' && this.disinfection.sel_type == '0'">
+            <p class="msg-text-center">You have not selected from anything liquid line.</p>
+          </div>
+          <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+            <div class="form-group row">
+              <label class="col-md-12 col-form-label" ><strong> Pumping</strong></label>
+              <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{primary.pumping.sel_type}}</p></label>
+              <div class="offset-md-1 col-md-11 row">
+                <label class="col-md-5 col-form-label" for="text-input">Actual Energy Use Rate:</label>
+                <div class="col-md-5">
+                  <input type="text" id="pumping_rate"  name="pumping_rate" [(ngModel)]="primary.pumping.data.default" class="form-control" placeholder="0.0" (ngModelChange)="updateWWTPsize()">
+                  <div class="p-1">
+                    <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{primary.pumping.data.suggested}}</span>
+                  <span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                     placement="left" style="float: right;color: black;background: yellow;"></i></span></p>
+                  </div>
+
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="primary.pumping.sel_type != '0' ">
+              <label class="col-md-12 col-form-label" for="text-input"></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                <div class="col-md-5">
+                  <input type="text" id="pumping_co2" name="pumping_co2" class="form-control" placeholder="0.0" [(ngModel)]="primary.pumping.data.co2" readonly>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kg CO2/d</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row" *ngIf="primary.prili_treat.sel_type != '0' ">
+              <label class="col-md-12 col-form-label" for="sel_prili_treat"><strong>Preliminary Treatment</strong></label>
+              <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{primary.prili_treat.sel_type}}</p></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">Actual Energy Use Rate:</label>
+                <div class="col-md-5">
+                  <input type="text" id="prili_treat_rate" name="prili_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.prili_treat.data.default" (ngModelChange)="updateWWTPsize()">
+                  <span *ngIf="primary.prili_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.prili_treat.data.suggested}}</span>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="primary.prili_treat.sel_type != '0' ">
+              <label class="col-md-12 col-form-label" for="text-input"></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                <div class="col-md-5">
+                  <input type="text" id="prili_treat_co2" name="prili_treat_co2" class="form-control" placeholder="0.0" [(ngModel)]="primary.prili_treat.data.co2" readonly>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kg CO2/d</span>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-group row" *ngIf="primary.pri_treat.sel_type != '0' ">
+              <label class="col-md-12 col-form-label" for="sel_pri_treat"><strong>Primary Treatment</strong></label>
+              <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{primary.pri_treat.sel_type}}</p></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">Actual Energy Use Rate:</label>
+                <div class="col-md-5">
+                  <input type="text" id="pri_treat_rate" name="pri_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.pri_treat.data.default" (ngModelChange)="updateWWTPsize()">
+                  <span *ngIf="primary.pri_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.pri_treat.data.suggested}}</span>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="primary.pri_treat.sel_type != '0' ">
+              <label class="col-md-12 col-form-label" for="text-input"></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="pri_treat_co2">CO2 Equivalent:</label>
+                <div class="col-md-5">
+                  <input type="text" id="pri_treat_co2" name="pri_treat_co2" class="form-control" placeholder="0.0" [(ngModel)]="primary.pri_treat.data.co2" readonly>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kg CO2/d</span>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-group row" *ngIf="secondary.sel_type != '0' ">
+              <label class="col-md-12 col-form-label" for="text-input"><strong>Secondary Treatment</strong></label>
+              <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{secondary.sel_growth_type}}</p></label>
+              <label class="col-md-12 col-form-label" ><p class="sub-sub-title-padding m-0">{{secondary.sel_type}}</p></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">Actual Energy Use Rate:</label>
+                <div class="col-md-5">
+                  <input type="text" id="second_rate" name="second_rate" class="form-control" placeholder="0.0" [(ngModel)]="secondary.data.default" (ngModelChange)="updateWWTPsize()">
+                  <span *ngIf="secondary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{secondary.data.suggested}}</span>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="secondary.sel_type != '0' ">
+              <label class="col-md-12 col-form-label" for="text-input"></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                <div class="col-md-5">
+                  <input type="text" id="second_co2" name="second_co2" class="form-control" placeholder="0.0" [(ngModel)]="secondary.data.co2" readonly>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kg CO2/d</span>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-group row" *ngIf="sec_clr.sel_type != '0'">
+              <label class="col-md-12 col-form-label" for="sec_clr_rate"> <strong>Secondary Clarification </strong></label>
+              <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{sec_clr.sel_type}}</p></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">Actual Energy Use Rate:</label>
+                <div class="col-md-5">
+                  <input type="text" id="sec_clr_rate" name="sec_clr_rate" class="form-control" placeholder="0.0" [(ngModel)]="sec_clr.data.default" (ngModelChange)="updateWWTPsize()">
+                  <span *ngIf="sec_clr.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{sec_clr.data.suggested}}</span>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="sec_clr.sel_type != '0'">
+              <label class="col-md-12 col-form-label" for="text-input"></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                <div class="col-md-5">
+                  <input type="text" id="sec_clr_co2" name="sec_clr_co2" class="form-control" placeholder="0.0" [(ngModel)]="sec_clr.data.co2" readonly>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kg CO2/d</span>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-group row" *ngIf="tertiary.sel_type != '0'">
+              <label class="col-md-12 col-form-label" for="text-input"><strong>Tertiary Treatment</strong></label>
+              <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{tertiary.sel_type}}</p></label>
+              <div class="offset-md-1 col-md-11 row">
+                <label class="col-md-5 col-form-label" for="text-input">Actual Energy Use Rate:</label>
+                <div class="col-md-5">
+                  <input type="text" id="tertiary_rate" name="tertiary_rate" class="form-control" placeholder="0.0" [(ngModel)]="tertiary.data.default" (ngModelChange)="updateWWTPsize()">
+                  <span *ngIf="tertiary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{tertiary.data.suggested}}</span>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="tertiary.sel_type != '0'">
+              <label class="col-md-12 col-form-label" for="text-input"></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                <div class="col-md-5">
+                  <input type="text" id="tertiary_co2" name="tertiary_co2" class="form-control" placeholder="0.0" [(ngModel)]="tertiary.data.co2" readonly>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kg CO2/d</span>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-group row" *ngIf="disinfection.sel_type != '0'">
+              <label class="col-md-12 col-form-label" for="text-input"><strong>Disinfection</strong></label>
+              <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{disinfection.sel_type}}</p></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">Actual Energy Use Rate:</label>
+                <div class="col-md-5">
+                  <input type="text" id="disinfection_rate" name="disinfection_rate" class="form-control" placeholder="0.0" [(ngModel)]="disinfection.data.default" (ngModelChange)="updateWWTPsize()">
+                  <span *ngIf="disinfection.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{disinfection.data.suggested}}</span>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="disinfection.sel_type != '0'">
+              <label class="col-md-12 col-form-label" for="text-input"></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                <div class="col-md-5">
+                  <input type="text" id="disinfection_co2" name="disinfection_co2" class="form-control" placeholder="0.0" [(ngModel)]="disinfection.data.co2" readonly>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kg CO2/d</span>
+                </div>
+
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          Liquid sludge Line
+          <div class="card-header-actions">
+
+            <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+
+          </div>
+        </div>
+        <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+
+          <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+
+            <accordion>
+
+              <accordion-group heading="Aerobic Digestion">
+
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios_aerobic">Please select</label>
+                  <div class="col-md-9 col-form-label" id="inline-radios_aerobic">
+                    <div class="form-check form-check-inline mr-1">
+                      <input class="form-check-input m-2" type="radio" name="aerobic_0" id="aerobic_0" value="0" [(ngModel)]="biosolid.aerobic.sel_type" (change)="selectTreatmentType('biosolid','aerobic',aerobic_digester)">
+                      <label class="form-check-label" for="aerobic_0">None</label>
+                    </div>
+                    <div class="form-check form-check-inline mr-1"  *ngFor="let type of aerobic_digester">
+                      <input class="form-check-input m-2" type="radio" name="aerobic_{{type.title}}" id="aerobic_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolid.aerobic.sel_type" (change)="selectTreatmentType('biosolid','aerobic',aerobic_digester)">
+                      <label class="form-check-label" for="aerobic_{{type.title}}">{{type.title}}</label>
+                    </div>
+                  </div>
+                </div>
+
+              </accordion-group>
+
+              <accordion-group heading="Sludge Thickening">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios_thickening">Please select</label>
+                  <div class="col-md-9 col-form-label" id="inline-radios_thickening">
+                    <div class="form-check form-check-inline mr-1">
+                      <input class="form-check-input m-2" type="radio" name="thickening_0" id="thickening_0" value="0" [(ngModel)]="biosolid.thickener.sel_type" (change)="selectTreatmentType('biosolid','thickener',thickener_types)">
+                      <label class="form-check-label" for="thickening_0">None</label>
+                    </div>
+                    <div class="form-check form-check-inline mr-1"  *ngFor="let type of thickener_types">
+                      <input class="form-check-input m-2" type="radio" name="thickening_{{type.title}" id="thickening_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolid.thickener.sel_type" (change)="selectTreatmentType('biosolid','thickener',thickener_types)">
+                      <label class="form-check-label" for="thickening_{{type.title}}">{{type.title}}</label>
+                    </div>
+                  </div>
+                </div>
+              </accordion-group>
+
+              <accordion-group heading="Anaerobic Digestion">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios_anaerobic">Please select</label>
+                  <div class="col-md-9 col-form-label" id="inline-radios_anaerobic">
+                    <div class="form-check form-check-inline mr-1">
+                      <input class="form-check-input m-2" type="radio" name="anaerobic_0" id="anaerobic_0" value="0" [(ngModel)]="biosolid.anaerobic.sel_type" (change)="selectTreatmentType('biosolid','anaerobic',anaerobic_digester)">
+                      <label class="form-check-label" for="anaerobic_0">None</label>
+                    </div>
+                    <div class="form-check form-check-inline mr-1"  *ngFor="let type of anaerobic_digester">
+                      <input class="form-check-input m-2" type="radio" name="anaerobic_{{type.title}}" id="anaerobic_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolid.anaerobic.sel_type" (change)="selectTreatmentType('biosolid','anaerobic',anaerobic_digester)">
+                      <label class="form-check-label" for="anaerobic_{{type.title}}">{{type.title}}</label>
+                    </div>
+                  </div>
+                </div>
+              </accordion-group>
+
+            </accordion>
+
+            <div class="row">
+
+              <div class="col-sm-6 col-lg-3" *ngIf="biosolid.thickener.sel_type!='0'">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-header-liquid-sludge brand-card-header-ct">
+                    Sludge Thickening
+                  </div>
+                  <div class="brand-card-body bg-header-selected">
+                    <div>
+                      <div>{{biosolid.thickener.sel_type}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-lg-3" *ngIf="biosolid.anaerobic.sel_type!='0'">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-header-liquid-sludge brand-card-header-ct">
+                    Anaerobic Digestion
+                  </div>
+                  <div class="brand-card-body bg-header-selected">
+                    <div>
+                      <div>{{biosolid.anaerobic.sel_type}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-lg-3" *ngIf="biosolid.aerobic.sel_type!='0'">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-header-liquid-sludge brand-card-header-ct">
+                    Aerobic Digestion
+                  </div>
+                  <div class="brand-card-body bg-header-selected">
+                    <div>
+                      <div>{{biosolid.aerobic.sel_type}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          Liquid sludge Fields
+          <div class="card-header-actions">
+
+            <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+
+          </div>
+        </div>
+        <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+
+          <div class="form-group row" *ngIf="biosolid.aerobic.sel_type == '0' && biosolid.thickener.sel_type == '0' && biosolid.anaerobic.sel_type == '0' ">
+            <p class="msg-text-center">You have not selected from anything liquid sludge line.</p>
+          </div>
+
+          <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+
+            <div class="form-group row" *ngIf="biosolid.aerobic.sel_type!='0'">
+              <label class="col-md-12 col-form-label" for="text-input"><strong>Aerobic Digestion</strong></label>
+              <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{biosolid.aerobic.sel_type}}</p></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="aerobic_rate">Actual Energy Use Rate:</label>
+                <div class="col-md-5">
+                  <input type="text" id="aerobic_rate" name="aerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.aerobic.data.default" (ngModelChange)="updateWWTPsize()">
+                  <span *ngIf="biosolid.aerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.aerobic.data.suggested}}</span>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="biosolid.aerobic.sel_type!='0'">
+              <label class="col-md-12 col-form-label" for="text-input"></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                <div class="col-md-5">
+                  <input type="text" id="aerobic_co2" name="aerobic_co2" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.aerobic.data.co2" readonly>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kg CO2/d</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row" *ngIf="biosolid.thickener.sel_type!='0'">
+              <label class="col-md-12 col-form-label" for="text-input"><strong>Thickening</strong></label>
+              <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{biosolid.thickener.sel_type}}</p></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="anaerobic_rate">Actual Energy Use Rate:</label>
+                <div class="col-md-5">
+                  <input type="text" id="thickener_rate" name="thickener_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.thickener.data.default" (ngModelChange)="updateWWTPsize()">
+                  <span *ngIf="biosolid.thickener.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.thickener.suggested}}</span>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="biosolid.thickener.sel_type!='0'">
+              <label class="col-md-12 col-form-label" for="text-input"></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                <div class="col-md-5">
+                  <input type="text" id="thickener_co2" name="thickener_co2" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.thickener.data.co2" readonly>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kg CO2/d</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row" *ngIf="biosolid.anaerobic.sel_type!='0'">
+              <label class="col-md-12 col-form-label" for="text-input"><strong>Anaerobic Digestion</strong></label>
+              <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{biosolid.anaerobic.sel_type}}</p></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="anaerobic_rate">Actual Energy Use Rate:</label>
+                <div class="col-md-5">
+                  <input type="text" id="anaerobic_rate" name="anaerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.anaerobic.data.default" (ngModelChange)="updateWWTPsize()">
+                  <span *ngIf="biosolid.anaerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.anaerobic.suggested}}</span>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="biosolid.anaerobic.sel_type!='0'">
+              <label class="col-md-12 col-form-label" for="text-input"></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                <div class="col-md-5">
+                  <input type="text" id="anaerobic_co2" name="anaerobic_co2" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.anaerobic.data.co2" readonly>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kg CO2/d</span>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          Biogas Line
+          <div class="card-header-actions">
+
+            <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+
+          </div>
+        </div>
+        <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+
+
+          <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+
+            <accordion>
+
+              <accordion-group heading="Biogas">
+
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios_biogas">Please select</label>
+                  <div class="col-md-9 col-form-label" id="inline-radios_biogas" >
+                    <div class="form-check form-check-inline mr-1" >
+                      <input class="form-check-input m-2" type="radio" name="biogas_0" id="biogas_0" value="0" [(ngModel)]="biogas.sel_type"  (change)="selectTreatmentType('','biogas',biogas_type)">
+                      <label class="form-check-label" for="biogas_0">None</label>
+                    </div>
+                    <div class="form-check form-check-inline mr-1"  *ngFor="let type of biogas_type">
+                      <input class="form-check-input m-2" type="radio" name="biogas_{{type.title}}" id="biogas_{{type.title}}" value="{{type.title}}" [(ngModel)]="biogas.sel_type" (change)="selectTreatmentType('','biogas',biogas_type)">
+                      <label class="form-check-label" for="biogas_{{type.title}}">{{type.title}}</label>
+                    </div>
+                  </div>
+                </div>
+
+              </accordion-group>
+
+            </accordion>
+
+            <div class="row">
+
+              <div class="col-sm-6 col-lg-3" *ngIf="biogas.sel_type!='0'">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-header-biogas brand-card-header-ct">
+                    Biogas
+                  </div>
+                  <div class="brand-card-body bg-header-selected">
+
+                    <div>
+                      <div>{{biogas.sel_type}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          Biogas Fields
+          <div class="card-header-actions">
+            <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+          </div>
+        </div>
+        <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+
+          <div class="form-group row" *ngIf="biogas.sel_type == '0'">
+            <p class="msg-text-center">You have not selected from anything biogas line.</p>
+          </div>
+
+          <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+
+            <div class="form-group row" *ngIf="biogas.sel_type!='0'">
+              <label class="col-md-12 col-form-label" for="text-input"><strong>Biogas</strong></label>
+              <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{biogas.sel_type}}</p></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="biogas_rate">Actual Biogas Energy Factor:</label>
+                <div class="col-md-5">
+                  <input type="text" id="biogas_rate" name="biogas_rate" class="form-control" placeholder="0.0" [(ngModel)]="biogas.data.default" (ngModelChange)="updateWWTPsize()">
+                  <span *ngIf="biogas.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biogas.data.suggested}}</span>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="biogas.sel_type!='0'">
+              <label class="col-md-12 col-form-label" for="text-input"></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">Recovery:</label>
+                <div class="col-md-5">
+                  <input type="text" id="biogas_co2" name="biogas_co2" class="form-control" placeholder="0.0" [(ngModel)]="biogas.data.co2" readonly>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kg CO2/d</span>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        Solids Dewatering Line
+        <div class="card-header-actions">
+
+          <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+
+        </div>
+      </div>
+      <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+
+
+        <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+
+          <accordion>
+            <accordion-group heading="Dewatering" >
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="inline-radios_dewatering">Please select</label>
+                <div class="col-md-9 col-form-label" id="inline-radios_dewatering">
+                  <div class="form-check form-check-inline mr-1" >
+                    <input class="form-check-input m-2" type="radio" name="dewatering_0" id="dewatering_0" value="0" [(ngModel)]="dewatering.sel_type" (change)="selectTreatmentType('','dewatering',dewatering_types)">
+                    <label class="form-check-label" for="dewatering_0">None</label>
+                  </div>
+                  <div class="form-check form-check-inline mr-1"  *ngFor="let type of dewatering_types">
+                    <input class="form-check-input m-2" type="radio" name="dewatering_{{type.title}}" id="dewatering_{{type.title}}" value="{{type.title}}" [(ngModel)]="dewatering.sel_type" (change)="selectTreatmentType('','dewatering',dewatering_types)">
+                    <label class="form-check-label" for="dewatering_{{type.title}}">{{type.title}}</label>
+                  </div>
+                </div>
+              </div>
+            </accordion-group>
+          </accordion>
+
+          <div class="row">
+
+            <div class="col-sm-6 col-lg-3" *ngIf="dewatering.sel_type!='0'">
+              <div class="brand-card">
+                <div class="brand-card-header bg-header-dewatering brand-card-header-ct">
+                  Dewatering
+                </div>
+                <div class="brand-card-body bg-header-selected">
+
+                  <div>
+                    <div>{{dewatering.sel_type}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          Solids Dewatering Fields
+          <div class="card-header-actions">
+            <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+          </div>
+        </div>
+        <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+          <div class="form-group row" *ngIf="dewatering.sel_type == '0'">
+            <p class="msg-text-center">You have not selected from anything Solids Dewatering line.</p>
+          </div>
+
+          <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+
+            <div class="form-group row" *ngIf="dewatering.sel_type!='0'">
+              <label class="col-md-12 col-form-label" for="text-input"><strong>Dewatering</strong></label>
+              <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{dewatering.sel_type}}</p></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="dewatering_rate">Actual Energy Use Rate:</label>
+                <div class="col-md-5">
+                  <input type="text" id="dewatering_rate" name="dewatering_rate" class="form-control" placeholder="0.0" [(ngModel)]="dewatering.data.default" (ngModelChange)="updateWWTPsize()">
+                  <span *ngIf="dewatering.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{dewatering.data.suggested}}</span>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="dewatering.sel_type!='0'">
+              <label class="col-md-12 col-form-label" for="text-input"></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                <div class="col-md-5">
+                  <input type="text" id="dewatering_co2" name="dewatering_co2" class="form-control" placeholder="0.0" [(ngModel)]="dewatering.data.co2" readonly>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kg CO2/d</span>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          Biosolids Disposal Line
+          <div class="card-header-actions">
+
+            <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+
+          </div>
+        </div>
+        <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+
+
+          <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+
+            <accordion>
+
+              <accordion-group heading="Biosolids Transportation">
+
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios_transportation">Please select</label>
+                  <div class="col-md-9 col-form-label" id="inline-radios_transportation">
+                    <div class="form-check form-check-inline mr-1">
+                      <input class="form-check-input m-2" type="radio" name="transportation_0" id="transportation_0" value="0" [(ngModel)]="biosolids_disposals.transportation.sel_type" (change)="selectTreatmentType('biosolids_disposals','transportation',transportation_type)">
+                      <label class="form-check-label" for="transportation_0">None</label>
+                    </div>
+                    <div class="form-check form-check-inline mr-1"  *ngFor="let type of transportation_type">
+                      <input class="form-check-input m-2" type="radio" name="transportation_{{type.title}}" id="transportation_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolids_disposals.transportation.sel_type" (change)="selectTreatmentType('biosolids_disposals','transportation',transportation_type)">
+                      <label class="form-check-label" for="transportation_{{type.title}}">{{type.title}}</label>
+                    </div>
+                  </div>
+                </div>
+
+              </accordion-group>
+              <accordion-group heading="Biosolids Disposal">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios_disposal">Please select</label>
+                  <div class="col-md-9 col-form-label" id="inline-radios_disposal">
+                    <div class="form-check form-check-inline mr-1">
+                      <input class="form-check-input m-2" type="radio" name="disposal_0" id="disposal_0" value="0" [(ngModel)]="biosolids_disposals.disposal.sel_type" (change)="selectTreatmentType('biosolids_disposals','disposal',disposal_type)">
+                      <label class="form-check-label" for="disposal_0">None</label>
+                    </div>
+                    <div class="form-check form-check-inline mr-1"  *ngFor="let type of disposal_type">
+                      <input class="form-check-input m-2" type="radio" name="disposal_{{type.title}}" id="disposal_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolids_disposals.disposal.sel_type" (change)="selectTreatmentType('biosolids_disposals','disposal',disposal_type)">
+                      <label class="form-check-label" for="disposal_{{type.title}}">{{type.title}}</label>
+                    </div>
+                  </div>
+                </div>
+              </accordion-group>
+            </accordion>
+
+            <div class="row">
+
+              <div class="col-sm-6 col-lg-3" *ngIf="biosolids_disposals.transportation.sel_type != '0'">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-header-biosolids brand-card-header-ct">
+                    Transportation
+                  </div>
+                  <div class="brand-card-body bg-header-selected">
+                    <div>
+                      <div>{{biosolids_disposals.transportation.sel_type}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-lg-3" *ngIf="biosolids_disposals.disposal.sel_type != '0'">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-header-biosolids brand-card-header-ct">
+                    Disposal
+                  </div>
+                  <div class="brand-card-body bg-header-selected">
+                    <div>
+                      <div>{{biosolids_disposals.disposal.sel_type}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          Biosolids Disposal Fields
+          <div class="card-header-actions">
+
+            <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+
+          </div>
+        </div>
+        <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+
+          <div class="form-group row" *ngIf="biosolids_disposals.transportation.sel_type == '0' && biosolids_disposals.disposal.sel_type == '0' ">
+            <p class="msg-text-center">You have not selected from anything Biosolids Disposal line.</p>
+          </div>
+
+          <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+
+            <div class="form-group row" *ngIf="biosolids_disposals.transportation.sel_type!='0'">
+              <label class="col-md-12 col-form-label" for="text-input"><strong>Transportation</strong></label>
+              <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{biosolids_disposals.transportation.sel_type}}</p></label>
+              <div class="offset-md-1 col-md-11 row">
+                <label class="col-md-5 col-form-label" for="transportation_rate">Actual Energy Use Rate:</label>
+                <div class="col-md-5">
+                  <input type="text" id="transportation_rate" name="transportation_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolids_disposals.transportation.data.default" (ngModelChange)="updateWWTPsize()">
+                  <span *ngIf="biosolids_disposals.transportation.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolids_disposals.transportation.data.suggested}}</span>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="biosolids_disposals.transportation.sel_type!='0'">
+              <label class="col-md-12 col-form-label" for="text-input"></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="transportation_co2">CO2 Equivalent:</label>
+                <div class="col-md-5">
+                  <input type="text" id="transportation_co2" name="transportation_co2" class="form-control" placeholder="0.0" [(ngModel)]="biosolids_disposals.transportation.data.co2" readonly>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kg CO2/d</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row" *ngIf="biosolids_disposals.disposal.sel_type!='0'">
+              <label class="col-md-12 col-form-label" for="text-input"><strong>Disposal</strong></label>
+              <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{biosolids_disposals.disposal.sel_type}}</p></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="disposal_rate">Actual Energy Use Rate:</label>
+                <div class="col-md-5">
+                  <input type="text" id="disposal_rate" name="disposal_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolids_disposals.disposal.data.default" (ngModelChange)="updateWWTPsize()">
+                  <span *ngIf="biosolids_disposals.disposal.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolids_disposals.disposal.suggested}}</span>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kWh/m<sup>3</sup></span>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group row" *ngIf="biosolids_disposals.disposal.sel_type!='0'">
+              <label class="col-md-12 col-form-label" for="text-input"></label>
+              <div class="offset-md-1 col-md-11 row">
+
+                <label class="col-md-5 col-form-label" for="disposal_co2">CO2 Equivalent:</label>
+                <div class="col-md-5">
+                  <input type="text" id="disposal_co2" name="disposal_co2" class="form-control" placeholder="0.0" [(ngModel)]="biosolids_disposals.disposal.data.co2" readonly>
+                </div>
+                <div class="col-md-2 p-0">
+                  <span class="help-block">kg CO2/d</span>
+                </div>
+              </div>
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          Summary
+          <div class="card-header-actions">
+            <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+          </div>
+        </div>
+        <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+          <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+
+
+            <div class="form-group row">
+              <div class="offset-md-9 col-md-2">
+                <button type="button" class="btn btn-block btn-success" (click)='generatePdf()'>Generate PDF</button>
+              </div>
+            </div>
+            <div id="printSection">
+              <div class="form-group row">
+                <div class="offset-md-2 col-md-9 row">
+                  <label class="col-md-5 col-form-label text-align-right" for="text-input">WWTP size:</label>
+                  <label class="col-md-3 col-form-label" for="text-input">{{size.sel_size}} </label>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="offset-md-2 col-md-9 row">
+                  <label class="col-md-5 col-form-label text-align-right" for="text-input">WWTP inflow:</label>
+                  <label class="col-md-3 col-form-label" for="text-input">{{size.data.default}} <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="offset-md-2 col-md-9 row">
+                  <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Electrical Emissions:</label>
+                  <label class="col-md-3 col-form-label" for="text-input"> {{totalElecricalCo2.toFixed(1)}} <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="offset-md-2 col-md-9 row">
+                  <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from On-site Process Emissions:</label>
+                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="offset-md-2 col-md-9 row">
+                  <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Biosolids Disposal Emissions:  </label>
+                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="offset-md-2 col-md-9 row">
+                  <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Energy Recovery:</label>
+                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="offset-md-2 col-md-9 row">
+                  <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Chemical Usage:</label>
+                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="offset-md-2 col-md-9 row">
+                  <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Transportation:</label>
+                  <label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>
+                </div>
+              </div>
+
+
+              <div class="form-group row chart-align" *ngIf="isChart">
+                <div class="col-md-11 row">
+                  <canvas style="background-color: beige;" baseChart #baseChart="base-chart" class="chart"
+                          [datasets]="barChartData"
+                          [labels]="barChartLabels"
+                          [options]="barChartOptions"
+                          [colors]="barChart1Colours"
+                          [legend]="barChartLegend"
+                          [chartType]="barChartType"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)"></canvas>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <button type="button" class="offset-4 col-md-3 btn btn-block btn-success" (click)='save()'>submit</button>
+  </div>
+  <!--<div class="row">-->
+    <!--<div class="col-md-11 mb-4">-->
+      <!--<form action="" method="post" enctype="multipart/form-data" class="form-horizontal">-->
+      <!--&lt;!&ndash; Nav tabs &ndash;&gt;-->
+      <!--<tabset class="navTabBackground"  #tabset>-->
+        <!--<tab heading="{{tabHeading[0]}}" (select)="selectTab($event)">-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="sel_size" >Select WWTP Size</label>-->
+            <!--<div class="col-md-6">-->
+              <!--<select id="sel_size" name="sel_size" class="form-control" (change)="selectSize(size_types)" [(ngModel)]="size.sel_size">-->
+                <!--<option *ngFor="let type of size_types" value="{{type.title}}">{{type.title}}</option>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+
+              <!--<label class="col-md-4 col-form-label" for="text-input">Actaul WWTP inflow(Qin)</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="WWTP_size" name="WWTP_size" class="form-control" placeholder="0.0" [(ngModel)]="size.data.default" (ngModelChange)="updateWWTPsize(size)">-->
+                <!--<span  *ngIf="size.data.suggested!==0" class="help-block" style="color:#4dbd74">Suggested value {{size.data.suggested}}</span>-->
+              <!--</div>-->
+              <!--<div class="col-md-1">-->
+                <!--<span class="help-block">kWh/m<sup>3</sup></span>-->
+              <!--</div>-->
+
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+            <!--<div class="offset-lg-10 col-lg-2">-->
+              <!--<button type="button" class="btn btn-block btn-success" (click)='goto(1)'>Next</button>-->
+            <!--</div>-->
+          <!--</div>-->
+
+        <!--</tab>-->
+        <!--<tab heading="{{tabHeading[1]}}" (select)="selectTab($event)">-->
+          <!--<div class="form-group row">-->
+              <!--<label class="col-md-3 col-form-label" ><strong>Influent pumping</strong></label>-->
+              <!--<div class="col-md-9 row">-->
+                <!--<label class="col-md-3 col-form-label" for="text-input">Actual Energy Use Rate:</label>-->
+                <!--<div class="col-md-4">-->
+                  <!--<input type="text" id="pumping_rate" name="pumping_rate" [(ngModel)]="primary.pumping.default" class="form-control" placeholder="0.0">-->
+                  <!--<span class="help-block" style="color:#4dbd74">Suggested value {{primary.pumping.suggested}}</span>-->
+                <!--</div>-->
+                <!--<div class="col-md-1">-->
+                  <!--<span class="help-block">kWh/m<sup>3</sup></span>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--<div class="form-group row">-->
+                <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+                <!--<div class="col-md-9 row">-->
+
+                  <!--<label class="col-md-3 col-form-label" for="text-input">CO2 Equivalent:</label>-->
+                  <!--<div class="col-md-4">-->
+                    <!--<input type="text" id="pumping_co2" name="pumping_co2" class="form-control" placeholder="0.0" [(ngModel)]="primary.pumping.co2">-->
+                  <!--</div>-->
+                  <!--<div class="col-md-2">-->
+                    <!--<span class="help-block">kg CO2/d</span>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="sel_prili_treat"><strong>Priliminary Treatment</strong></label>-->
+            <!--<div class="col-md-6">-->
+              <!--<select id="sel_prili_treat" name="sel_prili_treat" class="form-control" (change)="selectTreatmentType('primary','prili_treat',prili_treat_types)" [(ngModel)]="primary.prili_treat.sel_type">-->
+                <!--<option value="0">Please select</option>-->
+                <!--<option *ngFor="let type of prili_treat_types" value={{type.title}} >{{type.title}}</option>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+
+              <!--<label class="col-md-3 col-form-label" for="text-input">Actual Energy Use Rate:</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="prili_treat_rate" name="prili_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.prili_treat.data.default" (ngModelChange)="co2Calcaltion(primary.prili_treat.data)">-->
+                <!--<span *ngIf="primary.prili_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.prili_treat.data.suggested}}</span>-->
+              <!--</div>-->
+              <!--<div class="col-md-1">-->
+                <!--<span class="help-block">kWh/m<sup>3</sup></span>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+
+              <!--<label class="col-md-3 col-form-label" for="text-input">CO2 Equivalent:</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="prili_treat_co2" name="prili_treat_co2" class="form-control" placeholder="0.0" [(ngModel)]="primary.prili_treat.data.co2">-->
+              <!--</div>-->
+              <!--<div class="col-md-2">-->
+                <!--<span class="help-block">kg CO2/d</span>-->
+              <!--</div>-->
+
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="sel_pri_treat"><strong>Primary Treatment</strong></label>-->
+            <!--<div class="col-md-6">-->
+              <!--<select id="sel_pri_treat" name="sel_pri_treat" class="form-control" (change)="selectTreatmentType('primary','pri_treat',pri_treat_types)" [(ngModel)]="primary.pri_treat.sel_type">-->
+                <!--<option value="0">Please select</option>-->
+                <!--<option *ngFor="let type of pri_treat_types" value={{type.title}} >{{type.title}}</option>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+
+              <!--<label class="col-md-3 col-form-label" for="text-input">Actual Energy Use Rate:</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="pri_treat_rate" name="pri_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.pri_treat.data.default" (ngModelChange)="co2Calcaltion(primary.pri_treat.data)">-->
+                <!--<span *ngIf="primary.pri_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.pri_treat.data.suggested}}</span>-->
+              <!--</div>-->
+              <!--<div class="col-md-1">-->
+                <!--<span class="help-block">kWh/m<sup>3</sup></span>-->
+              <!--</div>-->
+
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+
+              <!--<label class="col-md-3 col-form-label" for="pri_treat_co2">CO2 Equivalent:</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="pri_treat_co2" name="pri_treat_co2" class="form-control" placeholder="0.0" [(ngModel)]="primary.pri_treat.data.co2">-->
+              <!--</div>-->
+              <!--<div class="col-md-2">-->
+                <!--<span class="help-block">kg CO2/d</span>-->
+              <!--</div>-->
+
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+            <!--<div class="col-lg-2">-->
+              <!--&lt;!&ndash;col-sm-4 col-md-2 col-xl mb-3 mb-xl-0 &ndash;&gt;-->
+              <!--<button type="button" class="btn btn-block btn-success" (click)='goto(0)'>Back</button>-->
+            <!--</div>-->
+            <!--<div class="offset-lg-8 col-lg-2">-->
+              <!--<button type="button" class="btn btn-block btn-success" (click)='goto(2)'>Next</button>-->
+            <!--</div>-->
+          <!--</div>-->
+
+        <!--</tab>-->
+        <!--<tab heading="{{tabHeading[2]}}" (select)="selectTab($event)">-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="sec_growth_type"><strong>Select type of growth</strong></label>-->
+            <!--<div class="col-md-6">-->
+              <!--<select id="sec_growth_type" name="sec_growth_type" class="form-control" (change)="selectGrowthTypeChange($event,growth_types)" [(ngModel)]="secondary.sel_growth_type">-->
+                <!--<option value="0" >Please select growth type</option>-->
+                <!--<option *ngFor="let type of growth_types" value={{type.title}} >{{type.title}}</option>-->
+              <!--</select>-->
+            <!--</div>-->
+
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="sec_treat_type"><strong>Select type of treatment</strong></label>-->
+            <!--<div class="col-md-6">-->
+              <!--<select id="sec_treat_type" name="sec_treat_type" class="form-control" (change)="selectTreatmentType('','secondary',secondary_types)" [(ngModel)]="secondary.sel_type">-->
+                <!--<option value="0">Please select treatment type</option>-->
+                <!--<option *ngFor="let type of secondary_types" value={{type.title}}>{{type.title}}</option>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+
+              <!--<label class="col-md-3 col-form-label" for="text-input">Actual Energy Use Rate:</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="second_rate" name="second_rate" class="form-control" placeholder="0.0" [(ngModel)]="secondary.data.default" (ngModelChange)="co2Calcaltion(secondary.data)">-->
+                <!--<span *ngIf="secondary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{secondary.data.suggested}}</span>-->
+              <!--</div>-->
+              <!--<div class="col-md-1">-->
+                <!--<span class="help-block">kWh/m<sup>3</sup></span>-->
+              <!--</div>-->
+
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+
+              <!--<label class="col-md-3 col-form-label" for="text-input">CO2 Equivalent:</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="second_co2" name="second_co2" class="form-control" placeholder="0.0" >-->
+              <!--</div>-->
+              <!--<div class="col-md-2">-->
+                <!--<span class="help-block">kg CO2/d</span>-->
+              <!--</div>-->
+
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label"><strong>Secondary Clarification</strong></label>-->
+            <!--<div class="col-md-6">-->
+              <!--<label class="col-form-label" for="text-input">Secondary Clarifier</label>-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--&lt;!&ndash;<div class="form-group row">&ndash;&gt;-->
+            <!--&lt;!&ndash;<label class="col-md-3 col-form-label" for="sec_clr_rate"></label>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="col-md-9 row">&ndash;&gt;-->
+
+              <!--&lt;!&ndash;<label class="col-md-3 col-form-label" for="text-input">Actual Energy Use Rate:</label>&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="col-md-4">&ndash;&gt;-->
+                <!--&lt;!&ndash;<input type="text" id="sec_clr_rate" name="sec_clr_rate" class="form-control" placeholder="0.0" [(ngModel)]="secondary.sec_clr.default" (ngModelChange)="co2Calcaltion(secondary.sec_clr)">&ndash;&gt;-->
+                <!--&lt;!&ndash;<span *ngIf="secondary.sec_clr.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{secondary.sec_clr.suggested}}</span>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="col-md-1">&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="help-block">kWh/m<sup>3</sup></span>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--&lt;!&ndash;<div class="form-group row">&ndash;&gt;-->
+            <!--&lt;!&ndash;<label class="col-md-3 col-form-label" for="text-input"></label>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="col-md-9 row">&ndash;&gt;-->
+
+              <!--&lt;!&ndash;<label class="col-md-3 col-form-label" for="text-input">CO2 Equivalent:</label>&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="col-md-4">&ndash;&gt;-->
+                <!--&lt;!&ndash;<input type="text" id="sec_clr_co2" name="sec_clr_co2" class="form-control" placeholder="0.0" [(ngModel)]="secondary.sec_clr.co2">&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="col-md-2">&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="help-block">kg CO2/d</span>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--<div class="row">-->
+            <!--<div class="col-lg-2">-->
+              <!--&lt;!&ndash;col-sm-4 col-md-2 col-xl mb-3 mb-xl-0 &ndash;&gt;-->
+              <!--<button type="button" class="btn btn-block btn-success" (click)='goto(1)'>Back</button>-->
+            <!--</div>-->
+            <!--<div class="offset-lg-8 col-lg-2">-->
+              <!--<button type="button" class="btn btn-block btn-success" (click)='goto(3)'>Next</button>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</tab>-->
+        <!--<tab heading="{{tabHeading[3]}}" (select)="selectTab($event)">-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="sel_tertiery" ><strong>Tertiary Treatment</strong></label>-->
+            <!--<div class="col-md-6">-->
+              <!--<select id="sel_tertiery" name="sel_tertiery" class="form-control" (change)="selectTreatmentType('','tertiary',tertiary_types)" [(ngModel)]="tertiary.sel_type">-->
+                <!--<option value="0">Please select type of treatment</option>-->
+                <!--<option *ngFor="let type of tertiary_types" value={{type.title}} >{{type.title}}</option>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+              <!--<label class="col-md-3 col-form-label" for="text-input">Actual Energy Use Rate:</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="tertiary_rate" name="tertiary_rate" class="form-control" placeholder="0.0" [(ngModel)]="tertiary.data.default" (ngModelChange)="co2Calcaltion(tertiary.data)">-->
+                <!--<span *ngIf="tertiary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{tertiary.data.suggested}}</span>-->
+              <!--</div>-->
+              <!--<div class="col-md-1">-->
+                <!--<span class="help-block">kWh/m<sup>3</sup></span>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+
+              <!--<label class="col-md-3 col-form-label" for="text-input">CO2 Equivalent:</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="tertiary_co2" name="tertiary_co2" class="form-control" placeholder="0.0" [(ngModel)]="tertiary.data.co2">-->
+              <!--</div>-->
+              <!--<div class="col-md-2">-->
+                <!--<span class="help-block">kg CO2/d</span>-->
+              <!--</div>-->
+
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+            <!--<div class="col-lg-2">-->
+              <!--&lt;!&ndash;col-sm-4 col-md-2 col-xl mb-3 mb-xl-0 &ndash;&gt;-->
+              <!--<button type="button" class="btn btn-block btn-success" (click)='goto(2)'>Back</button>-->
+            <!--</div>-->
+            <!--<div class="offset-lg-8 col-lg-2">-->
+              <!--<button type="button" class="btn btn-block btn-success" (click)='goto(4)'>Next</button>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</tab>-->
+        <!--<tab heading="{{tabHeading[4]}}" (select)="selectTab($event)">-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="sel_disinfection"><strong>Disinfection</strong></label>-->
+            <!--<div class="col-md-6">-->
+              <!--<select id="sel_disinfection" name="sel_disinfection" class="form-control" (change)="selectTreatmentType('','disinfection',disinfection_types)" [(ngModel)]="disinfection.sel_type">-->
+                <!--<option value="0">Please select type of disinfection</option>-->
+                <!--<option *ngFor="let type of disinfection_types" value={{type.title}} >{{type.title}}</option>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+
+              <!--<label class="col-md-3 col-form-label" for="text-input">Actual Energy Use Rate:</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="disinfection_rate" name="disinfection_rate" class="form-control" placeholder="0.0" [(ngModel)]="disinfection.data.default" (ngModelChange)="co2Calcaltion(disinfection.data)">-->
+                <!--<span *ngIf="disinfection.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{disinfection.data.suggested}}</span>-->
+              <!--</div>-->
+              <!--<div class="col-md-1">-->
+                <!--<span class="help-block">kWh/m<sup>3</sup></span>-->
+              <!--</div>-->
+
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+
+              <!--<label class="col-md-3 col-form-label" for="text-input">CO2 Equivalent:</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="disinfection_co2" name="disinfection_co2" class="form-control" placeholder="0.0" [(ngModel)]="disinfection.data.co2">-->
+              <!--</div>-->
+              <!--<div class="col-md-2">-->
+                <!--<span class="help-block">kg CO2/d</span>-->
+              <!--</div>-->
+
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+            <!--<div class="col-lg-2">-->
+              <!--&lt;!&ndash;col-sm-4 col-md-2 col-xl mb-3 mb-xl-0 &ndash;&gt;-->
+              <!--<button type="button" class="btn btn-block btn-success" (click)='goto(3)'>Back</button>-->
+            <!--</div>-->
+            <!--<div class="offset-lg-8 col-lg-2">-->
+              <!--<button type="button" class="btn btn-block btn-success" (click)='goto(5)'>Next</button>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</tab>-->
+        <!--<tab heading="{{tabHeading[6]}}" (select)="selectTab($event)">-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label"><strong>Select treatment type</strong></label>-->
+            <!--<div class="col-md-6">-->
+              <!--<select id="select2" name="select1" class="form-control">-->
+                <!--<option value="0">Please select</option>-->
+                <!--<option value="1">Energy Recovery </option>-->
+                <!--<option value="2">Flaring</option>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+
+              <!--<label class="col-md-3 col-form-label" for="biogas_rate">Actual Biogas Energy Factor:</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="biogas_rate" name="biogas_rate" class="form-control" placeholder="0.0">-->
+                <!--<span class="help-block" style="color:#4dbd74">Suggested value 5000</span>-->
+              <!--</div>-->
+              <!--<div class="col-md-1">-->
+                <!--<span class="help-block">kWh/m<sup>3</sup></span>-->
+              <!--</div>-->
+
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+
+              <!--<label class="col-md-3 col-form-label" for="text-input">Recovery:</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="recovery" name="recovery" class="form-control" placeholder="0.0">-->
+              <!--</div>-->
+              <!--<div class="col-md-2">-->
+                <!--<span class="help-block">kg CO2/d</span>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+            <!--<div class="col-lg-2">-->
+              <!--&lt;!&ndash;col-sm-4 col-md-2 col-xl mb-3 mb-xl-0 &ndash;&gt;-->
+              <!--<button type="button" class="btn btn-block btn-success" (click)='goto(5)'>Back</button>-->
+            <!--</div>-->
+            <!--<div class="offset-lg-8 col-lg-2">-->
+              <!--<button type="button" class="btn btn-block btn-success" (click)='goto(7)'>Next</button>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</tab>-->
+        <!--<tab heading="{{tabHeading[7]}}" (select)="selectTab($event)">-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="disposal"><strong>Select treatment type</strong></label>-->
+            <!--<div class="col-md-6">-->
+              <!--<select id="disposal" name="disposal" class="form-control">-->
+                <!--<option value="0">Please select</option>-->
+                <!--<option value="1">Energy Recovery </option>-->
+                <!--<option value="2">Flaring</option>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+
+              <!--<label class="col-md-3 col-form-label" for="text-input">Actual Energy Use Rate:</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="text-input" name="text-input" class="form-control" placeholder="0.0">-->
+                <!--<span class="help-block" style="color:#4dbd74">Suggested value 5000</span>-->
+              <!--</div>-->
+              <!--<div class="col-md-1">-->
+                <!--<span class="help-block">kWh/m<sup>3</sup></span>-->
+              <!--</div>-->
+
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group row">-->
+            <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+            <!--<div class="col-md-9 row">-->
+              <!--<label class="col-md-3 col-form-label" for="text-input">CO2 Equivalent:</label>-->
+              <!--<div class="col-md-4">-->
+                <!--<input type="text" id="text-input" name="text-input" class="form-control" placeholder="0.0">-->
+              <!--</div>-->
+              <!--<div class="col-md-2">-->
+                <!--<span class="help-block">kg CO2/d</span>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+            <!--<div class="offset-lg-10 col-lg-2">-->
+              <!--<button type="button" class="btn btn-block btn-success">Submit</button>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</tab>-->
+        <!--<tab heading="{{tabHeading[8]}}" (select)="selectTab($event)">-->
+
+          <!--<div class="form-group row">-->
+            <!--<div class="offset-md-9 col-md-2">-->
+              <!--<button type="button" class="btn btn-block btn-success" (click)='generatePdf()'>Generate PDF</button>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div id="printSection">-->
+            <!--<div class="form-group row">-->
+              <!--<div class="offset-md-2 col-md-9 row">-->
+                <!--<label class="col-md-5 col-form-label text-align-right" for="text-input">WWTP size:</label>-->
+                <!--<label class="col-md-3 col-form-label" for="text-input">{{size.sel_size}} </label>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="form-group row">-->
+              <!--<div class="offset-md-2 col-md-9 row">-->
+                <!--<label class="col-md-5 col-form-label text-align-right" for="text-input">WWTP inflow:</label>-->
+                <!--<label class="col-md-3 col-form-label" for="text-input">{{size.data.default}} <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="form-group row">-->
+              <!--<div class="offset-md-2 col-md-9 row">-->
+                <!--<label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Electricity Emissions:</label>-->
+                <!--<label class="col-md-3 col-form-label" for="text-input"> 0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="form-group row">-->
+              <!--<div class="offset-md-2 col-md-9 row">-->
+                <!--<label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from On-site Process Emissions:</label>-->
+                <!--<label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="form-group row">-->
+              <!--<div class="offset-md-2 col-md-9 row">-->
+                <!--<label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Biosolids Disposal Emissions:  </label>-->
+                <!--<label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="form-group row">-->
+              <!--<div class="offset-md-2 col-md-9 row">-->
+                <!--<label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Energy Recovery:</label>-->
+                <!--<label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="form-group row">-->
+              <!--<div class="offset-md-2 col-md-9 row">-->
+                <!--<label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Chemical Usage:</label>-->
+                <!--<label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="form-group row">-->
+              <!--<div class="offset-md-2 col-md-9 row">-->
+                <!--<label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Transportation:</label>-->
+                <!--<label class="col-md-3 col-form-label" for="text-input">0 <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>-->
+              <!--</div>-->
+            <!--</div>-->
+
+
+            <!--<div class="form-group row chart-align">-->
+              <!--<div class="col-md-11 row">-->
+                <!--<canvas style="background-color: beige;" baseChart #baseChart="base-chart" class="chart"-->
+                        <!--[datasets]="barChartData"-->
+                        <!--[labels]="barChartLabels"-->
+                        <!--[options]="barChartOptions"-->
+                        <!--[colors]="barChart1Colours"-->
+                        <!--[legend]="barChartLegend"-->
+                        <!--[chartType]="barChartType"-->
+                        <!--(chartHover)="chartHovered($event)"-->
+                        <!--(chartClick)="chartClicked($event)"></canvas>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</tab>-->
+      <!--</tabset>-->
+      <!--</form>-->
+    <!--</div>&lt;!&ndash;/.col&ndash;&gt;-->
+
+  <!--</div>-->
+</div>

@@ -6,3 +6,10 @@
 
 // If you want to add something do it here
 @import "custom";
+.navTabBackground>ul{
+  background: #f0f3f5;
+  border:1px solid #f0f3f5;
+}
+.navTabBackground> .nav-tabs .nav-link {
+  color: black !important;
+}

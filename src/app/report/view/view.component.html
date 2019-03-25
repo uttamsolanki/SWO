@@ -1,0 +1,95 @@
+
+<div class="animated fadeIn">
+
+  <div class="row" *ngIf="showContent">
+
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+         Scenario
+          <div class="card-header-actions">
+            <button type="button" class="card-header-action btn btn-link btn-setting"><i class="icon-settings"></i></button>
+            <button type="button" class="card-header-action btn btn-link btn-minimize"><i class={{iconCollapse}}></i></button>
+            <button type="button" class="card-header-action btn btn-link btn-close"><i class="icon-close"></i></button>
+          </div>
+        </div>
+        <div class="card-body">
+          <form class="form-horizontal">
+            <div class="form-group row">
+              <label class="offset-md-2 col-md-3 col-form-label" for="project">Select Project</label>
+              <div class="col-md-3">
+                <select id="project" name="project" class="form-control"  [(ngModel)]="selectedProject" (change)="changeProject()">
+                  <option value="0">Please Project</option>
+                  <option *ngFor="let p of projects" value="{{p._id}}" >{{p.name}}</option>
+                </select>
+              </div>
+
+              <!--<div class="offset-md-2 col-md-2">-->
+                <!--<button type="button" class="btn btn-block btn-success">Create Scenario</button>-->
+              <!--</div>-->
+            </div>
+            <div class="form-group row" *ngIf="selectedProject!='0'">
+              <label class="offset-md-2 col-md-3 col-form-label" for="project">Select Scenario</label>
+              <div class="col-md-5 col-form-label" >
+                <div class="form-check form-check-inline mr-1" *ngFor="let sc of scenarios;let i = index;">
+                  <input class="form-check-input" [disabled]="!selectScenario[sc.id] && isDisable" type="checkbox" id="inline-checkbox1" [(ngModel)]="selectScenario[sc.id]" value="{{sc.id}}" (ngModelChange)="selectSenario()" [ngModelOptions]="{standalone: true}">
+                  <label class="form-check-label p-1" for="inline-checkbox1">Scenario {{i+1}}</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12" *ngIf="selectedProject=='0'">
+              <p class="msg-text-center">You have not selected any project.</p>
+            </div>
+            <div class="col-lg-12" *ngIf="selectedProject!='0' && !count">
+              <p class="msg-text-center">You have not selected any scenario.</p>
+            </div>
+            <div class="col-lg-12" *ngIf="selectedProject!='0' && count">
+              <div class="row">
+                <div class="col-lg-{{noOfcolumn}}">
+                  <div class="form-group row">
+                    <label class="col-md-12 col-form-label"><strong>Total CO2 Equivalent </strong></label>
+                  </div>
+                </div>
+                <ng-container *ngFor="let sc of scenarios;let i = index;">
+                <div class="col-lg-{{noOfcolumn}}"  *ngIf="selectScenario[sc.id]">
+                  <div class="form-group row" >
+                    <label class="col-md-12 col-form-label"><strong>Scenario {{i+1}} </strong></label>
+                  </div>
+                </div>
+                </ng-container>
+              </div>
+            </div>
+            <hr *ngIf="selectedProject!='0' && count">
+            <div class="col-lg-12" *ngIf="selectedProject!='0' && count">
+              <div class="row">
+                <div class="col-lg-{{noOfcolumn}}">
+                  <div class="form-group row">
+                    <label class="col-md-12 col-form-label">Electrical Emissions</label>
+                    <label class="col-md-12 col-form-label">On-site Process Emissions</label>
+                    <label class="col-md-12 col-form-label">Biosolids Disposal Emissions</label>
+                    <label class="col-md-12 col-form-label">Energy Recovery</label>
+                    <label class="col-md-12 col-form-label">Chemical Usage</label>
+                    <label class="col-md-12 col-form-label">Transportation</label>
+                  </div>
+                </div>
+                <ng-container *ngFor="let sc of scenarios;let i = index;">
+                <div class="col-lg-{{noOfcolumn}}" *ngIf="selectScenario[sc.id]">
+                  <div class="form-group row" >
+                    <label class="col-md-12 col-form-label">{{sc.electical.toFixed(1)}}</label>
+                    <label class="col-md-12 col-form-label">{{sc.process.toFixed(1)}}</label>
+                    <label class="col-md-12 col-form-label">{{sc.disposal.toFixed(1)}}</label>
+                    <label class="col-md-12 col-form-label">{{sc.energy.toFixed(1)}}</label>
+                    <label class="col-md-12 col-form-label">{{sc.chemical.toFixed(1)}}</label>
+                    <label class="col-md-12 col-form-label">{{sc.transportation.toFixed(1)}}</label>
+
+                  </div>
+                </div>
+                </ng-container>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> <!--/.col-->
+  </div>
+</div>
