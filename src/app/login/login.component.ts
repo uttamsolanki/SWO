@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
           console.log(res.errors);
         } else{
           localStorage.setItem('token', res.data.token);
-          localStorage.setItem('currentUser', res.data.user);
+          localStorage.setItem('currentUser', JSON.stringify(res.data.user));
           this.alertsDismiss.push({
             type: 'success',
             msg: res.message,
