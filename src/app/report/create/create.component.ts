@@ -296,6 +296,15 @@ export class CreateComponent implements OnInit {
   }
 
   updateWWTPsize() {
+    //console.log(this.size.sel_size);
+    // if(this.size.data.default >= 50000 ){
+    //   for (const s_type of this.size_types) {
+    //     if (s_type.title !== this.size.sel_size) {
+    //       this.size.data = s_type;
+    //       break;
+    //     }
+    //   }
+    // }
     this.co2Calcaltion(this.primary.pumping.data);
     this.co2Calcaltion(this.primary.pri_treat.data);
     this.co2Calcaltion(this.primary.prili_treat.data);
@@ -536,7 +545,7 @@ export class CreateComponent implements OnInit {
   }
   successOk() {
     this.modal.hide();
-    // this.router.navigateByUrl('/report/view');
+     this.router.navigateByUrl('/report/view');
   }
 
 }

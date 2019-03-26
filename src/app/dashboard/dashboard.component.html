@@ -7,7 +7,11 @@
           <i class="fa fa-align-justify"></i> Projects
         </div>
         <div class="card-body">
-          <table class="table">
+          <div class="form-group row" *ngIf="!projects.length">
+            <p class="msg-text-center">You have not created any Project.</p>
+            <button type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/create']">Create</button>
+          </div>
+          <table class="table" *ngIf="projects.length">
             <thead>
             <tr>
               <th>Name</th>

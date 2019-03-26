@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
       if(rep.status === 1) {
         this.numberOfProject = Object.keys(rep.data).length;
         this.projects = rep.data;
-        console.log(this.projects);
+        console.log(this.projects.length);
       } else {
         console.log(rep.status);
       }
