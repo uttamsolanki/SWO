@@ -25,9 +25,12 @@ export class ViewComponent implements OnInit {
   biogas:any;
   biosolids_disposals:any;
   dewatering:any;
-  fields:any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering'];
+  chemical:any;
+  process:any;
+  fields:any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering','chemical','process'];
   scenarios:any=[];
   totalElecricalCo2 = 0;
+  totalChemicalCo2 = 0;
   totalBiolidDisposalCo2=0;
   noOfcolumn:number=0;
   selectedProject:string='0';
@@ -130,10 +133,11 @@ export class ViewComponent implements OnInit {
   }
 
   createChart(id){
-   let graphData = {electical:0, process: 0, disposal: 0, energy: 0, chemical: 0, transportation: 0,id:0};
+   let graphData = {electical:0, process: 0, disposal: 0, energy: 0, chemical: 0, transporation: 0,id:0};
     //this.isChart=true;
     //this.barChartLabels=[];
     this.totalElecricalCo2=0;
+    this.totalChemicalCo2 = 0;
     this.totalBiolidDisposalCo2=0;
     let newData = [];
     if(this.primary.pumping.sel_type !== '0'){
@@ -174,29 +178,43 @@ export class ViewComponent implements OnInit {
     if(this.biosolid.aerobic.sel_type !== '0'){
       //this.barChartLabels.push(this.biosolid.aerobic.data.title);
       newData.push(this.biosolid.aerobic.data.co2);
-      // this.totalElecricalCo2 += JSON.parse(this.biosolid.aerobic.data.co2);
+       this.totalElecricalCo2 += JSON.parse(this.biosolid.aerobic.data.co2);
     }
     if(this.biosolid.thickener.sel_type !== '0'){
       //this.barChartLabels.push(this.biosolid.thickener.data.title);
       newData.push(this.biosolid.thickener.data.co2);
-      //this.totalElecricalCo2 += JSON.parse(this.biosolid.thickener.data.co2);
+      this.totalElecricalCo2 += JSON.parse(this.biosolid.thickener.data.co2);
     }
     if(this.biosolid.anaerobic.sel_type !== '0'){
      // this.barChartLabels.push(this.biosolid.anaerobic.data.title);
       newData.push(this.biosolid.anaerobic.data.co2);
-      // this.totalElecricalCo2 += JSON.parse(this.biosolid.anaerobic.data.co2);
+       this.totalElecricalCo2 += JSON.parse(this.biosolid.anaerobic.data.co2);
     }
     if(this.dewatering.sel_type !== '0'){
       //this.barChartLabels.push(this.dewatering.data.title);
       newData.push(this.dewatering.data.co2);
-      // this.totalElecricalCo2 += JSON.parse(this.dewatering.data.co2);
+       this.totalElecricalCo2 += JSON.parse(this.dewatering.data.co2);
     }
+    if(this.chemical.metal_salts.sel_type !== '0'){
+      this.totalChemicalCo2 += JSON.parse(this.chemical.metal_salts.data.co2);
+    }
+    if(this.chemical.chlorination.sel_type !== '0'){
+      this.totalChemicalCo2 += JSON.parse(this.chemical.chlorination.data.co2);
+    }
+    if(this.chemical.dechlorination.sel_type !== '0'){
+      this.totalChemicalCo2 += JSON.parse(this.chemical.dechlorination.data.co2);
+    }
+    console.log(this.process.disposal);
     // this.barChartData = [
     //   {data: newData, label: 'CO2 Equalvalent from Electricity Emissions'}
     // ];
     // this.chart.datasets = this.barChartData;
     // this.chart.labels = this.barChartLabels;
     // this.chart.ngOnInit();
+    graphData.transporation = this.process.transporation.totalCo2;
+    graphData.disposal = this.process.disposal.totalCo2;
+    graphData.process = this.process.aerobic.totalCo2 + this.process.anarobic.totalCo2 + this.process.active_sludge.totalCo2;
+    graphData.chemical = this.totalChemicalCo2;
     graphData.electical = this.totalElecricalCo2;
     graphData.id = id;
     this.scenarios.push(graphData);

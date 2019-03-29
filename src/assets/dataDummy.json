@@ -990,7 +990,8 @@
           "ref":{
 
           }
-        }
+        },
+        "co2_eq":0.493
       },
       {
         "title":"Aluminum Salts - as Al",
@@ -1004,7 +1005,8 @@
           "ref":{
 
           }
-        }
+        },
+        "co2_eq":543
       },
       {
         "title":"Iron Salts - as Fe",
@@ -1018,7 +1020,8 @@
           "ref":{
 
           }
-        }
+        },
+        "co2_eq":0.167
       },
       {
         "title":"Lime - as anhydrous Ca(OH)2",
@@ -1032,7 +1035,8 @@
           "ref":{
 
           }
-        }
+        },
+        "co2_eq":0.846
       }
     ],
     "chlorination":[
@@ -1048,7 +1052,8 @@
           "ref":{
 
           }
-        }
+        },
+        "co2_eq":0.92
       },
       {
         "title":"Liquified Chlorine Gas",
@@ -1062,7 +1067,8 @@
           "ref":{
 
           }
-        }
+        },
+        "co2_eq":0.744
       }],
     "dechlorination":[
       {
@@ -1077,7 +1083,8 @@
           "ref":{
 
           }
-        }
+        },
+        "co2_eq":0.418
       },
       {
         "title":"Sodium bisulphite(anhydrous)",
@@ -1091,7 +1098,8 @@
           "ref":{
 
           }
-        }
+        },
+        "co2_eq":0.42
       },
       {
         "title":"Sodium bisulphite(as available SO2)",
@@ -1105,16 +1113,18 @@
           "ref":{
 
           }
-        }
+        },
+        "co2_eq":0.683
       }
     ]
   },
   "process": {
-    "secondary": {
+    "active_sludge": {
       "CODin": {
         "title":"Inflow CODin",
         "unit": "mg/L",
         "default":300,
+        "suggested":300,
         "ref":{
 
         },
@@ -1130,6 +1140,7 @@
         "title":"Inflow TKNin",
         "unit": "mg/L",
         "default":40,
+        "suggested":40,
         "ref":{
 
         },
@@ -1145,6 +1156,7 @@
         "title":"Outflow CODout",
         "unit": "mg/L",
         "default":7.4,
+        "suggested":7.4,
         "ref":{
 
         },
@@ -1160,6 +1172,7 @@
         "title":"Outflow TKN out",
         "unit": "mg/L",
         "default":3,
+        "suggested":3,
         "ref":{
 
         },
@@ -1175,6 +1188,7 @@
         "title":"WAS Flow (as % of Qin)",
         "unit": "%",
         "default":2,
+        "suggested":2,
         "ref":{
 
         },
@@ -1190,6 +1204,7 @@
         "title":"WAS COD",
         "unit": "mg/L",
         "default":10000,
+        "suggested":10000,
         "ref":{
 
         },
@@ -1205,6 +1220,7 @@
         "title":"WAS TKN",
         "unit": "mg/L",
         "default":800,
+        "suggested":800,
         "ref":{
 
         },
@@ -1220,6 +1236,7 @@
         "title":"Influent COD/BOD5 Factor",
         "unit": null,
         "default":2,
+        "suggested":2,
         "ref":{
 
         },
@@ -1235,6 +1252,7 @@
         "title":"WAS COD/VSS Factor",
         "unit": null,
         "default":1.4,
+        "suggested":1.4,
         "ref":{
 
         },
@@ -1250,6 +1268,7 @@
         "title":"Outflow COD/BOD5 Factor",
         "unit": null,
         "default":5,
+        "suggested":5,
         "ref":{
 
         },
@@ -1263,10 +1282,12 @@
       }
     },
     "aerobic": {
-      "sludge_vol": {
+      "plantinfluent":"1",
+      "FLOWin": {
         "title":"Sludge Volume as a % of Plant's Influent Flow",
-        "unit": "%",
+        "unit":"%",
         "default":2,
+        "suggested":2,
         "ref":{
 
         },
@@ -1282,6 +1303,7 @@
         "title":"Inflow CODin",
         "unit": "mg/L",
         "default":10000,
+        "suggested":10000,
         "ref":{
 
         },
@@ -1297,6 +1319,7 @@
         "title":"Outflow CODout",
         "unit": "mg/L",
         "default":5800,
+        "suggested":5800,
         "ref":{
 
         },
@@ -1312,6 +1335,7 @@
         "title":"Percent COD Reduction (approx.=VSS Reduction)",
         "unit": "%",
         "default":42,
+        "suggested":42,
         "ref":{
 
         },
@@ -1324,11 +1348,16 @@
         }
       }
     },
-    "anaerobic": {
-      "sludge_vol": {
+    "anarobic": {
+      "plantinfluent":"1",
+      "isOrganic": 1,
+      "isBiosolids": 1,
+      "isFlaring": 1,
+      "FLOWin": {
         "title":"Sludge Volume as a % of Plant's Influent Flow",
         "unit": "%",
         "default":1,
+        "suggested":1,
         "ref":{
 
         },
@@ -1344,6 +1373,7 @@
         "title":"Inflow CODin",
         "unit": "mg/L",
         "default":28000,
+        "suggested":28000,
         "ref":{
 
         },
@@ -1359,6 +1389,7 @@
         "title":"Outflow CODout",
         "unit": "mg/L",
         "default":14560,
+        "suggested":14560,
         "ref":{
 
         },
@@ -1374,6 +1405,7 @@
         "title":"Percent COD Reduction (approx. =VSS Reduction)",
         "unit": "%",
         "default":300,
+        "suggested":300,
         "ref":{
 
         },
@@ -1385,16 +1417,156 @@
           }
         }
       },
-      "carbon_methane": {
+      "alpha": {
         "title":"Organic Carbon Converted to Methane",
         "unit": "%",
         "default":67,
+        "suggested":67,
         "ref":{
 
         },
         "range":{
           "min":55,
           "max":75,
+          "ref":{
+
+          }
+        }
+      }
+    },
+    "disposal": {
+      "plantinfluent":"1",
+      "co2": 0,
+      "ch4": 0,
+      "totalCo2": 0,
+      "FLOWin": {
+        "title":"Dewatered Sludge Volume as a % of Plant's Influent Flow",
+        "unit": "%",
+        "default":0.05,
+        "suggested":0.05,
+        "ref":{
+
+        },
+        "range":{
+          "min":0.033,
+          "max":0.067,
+          "ref":{
+
+          }
+        }
+      },
+      "CODin": {
+        "title":"COD of Dewatered Sludge",
+        "unit": "mg/L",
+        "default":233000,
+        "suggested":233000,
+        "ref":{
+
+        },
+        "range":{
+          "min":200000,
+          "max":266000,
+          "ref":{
+
+          }
+        }
+      },
+      "carbon_methane": {
+        "title":"Organic Carbon Converted to Methane",
+        "unit": "%",
+        "default":55,
+        "suggested":55,
+        "ref":{
+
+        },
+        "range":{
+          "min":45,
+          "max":65,
+          "ref":{
+
+          }
+        }
+      },
+      "alpha": {
+        "title":"Organic Carbon Converted to Methane",
+        "unit": "%",
+        "default":67,
+        "suggested":67,
+        "ref":{
+
+        },
+        "range":{
+          "min":55,
+          "max":75,
+          "ref":{
+
+          }
+        }
+      }
+    },
+    "transporation": {
+      "plantinfluent":"1",
+      "totalCo2": 0,
+      "travel_type": "distance",
+      "FLOWin": {
+        "title":"Dewatered Sludge Volume as a % of Plant's Influent Flow",
+        "unit": "%",
+        "default":0.05,
+        "suggested":0.05,
+        "ref":{
+
+        },
+        "range":{
+          "min":0.033,
+          "max":0.067,
+          "ref":{
+
+          }
+        }
+      },
+      "CODin": {
+        "title":"COD of Dewatered Sludge",
+        "unit": "mg/L",
+        "default":233000,
+        "suggested":233000,
+        "ref":{
+
+        },
+        "range":{
+          "min":200000,
+          "max":266000,
+          "ref":{
+
+          }
+        }
+      },
+      "distance": {
+        "title":"Single Travel Distance",
+        "unit": "km",
+        "default":100,
+        "suggested":100,
+        "ref":{
+
+        },
+        "range":{
+          "min":100,
+          "max":500,
+          "ref":{
+
+          }
+        }
+      },
+      "time": {
+        "title":"Single Travel Time",
+        "unit": "hr",
+        "default":1.6,
+        "suggested":1.6,
+        "ref":{
+
+        },
+        "range":{
+          "min":1.6,
+          "max":16,
           "ref":{
 
           }

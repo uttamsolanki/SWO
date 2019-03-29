@@ -20,10 +20,15 @@ export class CreateComponent implements OnInit {
   @ViewChild('baseChart') public chart: BaseChartDirective;
   @ViewChild('successModal') public modal: ModalDirective;
 
-  fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering'];
+  fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering', 'chemical', 'process'];
 
   modelMsg;
   co2_eq = 135.5;
+  COD_TOC = 3.33;
+  COD_TOC_PER_MOL = 32;
+  Removed_TKN = 0.34;
+  gamma = 0.140;
+  delta = 8.422;
   projecName = 'Project-1';
 
   // ****************** This for data related variable ***********************//
@@ -95,11 +100,272 @@ export class CreateComponent implements OnInit {
     sel_type: '0',
     data: {title: null, default: null, co2: null, suggested: null},
   };
-
+  chemical = {
+    metal_salts: {
+      sel_type: '0',
+      data: {title: null, default: null, co2: null, suggested: null , co2_eq:0},
+    },
+    chlorination: {
+      sel_type: '0',
+      data: {title: null, default: null, co2: null, suggested: null, co2_eq:0},
+    },
+    dechlorination: {
+      sel_type: '0',
+      data: {title: null, default: null, co2: null, suggested: null, co2_eq:0},
+    },
+  };
   defaulValaue = {
     sel_type: '0',
     data: {title: '0', default: 0, co2: 0, suggested: 0},
   };
+
+  process = {
+    active_sludge: {
+      co2: 0,
+      no2: 0,
+      totalCo2: 0,
+      CODin: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      TKNin: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      CODout: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      TKNout: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      FLOWwas: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      CODwas: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      TKNwas: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      COD_BOD5: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      WAS_COD_VSS: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      COD_BOD5out: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      }
+    },
+    aerobic: {
+      plantinfluent: null,
+      co2: 0,
+      ch4: 0,
+      totalCo2: 0,
+      Qin: 0,
+      FLOWin: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      CODin: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      CODout: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      CODred: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      }
+    },
+    anarobic: {
+      plantinfluent: '1',
+      isOrganic: 1,
+      isBiosolids: 1,
+      isFlaring: 1,
+      co2: 0,
+      ch4: 0,
+      Qin: 0,
+      totalCo2: 0,
+      FLOWin: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      CODin: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      CODout: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      CODred: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      alpha: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+    },
+    organics: {
+      flow: 0,
+      COD: 0
+    },
+    biosolids: {
+      flow: 0,
+      COD: 0
+    },
+    disposal: {
+      plantinfluent: '1',
+      co2: 0,
+      ch4: 0,
+      Qin: 0,
+      totalCo2: 0,
+      FLOWin: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      CODin: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      carbon_methane: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      alpha: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+    },
+    transporation: {
+      plantinfluent: '1',
+      totalCo2: 0,
+      Qin: 0,
+      travel_type: 'distance',
+      FLOWin: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      CODin: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      distance: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      },
+      time: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      }
+    },
+  };
+  active_sludgeData = {
+    Qin: 0,
+    Qwas: 0,
+    Qout: 0,
+    co2: 0,
+    no2: 0,
+    totalCo2: 0
+  };
+  aerobicData = {
+    Qin: 0,
+    Qout: 0,
+    co2: 0,
+    ch4: 0,
+    totalCo2: 0
+  };
+  anarobicData = {
+    Qap: 0,
+    Qin: 0,
+    Qout: 0,
+    CODLod: 0,
+    CODin: 0,
+    co2: 0,
+    ch4: 0,
+    totalCo2: 0
+  };
+  disposalData = {
+    Qin: 0,
+    Qout: 0,
+    co2: 0,
+    ch4: 0,
+    totalCo2: 0
+  };
+  transporationData = {
+    Qin: 0,
+    Qout: 0,
+    co2: 0,
+    ch4: 0,
+    totalCo2: 0
+  };
+
   // ****************** This for data related variable ***********************//
   information = {
     primary: {
@@ -137,13 +403,22 @@ export class CreateComponent implements OnInit {
   biogas_type: any;
   transportation_type: any;
   disposal_type: any;
+  metal_salts_type: any;
+  chlorination_type: any;
+  dechlorination_type: any;
   isCollapsed = false;
   isChart = false;
   iconCollapse = 'icon-arrow-up';
   totalElecricalCo2 = 0;
+  totalChemicalCo2 = 0;
+  totalProcessCo2 = 0;
+  totalDisposalCo2 = 0;
+  totalTransportationCo2 = 0;
+  totalEnergeyCo2 = 0;
   totalBiolidDisposalCo2 = 0;
   result: any = {};
   id: string;
+  tempBoolen = true;
   // *************  barChart Start *************//
 
   public barChart1Colours: Array<any> = [
@@ -217,6 +492,9 @@ export class CreateComponent implements OnInit {
     this.biogasData(data.biogas);
     this.dewateringData(data.dewatering);
     this.biosolids_disposalData(data.biosolids_disposals);
+    this.chemicalData(data.chemical);
+    this.processData(data.process);
+    this.createChart();
   }
   assignEditFormValue(editData) {
     if (editData.scenario) {
@@ -224,12 +502,9 @@ export class CreateComponent implements OnInit {
       const fielddData = editData.scenario[0].data;
       for (const field of this.fields) {
         this[field] = fielddData[field];
-        console.log(fielddData[field]);
       }
       this.updateWWTPsize();
     }
-
-
   }
 
   sizeData(size) {
@@ -243,7 +518,6 @@ export class CreateComponent implements OnInit {
     }
     this.updateWWTPsize();
   }
-
   primaryData(primary) {
     this.pumping_types = primary.pumping;
     this.prili_treat_types = primary.prilimary_treatment;
@@ -265,38 +539,45 @@ export class CreateComponent implements OnInit {
     }
     this.updateWWTPsize();
   }
-
   tertiaryData(tertiary) {
     this.tertiary_types = tertiary;
   }
-
   disinfectionData(disinfection) {
     this.disinfection_types = disinfection;
   }
-
-
   biosolidsData(biosolids) {
     this.anaerobic_digester = biosolids.anaerobic_digester;
     this.aerobic_digester = biosolids.aerobic_digester;
     this.thickener_types = biosolids.thickener;
   }
-
-
   biogasData(biogas) {
     this.biogas_type = biogas;
   }
-
   dewateringData(dewatering) {
     this.dewatering_types = dewatering;
   }
-
   biosolids_disposalData(biosolids_disposal) {
     this.transportation_type =  biosolids_disposal.transportation;
     this.disposal_type =  biosolids_disposal.disposal;
   }
-
+  chemicalData(chemical){
+    console.log(chemical);
+    this.metal_salts_type = chemical.metal_salts;
+    this.chlorination_type = chemical.chlorination;
+    this.dechlorination_type = chemical.dechlorination;
+  }
+  processData(processData) {
+    this.process.aerobic = processData.aerobic;
+    this.process.anarobic = processData.anarobic;
+    this.process.active_sludge = processData.active_sludge;
+    this.process.disposal = processData.disposal;
+    this.process.transporation = processData.transporation;
+    this.active_sludgeData.Qin = this.size.data.default;
+    if(this.process.anarobic.Qin)
+    this.active_sludgeData.Qin = this.size.data.default;
+  }
   updateWWTPsize() {
-    //console.log(this.size.sel_size);
+    // console.log(this.size.sel_size);
     // if(this.size.data.default >= 50000 ){
     //   for (const s_type of this.size_types) {
     //     if (s_type.title !== this.size.sel_size) {
@@ -319,7 +600,160 @@ export class CreateComponent implements OnInit {
     this.co2Calcaltion(this.dewatering.data);
     this.co2Calcaltion(this.biosolids_disposals.disposal.data);
     this.co2Calcaltion(this.biosolids_disposals.transportation.data);
+    this.ChemicalCo2Calcaltion(this.chemical.metal_salts.data);
+    this.ChemicalCo2Calcaltion(this.chemical.chlorination.data);
+    this.ChemicalCo2Calcaltion(this.chemical.dechlorination.data);
     this.createChart();
+  }
+
+  calActiveFlow() {
+    this.active_sludgeData.Qwas = this.active_sludgeData.Qin * this.process.active_sludge.FLOWwas.default / 100;
+    this.active_sludgeData.Qout = this.active_sludgeData.Qin - this.active_sludgeData.Qwas;
+    this.calcActiveCo2();
+  }
+  calcActiveCo2() {
+    const c1 = this.active_sludgeData.Qin * this.process.active_sludge.CODin.default - this.active_sludgeData.Qout * this.process.active_sludge.CODout.default - this.active_sludgeData.Qwas * this.process.active_sludge.CODwas.default;
+
+    this.active_sludgeData.co2 = (c1 / this.COD_TOC) * (44 / 12) * (1 / 1000);
+
+    const n1 = this.active_sludgeData.Qin * this.process.active_sludge.TKNin.default - this.active_sludgeData.Qout * this.process.active_sludge.TKNout.default - this.active_sludgeData.Qwas * this.process.active_sludge.TKNwas.default;
+
+    this.active_sludgeData.no2 = (n1 * this.Removed_TKN) * (1 / 1000) * 296;
+    this.active_sludgeData.totalCo2 = this.active_sludgeData.co2 + this.active_sludgeData.no2;
+
+    this.process.active_sludge.co2 =this.active_sludgeData.co2;
+    this.process.active_sludge.no2 =this.active_sludgeData.no2;
+    this.process.active_sludge.totalCo2=this.active_sludgeData.totalCo2;
+  }
+
+  selectPlantInflent(type) {
+    if(type === 'aerobic') {
+      this.aerobicData.Qin = 0;
+      this.calAerobicFlow();
+    }else if(type === 'anarobic'){
+      this.anarobicData.Qin = 0;
+      this.calAnarobicFlow();
+    }else if(type === 'transporation'){
+      this.transporationData.Qin = 0;
+      this.calTransporationFlow();
+    }else if(type === 'disposal'){
+      this.calDisposalFlow();
+    }
+  }
+
+  calAerobicFlow() {
+    console.log(this.process.aerobic);
+    if (this.process.aerobic.plantinfluent == '1') {
+      this.aerobicData.Qin = this.process.aerobic.FLOWin.default * this.size.data.default / 100;
+    } else {
+      if(this.process.aerobic.Qin !== undefined) {
+      this.aerobicData.Qin = this.process.aerobic.Qin;
+      }
+    }
+    this.aerobicData.Qout = this.aerobicData.Qin;
+    this.calcAerobicCo2();
+  }
+  calcAerobicCo2() {
+    const c1 = this.aerobicData.Qin * this.process.aerobic.CODin.default - this.aerobicData.Qout * this.process.aerobic.CODout.default;
+    this.aerobicData.co2 = (c1 / this.COD_TOC) * (44 / 12) * (1 / 1000);
+    this.aerobicData.ch4= 0;
+    this.aerobicData.totalCo2 = this.aerobicData.co2;
+
+    if(this.biosolid.aerobic.sel_type!=='0'){
+      this.process.aerobic.co2 = this.aerobicData.co2;
+      this.process.aerobic.ch4=0;
+      this.process.aerobic.totalCo2=this.aerobicData.totalCo2;
+    }else{
+      this.process.aerobic.co2 = 0;
+      this.process.aerobic.ch4=0;
+      this.process.aerobic.totalCo2=0;
+    }
+
+  }
+  calAnarobicFlow() {
+    if (this.process.anarobic.plantinfluent == '1') {
+      this.anarobicData.Qap = this.process.anarobic.FLOWin.default * this.size.data.default / 100;
+    }else{
+      if(this.process.anarobic.Qin !== undefined)
+      this.anarobicData.Qin = this.process.anarobic.Qin;
+    }
+
+    this.anarobicData.Qin = this.anarobicData.Qap;
+    this.anarobicData.CODLod = (this.anarobicData.Qap * this.process.anarobic.CODin.default) / 1000;
+
+    if(this.process.anarobic.isOrganic==1){
+      this.anarobicData.Qin = this.anarobicData.Qin + this.process.organics.flow;
+      this.anarobicData.CODLod = this.anarobicData.CODLod + (this.process.organics.flow * this.process.organics.COD / 1000);
+    }
+
+    if(this.process.anarobic.isBiosolids==1){
+      this.anarobicData.Qin = this.anarobicData.Qin + this.process.biosolids.flow;
+      this.anarobicData.CODLod = this.anarobicData.CODLod + (this.process.biosolids.flow * this.process.biosolids.COD / 1000);
+    }
+
+    if (this.anarobicData.Qin) {
+      this.anarobicData.CODin = (this.anarobicData.CODLod / this.anarobicData.Qin) * 1000;
+    } else {
+      this.anarobicData.CODin = 0;
+    }
+    this.anarobicData.Qout = this.anarobicData.Qin;
+    this.calcAnarobicCo2();
+  }
+  calcAnarobicCo2() {
+    const temp = (this.anarobicData.Qin * this.anarobicData.CODin - this.anarobicData.Qout * this.process.anarobic.CODout.default) / this.COD_TOC_PER_MOL;
+    const alpha = this.process.anarobic.alpha.default / 100;
+    this.anarobicData.co2 = temp * (1 - alpha) * 0.044;
+    if (this.process.anarobic.isFlaring == 1) {
+      this.anarobicData.ch4 = temp * alpha * 0.044;
+    } else {
+      this.anarobicData.ch4 = temp * alpha * 0.016 * 23;
+    }
+    this.anarobicData.totalCo2 = this.anarobicData.co2 + this.anarobicData.ch4;
+    if(this.biosolid.anaerobic.sel_type!=='0') {
+      this.process.anarobic.co2 = this.anarobicData.co2;
+      this.process.anarobic.ch4 = this.aerobicData.ch4;
+      this.process.anarobic.totalCo2 = this.anarobicData.totalCo2;
+    }else {
+      this.process.anarobic.co2 = 0;
+      this.process.anarobic.ch4 = 0;
+      this.process.anarobic.totalCo2 = 0;
+    }
+  }
+  calDisposalFlow() {
+    if (this.process.disposal.plantinfluent == '1') {
+      this.disposalData.Qin = this.process.disposal.FLOWin.default * this.size.data.default / 100;
+    }else{
+      if(this.process.disposal.Qin !== undefined)
+      this.disposalData.Qin = this.process.disposal.Qin;
+    }
+    this.calDisposalCo2();
+  }
+  calDisposalCo2() {
+    const c1 = this.disposalData.Qin * this.process.disposal.CODin.default;
+    const alpha = this.process.anarobic.alpha.default / 100;
+    this.disposalData.co2 = (c1 / this.COD_TOC_PER_MOL) * (1 -alpha) * (44 / 100);
+
+    this.disposalData.ch4 = (c1 / this.COD_TOC_PER_MOL) * alpha * (16 / 1000) *23;
+    this.disposalData.totalCo2 = this.disposalData.co2 + this.disposalData.ch4;
+
+    this.process.disposal.co2 = this.disposalData.co2;
+    this.process.disposal.ch4 = this.disposalData.ch4;
+    this.process.disposal.totalCo2 =  this.disposalData.totalCo2;
+  }
+  calTransporationFlow() {
+    if (this.process.transporation.plantinfluent == '1') {
+      this.transporationData.Qin = this.process.transporation.FLOWin.default * this.size.data.default / 100;
+    }else{
+      if(this.process.transporation.Qin !== undefined)
+        this.transporationData.Qin = this.process.transporation.Qin;
+    }
+    this.calTransporationCo2();
+  }
+  calTransporationCo2() {
+    if(this.process.transporation.travel_type === 'time')
+      this.process.transporation.totalCo2 = this.transporationData.Qin  * this.process.transporation.time.default * this.gamma;
+    if(this.process.transporation.travel_type === 'distance')
+      this.process.transporation.totalCo2 = this.transporationData.Qin  * this.process.transporation.distance.default * this.delta;
   }
 
   // this.barChartLabels = [this.primary.pumping.title, this.primary.prili_treat.data.title, this.primary.prili_treat.data.title,
@@ -327,9 +761,16 @@ export class CreateComponent implements OnInit {
   //   this.biosolid.digester.data.title, this.biosolid.thickener.data.title, this.biosolid.dewatering.data.title];
 
   createChart() {
+    this.calActiveFlow();
+    this.calAerobicFlow();
+    this.calAnarobicFlow();
+    this.calDisposalFlow();
+    this.calTransporationFlow();
     this.isChart = true;
     this.barChartLabels = [];
     this.totalElecricalCo2 = 0;
+    this.totalChemicalCo2 = 0;
+    this.totalProcessCo2 = 0;
     this.totalBiolidDisposalCo2 = 0;
     const newData = [];
      if (this.primary.pumping.sel_type !== '0') {
@@ -370,23 +811,39 @@ export class CreateComponent implements OnInit {
     if (this.biosolid.aerobic.sel_type !== '0') {
       this.barChartLabels.push(this.biosolid.aerobic.data.title);
       newData.push(this.biosolid.aerobic.data.co2);
-     // this.totalElecricalCo2 += JSON.parse(this.biosolid.aerobic.data.co2);
+      this.totalElecricalCo2 += JSON.parse(this.biosolid.aerobic.data.co2);
+      this.totalProcessCo2 = this.totalProcessCo2 + this.aerobicData.totalCo2;
     }
     if (this.biosolid.thickener.sel_type !== '0') {
       this.barChartLabels.push(this.biosolid.thickener.data.title);
       newData.push(this.biosolid.thickener.data.co2);
-      // this.totalElecricalCo2 += JSON.parse(this.biosolid.thickener.data.co2);
+       this.totalElecricalCo2 += JSON.parse(this.biosolid.thickener.data.co2);
     }
     if (this.biosolid.anaerobic.sel_type !== '0') {
       this.barChartLabels.push(this.biosolid.anaerobic.data.title);
       newData.push(this.biosolid.anaerobic.data.co2);
-     // this.totalElecricalCo2 += JSON.parse(this.biosolid.anaerobic.data.co2);
+      this.totalElecricalCo2 += JSON.parse(this.biosolid.anaerobic.data.co2);
+      this.totalProcessCo2 = this.totalProcessCo2 + this.anarobicData.totalCo2;
     }
     if (this.dewatering.sel_type !== '0') {
       this.barChartLabels.push(this.dewatering.data.title);
       newData.push(this.dewatering.data.co2);
-     // this.totalElecricalCo2 += JSON.parse(this.dewatering.data.co2);
+      this.totalElecricalCo2 += JSON.parse(this.dewatering.data.co2);
     }
+
+    if(this.chemical.metal_salts.sel_type !== '0'){
+      this.totalChemicalCo2 += JSON.parse(this.chemical.metal_salts.data.co2);
+    }
+    if(this.chemical.chlorination.sel_type !== '0'){
+      this.totalChemicalCo2 += JSON.parse(this.chemical.chlorination.data.co2);
+    }
+    if(this.chemical.dechlorination.sel_type !== '0'){
+      this.totalChemicalCo2 += JSON.parse(this.chemical.dechlorination.data.co2);
+    }
+
+    this.totalProcessCo2 = this.totalProcessCo2  + this.active_sludgeData.totalCo2;
+    this.totalDisposalCo2 = this.totalDisposalCo2 + this.disposalData.totalCo2;
+    this.totalTransportationCo2 = this.totalTransportationCo2 + this.process.transporation.totalCo2;
 
     this.barChartData = [
       {data: newData, label: 'CO2 Equalvalent from Electricity Emissions'}
@@ -431,13 +888,18 @@ export class CreateComponent implements OnInit {
         if (this[cat][type].sel_type === '0') {
           this[cat][type].data = this.co2Calcaltion(this.defaulValaue.data);
         }
+
         if (tr_type.title === this[cat][type].sel_type) {
-          this.information[cat][type].ref = tr_type.ref;
-          for (let key in this.information[cat][type].ref) {
-            console.log(this.information[cat][type].ref[key]);
+          // this.information[cat][type].ref = tr_type.ref;
+          // for (const key in this.information[cat][type].ref) {
+          //   console.log(this.information[cat][type].ref[key]);
+          // }
+          if(cat ==='chemical'){
+            this[cat][type].data = this.ChemicalCo2Calcaltion(tr_type);
+          }else{
+            this[cat][type].data = this.co2Calcaltion(tr_type);
           }
 
-          this[cat][type].data = this.co2Calcaltion(tr_type);
         }
       }
     }
@@ -451,11 +913,21 @@ export class CreateComponent implements OnInit {
    */
   co2Calcaltion(data) {
     const calculation = (data.default * this.co2_eq * this.size.data.default ) / 1000;
-    data.co2 = calculation.toFixed(4);
+    data.co2 = calculation.toFixed(2);
+    return data;
+  }
+
+  ChemicalCo2Calcaltion(data) {
+    const calculation = (data.default * data.co2_eq * this.size.data.default );
+    data.co2 = calculation.toFixed(2);
     return data;
   }
 
   // *************  Common Function  End *************//
+
+  goto(id) {
+    this.tabset.tabs[id].active = true;
+  }
 
   generatePdf() {
     const div = document.getElementById('printSection');
@@ -527,6 +999,12 @@ export class CreateComponent implements OnInit {
 
   save() {
     let test = [];
+
+    this.process.aerobic.Qin=this.aerobicData.Qin;
+    this.process.anarobic.Qin =this.aerobicData.Qin;
+    this.process.disposal.Qin = this.disposalData.Qin;
+    this.process.transporation.Qin = this.transporationData.Qin;
+
     for (const field of this.fields) {
       this.result[field] = this[field];
     }
@@ -537,7 +1015,7 @@ export class CreateComponent implements OnInit {
       projectData.project_id = this.id;
     }
 
-    console.log();
+    console.log(projectData);
     const data = this.userService.saveProject(projectData).subscribe((rep: any) => {
       this.modelMsg = rep.message;
       this.modal.show();
