@@ -30,8 +30,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-  //  console.log(JSON.stringify(localStorage.getItem('token'))
-    console.log(JSON.parse(localStorage.getItem('currentUser')));
+
     if(localStorage.getItem('currentUser')){
       let user = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -46,7 +45,6 @@ export class HomeComponent implements OnInit {
   }
 
   logout(){
-    console.log(JSON.parse(localStorage.getItem('currentUser')));
     localStorage.removeItem('currentUser');
     localStorage.removeItem('token');
     this.router.navigateByUrl('/login');

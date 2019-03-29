@@ -73,8 +73,7 @@ export class RegisterComponent implements OnInit {
           });
         } else{
           localStorage.setItem('token', res.data.token);
-          localStorage.setItem('currentUser', res.data.user);
-
+          localStorage.setItem('currentUser', JSON.stringify(res.data.user));
           this.alertsDismiss.push({
             type: 'success',
             msg: res.message,
@@ -90,11 +89,21 @@ export class RegisterComponent implements OnInit {
             timeout: 5000,
           });
         } else if(error instanceof Object){
-          this.alertsDismiss.push({
-            type: 'danger',
-            msg: error.error.details[0].message.replace(/"/g, ' '),
-            timeout: 5000,
-          });
+
+          if(error.error.status == 0){
+            this.alertsDismiss.push({
+              type: 'danger',
+              msg: error.error.error,
+              timeout: 5000,
+            });
+          }else{
+            this.alertsDismiss.push({
+              type: 'danger',
+              msg: error.error.details[0].message.replace(/"/g, ' '),
+              timeout: 5000,
+            });
+          }
+
 
         }
       });

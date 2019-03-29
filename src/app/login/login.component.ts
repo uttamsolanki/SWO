@@ -73,13 +73,21 @@ export class LoginComponent implements OnInit {
                msg: 'Internet connection error',
                timeout: 5000,
              });
-           } else if(error instanceof Object){
-             this.alertsDismiss.push({
-               type: 'danger',
-               msg: error.error.details[0].message.replace(/"/g, ' '),
-               timeout: 5000,
-             });
-          }
+           } else if(error instanceof Object) {
+             if (error.error.status == 0) {
+               this.alertsDismiss.push({
+                 type: 'danger',
+                 msg: error.error.error,
+                 timeout: 5000,
+               });
+             } else {
+               this.alertsDismiss.push({
+                 type: 'danger',
+                 msg: error.error.details[0].message.replace(/"/g, ' '),
+                 timeout: 5000,
+               });
+             }
+           }
       });
     } else {
       this.logKeyValuePair(this.employeeForm);
