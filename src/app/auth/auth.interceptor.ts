@@ -13,15 +13,13 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-  //console.log(req.headers.get('No-Auth'));
-    console.log('Uttam solanki');
+
     if (req.headers.get('No-Auth') == "True")
       return next.handle(req.clone());
 
     if (this.auth.isLoggednIn() != null) {
-    console.log('Uttam solanki');
-      const clonedreq = req.clone({
-        headers: req.headers.set('Authorization', this.auth.getToken())
+      const clonedreq =    req.clone({
+        headers: req.headers.set('Authorization',  localStorage.getItem('token'))
       });
 
       return next.handle(clonedreq).pipe(
@@ -31,7 +29,6 @@ export class AuthInterceptor implements HttpInterceptor {
               return event;
           },
           error => {
-            console.log(error)
             //logging the http response to browser's console in case of a failuer
             if (event instanceof HttpResponse) {
               console.log("api call error :", event);

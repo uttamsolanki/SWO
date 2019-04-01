@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   alertsDismiss: any = [];
   dismissible = true;
-  employeeForm: FormGroup;
+  lognForm: FormGroup;
   formErrors = {
     'email': '',
     'password': ''
@@ -27,53 +27,59 @@ export class LoginComponent implements OnInit {
     }
   };
 
-  constructor(private fb: FormBuilder, private UserService: UserService, private router:Router) { }
+  constructor(private fb: FormBuilder, private UserService: UserService, private router: Router) { }
 
   ngOnInit() {
-    if(this.UserService.isLoggednIn()) {
+    if (this.UserService.isLoggednIn()) {
      // console.log('Uttan')
      this.router.navigateByUrl('/dashboard');
     }
-    this.employeeForm = this.fb.group({
+    this.lognForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
 
-    this.employeeForm.valueChanges.subscribe((res: string) => {
-      this.logKeyValuePair(this.employeeForm);
+    this.lognForm.valueChanges.subscribe((res: string) => {
+      this.logKeyValuePair(this.lognForm);
     });
 
   }
   onSubmit(): void {
-
-    if (this.employeeForm.valid) {
-      this.UserService.SignIn(this.employeeForm.value).subscribe((res: any) => {
+    console.log('Uttam');
+    console.log(this.lognForm.valid);
+    if (this.lognForm.valid) {
+      this.UserService.SignIn(this.lognForm.value).subscribe((res: any) => {
         console.log(res);
-        if(res.status ==0){
+        if (res.status == 0) {
           this.alertsDismiss.push({
             type: 'danger',
             msg: res.errors,
             timeout: 5000
           });
           console.log(res.errors);
-        } else{
+        } else {
+          console.log(res.data.token);
           localStorage.setItem('token', res.data.token);
           localStorage.setItem('currentUser', JSON.stringify(res.data.user));
           this.alertsDismiss.push({
             type: 'success',
             msg: res.message,
-            timeout: 5000
+            timeout: 2000
           });
-          this.router.navigate(['/dashboard']);
+           setTimeout(() => {
+            this.router.navigate(['dashboard']);
+          }, 2000);
+
         }
       }, (error: HttpErrorResponse) => {
-           if(error.status<=0) {
+           if (error.status <= 0) {
              this.alertsDismiss.push({
                type: 'danger',
                msg: 'Internet connection error',
                timeout: 5000,
              });
-           } else if(error instanceof Object) {
+           } else if (error instanceof Object) {
+             console.log(error.error);
              if (error.error.status == 0) {
                this.alertsDismiss.push({
                  type: 'danger',
@@ -90,7 +96,7 @@ export class LoginComponent implements OnInit {
            }
       });
     } else {
-      this.logKeyValuePair(this.employeeForm);
+      this.logKeyValuePair(this.lognForm);
     }
 
   }

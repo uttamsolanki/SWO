@@ -15,6 +15,7 @@ export class UserService {
   }
 
   SignIn(user){
+    console.log('Sign in call');
     return this._http.post(this._baseURL+'users/signin', user,{headers:this._headers});
   }
 
@@ -44,7 +45,7 @@ export class UserService {
 
   getData(): Observable<any> {
     this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
-    return  this._http.get('assets/dataDummy.json', {headers: this._headers});
+    return this._http.get('assets/dataDummy.json', {headers: this._headers});
   }
 
   saveProject(data): Observable<any> {

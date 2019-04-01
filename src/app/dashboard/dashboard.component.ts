@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   constructor(private  userService: UserService) { }
 
   ngOnInit() {
+    console.log('Dashboard call');
     const data = this.userService.getProject().subscribe((rep: any) => {
       if(rep.status === 1) {
         this.numberOfProject = Object.keys(rep.data).length;

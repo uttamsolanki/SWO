@@ -11,7 +11,7 @@
             <div class="card p-4">
               <div class="card-body">
 
-                <form role="form" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+                <form role="form" [formGroup]="lognForm" (ngSubmit)="onSubmit()">
                   <h1>Login</h1>
                   <p class="text-muted">Sign In to your account</p>
                   <div class="input-group mb-3">
@@ -34,7 +34,7 @@
                   </div>
                   <div class="row">
                     <div class="col-6">
-                      <button type="submit" class="btn btn-primary px-4">Login</button>
+                      <button type="submit" class="btn btn-primary px-4" id="login">Login</button>
                     </div>
                     <div class="col-6 text-right">
                       <button type="button" class="btn btn-link px-0" [routerLink]="['/forgotPassword']">Forgot password?</button>

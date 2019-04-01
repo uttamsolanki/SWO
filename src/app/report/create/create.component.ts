@@ -306,12 +306,6 @@ export class CreateComponent implements OnInit {
         default: 0,
         suggested: 0,
       },
-      CODin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
       distance: {
         title: null,
         unit: null,
@@ -448,9 +442,30 @@ export class CreateComponent implements OnInit {
   public barChartLegend = true;
 
   public barChartData: any[] = [
-    {data: [65, 59, 80, 81, 56, 55, 40, 21], label: 'CO2 Equalvalent from Electricity Emissions'}
+    {data: [65, 59, 80, 81, 56, 55, 40, 21], label: 'CO2 Equivalent from Electricity Emissions'}
   ];
 
+
+  // Pie
+  public pieChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
+  public pieChartData: number[] = [300, 500, 100];
+  public pieChartType = 'pie';
+  public pieChartLegend = true;
+  public pieChartOptions:any={
+    title:{
+      display:true,
+      text: 'CO2 Equivalent Emissions by Category',
+      fontSize: 14
+    },
+    legend: {
+      display: true,
+      position: 'bottom',
+      labels: {
+        fontColor: 'black',
+        fontSize :12
+      }
+    }
+  }
   ngOnInit() {
 
     const data = this.userService.getData().subscribe((resp: any) => {
@@ -561,7 +576,6 @@ export class CreateComponent implements OnInit {
     this.disposal_type =  biosolids_disposal.disposal;
   }
   chemicalData(chemical){
-    console.log(chemical);
     this.metal_salts_type = chemical.metal_salts;
     this.chlorination_type = chemical.chlorination;
     this.dechlorination_type = chemical.dechlorination;
@@ -574,7 +588,7 @@ export class CreateComponent implements OnInit {
     this.process.transporation = processData.transporation;
     this.active_sludgeData.Qin = this.size.data.default;
     if(this.process.anarobic.Qin)
-    this.active_sludgeData.Qin = this.size.data.default;
+      this.active_sludgeData.Qin = this.process.anarobic.Qin;
   }
   updateWWTPsize() {
     // console.log(this.size.sel_size);
@@ -603,6 +617,9 @@ export class CreateComponent implements OnInit {
     this.ChemicalCo2Calcaltion(this.chemical.metal_salts.data);
     this.ChemicalCo2Calcaltion(this.chemical.chlorination.data);
     this.ChemicalCo2Calcaltion(this.chemical.dechlorination.data);
+    this.active_sludgeData.Qin = this.size.data.default;
+    if(this.process.anarobic.Qin)
+      this.active_sludgeData.Qin = this.process.anarobic.Qin;
     this.createChart();
   }
 
@@ -613,12 +630,13 @@ export class CreateComponent implements OnInit {
   }
   calcActiveCo2() {
     const c1 = this.active_sludgeData.Qin * this.process.active_sludge.CODin.default - this.active_sludgeData.Qout * this.process.active_sludge.CODout.default - this.active_sludgeData.Qwas * this.process.active_sludge.CODwas.default;
-
-    this.active_sludgeData.co2 = (c1 / this.COD_TOC) * (44 / 12) * (1 / 1000);
+    let calCo2 = (c1 / this.COD_TOC) * (44 / 12) * (1 / 1000)
+    this.active_sludgeData.co2 = parseFloat(calCo2.toFixed(2));
 
     const n1 = this.active_sludgeData.Qin * this.process.active_sludge.TKNin.default - this.active_sludgeData.Qout * this.process.active_sludge.TKNout.default - this.active_sludgeData.Qwas * this.process.active_sludge.TKNwas.default;
+    let calNo2 = (n1 * this.Removed_TKN* 0.001) * (1 / 1000) * 296
+    this.active_sludgeData.no2 = parseFloat(calNo2.toFixed(2));
 
-    this.active_sludgeData.no2 = (n1 * this.Removed_TKN) * (1 / 1000) * 296;
     this.active_sludgeData.totalCo2 = this.active_sludgeData.co2 + this.active_sludgeData.no2;
 
     this.process.active_sludge.co2 =this.active_sludgeData.co2;
@@ -642,7 +660,6 @@ export class CreateComponent implements OnInit {
   }
 
   calAerobicFlow() {
-    console.log(this.process.aerobic);
     if (this.process.aerobic.plantinfluent == '1') {
       this.aerobicData.Qin = this.process.aerobic.FLOWin.default * this.size.data.default / 100;
     } else {
@@ -655,7 +672,9 @@ export class CreateComponent implements OnInit {
   }
   calcAerobicCo2() {
     const c1 = this.aerobicData.Qin * this.process.aerobic.CODin.default - this.aerobicData.Qout * this.process.aerobic.CODout.default;
-    this.aerobicData.co2 = (c1 / this.COD_TOC) * (44 / 12) * (1 / 1000);
+    let calCo2 = (c1 / this.COD_TOC) * (44 / 12) * (1 / 1000);
+
+    this.aerobicData.co2 =  parseFloat(calCo2.toFixed(2));
     this.aerobicData.ch4= 0;
     this.aerobicData.totalCo2 = this.aerobicData.co2;
 
@@ -702,12 +721,15 @@ export class CreateComponent implements OnInit {
   calcAnarobicCo2() {
     const temp = (this.anarobicData.Qin * this.anarobicData.CODin - this.anarobicData.Qout * this.process.anarobic.CODout.default) / this.COD_TOC_PER_MOL;
     const alpha = this.process.anarobic.alpha.default / 100;
-    this.anarobicData.co2 = temp * (1 - alpha) * 0.044;
+    let calCo2 = temp * (1 - alpha) * 0.044;
+    this.anarobicData.co2 = parseFloat(calCo2.toFixed(2));
+    let calCh4 =0;
     if (this.process.anarobic.isFlaring == 1) {
-      this.anarobicData.ch4 = temp * alpha * 0.044;
+      calCh4 = temp * alpha * 0.044;
     } else {
-      this.anarobicData.ch4 = temp * alpha * 0.016 * 23;
+      calCh4 = temp * alpha * 0.016 * 23;
     }
+    this.anarobicData.ch4 = parseFloat(calCh4.toFixed(2));
     this.anarobicData.totalCo2 = this.anarobicData.co2 + this.anarobicData.ch4;
     if(this.biosolid.anaerobic.sel_type!=='0') {
       this.process.anarobic.co2 = this.anarobicData.co2;
@@ -731,9 +753,12 @@ export class CreateComponent implements OnInit {
   calDisposalCo2() {
     const c1 = this.disposalData.Qin * this.process.disposal.CODin.default;
     const alpha = this.process.anarobic.alpha.default / 100;
-    this.disposalData.co2 = (c1 / this.COD_TOC_PER_MOL) * (1 -alpha) * (44 / 100);
+    const calCo2 = (c1 / this.COD_TOC_PER_MOL) * (1 - alpha) * (44 / 100);
+    this.disposalData.co2 =  parseFloat(calCo2.toFixed(2));
 
-    this.disposalData.ch4 = (c1 / this.COD_TOC_PER_MOL) * alpha * (16 / 1000) *23;
+    const calCh4 = (c1 / this.COD_TOC_PER_MOL) * alpha * (16 / 1000) *23;
+    this.disposalData.ch4 = parseFloat(calCh4.toFixed(2));
+
     this.disposalData.totalCo2 = this.disposalData.co2 + this.disposalData.ch4;
 
     this.process.disposal.co2 = this.disposalData.co2;
@@ -750,10 +775,16 @@ export class CreateComponent implements OnInit {
     this.calTransporationCo2();
   }
   calTransporationCo2() {
-    if(this.process.transporation.travel_type === 'time')
-      this.process.transporation.totalCo2 = this.transporationData.Qin  * this.process.transporation.time.default * this.gamma;
-    if(this.process.transporation.travel_type === 'distance')
-      this.process.transporation.totalCo2 = this.transporationData.Qin  * this.process.transporation.distance.default * this.delta;
+    if(this.process.transporation.travel_type === 'time'){
+      const calCo2 = this.transporationData.Qin  * this.process.transporation.time.default * this.gamma;
+      this.process.transporation.totalCo2 = parseFloat(calCo2.toFixed(2));
+    }
+
+    if(this.process.transporation.travel_type === 'distance'){
+      const calCo2 = this.transporationData.Qin  * this.process.transporation.distance.default * this.delta;
+      this.process.transporation.totalCo2 = parseFloat(calCo2.toFixed(2));
+    }
+
   }
 
   // this.barChartLabels = [this.primary.pumping.title, this.primary.prili_treat.data.title, this.primary.prili_treat.data.title,
@@ -778,16 +809,19 @@ export class CreateComponent implements OnInit {
          newData.push(this.primary.pumping.data.co2);
          this.totalElecricalCo2 += JSON.parse(this.primary.pumping.data.co2);
      }
-    if (this.primary.pri_treat.sel_type !== '0') {
-      this.barChartLabels.push(this.primary.pri_treat.data.title);
-      newData.push(this.primary.pri_treat.data.co2);
-      this.totalElecricalCo2 += JSON.parse(this.primary.pri_treat.data.co2);
-    }
+
     if (this.primary.prili_treat.sel_type !== '0') {
       this.barChartLabels.push(this.primary.prili_treat.data.title);
       newData.push(this.primary.prili_treat.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.primary.prili_treat.data.co2);
     }
+
+    if (this.primary.pri_treat.sel_type !== '0') {
+      this.barChartLabels.push(this.primary.pri_treat.data.title);
+      newData.push(this.primary.pri_treat.data.co2);
+      this.totalElecricalCo2 += JSON.parse(this.primary.pri_treat.data.co2);
+    }
+
     if (this.secondary.sel_type !== '0') {
       this.barChartLabels.push(this.secondary.data.title);
       newData.push(this.secondary.data.co2);
@@ -846,8 +880,10 @@ export class CreateComponent implements OnInit {
     this.totalTransportationCo2 = this.totalTransportationCo2 + this.process.transporation.totalCo2;
 
     this.barChartData = [
-      {data: newData, label: 'CO2 Equalvalent from Electricity Emissions'}
+      {data: newData, label: 'CO2 Equivalent from Electricity Emissions'}
     ];
+    this.pieChartLabels=['Electricity', 'Chemicals', 'Transportation', 'On-site Emissions Processes', 'Biosolids Disposal']
+    this.pieChartData = [this.totalElecricalCo2 ,this.totalChemicalCo2,this.totalTransportationCo2,this.totalProcessCo2, this.totalDisposalCo2];
     this.chart.datasets = this.barChartData;
     this.chart.labels = this.barChartLabels;
     this.chart.ngOnInit();
@@ -918,7 +954,7 @@ export class CreateComponent implements OnInit {
   }
 
   ChemicalCo2Calcaltion(data) {
-    const calculation = (data.default * data.co2_eq * this.size.data.default );
+    const calculation = (data.default * data.co2_eq * this.size.data.default ) / 1000;
     data.co2 = calculation.toFixed(2);
     return data;
   }
@@ -1016,14 +1052,15 @@ export class CreateComponent implements OnInit {
     }
 
     console.log(projectData);
-    const data = this.userService.saveProject(projectData).subscribe((rep: any) => {
-      this.modelMsg = rep.message;
-      this.modal.show();
-    });
+    // const data = this.userService.saveProject(projectData).subscribe((rep: any) => {
+    //   this.modelMsg = rep.message;
+    //   this.modal.show();
+    // });
+    this.modal.show();
   }
   successOk() {
     this.modal.hide();
-     this.router.navigateByUrl('/report/view');
+     this.router.navigate(['dashboard']);
   }
 
 }
