@@ -175,10 +175,10 @@
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_clari">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_clari">
-                        <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input" type="radio" name="sec_clari_0" id="sec_clari_0" value="0" [(ngModel)]="sec_clr.sel_type" (change)="selectTreatmentType('','sec_clr',sec_clr_types)">
-                          <label class="form-check-label" for="sec_clari_0">None</label>
-                        </div>
+                        <!--<div class="form-check form-check-inline mr-1">-->
+                          <!--<input class="form-check-input" type="radio" name="sec_clari_0" id="sec_clari_0" value="0" [(ngModel)]="sec_clr.sel_type" (change)="selectTreatmentType('','sec_clr',sec_clr_types)">-->
+                          <!--<label class="form-check-label" for="sec_clari_0">None</label>-->
+                        <!--</div>-->
                         <div class="form-check form-check-inline mr-1" *ngFor="let type of sec_clr_types">
                           <input class="form-check-input m-2" type="radio" name="sec_clari_{{type.title}}" id="sec_clari_{{type.title}}" value="{{type.title}}" [(ngModel)]="sec_clr.sel_type" (change)="selectTreatmentType('','sec_clr',sec_clr_types)">
                           <label class="form-check-label" for="sec_clari_{{type.title}}">{{type.title}}</label>
@@ -236,7 +236,7 @@
                   <div class="col-sm-6 col-lg-3" *ngIf="primary.prili_treat.sel_type != '0' ">
                     <div class="brand-card">
                       <div class="brand-card-header bg-header-liquid brand-card-header-ct">
-                        Prilimary Treatment
+                        Preliminary Treatment
                       </div>
                       <div class="brand-card-body bg-header-selected">
                         <div>
@@ -881,7 +881,7 @@
 
                     <label class="col-md-5 col-form-label" for="text-input">Recovery:</label>
                     <div class="col-md-5">
-                      <input type="text" id="biogas_co2" name="biogas_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="biogas.data.co2" readonly>
+                      <input type="number" id="biogas_co2" name="biogas_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="biogas.data.co2" readonly>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kg CO2/d</span>
@@ -1253,7 +1253,7 @@
           <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
 
             <div class="form-group row" *ngIf="chemical.metal_salts.sel_type == '0' && chemical.chlorination.sel_type == '0' && chemical.dechlorination.sel_type == '0' ">
-              <p class="msg-text-center">You have not selected from anything Chemical line.</p>
+              <p class="msg-text-center">Please Select Chemicals.</p>
             </div>
 
             <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
@@ -2380,12 +2380,12 @@
               <!--</div>-->
               <!--</div>-->
               <div id="printSection">
-                <div class="form-group row">
-                  <div class="offset-md-2 col-md-9 row">
-                    <!--<label class="col-md-5 col-form-label text-align-right" for="text-input">WWTP size:</label>-->
-                    <label class="col-md-3 col-form-label" for="text-input">{{size.sel_size}} </label>
-                  </div>
-                </div>
+                <!--<div class="form-group row">-->
+                  <!--<div class="offset-md-2 col-md-9 row">-->
+                    <!--&lt;!&ndash;<label class="col-md-5 col-form-label text-align-right" for="text-input">WWTP size:</label>&ndash;&gt;-->
+                    <!--<label class="col-md-3 col-form-label" for="text-input">{{size.sel_size}} </label>-->
+                  <!--</div>-->
+                <!--</div>-->
 
                 <div class="form-group row">
                   <div class="offset-md-2 col-md-9 row">
@@ -2418,7 +2418,7 @@
                 <div class="form-group row">
                   <div class="offset-md-2 col-md-9 row">
                     <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Energy Recovery:</label>
-                    <label class="col-md-3 col-form-label" for="text-input">{{totalEnergeyCo2.toFixed(1)}} <span class="ml-2 help-block">kg CO<sub>2</sub>/d</span></label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{totalEnergyCo2.toFixed(1)}} <span class="ml-2 help-block">kg CO<sub>2</sub>/d</span></label>
                   </div>
                 </div>
 

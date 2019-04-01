@@ -57,7 +57,7 @@ export class CreateComponent implements OnInit {
     data: {title: null, default: null, co2: null, suggested: null},
   };
   sec_clr = {
-    sel_type: '0',
+    sel_type: 'Secondary Clarifier',
     data: {title: null, default: null, co2: null, suggested: null},
   };
   tertiary = {
@@ -408,7 +408,7 @@ export class CreateComponent implements OnInit {
   totalProcessCo2 = 0;
   totalDisposalCo2 = 0;
   totalTransportationCo2 = 0;
-  totalEnergeyCo2 = 0;
+  totalEnergyCo2 = 0;
   totalBiolidDisposalCo2 = 0;
   result: any = {};
   id: string;
@@ -803,6 +803,7 @@ export class CreateComponent implements OnInit {
     this.totalChemicalCo2 = 0;
     this.totalProcessCo2 = 0;
     this.totalBiolidDisposalCo2 = 0;
+    this.totalEnergyCo2 =0;
     const newData = [];
      if (this.primary.pumping.sel_type !== '0') {
          this.barChartLabels.push(this.primary.pumping.data.title);
@@ -863,6 +864,10 @@ export class CreateComponent implements OnInit {
       this.barChartLabels.push(this.dewatering.data.title);
       newData.push(this.dewatering.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.dewatering.data.co2);
+    }
+    if(this.biogas.sel_type =='Energy Recovery'){
+      this.biogas.data.co2 = -this.biogas.data.co2;
+      this.totalEnergyCo2 = this.biogas.data.co2;
     }
 
     if(this.chemical.metal_salts.sel_type !== '0'){
