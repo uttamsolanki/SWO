@@ -115,7 +115,7 @@
           "co2":""
         },
         {
-          "title":"Primary Clarifier wish chemicals",
+          "title":"Primary Clarifier with Chemicals",
           "default":0.0181,
           "suggested":0.0181,
           "ref":{
@@ -171,7 +171,7 @@
           {
             "title":"Rotating Biological Contactor (RBC)",
             "default":0.28,
-            "suggested":0.134,
+            "suggested":0.28,
             "ref":{
               "8":"value",
               "*":"*"
@@ -188,7 +188,7 @@
           {
             "title":"Biological Aerated Filter (BAF)",
             "default":0.65,
-            "suggested":0.134,
+            "suggested":0.65,
             "ref":{
               "8":"value"
             },
@@ -204,7 +204,7 @@
           {
             "title":"MBBR",
             "default":0.8,
-            "suggested":0.134,
+            "suggested":0.8,
             "ref":{
               "8":"value"
             },
@@ -425,6 +425,23 @@
               }
             },
             "co2":""
+          },
+          {
+            "title":"User Specified",
+            "default":0,
+            "suggested":0,
+            "ref":{
+              "6":"value",
+              "*":""
+            },
+            "range":{
+              "min":0.22,
+              "max":0.42,
+              "ref":{
+                "7":"value"
+              }
+            },
+            "co2": ""
           }
         ]
       }
@@ -465,7 +482,7 @@
     }],
   "tertiary":[
     {
-      "title":"Filtration - Granular media",
+      "title":"Filtration - Granular Media",
       "default":0.029,
       "suggested":0.029,
       "ref":{
@@ -497,7 +514,7 @@
       "co2": ""
     },
     {
-      "title":"Filtration - Ultra Filgration (UF)",
+      "title":"Filtration - Ultra Filtration (UF)",
       "default":0.4,
       "suggested":0.4,
       "ref":{
@@ -585,16 +602,16 @@
       "co2": ""
     },
     {
-      "title":"Advanced Oxidation",
-      "default":0.32,
-      "suggested":0.32,
+      "title":"UV Large WWTP",
+      "default":0.135,
+      "suggested":0.135,
       "ref":{
         "6":"value",
         "*":""
       },
       "range":{
-        "min":0.22,
-        "max":0.42,
+        "min":0.123,
+        "max":0.147,
         "ref":{
           "7":"value"
         }
@@ -981,6 +998,7 @@
       {
         "title":"Alum - as Al2. (SO4)3. 14H2O",
         "default":168,
+        "suggested": 168,
         "ref":{
 
         },
@@ -996,6 +1014,7 @@
       {
         "title":"Aluminum Salts - as Al",
         "default":15.25,
+        "suggested": 15.25,
         "ref":{
 
         },
@@ -1011,6 +1030,7 @@
       {
         "title":"Iron Salts - as Fe",
         "default":18,
+        "suggested": 18,
         "ref":{
 
         },
@@ -1026,6 +1046,7 @@
       {
         "title":"Lime - as anhydrous Ca(OH)2",
         "default":220,
+        "suggested": 220,
         "ref":{
 
         },
@@ -1043,6 +1064,7 @@
       {
         "title":"Sodium Hypochlorite(15%)",
         "default":12.5,
+        "suggested": 12.5,
         "ref":{
 
         },
@@ -1058,6 +1080,7 @@
       {
         "title":"Liquified Chlorine Gas",
         "default":12.5,
+        "suggested": 12.5,
         "ref":{
 
         },
@@ -1074,6 +1097,7 @@
       {
         "title":"Sulphur Dioxide (SO2 gas)",
         "default":0.9,
+        "suggested": 0.9,
         "ref":{
 
         },
@@ -1087,8 +1111,9 @@
         "co2_eq":0.418
       },
       {
-        "title":"Sodium bisulphite(anhydrous)",
-        "default":12.5,
+        "title":"Sodium bisulphite (anhydrous)",
+        "default":1.46,
+        "suggested": 1.46,
         "ref":{
 
         },
@@ -1102,8 +1127,9 @@
         "co2_eq":0.42
       },
       {
-        "title":"Sodium bisulphite(as available SO2)",
-        "default":7.69,
+        "title":"Sodium bisulphite (as available SO2)",
+        "default":0.90,
+        "suggested": 0.90,
         "ref":{
 
         },
@@ -1282,7 +1308,7 @@
       }
     },
     "aerobic": {
-      "plantinfluent":"1",
+      "plantinfluent": "1",
       "FLOWin": {
         "title":"Sludge Volume as a % of Plant's Influent Flow",
         "unit":"%",
@@ -1519,22 +1545,6 @@
         "range":{
           "min":0.033,
           "max":0.067,
-          "ref":{
-
-          }
-        }
-      },
-      "CODin": {
-        "title":"COD of Dewatered Sludge",
-        "unit": "mg/L",
-        "default":233000,
-        "suggested":233000,
-        "ref":{
-
-        },
-        "range":{
-          "min":200000,
-          "max":266000,
           "ref":{
 
           }
