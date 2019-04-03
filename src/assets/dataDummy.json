@@ -922,7 +922,21 @@
       }],
     "disposal":[
       {
-        "title":"Disposal",
+        "title":"Landfill without Methane Recovery",
+        "default":null,
+        "ref":{
+
+        },
+        "range":{
+          "min":null,
+          "max":null,
+          "ref":{
+
+          }
+        }
+      },
+      {
+        "title":"Landfill with Methane Recovery",
         "default":null,
         "ref":{
 
@@ -937,20 +951,6 @@
       },
       {
         "title":"Incineration",
-        "default":null,
-        "ref":{
-
-        },
-        "range":{
-          "min":null,
-          "max":null,
-          "ref":{
-
-          }
-        }
-      },
-      {
-        "title":"Landfill",
         "default":null,
         "ref":{
 

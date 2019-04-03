@@ -57,7 +57,7 @@ export class CreateComponent implements OnInit {
     data: {title: null, default: null, co2: null, suggested: null},
   };
   sec_clr = {
-    sel_type: 'Secondary Clarifier',
+    sel_type: '0',
     data: {title: null, default: null, co2: null, suggested: null},
   };
   tertiary = {
@@ -600,6 +600,15 @@ export class CreateComponent implements OnInit {
     //     }
     //   }
     // }
+    if( this.secondary.sel_growth_type!=='0' ){
+      if(this.sec_clr.sel_type==='0')
+        this.sec_clr.sel_type='Secondary Clarifier';
+        this.selectTreatmentType('','sec_clr',this.sec_clr_types);
+    } else{
+        this.sec_clr.sel_type='0';
+        this.selectTreatmentType('','sec_clr',this.sec_clr_types);
+    }
+
     this.co2Calcaltion(this.primary.pumping.data);
     this.co2Calcaltion(this.primary.pri_treat.data);
     this.co2Calcaltion(this.primary.prili_treat.data);
@@ -634,7 +643,7 @@ export class CreateComponent implements OnInit {
     this.active_sludgeData.co2 = parseFloat(calCo2.toFixed(2));
 
     const n1 = this.active_sludgeData.Qin * this.process.active_sludge.TKNin.default - this.active_sludgeData.Qout * this.process.active_sludge.TKNout.default - this.active_sludgeData.Qwas * this.process.active_sludge.TKNwas.default;
-    let calNo2 = (n1 * this.Removed_TKN* 0.001) * (1 / 1000) * 296
+    let calNo2 = (n1 * this.Removed_TKN* 0.01) * (1 / 1000) * 296
     this.active_sludgeData.no2 = parseFloat(calNo2.toFixed(2));
 
     this.active_sludgeData.totalCo2 = this.active_sludgeData.co2 + this.active_sludgeData.no2;
@@ -655,6 +664,7 @@ export class CreateComponent implements OnInit {
       this.transporationData.Qin = 0;
       this.calTransporationFlow();
     }else if(type === 'disposal'){
+      this.disposalData.Qin = 0;
       this.calDisposalFlow();
     }
   }
@@ -760,7 +770,11 @@ export class CreateComponent implements OnInit {
     this.disposalData.ch4 = parseFloat(calCh4.toFixed(2));
 
     this.disposalData.totalCo2 = this.disposalData.co2 + this.disposalData.ch4;
-
+    if(this.biosolids_disposals.disposal.sel_type!=='Landfill without Methane Recovery'){
+      this.disposalData.totalCo2 = 0;
+      this.disposalData.ch4 = 0;
+      this.disposalData.co2 = 0;
+    }
     this.process.disposal.co2 = this.disposalData.co2;
     this.process.disposal.ch4 = this.disposalData.ch4;
     this.process.disposal.totalCo2 =  this.disposalData.totalCo2;
@@ -776,12 +790,12 @@ export class CreateComponent implements OnInit {
   }
   calTransporationCo2() {
     if(this.process.transporation.travel_type === 'time'){
-      const calCo2 = this.transporationData.Qin  * this.process.transporation.time.default * this.gamma;
+      const calCo2 = this.transporationData.Qin  * this.process.transporation.time.default * this.delta;
       this.process.transporation.totalCo2 = parseFloat(calCo2.toFixed(2));
     }
 
     if(this.process.transporation.travel_type === 'distance'){
-      const calCo2 = this.transporationData.Qin  * this.process.transporation.distance.default * this.delta;
+      const calCo2 = this.transporationData.Qin  * this.process.transporation.distance.default * this.gamma;
       this.process.transporation.totalCo2 = parseFloat(calCo2.toFixed(2));
     }
 
@@ -865,7 +879,7 @@ export class CreateComponent implements OnInit {
       newData.push(this.dewatering.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.dewatering.data.co2);
     }
-    if(this.biogas.sel_type =='Energy Recovery'){
+    if(this.biogas.sel_type === 'Energy Recovery'){
       this.biogas.data.co2 = -this.biogas.data.co2;
       this.totalEnergyCo2 = this.biogas.data.co2;
     }
