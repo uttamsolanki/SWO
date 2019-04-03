@@ -1659,11 +1659,11 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row col-lg-6" *ngIf="process.anarobic.plantinfluent=='0'">
-                    <div class="offset-md-1 col-md-11 row" *ngIf="tempBoolen">
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Inflow Node Ap to Anaerobic Digester[Qap]:</label>
                       <div class="col-md-5">
-                        <input type="number" id="anarobic_Qin"  name="anarobic_Qap" [(ngModel)]="anarobicData.Qap" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
+                        <input type="number" id="anarobic_Qin"  name="anarobic_Qap" [(ngModel)]="anarobicData.Qap" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()" [class.readonlyValue]="process.anarobic.plantinfluent=='1'" [readonly]="process.anarobic.plantinfluent=='1'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -1939,11 +1939,11 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row col-lg-6" *ngIf="process.aerobic.plantinfluent=='0'">
+                  <div class="row col-lg-6">
                     <div class="offset-md-1 col-md-11 row" *ngIf="tempBoolen">
                       <label class="col-md-5 col-form-label" for="text-input">Inflow to Aerobic Digester(Qin):</label>
                       <div class="col-md-5">
-                        <input type="text" id="aerobic_Qin"  name="aerobic_Qin" [(ngModel)]="aerobicData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
+                        <input type="text" id="aerobic_Qin"  name="aerobic_Qin" [(ngModel)]="aerobicData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()" [class.readonlyValue]="process.aerobic.plantinfluent=='1'" [readonly]="process.aerobic.plantinfluent=='1'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -2070,7 +2070,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Flow Rate of Dewatered Sludge:</label>
                       <div class="col-md-5">
-                        <input type="text" id="disposal_FLOWin"  name="disposal_FLOWin" [(ngModel)]="process.disposal.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()">
+                        <input type="text" id="disposal_FLOWin"  name="disposal_FLOWin" [(ngModel)]="process.disposal.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" >
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.FLOWin.suggested}}</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
@@ -2083,11 +2083,11 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row col-lg-6" *ngIf="process.disposal.plantinfluent=='0'">
+                  <div class="row col-lg-6">
                     <div class="offset-md-1 col-md-11 row" *ngIf="tempBoolen">
                       <label class="col-md-5 col-form-label" for="text-input">Flow Rate of Dewatered Sludge:</label>
                       <div class="col-md-5">
-                        <input type="number" id="disposal_Qin"  name="disposal_Qin" [(ngModel)]="disposalData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()">
+                        <input type="number" id="disposal_Qin"  name="disposal_Qin" [(ngModel)]="disposalData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" [class.readonlyValue]="process.disposal.plantinfluent=='1'" [readonly]="process.disposal.plantinfluent=='1'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -2216,7 +2216,7 @@
                     </div>
                   </div>
                   <div class="row col-lg-6" >
-                    <div class="offset-md-1 col-md-11 row" *ngIf="tempBoolen">
+                    <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Flow Rate of Dewatered Sludge:</label>
                       <div class="col-md-5">
                         <input type="number" id="transporation_Qin"  name="transporation_Qin" [(ngModel)]="transporationData.Qin" [class.readonlyValue]="process.transporation.plantinfluent=='1'" class="form-control readonlyValue" placeholder="0.0" (ngModelChange)="calTransporationFlow()" [readonly]="process.transporation.plantinfluent=='1'">
