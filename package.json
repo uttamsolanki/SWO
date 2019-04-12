@@ -1,20 +1,10 @@
 {
-  "name": "@coreui/coreui-free-angular-admin-template",
+  "name": "SWO",
   "version": "2.2.4",
-  "description": "CoreUI Free Angular 2+ Admin Template",
+  "description": "SWO",
   "author": {
-    "name": "Łukasz Holeczek",
-    "url": "http://holeczek.pl",
-    "github": "https://github.com/mrholek",
-    "twitter": "https://twitter.com/lukaszholeczek"
+    "name": "Uttam"
   },
-  "contributors": [
-    {
-      "name": "Andrzej Kopański",
-      "url": "https://github.com/xidedix"
-    }
-  ],
-  "homepage": "https://coreui.io/angular",
   "copyright": "Copyright 2018 creativeLabs Łukasz Holeczek",
   "license": "MIT",
   "scripts": {
@@ -23,7 +13,8 @@
     "build": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "gitBuild":"ng build --prod --output-path docs --base-href /SWO/"
   },
   "private": true,
   "dependencies": {
