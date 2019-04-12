@@ -1361,7 +1361,6 @@
   </div>
   </div>
   </tab>
-
     <tab heading="Process Emission">
       <div class="row">
         <div class="col-lg-12">
@@ -1720,12 +1719,6 @@
                       <label class="col-md-5 col-form-label" for="text-input">External Organics Flow Rate:</label>
                       <div class="col-md-5">
                         <input type="number" id="organics_flow"  name="organics_flow" [(ngModel)]="process.organics.flow" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
-                        <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value 0</span>
-                            <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
-                            <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
-                          </p>
-                        </div>
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -1737,12 +1730,6 @@
                       <label class="col-md-5 col-form-label" for="text-input">External Organics COD:</label>
                       <div class="col-md-5">
                         <input type="text" id="biosolids_COD"  name="organics_COD" [(ngModel)]="process.organics.COD" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
-                        <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.CODout.suggested}}</span>
-                            <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
-                            <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
-                          </p>
-                        </div>
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">mg/L</span>
@@ -1757,12 +1744,6 @@
                       <label class="col-md-5 col-form-label" for="text-input">Inflow to Anaerobic Digester (Qin):</label>
                       <div class="col-md-5">
                         <input type="text" id="anarobicData_Qin"  name="anarobicData_Qin" [(ngModel)]="anarobicData.Qin" class="form-control readonlyValue" placeholder="0.0" readonly>
-                        <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value 0</span>
-                            <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
-                            <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
-                          </p>
-                        </div>
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -1774,12 +1755,6 @@
                       <label class="col-md-5 col-form-label" for="text-input">Inflow COD Load to Anaerobic Digester</label>
                       <div class="col-md-5">
                         <input type="text" id="anarobicData_CODLod"  name="anarobicData_CODLod" [(ngModel)]="anarobicData.CODLod" class="form-control readonlyValue" placeholder="0.0" readonly>
-                        <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.CODout.suggested}}</span>
-                            <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
-                            <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
-                          </p>
-                        </div>
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">kg/d</span>
@@ -1791,12 +1766,6 @@
                       <label class="col-md-5 col-form-label" for="text-input">Inflow COD Concentration (CODin)</label>
                       <div class="col-md-5">
                         <input type="number" id="anarobicData_CODLod"  name="anarobicData_CODin" [(ngModel)]="anarobicData.CODin" class="form-control readonlyValue" placeholder="0.0" readonly>
-                        <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.CODout.suggested}}</span>
-                            <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
-                            <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
-                          </p>
-                        </div>
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">mg/L</span>
@@ -2278,7 +2247,7 @@
                 </div>
 
                 <div class="form-group row">
-                  <label class="col-md-12 col-form-label" ><strong>Calculation of Process Emissions of CO<sub>2</sub> & CH<sub>4</sub></strong></label>
+                  <label class="col-md-12 col-form-label" ><strong>Calculation of Process Emissions of CO<sub>2</sub></strong></label>
                   <div class="row col-lg-6">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Total Emissions: CO<sub>2</sub> Eq.:</label>
@@ -2334,55 +2303,232 @@
                   <!--</div>-->
                 <!--</div>-->
 
+
+                <div class="form-group row">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">Select Unit:</label>
+                    <div class="form-check form-check-inline mr-1">
+                      <input class="form-check-input m-2" type="radio" name="unit_1" id="unit_1" [value]=1 [(ngModel)]="unit" (change)="changeUnit()">
+                      <label class="form-check-label" for="unit_1"><span>kg CO<sub>2</sub>/d</span></label>
+                    </div>
+                    <div class="form-check form-check-inline mr-1">
+                      <input class="form-check-input m-2" type="radio" name="unit_2" id="unit_2" [value]=0 [(ngModel)]="unit" (change)="changeUnit()">
+                      <label class="form-check-label" for="unit_2"><span>kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="form-group row">
                   <div class="offset-md-2 col-md-9 row">
                     <label class="col-md-5 col-form-label text-align-right" for="text-input">WWTP Inflow:</label>
-                    <label class="col-md-3 col-form-label" for="text-input">{{size.data.default}} <span class="ml-2 help-block">m<sup>3</sup>/d</span></label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{size.data.default}} <span class="ml-2 help-block" >m<sup>3</sup>/d</span></label>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="offset-md-2 col-md-9 row">
                     <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Electrical Emissions:</label>
-                    <label class="col-md-3 col-form-label" for="text-input"> {{totalElecricalCo2.toFixed(1)}} <span class="ml-2 help-block">kg CO<sub>2</sub>/d</span></label>
+                    <label class="col-md-3 col-form-label" for="text-input"> {{totalElecricalCo2.toFixed(1)/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="offset-md-2 col-md-9 row">
                     <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from On-site Process Emissions:</label>
-                    <label class="col-md-3 col-form-label" for="text-input">{{totalProcessCo2.toFixed(1)}} <span class="ml-2 help-block">kg CO<sub>2</sub>/d</span></label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{totalProcessCo2.toFixed(1)/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="offset-md-2 col-md-9 row">
                     <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Biosolids Disposal Emissions:  </label>
-                    <label class="col-md-3 col-form-label" for="text-input">{{totalDisposalCo2.toFixed(1)}} <span class="ml-2 help-block">kg CO<sub>2</sub>/d</span></label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{totalDisposalCo2.toFixed(1)/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="offset-md-2 col-md-9 row">
                     <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Energy Recovery:</label>
-                    <label class="col-md-3 col-form-label" for="text-input">{{totalEnergyCo2.toFixed(1)}} <span class="ml-2 help-block">kg CO<sub>2</sub>/d</span></label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{totalEnergyCo2.toFixed(1)/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="offset-md-2 col-md-9 row">
                     <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Chemical Usage:</label>
-                    <label class="col-md-3 col-form-label" for="text-input">{{totalChemicalCo2.toFixed(1)}} <span class="ml-2 help-block">kg CO<sub>2</sub>/d</span></label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{totalChemicalCo2.toFixed(1)/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="offset-md-2 col-md-9 row">
                     <label class="col-md-5 col-form-label text-align-right" for="text-input">Total CO2 Equivalent from Transportation:</label>
-                    <label class="col-md-3 col-form-label" for="text-input">{{totalTransportationCo2.toFixed(1)}} <span class="ml-2 help-block">kg CO<sub>2</sub>/d</span></label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{totalTransportationCo2.toFixed(1)/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
                   </div>
                 </div>
 
+                <div class="form-group row" >
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">Total </label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{this.totalElecricalCo2/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input"><strong>Electricity Summary</strong></label>
+                    <label class="col-md-3 col-form-label" for="text-input"></label>
+                  </div>
+                </div>
+
+                <div class="form-group row" *ngIf="primary.pumping.sel_type!='0'">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">{{primary.pumping.sel_type}}</label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{primary.pumping.data.co2/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                  </div>
+                </div>
+
+                <div class="form-group row" *ngIf="primary.prili_treat.sel_type!='0'">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">{{primary.prili_treat.sel_type}}</label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{primary.prili_treat.data.co2/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                  </div>
+                </div>
+
+                <div class="form-group row" *ngIf="primary.pri_treat.sel_type!='0'">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">{{primary.pri_treat.sel_type}}</label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{primary.pri_treat.data.co2/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                  </div>
+                </div>
+
+                <div class="form-group row" *ngIf="secondary.sel_growth_type!='0'">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">{{secondary.sel_growth_type}}</label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{secondary.data.co2/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                  </div>
+                </div>
+
+                <div class="form-group row" *ngIf="sec_clr.sel_type!='0'">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">{{sec_clr.sel_type}}</label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{sec_clr.data.co2/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                  </div>
+                </div>
+
+                <div class="form-group row" *ngIf="tertiary.sel_type!='0'">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">{{tertiary.sel_type}}</label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{tertiary.data.co2/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                  </div>
+                </div>
+
+                <div class="form-group row" *ngIf="disinfection.sel_type!='0'">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">{{disinfection.sel_type}}</label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{disinfection.data.co2/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                  </div>
+                </div>
+
+                <div class="form-group row" *ngIf="biosolid.thickener.sel_type!='0'">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">{{biosolid.thickener.sel_type}}</label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{biosolid.thickener.data.co2/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                  </div>
+                </div>
+
+                <div class="form-group row" *ngIf="biosolid.aerobic.sel_type!='0'">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">{{biosolid.aerobic.sel_type}}</label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{biosolid.aerobic.data.co2/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                  </div>
+                </div>
+
+                <div class="form-group row" *ngIf="biosolid.anaerobic.sel_type!='0'">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">{{biosolid.anaerobic.sel_type}}</label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{biosolid.anaerobic.data.co2/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                  </div>
+                </div>
+
+                <div class="form-group row" *ngIf="dewatering.sel_type!='0'">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">{{dewatering.sel_type}}</label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{dewatering.data.co2/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                  </div>
+                </div>
+
+                <div class="form-group row" *ngIf="biogas.sel_type!='0'">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">{{biogas.sel_type}}</label>
+                    <label class="col-md-3 col-form-label" for="text-input">{{biogas.data.co2/unitDivider}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                  </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input"><strong>On-site Process Summary</strong></label>
+                    <label class="col-md-7 col-form-label" for="text-input">
+                      <div class="row">
+                        <div class="col-lg-4"> Activated Sludge </div>
+                        <div class="col-lg-4"> Aerobic Digester </div>
+                        <div class="col-lg-4"> Anaerobic Digester </div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">CO2 Emission:</label>
+                    <label class="col-md-7 col-form-label" for="text-input">
+                      <div class="row">
+                        <div class="col-lg-4"> {{process.active_sludge.co2}} </div>
+                        <div class="col-lg-4"> {{process.aerobic.co2}} </div>
+                        <div class="col-lg-4"> {{process.anarobic.co2}} </div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">N2O Emission:</label>
+                    <label class="col-md-7 col-form-label" for="text-input">
+                      <div class="row">
+                        <div class="col-lg-4"> {{process.active_sludge.no2}} </div>
+                        <div class="col-lg-4"> 0 </div>
+                        <div class="col-lg-4"> 0 </div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input">CH4 Emission:</label>
+                    <label class="col-md-7 col-form-label" for="text-input">
+                      <div class="row">
+                        <div class="col-lg-4"> 0 </div>
+                        <div class="col-lg-4"> {{process.aerobic.ch4}} </div>
+                        <div class="col-lg-4"> {{process.anarobic.ch4}} </div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="offset-md-2 col-md-9 row">
+                    <label class="col-md-5 col-form-label text-align-right" for="text-input"><strong>Total Emission:</strong></label>
+                    <label class="col-md-7 col-form-label" for="text-input">
+                      <div class="row">
+                        <div class="col-lg-4"> <strong>{{process.active_sludge.totalCo2}} </strong></div>
+                        <div class="col-lg-4"> <strong>{{process.aerobic.totalCo2}} </strong></div>
+                        <div class="col-lg-4"> <strong>{{process.anarobic.totalCo2}} </strong></div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
 
                 <div class="form-group row chart-align" *ngIf="isChart">
                   <div class="col-md-11 row">
