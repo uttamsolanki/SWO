@@ -652,7 +652,7 @@ export class CreateComponent implements OnInit {
     this.active_sludgeData.no2 = parseFloat(calNo2.toFixed(2));
 
     this.active_sludgeData.totalCo2 = this.active_sludgeData.co2 + this.active_sludgeData.no2;
-
+    this.active_sludgeData.totalCo2 = parseFloat(this.active_sludgeData.totalCo2.toFixed(2));
     this.process.active_sludge.co2 = this.active_sludgeData.co2;
     this.process.active_sludge.no2 = this.active_sludgeData.no2;
     this.process.active_sludge.totalCo2 = this.active_sludgeData.totalCo2;
@@ -691,7 +691,7 @@ export class CreateComponent implements OnInit {
 
     this.aerobicData.co2 =  parseFloat(calCo2.toFixed(2));
     this.aerobicData.ch4 = 0;
-    this.aerobicData.totalCo2 = this.aerobicData.co2;
+    this.aerobicData.totalCo2 = parseFloat(this.aerobicData.co2.toFixed(2));
 
     if (this.biosolid.aerobic.sel_type !== '0') {
       this.process.aerobic.co2 = this.aerobicData.co2;
@@ -748,6 +748,7 @@ export class CreateComponent implements OnInit {
     }
     this.anarobicData.ch4 = parseFloat(calCh4.toFixed(2));
     this.anarobicData.totalCo2 = this.anarobicData.co2 + this.anarobicData.ch4;
+    this.anarobicData.totalCo2 = parseFloat( this.anarobicData.totalCo2.toFixed(2));
     if (this.biosolid.anaerobic.sel_type !== '0') {
       this.process.anarobic.co2 = this.anarobicData.co2;
       this.process.anarobic.ch4 = this.anarobicData.ch4;
@@ -770,7 +771,7 @@ export class CreateComponent implements OnInit {
   }
   calDisposalCo2() {
     const c1 = this.disposalData.Qin * this.process.disposal.CODin.default;
-    const alpha = this.process.anarobic.alpha.default / 100;
+    const alpha = this.process.disposal.alpha.default / 100;
     const calCo2 = (c1 / this.COD_TOC_PER_MOL) * (1 - alpha) * (44 / 100);
     this.disposalData.co2 =  parseFloat(calCo2.toFixed(2));
 
@@ -778,6 +779,7 @@ export class CreateComponent implements OnInit {
     this.disposalData.ch4 = parseFloat(calCh4.toFixed(2));
 
     this.disposalData.totalCo2 = this.disposalData.co2 + this.disposalData.ch4;
+    this.disposalData.totalCo2 = parseFloat(this.disposalData.totalCo2.toFixed(2));
     if (this.biosolids_disposals.disposal.sel_type !== 'Landfill without Methane Recovery') {
       this.disposalData.totalCo2 = 0;
       this.disposalData.ch4 = 0;
@@ -994,7 +996,6 @@ export class CreateComponent implements OnInit {
   }
 
   changeUnit() {
-    console.log(this.unit);
     if(!this.unit)
       this.unitDivider = this.size.data.default;
     else
@@ -1003,6 +1004,7 @@ export class CreateComponent implements OnInit {
     this.createChart();
   }
   // *************  Common Function  End *************//
+
 
   goto(id) {
     this.tabset.tabs[id].active = true;
