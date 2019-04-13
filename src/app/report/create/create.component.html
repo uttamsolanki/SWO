@@ -29,312 +29,7 @@
   <!-- Nav tabs -->
   <tabset class="navTabBackground" #tabset>
 
-    <tab heading="Summary" >
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card-header">
-              Summary
-              <div class="card-header-actions">
-                <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
-              </div>
-            </div>
-            <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
-              <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
 
-
-                <!--<div class="form-group row">-->
-                <!--<div class="offset-md-9 col-md-2">-->
-                <!--<button type="button" class="btn btn-block btn-success" (click)='generatePdf()'>Generate PDF</button>-->
-                <!--</div>-->
-                <!--</div>-->
-                <div id="printSection">
-                  <!--<div class="form-group row">-->
-                  <!--<div class="offset-md-2 col-md-9 row">-->
-                  <!--&lt;!&ndash;<label class="col-md-5 col-form-label text-align-right" for="text-input">WWTP size:</label>&ndash;&gt;-->
-                  <!--<label class="col-md-3 col-form-label" for="text-input">{{size.sel_size}} </label>-->
-                  <!--</div>-->
-                  <!--</div>-->
-
-
-                  <div class="form-group row">
-                    <div class="col-md-12 row">
-                      <label class="col-md-3 col-form-label text-align-right" for="text-input">Select Unit:</label>
-                      <div class="form-check form-check-inline mr-1">
-                        <input class="form-check-input m-2" type="radio" name="unit_1" id="unit_1" [value]=1 [(ngModel)]="unit" (change)="changeUnit()">
-                        <label class="form-check-label" for="unit_1"><span>kg CO<sub>2</sub>/d</span></label>
-                      </div>
-                      <div class="form-check form-check-inline mr-1">
-                        <input class="form-check-input m-2" type="radio" name="unit_2" id="unit_2" [value]=0 [(ngModel)]="unit" (change)="changeUnit()">
-                        <label class="form-check-label" for="unit_2"><span>kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <div class="col-md-12 row">
-                      <label class="col-md-3 col-form-label text-align-right" for="text-input">Project Name:</label>
-                      <label class="col-md-3 col-form-label" for="text-input"> {{projecName}}</label>
-                    </div>
-                  </div>
-
-
-                  <div class="form-group row">
-                    <div class="col-md-12 row">
-                      <label class="col-md-3 col-form-label text-align-right" for="text-input">Wastewater Treatment Plant Inflow:</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{size.data.default}} <span class="ml-2 help-block" >m<sup>3</sup>/d</span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <div class="col-md-12 row">
-                      <label class="col-md-5 col-form-label text-align-right" for="text-input"><strong>Total CO2 Equivalent Emissions</strong></label>
-                      <label class="col-md-3 col-form-label" for="text-input"></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">From Electricity Emissions:</label>
-                      <label class="col-md-3 col-form-label" for="text-input"> {{(totalElecricalCo2.toFixed(1)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">From On-site Process Emissions:</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(totalProcessCo2.toFixed(1)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">From Chemical Usage:</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(totalChemicalCo2.toFixed(1)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-
-                  <div class="form-group row">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">From Biosolids Disposal Emissions:</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(totalDisposalCo2.toFixed(1)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">From Energy Recovery:</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(totalEnergyCo2.toFixed(1)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-
-                  <div class="form-group row">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">	From Biosolids Transportation:</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(totalTransportationCo2.toFixed(1)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row" >
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input"><strong>Total Emissions: </strong></label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{((totalElecricalCo2+totalProcessCo2+totalChemicalCo2+totalDisposalCo2-totalEnergyCo2+totalTransportationCo2)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row" *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
-                    <div class="col-md-12 row">
-                      <label class="col-md-5 col-form-label text-align-right" for="text-input"><strong>Electricity Emissions Summary: [kg CO2/d or kg CO2/m3]</strong></label>
-                      <label class="col-md-3 col-form-label" for="text-input"></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row" *ngIf="primary.pumping.sel_type!='0'">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{primary.pumping.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(primary.pumping.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row" *ngIf="primary.prili_treat.sel_type!='0'">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{primary.prili_treat.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(primary.prili_treat.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row" *ngIf="primary.pri_treat.sel_type!='0'">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{primary.pri_treat.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(primary.pri_treat.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row" *ngIf="secondary.sel_growth_type!='0'">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{secondary.sel_growth_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(secondary.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row" *ngIf="sec_clr.sel_type!='0'">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{sec_clr.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(sec_clr.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row" *ngIf="tertiary.sel_type!='0'">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{tertiary.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(tertiary.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row" *ngIf="disinfection.sel_type!='0'">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{disinfection.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(disinfection.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row" *ngIf="biosolid.thickener.sel_type!='0'">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{biosolid.thickener.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.thickener.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row" *ngIf="biosolid.aerobic.sel_type!='0'">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{biosolid.aerobic.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.aerobic.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row" *ngIf="biosolid.anaerobic.sel_type!='0'">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{biosolid.anaerobic.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.anaerobic.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row" *ngIf="dewatering.sel_type!='0'">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{dewatering.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(dewatering.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group row" *ngIf="biogas.sel_type!='0'">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{biogas.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(biogas.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
-                    </div>
-                  </div>
-
-                  <div class="form-group  col-md-12">
-                    <div class="card">
-                      <div class="card-header">
-                        On-site Process Emissions Summary: [Equivalent kg CO2/d or kg CO2/m3]
-                      </div>
-                      <div class="card-body">
-                        <table class="table table-bordered">
-                          <thead>
-                          <tr>
-                            <th></th>
-                            <th>Activated Sludge</th>
-                            <th>Aerobic Digester</th>
-                            <th>Anaerobic Digester</th>
-                            <th>Biosolids Disposal</th>
-                            <th>Biosolids Transportation</th>
-                            <th>Total</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                            <td>CO2 Emission</td>
-                            <td>{{(process.active_sludge.co2/unitDivider).toFixed(4)}}</td>
-                            <td>{{(process.aerobic.co2/unitDivider).toFixed(4)}}</td>
-                            <td>{{(process.anarobic.co2/unitDivider).toFixed(4)}}</td>
-                            <td>{{(this.process.disposal.co2/unitDivider).toFixed(4)}}</td>
-                            <td>{{(this.process.transporation.totalCo2/unitDivider).toFixed(4)}}</td>
-                            <td>{{((process.active_sludge.co2+process.aerobic.co2+process.anarobic.co2+this.process.disposal.co2+process.transporation.totalCo2)/unitDivider).toFixed(4)}}</td>
-                          </tr>
-                          <tr>
-                            <td>N2O Emission</td>
-                            <td>{{(process.active_sludge.no2/unitDivider).toFixed(4)}}</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>{{(process.active_sludge.no2/unitDivider).toFixed(4)}}</td>
-                          </tr>
-                          <tr>
-                            <td>CH4 Emission</td>
-                            <td>0</td>
-                            <td>{{(process.aerobic.ch4/unitDivider).toFixed(4)}}</td>
-                            <td>{{(process.anarobic.ch4/unitDivider).toFixed(4)}}</td>
-                            <td>{{(process.disposal.ch4/unitDivider).toFixed(4)}}</td>
-                            <td>0</td>
-                            <td>{{((process.aerobic.ch4+process.anarobic.ch4+this.process.disposal.ch4)/unitDivider).toFixed(4)}}</td>
-                          </tr>
-                          <tr>
-                            <td><strong>Total</strong></td>
-                            <td><strong>{{(process.active_sludge.totalCo2/unitDivider).toFixed(4)}}</strong></td>
-                            <td><strong>{{(process.aerobic.totalCo2/unitDivider).toFixed(4)}}</strong></td>
-                            <td><strong>{{(process.anarobic.totalCo2/unitDivider).toFixed(4)}}</strong></td>
-                            <td><strong>{{(this.process.disposal.totalCo2/unitDivider).toFixed(4)}}</strong></td>
-                            <td><strong>{{(this.process.transporation.totalCo2/unitDivider).toFixed(4)}}</strong></td>
-                            <td><strong>{{((process.active_sludge.totalCo2+process.aerobic.totalCo2+process.anarobic.totalCo2+this.process.disposal.totalCo2+process.transporation.totalCo2)/unitDivider).toFixed(4)}}</strong></td>
-                          </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-
-
-                  <div class="form-group row chart-align" *ngIf="isChart">
-                    <div class="col-md-11 row">
-                      <canvas style="background-color: beige" baseChart #baseChart="base-chart" class="chart"
-                              [datasets]="barChartData"
-                              [labels]="barChartLabels"
-                              [options]="barChartOptions"
-                              [colors]="barChart1Colours"
-                              [legend]="barChartLegend"
-                              [chartType]="barChartType"
-                              (chartHover)="chartHovered($event)"
-                              (chartClick)="chartClicked($event)"></canvas>
-                    </div>
-                  </div>
-                  <div class="form-group row chart-align" *ngIf="isChart">
-                    <div class="col-md-11 row">
-                      <canvas baseChart class="chart"
-                              [data]="pieChartData"
-                              [options]="pieChartOptions"
-                              [labels]="pieChartLabels"
-                              [legend]="pieChartLegend"
-                              [chartType]="pieChartType"
-                              (chartHover)="chartHovered($event)"
-                              (chartClick)="chartClicked($event)"></canvas>
-                    </div>
-                  </div>
-                </div>
-
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="offset-lg-10 col-lg-2">
-          <button type="button" class="btn btn-block btn-success" (click)='save()'>submit</button>
-        </div>
-      </div>
-    </tab>
 
     <tab heading="Project">
     <div class="row">
@@ -2580,7 +2275,312 @@
         </div>
       </div>
     </tab>
+    <tab heading="Summary" >
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header">
+              Summary
+              <div class="card-header-actions">
+                <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+              </div>
+            </div>
+            <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+              <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
 
+
+                <!--<div class="form-group row">-->
+                <!--<div class="offset-md-9 col-md-2">-->
+                <!--<button type="button" class="btn btn-block btn-success" (click)='generatePdf()'>Generate PDF</button>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div id="printSection">
+                  <!--<div class="form-group row">-->
+                  <!--<div class="offset-md-2 col-md-9 row">-->
+                  <!--&lt;!&ndash;<label class="col-md-5 col-form-label text-align-right" for="text-input">WWTP size:</label>&ndash;&gt;-->
+                  <!--<label class="col-md-3 col-form-label" for="text-input">{{size.sel_size}} </label>-->
+                  <!--</div>-->
+                  <!--</div>-->
+
+
+                  <div class="form-group row">
+                    <div class="col-md-12 row">
+                      <label class="col-md-3 col-form-label text-align-right" for="text-input">Select Unit:</label>
+                      <div class="form-check form-check-inline mr-1">
+                        <input class="form-check-input m-2" type="radio" name="unit_1" id="unit_1" [value]=1 [(ngModel)]="unit" (change)="changeUnit()">
+                        <label class="form-check-label" for="unit_1"><span>kg CO<sub>2</sub>/d</span></label>
+                      </div>
+                      <div class="form-check form-check-inline mr-1">
+                        <input class="form-check-input m-2" type="radio" name="unit_2" id="unit_2" [value]=0 [(ngModel)]="unit" (change)="changeUnit()">
+                        <label class="form-check-label" for="unit_2"><span>kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-md-12 row">
+                      <label class="col-md-3 col-form-label text-align-right" for="text-input">Project Name:</label>
+                      <label class="col-md-3 col-form-label" for="text-input"> {{projecName}}</label>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group row">
+                    <div class="col-md-12 row">
+                      <label class="col-md-3 col-form-label text-align-right" for="text-input">Wastewater Treatment Plant Inflow:</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{size.data.default}} <span class="ml-2 help-block" >m<sup>3</sup>/d</span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-md-12 row">
+                      <label class="col-md-5 col-form-label text-align-right" for="text-input"><strong>Total CO2 Equivalent Emissions</strong></label>
+                      <label class="col-md-3 col-form-label" for="text-input"></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">From Electricity Emissions:</label>
+                      <label class="col-md-3 col-form-label" for="text-input"> {{(totalElecricalCo2.toFixed(1)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">From On-site Process Emissions:</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(totalProcessCo2.toFixed(1)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">From Chemical Usage:</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(totalChemicalCo2.toFixed(1)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group row">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">From Biosolids Disposal Emissions:</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(totalDisposalCo2.toFixed(1)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">From Energy Recovery:</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(totalEnergyCo2.toFixed(1)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group row">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">	From Biosolids Transportation:</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(totalTransportationCo2.toFixed(1)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" >
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input"><strong>Total Emissions: </strong></label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{((totalElecricalCo2+totalProcessCo2+totalChemicalCo2+totalDisposalCo2-totalEnergyCo2+totalTransportationCo2)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
+                    <div class="col-md-12 row">
+                      <label class="col-md-5 col-form-label text-align-right" for="text-input"><strong>Electricity Emissions Summary: [kg CO2/d or kg CO2/m3]</strong></label>
+                      <label class="col-md-3 col-form-label" for="text-input"></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="primary.pumping.sel_type!='0'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{primary.pumping.sel_type}}</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(primary.pumping.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="primary.prili_treat.sel_type!='0'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{primary.prili_treat.sel_type}}</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(primary.prili_treat.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="primary.pri_treat.sel_type!='0'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{primary.pri_treat.sel_type}}</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(primary.pri_treat.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="secondary.sel_growth_type!='0'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{secondary.sel_growth_type}}</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(secondary.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="sec_clr.sel_type!='0'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{sec_clr.sel_type}}</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(sec_clr.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="tertiary.sel_type!='0'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{tertiary.sel_type}}</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(tertiary.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="disinfection.sel_type!='0'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{disinfection.sel_type}}</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(disinfection.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="biosolid.thickener.sel_type!='0'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{biosolid.thickener.sel_type}}</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.thickener.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="biosolid.aerobic.sel_type!='0'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{biosolid.aerobic.sel_type}}</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.aerobic.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="biosolid.anaerobic.sel_type!='0'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{biosolid.anaerobic.sel_type}}</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.anaerobic.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="dewatering.sel_type!='0'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{dewatering.sel_type}}</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(dewatering.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" *ngIf="biogas.sel_type!='0'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-4 col-form-label text-align-right" for="text-input">{{biogas.sel_type}}</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(biogas.data.co2/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group  col-md-12">
+                    <div class="card">
+                      <div class="card-header">
+                        On-site Process Emissions Summary: [Equivalent kg CO2/d or kg CO2/m3]
+                      </div>
+                      <div class="card-body">
+                        <table class="table table-bordered">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Activated Sludge</th>
+                            <th>Aerobic Digester</th>
+                            <th>Anaerobic Digester</th>
+                            <th>Biosolids Disposal</th>
+                            <th>Biosolids Transportation</th>
+                            <th>Total</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>CO2 Emission</td>
+                            <td>{{(process.active_sludge.co2/unitDivider).toFixed(4)}}</td>
+                            <td>{{(process.aerobic.co2/unitDivider).toFixed(4)}}</td>
+                            <td>{{(process.anarobic.co2/unitDivider).toFixed(4)}}</td>
+                            <td>{{(this.process.disposal.co2/unitDivider).toFixed(4)}}</td>
+                            <td>{{(this.process.transporation.totalCo2/unitDivider).toFixed(4)}}</td>
+                            <td>{{((process.active_sludge.co2+process.aerobic.co2+process.anarobic.co2+this.process.disposal.co2+process.transporation.totalCo2)/unitDivider).toFixed(4)}}</td>
+                          </tr>
+                          <tr>
+                            <td>N2O Emission</td>
+                            <td>{{(process.active_sludge.no2/unitDivider).toFixed(4)}}</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>{{(process.active_sludge.no2/unitDivider).toFixed(4)}}</td>
+                          </tr>
+                          <tr>
+                            <td>CH4 Emission</td>
+                            <td>0</td>
+                            <td>{{(process.aerobic.ch4/unitDivider).toFixed(4)}}</td>
+                            <td>{{(process.anarobic.ch4/unitDivider).toFixed(4)}}</td>
+                            <td>{{(process.disposal.ch4/unitDivider).toFixed(4)}}</td>
+                            <td>0</td>
+                            <td>{{((process.aerobic.ch4+process.anarobic.ch4+this.process.disposal.ch4)/unitDivider).toFixed(4)}}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>{{(process.active_sludge.totalCo2/unitDivider).toFixed(4)}}</strong></td>
+                            <td><strong>{{(process.aerobic.totalCo2/unitDivider).toFixed(4)}}</strong></td>
+                            <td><strong>{{(process.anarobic.totalCo2/unitDivider).toFixed(4)}}</strong></td>
+                            <td><strong>{{(this.process.disposal.totalCo2/unitDivider).toFixed(4)}}</strong></td>
+                            <td><strong>{{(this.process.transporation.totalCo2/unitDivider).toFixed(4)}}</strong></td>
+                            <td><strong>{{((process.active_sludge.totalCo2+process.aerobic.totalCo2+process.anarobic.totalCo2+this.process.disposal.totalCo2+process.transporation.totalCo2)/unitDivider).toFixed(4)}}</strong></td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group row chart-align" *ngIf="isChart">
+                    <div class="col-md-11 row">
+                      <canvas style="background-color: beige" baseChart #baseChart="base-chart" class="chart"
+                              [datasets]="barChartData"
+                              [labels]="barChartLabels"
+                              [options]="barChartOptions"
+                              [colors]="barChart1Colours"
+                              [legend]="barChartLegend"
+                              [chartType]="barChartType"
+                              (chartHover)="chartHovered($event)"
+                              (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                  </div>
+                  <div class="form-group row chart-align" *ngIf="isChart">
+                    <div class="col-md-11 row">
+                      <canvas baseChart class="chart"
+                              [data]="pieChartData"
+                              [options]="pieChartOptions"
+                              [labels]="pieChartLabels"
+                              [legend]="pieChartLegend"
+                              [chartType]="pieChartType"
+                              (chartHover)="chartHovered($event)"
+                              (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="offset-lg-10 col-lg-2">
+          <button type="button" class="btn btn-block btn-success" (click)='save()'>submit</button>
+        </div>
+      </div>
+    </tab>
 
   </tabset>
   </form>
