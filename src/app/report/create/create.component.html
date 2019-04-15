@@ -1593,7 +1593,7 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-header">
-              Anarobic Digester
+              Anaerobic Digester
               <div class="card-header-actions">
                 <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
               </div>
@@ -2105,7 +2105,7 @@
                   <label class="col-md-12 col-form-label" ><strong>Calculation of Process Emissions of CO<sub>2</sub> & CH<sub>4</sub></strong></label>
                   <div class="row col-lg-6">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">CO2--CO2 Equivalent:</label>
+                      <label class="col-md-5 col-form-label" for="text-input">CO<sub>2</sub> Emissions: CO<sub>2</sub> Eq.:</label>
                       <div class="col-md-5">
                         <input type="number" id="disposalData_co2" name="disposalData_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="disposalData.co2" readonly>
                       </div>
@@ -2116,7 +2116,7 @@
                   </div>
                   <div class="row col-lg-6">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">CO<sub>2</sub> Emissions: CO<sub>2</sub> Eq.:</label>
+                      <label class="col-md-5 col-form-label" for="text-input">CO<sub>2</sub> Emissions: CH<sub>4</sub> Eq.:</label>
                       <div class="col-md-5">
                         <input type="number" id="disposalData_ch4" name="disposalData_ch4" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="disposalData.ch4" readonly>
                       </div>
@@ -2386,7 +2386,7 @@
                   <div class="form-group row" >
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input"><strong>Total Emissions: </strong></label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{((totalElecricalCo2+totalProcessCo2+totalChemicalCo2+totalDisposalCo2-totalEnergyCo2+totalTransportationCo2)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{((totalElecricalCo2+totalProcessCo2+totalChemicalCo2+totalDisposalCo2+totalEnergyCo2+totalTransportationCo2)/unitDivider).toFixed(4)}} <span class="ml-2 help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span> <span class="ml-2 help-block" *ngIf="!unit">kg CO<sub>2</sub>/m<sup>3</sup></span></label>
                     </div>
                   </div>
 
@@ -2485,6 +2485,57 @@
                     <div class="card">
                       <div class="card-header">
                         On-site Process Emissions Summary: [Equivalent kg CO2/d or kg CO2/m3]
+                      </div>
+                      <div class="card-body">
+                        <table class="table table-bordered">
+                          <thead>
+                          <tr>
+                            <th></th>
+                            <th>Activated Sludge</th>
+                            <th>Aerobic Digester</th>
+                            <th>Anaerobic Digester</th>
+                            <th>Total</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>CO2 Emission</td>
+                            <td>{{(process.active_sludge.co2/unitDivider).toFixed(4)}}</td>
+                            <td>{{(process.aerobic.co2/unitDivider).toFixed(4)}}</td>
+                            <td>{{(process.anarobic.co2/unitDivider).toFixed(4)}}</td>
+                            <td>{{((process.active_sludge.co2+process.aerobic.co2+process.anarobic.co2)/unitDivider).toFixed(4)}}</td>
+                          </tr>
+                          <tr>
+                            <td>N2O Emission</td>
+                            <td>{{(process.active_sludge.no2/unitDivider).toFixed(4)}}</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>{{(process.active_sludge.no2/unitDivider).toFixed(4)}}</td>
+                          </tr>
+                          <tr>
+                            <td>CH4 Emission</td>
+                            <td>0</td>
+                            <td>{{(process.aerobic.ch4/unitDivider).toFixed(4)}}</td>
+                            <td>{{(process.anarobic.ch4/unitDivider).toFixed(4)}}</td>
+                            <td>{{((process.aerobic.ch4+process.anarobic.ch4)/unitDivider).toFixed(4)}}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>{{(process.active_sludge.totalCo2/unitDivider).toFixed(4)}}</strong></td>
+                            <td><strong>{{(process.aerobic.totalCo2/unitDivider).toFixed(4)}}</strong></td>
+                            <td><strong>{{(process.anarobic.totalCo2/unitDivider).toFixed(4)}}</strong></td>
+                            <td><strong>{{((process.active_sludge.totalCo2+process.aerobic.totalCo2+process.anarobic.totalCo2)/unitDivider).toFixed(4)}}</strong></td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group  col-md-12">
+                    <div class="card">
+                      <div class="card-header">
+                        Total Process Emissions Summary: [Equivalent kg CO2/d or kg CO2/m3]
                       </div>
                       <div class="card-body">
                         <table class="table table-bordered">

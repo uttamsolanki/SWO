@@ -1516,8 +1516,8 @@
       "alpha": {
         "title":"Organic Carbon Converted to Methane",
         "unit": "%",
-        "default":67,
-        "suggested":67,
+        "default":55,
+        "suggested":55,
         "ref":{
 
         },

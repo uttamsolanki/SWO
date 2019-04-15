@@ -772,7 +772,7 @@ export class CreateComponent implements OnInit {
   calDisposalCo2() {
     const c1 = this.disposalData.Qin * this.process.disposal.CODin.default;
     const alpha = this.process.disposal.alpha.default / 100;
-    const calCo2 = (c1 / this.COD_TOC_PER_MOL) * (1 - alpha) * (44 / 100);
+    const calCo2 = (c1 / this.COD_TOC_PER_MOL) * (1 - alpha) * (44 / 1000);
     this.disposalData.co2 =  parseFloat(calCo2.toFixed(2));
 
     const calCh4 = (c1 / this.COD_TOC_PER_MOL) * alpha * (16 / 1000) * 23;
@@ -874,7 +874,7 @@ export class CreateComponent implements OnInit {
       this.barChartLabels.push(this.biosolid.aerobic.data.title);
       newData.push(this.biosolid.aerobic.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.biosolid.aerobic.data.co2);
-      this.totalProcessCo2 = this.totalProcessCo2 + this.aerobicData.totalCo2;
+      this.totalProcessCo2 = this.totalProcessCo2 + this.process.aerobic.totalCo2;
     }
     if (this.biosolid.thickener.sel_type !== '0') {
       this.barChartLabels.push(this.biosolid.thickener.data.title);
@@ -885,7 +885,7 @@ export class CreateComponent implements OnInit {
       this.barChartLabels.push(this.biosolid.anaerobic.data.title);
       newData.push(this.biosolid.anaerobic.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.biosolid.anaerobic.data.co2);
-      this.totalProcessCo2 = this.totalProcessCo2 + this.anarobicData.totalCo2;
+      this.totalProcessCo2 = this.totalProcessCo2 + this.process.anarobic.totalCo2;
     }
     if (this.dewatering.sel_type !== '0') {
       this.barChartLabels.push(this.dewatering.data.title);
