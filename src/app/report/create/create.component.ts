@@ -1137,10 +1137,11 @@ export class CreateComponent implements OnInit {
       projectData.project_id = this.id;
     }
 
-    console.log(projectData);
+    this.modelMsg = "Wait.....";
+    this.modal.show();
     const data = this.userService.saveProject(projectData).subscribe((rep: any) => {
       this.modelMsg = rep.message;
-      this.modal.show();
+     // this.modal.show();
     });
 
   }
