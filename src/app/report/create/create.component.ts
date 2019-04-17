@@ -658,6 +658,7 @@ export class CreateComponent implements OnInit {
     this.process.active_sludge.co2 = this.active_sludgeData.co2;
     this.process.active_sludge.no2 = this.active_sludgeData.no2;
     this.process.active_sludge.totalCo2 = this.active_sludgeData.totalCo2;
+    this.UpdateProcessValue();
   }
 
   selectPlantInflent(type) {
@@ -704,7 +705,7 @@ export class CreateComponent implements OnInit {
       this.process.aerobic.ch4 = 0;
       this.process.aerobic.totalCo2 = 0;
     }
-
+    this.UpdateProcessValue();
   }
   calAnarobicFlow() {
     if (this.process.anarobic.plantinfluent == '1') {
@@ -764,6 +765,7 @@ export class CreateComponent implements OnInit {
       this.process.anarobic.ch4 = 0;
       this.process.anarobic.totalCo2 = 0;
     }
+    this.UpdateProcessValue();
   }
   calDisposalFlow() {
     if (this.process.disposal.plantinfluent == '1') {
@@ -794,6 +796,7 @@ export class CreateComponent implements OnInit {
     this.process.disposal.co2 = this.disposalData.co2;
     this.process.disposal.ch4 = this.disposalData.ch4;
     this.process.disposal.totalCo2 =  this.disposalData.totalCo2;
+    this.UpdateProcessValue();
   }
   calTransporationFlow() {
     if (this.process.transporation.plantinfluent == '1') {
@@ -815,13 +818,32 @@ export class CreateComponent implements OnInit {
       const calCo2 = this.transporationData.Qin  * this.process.transporation.distance.default * this.gamma;
       this.process.transporation.totalCo2 = parseFloat(calCo2.toFixed(2));
     }
-
+  this.UpdateProcessValue();
   }
 
   // this.barChartLabels = [this.primary.pumping.title, this.primary.prili_treat.data.title, this.primary.prili_treat.data.title,
   //   this.secondary.data.title, this.secondary.sec_clr.title, this.tertiary.data.title, this.disinfection.data.title,
   //   this.biosolid.digester.data.title, this.biosolid.thickener.data.title, this.biosolid.dewatering.data.title];
 
+  UpdateProcessValue(){
+    this.totalOnSiteCo2 = 0;
+    this.totalTransportationCo2 = 0;
+    this.totalDisposalCo2 = 0;
+    if (this.biosolid.aerobic.sel_type !== '0') {
+      this.totalElecricalCo2 += JSON.parse(this.biosolid.aerobic.data.co2);
+      this.totalOnSiteCo2 = this.totalOnSiteCo2 + this.process.aerobic.totalCo2;
+    }
+
+    if (this.biosolid.anaerobic.sel_type !== '0') {
+      this.totalElecricalCo2 += JSON.parse(this.biosolid.anaerobic.data.co2);
+      this.totalOnSiteCo2 = this.totalOnSiteCo2 + this.process.anarobic.totalCo2;
+    }
+
+    this.totalOnSiteCo2 = this.totalOnSiteCo2  + this.active_sludgeData.totalCo2;
+    this.totalDisposalCo2 = this.totalDisposalCo2 + this.disposalData.totalCo2;
+    this.totalTransportationCo2 = this.totalTransportationCo2 + this.process.transporation.totalCo2;
+    this.SummaryReport();
+  }
   createChart() {
     this.calActiveFlow();
     this.calAerobicFlow();
@@ -899,7 +921,10 @@ export class CreateComponent implements OnInit {
       this.totalElecricalCo2 += JSON.parse(this.dewatering.data.co2);
     }
     if (this.biogas.sel_type === 'Energy Recovery') {
-      this.biogas.data.co2 = -this.biogas.data.co2;
+      if(this.biogas.data.co2<0)
+        this.biogas.data.co2 = this.biogas.data.co2;
+      else
+        this.biogas.data.co2 = -this.biogas.data.co2;
       this.totalEnergyCo2 = this.biogas.data.co2;
     }
 
@@ -1042,7 +1067,7 @@ export class CreateComponent implements OnInit {
     this.process.transporation.totalCo2  = parseFloat((this.process.transporation.totalCo2 / this.unitDivider).toFixed(2));
 
     this.totalProcessCo2 = parseFloat((this.process.active_sludge.totalCo2 + this.process.aerobic.totalCo2 + this.process.anarobic.totalCo2 + this.process.disposal.totalCo2 + this.process.transporation.totalCo2).toFixed(2));
-    console.log(this.totalProcessCo2);
+
   }
   // *************  Common Function  End *************//
 
