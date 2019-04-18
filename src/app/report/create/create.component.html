@@ -2342,21 +2342,21 @@
                   <div class="form-group row">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input">From Electricity Emissions:</label>
-                      <label class="col-md-3 col-form-label" for="text-input"> {{totalElecricalCo2}} </label>
+                      <label class="col-md-3 col-form-label" for="text-input"> {{ElecricalCo2}} </label>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input">From On-site Process Emissions:</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{totalOnSiteCo2}} </label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{OnSiteCo2}} </label>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input">From Chemical Usage:</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{totalChemicalCo2}} </label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{ChemicalCo2}} </label>
                     </div>
                   </div>
 
@@ -2364,14 +2364,14 @@
                   <div class="form-group row">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input">From Biosolids Disposal Emissions:</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{totalDisposalCo2}} </label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{DisposalCo2}} </label>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input">From Energy Recovery:</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{totalEnergyCo2}} </label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{EnergyCo2}} </label>
                     </div>
                   </div>
 
@@ -2379,14 +2379,14 @@
                   <div class="form-group row">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input">	From Biosolids Transportation:</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{totalTransportationCo2}} </label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{TransportationCo2}} </label>
                     </div>
                   </div>
 
                   <div class="form-group row" >
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input"><strong>Total Emissions: </strong></label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{totalEqCo2}} </label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{EqCo2}} </label>
                     </div>
                   </div>
 
@@ -2484,7 +2484,7 @@
                   <div class="form-group row" *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input"><strong>Total Electricity Emissions: </strong></label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(totalElecricalCo2+totalEnergyCo2).toFixed(2)}} </label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(ElecricalCo2+EnergyCo2).toFixed(2)}} </label>
                     </div>
                   </div>
 
@@ -2507,31 +2507,31 @@
                           <tbody>
                           <tr>
                             <td>CO2 Emission</td>
-                            <td>{{process.active_sludge.co2}}</td>
-                            <td>{{process.aerobic.co2}}</td>
-                            <td>{{process.anarobic.co2}}</td>
-                            <td>{{(process.active_sludge.co2+process.aerobic.co2+process.anarobic.co2).toFixed(2)}}</td>
+                            <td>{{active_sludgeco2}}</td>
+                            <td>{{aerobicco2}}</td>
+                            <td>{{anarobicco2}}</td>
+                            <td>{{(active_sludgeco2+aerobicco2+anarobicco2).toFixed(2)}}</td>
                           </tr>
                           <tr>
                             <td>N2O Emission</td>
-                            <td>{{process.active_sludge.no2}}</td>
+                            <td>{{active_sludgeno2}}</td>
                             <td>0</td>
                             <td>0</td>
-                            <td>{{process.active_sludge.no2}}</td>
+                            <td>{{active_sludgeno2}}</td>
                           </tr>
                           <tr>
                             <td>CH4 Emission</td>
                             <td>0</td>
-                            <td>{{process.aerobic.ch4}}</td>
-                            <td>{{process.anarobic.ch4}}</td>
-                            <td>{{(process.aerobic.ch4+process.anarobic.ch4).toFixed(2)}}</td>
+                            <td>{{aerobicch4}}</td>
+                            <td>{{anarobicch4}}</td>
+                            <td>{{(aerobicch4+anarobicch4).toFixed(2)}}</td>
                           </tr>
                           <tr>
                             <td><strong>Total</strong></td>
-                            <td><strong>{{process.active_sludge.totalCo2}}</strong></td>
-                            <td><strong>{{process.aerobic.totalCo2}}</strong></td>
-                            <td><strong>{{process.anarobic.totalCo2}}</strong></td>
-                            <td><strong>{{totalOnSiteCo2}}</strong></td>
+                            <td><strong>{{active_sludgetotalCo2}}</strong></td>
+                            <td><strong>{{aerobictotalCo2}}</strong></td>
+                            <td><strong>{{anarobictotalCo2}}</strong></td>
+                            <td><strong>{{OnSiteCo2}}</strong></td>
                           </tr>
                           </tbody>
                         </table>
@@ -2560,39 +2560,39 @@
                           <tbody>
                           <tr>
                             <td>CO2 Emission</td>
-                            <td>{{process.active_sludge.co2}}</td>
-                            <td>{{process.aerobic.co2}}</td>
-                            <td>{{process.anarobic.co2}}</td>
-                            <td>{{this.process.disposal.co2}}</td>
-                            <td>{{this.process.transporation.totalCo2}}</td>
-                            <td>{{(process.active_sludge.co2+process.aerobic.co2+process.anarobic.co2+this.process.disposal.co2+process.transporation.totalCo2).toFixed(2)}}</td>
+                            <td>{{active_sludgeco2}}</td>
+                            <td>{{aerobicco2}}</td>
+                            <td>{{anarobicco2}}</td>
+                            <td>{{disposalco2}}</td>
+                            <td>{{transporationtotalCo2}}</td>
+                            <td>{{(active_sludgeco2+aerobicco2+anarobicco2+disposalco2+transporationtotalCo2).toFixed(2)}}</td>
                           </tr>
                           <tr>
                             <td>N2O Emission</td>
-                            <td>{{process.active_sludge.no2}}</td>
+                            <td>{{active_sludgeno2}}</td>
                             <td>0</td>
                             <td>0</td>
                             <td>0</td>
                             <td>0</td>
-                            <td>{{process.active_sludge.no2}}</td>
+                            <td>{{active_sludgeno2}}</td>
                           </tr>
                           <tr>
                             <td>CH4 Emission</td>
                             <td>0</td>
-                            <td>{{process.aerobic.ch4}}</td>
-                            <td>{{process.anarobic.ch4}}</td>
-                            <td>{{process.disposal.ch4}}</td>
+                            <td>{{aerobicch4}}</td>
+                            <td>{{anarobicch4}}</td>
+                            <td>{{disposalch4}}</td>
                             <td>0</td>
-                            <td>{{(process.aerobic.ch4+process.anarobic.ch4+this.process.disposal.ch4).toFixed(2)}}</td>
+                            <td>{{(aerobicch4+anarobicch4+disposalch4).toFixed(2)}}</td>
                           </tr>
                           <tr>
                             <td><strong>Total</strong></td>
-                            <td><strong>{{process.active_sludge.totalCo2}}</strong></td>
-                            <td><strong>{{process.aerobic.totalCo2}}</strong></td>
-                            <td><strong>{{process.anarobic.totalCo2}}</strong></td>
-                            <td><strong>{{this.process.disposal.totalCo2}}</strong></td>
-                            <td><strong>{{process.transporation.totalCo2}}</strong></td>
-                            <td><strong>{{totalProcessCo2}}</strong></td>
+                            <td><strong>{{active_sludgetotalCo2}}</strong></td>
+                            <td><strong>{{aerobictotalCo2}}</strong></td>
+                            <td><strong>{{anarobictotalCo2}}</strong></td>
+                            <td><strong>{{disposaltotalCo2}}</strong></td>
+                            <td><strong>{{transporationtotalCo2}}</strong></td>
+                            <td><strong>{{ProcessCo2}}</strong></td>
                           </tr>
                           </tbody>
                         </table>

@@ -1309,6 +1309,9 @@
     },
     "aerobic": {
       "plantinfluent": "1",
+      "co2": 0,
+      "ch4": 0,
+      "totalCo2": 0,
       "FLOWin": {
         "title":"Sludge Volume as a % of Plant's Influent Flow",
         "unit":"%",
@@ -1379,6 +1382,9 @@
       "isOrganic": 1,
       "isBiosolids": 1,
       "isFlaring": 1,
+      "co2": 0,
+      "ch4": 0,
+      "totalCo2": 0,
       "FLOWin": {
         "title":"Sludge Volume as a % of Plant's Influent Flow",
         "unit": "%",

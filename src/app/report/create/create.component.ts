@@ -417,6 +417,33 @@ export class CreateComponent implements OnInit {
   unitDivider = 1;
   totalEqCo2 = 0;
   totalProcessCo2 = 0;
+
+  ElecricalCo2: any = 0;
+  OnSiteCo2: any = 0;
+  ChemicalCo2: any = 0;
+  DisposalCo2: any = 0;
+  EnergyCo2: any = 0;
+  TransportationCo2: any = 0;
+  EqCo2: any = 0
+
+  active_sludgeco2: any = 0;
+  aerobicco2: any = 0;
+  anarobicco2: any = 0;
+  disposalco2: any = 0;
+
+  active_sludgeno2: any = 0;
+
+  aerobicch4: any = 0;
+  anarobicch4: any = 0;
+  disposalch4: any = 0;
+
+  active_sludgetotalCo2: any = 0
+  aerobictotalCo2: any = 0;
+  anarobictotalCo2: any = 0;
+  disposaltotalCo2: any = 0;
+  transporationtotalCo2: any = 0;
+
+  ProcessCo2: any = 0;
   // *************  barChart Start *************//
 
   public barChart1Colours: Array<any> = [
@@ -765,6 +792,7 @@ export class CreateComponent implements OnInit {
       this.process.anarobic.ch4 = 0;
       this.process.anarobic.totalCo2 = 0;
     }
+
     this.UpdateProcessValue();
   }
   calDisposalFlow() {
@@ -838,7 +866,6 @@ export class CreateComponent implements OnInit {
       this.totalElecricalCo2 += JSON.parse(this.biosolid.anaerobic.data.co2);
       this.totalOnSiteCo2 = this.totalOnSiteCo2 + this.process.anarobic.totalCo2;
     }
-
     this.totalOnSiteCo2 = this.totalOnSiteCo2  + this.active_sludgeData.totalCo2;
     this.totalDisposalCo2 = this.totalDisposalCo2 + this.disposalData.totalCo2;
     this.totalTransportationCo2 = this.totalTransportationCo2 + this.process.transporation.totalCo2;
@@ -921,11 +948,13 @@ export class CreateComponent implements OnInit {
       this.totalElecricalCo2 += JSON.parse(this.dewatering.data.co2);
     }
     if (this.biogas.sel_type === 'Energy Recovery') {
+      this.barChartLabels.push(this.biogas.data.title);
       if(this.biogas.data.co2<0)
         this.biogas.data.co2 = this.biogas.data.co2;
       else
         this.biogas.data.co2 = -this.biogas.data.co2;
       this.totalEnergyCo2 = this.biogas.data.co2;
+      newData.push(this.totalEnergyCo2);
     }
 
     if (this.chemical.metal_salts.sel_type !== '0') {
@@ -1039,34 +1068,33 @@ export class CreateComponent implements OnInit {
   }
 
   SummaryReport() {
-    this.totalElecricalCo2 = parseFloat((this.totalElecricalCo2 / this.unitDivider).toFixed(2));
-    this.totalOnSiteCo2 = parseFloat((this.totalOnSiteCo2 / this.unitDivider).toFixed(2));
-    this.totalChemicalCo2 = parseFloat((this.totalChemicalCo2 / this.unitDivider).toFixed(2));
-    this.totalDisposalCo2 = parseFloat((this.totalDisposalCo2 / this.unitDivider).toFixed(2));
-    this.totalEnergyCo2 = parseFloat((this.totalEnergyCo2 / this.unitDivider).toFixed(2));
-    this.totalTransportationCo2 = parseFloat((this.totalTransportationCo2 / this.unitDivider).toFixed(2));
-    this.totalEqCo2  = parseFloat((this.totalElecricalCo2 + this.totalOnSiteCo2 + this.totalChemicalCo2 + this.totalDisposalCo2 + this.totalEnergyCo2 + this.totalTransportationCo2).toFixed(2));
+    this.ElecricalCo2 = parseFloat((this.totalElecricalCo2 / this.unitDivider).toFixed(2));
+    this.OnSiteCo2 = parseFloat((this.totalOnSiteCo2 / this.unitDivider).toFixed(2));
+    this.ChemicalCo2 = parseFloat((this.totalChemicalCo2 / this.unitDivider).toFixed(2));
+    this.DisposalCo2 = parseFloat((this.totalDisposalCo2 / this.unitDivider).toFixed(2));
+    this.EnergyCo2 = parseFloat((this.totalEnergyCo2 / this.unitDivider).toFixed(2));
+    this.TransportationCo2 = parseFloat((this.totalTransportationCo2 / this.unitDivider).toFixed(2));
+    this.EqCo2  = parseFloat((this.ElecricalCo2 + this.OnSiteCo2 + this.ChemicalCo2 + this.DisposalCo2 + this.EnergyCo2 + this.TransportationCo2).toFixed(2));
 
 
-    this.process.active_sludge.co2 = parseFloat((this.process.active_sludge.co2 / this.unitDivider).toFixed(2));
-    this.process.aerobic.co2 = parseFloat((this.process.aerobic.co2 / this.unitDivider).toFixed(2));
-    this.process.anarobic.co2 = parseFloat((this.process.anarobic.co2 / this.unitDivider).toFixed(2));
-    this.process.disposal.co2 = parseFloat((this.process.disposal.co2 / this.unitDivider).toFixed(2));
-    this.process.transporation.totalCo2 = parseFloat((this.process.transporation.totalCo2 / this.unitDivider).toFixed(2));
+    this.active_sludgeco2 = parseFloat((this.process.active_sludge.co2 / this.unitDivider).toFixed(2));
+    this.aerobicco2 = parseFloat((this.process.aerobic.co2 / this.unitDivider).toFixed(2));
+    this.anarobicco2 = parseFloat((this.process.anarobic.co2 / this.unitDivider).toFixed(2));
+    this.disposalco2 = parseFloat((this.process.disposal.co2 / this.unitDivider).toFixed(2));
 
-    this.process.active_sludge.no2 = parseFloat((this.process.active_sludge.no2 / this.unitDivider).toFixed(2));
+    this.active_sludgeno2 = parseFloat((this.process.active_sludge.no2 / this.unitDivider).toFixed(2));
 
-    this.process.aerobic.ch4 = parseFloat((this.process.aerobic.ch4 / this.unitDivider).toFixed(2));
-    this.process.anarobic.ch4 = parseFloat((this.process.anarobic.ch4 / this.unitDivider).toFixed(2));
-    this.process.disposal.ch4 = parseFloat((this.process.disposal.ch4 / this.unitDivider).toFixed(2));
+    this.aerobicch4 = parseFloat((this.process.aerobic.ch4 / this.unitDivider).toFixed(2));
+    this.anarobicch4 = parseFloat((this.process.anarobic.ch4 / this.unitDivider).toFixed(2));
+    this.disposalch4 = parseFloat((this.process.disposal.ch4 / this.unitDivider).toFixed(2));
 
-    this.process.active_sludge.totalCo2 = parseFloat((this.process.active_sludge.totalCo2 / this.unitDivider).toFixed(2));
-    this.process.aerobic.totalCo2 = parseFloat((this.process.aerobic.totalCo2 / this.unitDivider).toFixed(2));
-    this.process.anarobic.totalCo2 = parseFloat((this.process.anarobic.totalCo2 / this.unitDivider).toFixed(2));
-    this.process.disposal.totalCo2 = parseFloat((this.process.disposal.totalCo2 / this.unitDivider).toFixed(2));
-    this.process.transporation.totalCo2  = parseFloat((this.process.transporation.totalCo2 / this.unitDivider).toFixed(2));
+    this.active_sludgetotalCo2 = parseFloat((this.process.active_sludge.totalCo2 / this.unitDivider).toFixed(2));
+    this.aerobictotalCo2 = parseFloat((this.process.aerobic.totalCo2 / this.unitDivider).toFixed(2));
+    this.anarobictotalCo2 = parseFloat((this.process.anarobic.totalCo2 / this.unitDivider).toFixed(2));
+    this.disposaltotalCo2 = parseFloat((this.process.disposal.totalCo2 / this.unitDivider).toFixed(2));
+    this.transporationtotalCo2  = parseFloat((this.process.transporation.totalCo2 / this.unitDivider).toFixed(2));
 
-    this.totalProcessCo2 = parseFloat((this.process.active_sludge.totalCo2 + this.process.aerobic.totalCo2 + this.process.anarobic.totalCo2 + this.process.disposal.totalCo2 + this.process.transporation.totalCo2).toFixed(2));
+    this.ProcessCo2 = parseFloat((this.active_sludgetotalCo2 + this.aerobictotalCo2 + this.anarobictotalCo2 + this.disposaltotalCo2 + this.transporationtotalCo2).toFixed(2));
 
   }
   // *************  Common Function  End *************//
