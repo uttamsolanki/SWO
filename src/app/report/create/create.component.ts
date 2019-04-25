@@ -957,6 +957,13 @@ export class CreateComponent implements OnInit {
       newData.push(this.totalEnergyCo2);
     }
 
+    if (this.biogas.sel_type === 'Flaring') {
+      this.process.anarobic.isFlaring = 1;
+    }
+    else{
+      this.process.anarobic.isFlaring = 0;
+    }
+
     if (this.chemical.metal_salts.sel_type !== '0') {
       this.totalChemicalCo2 += JSON.parse(this.chemical.metal_salts.data.co2);
     }

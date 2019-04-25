@@ -697,7 +697,7 @@
                     <label class="col-md-5 col-form-label" for="anaerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="thickener_rate" name="thickener_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.thickener.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="biosolid.thickener.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.thickener.suggested}}</span>
+                      <span *ngIf="biosolid.thickener.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.thickener.data.suggested}}</span>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
@@ -757,7 +757,7 @@
                     <label class="col-md-5 col-form-label" for="anaerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="anaerobic_rate" name="anaerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.anaerobic.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="biosolid.anaerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.anaerobic.suggested}}</span>
+                      <span *ngIf="biosolid.anaerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.anaerobic.data.suggested}}</span>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
@@ -1238,6 +1238,47 @@
                   </div>
                 </accordion-group>
                 </accordion>
+                <div class="row">
+                  <div class="col-sm-6 col-lg-3" *ngIf="chemical.metal_salts.sel_type != '0' ">
+                    <div class="brand-card">
+                      <div class="brand-card-header bg-header-chemical brand-card-header-ct">
+                        Metal Salts for Phosphorus Removal
+                      </div>
+                      <div class="brand-card-body bg-header-selected">
+                        <div>
+                          {{chemical.metal_salts.sel_type}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6 col-lg-3" *ngIf="chemical.chlorination.sel_type != '0' ">
+                    <div class="brand-card">
+                      <div class="brand-card-header bg-header-chemical brand-card-header-ct">
+                        Chlorine for Disinfection
+                      </div>
+                      <div class="brand-card-body bg-header-selected">
+                        <div>
+                          {{chemical.chlorination.sel_type}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6 col-lg-3" *ngIf="chemical.dechlorination.sel_type != '0' ">
+                    <div class="brand-card">
+                      <div class="brand-card-header bg-header-chemical brand-card-header-ct">
+                        Dechlorination Chemicals
+                      </div>
+                      <div class="brand-card-body bg-header-selected">
+                        <div>
+                          {{chemical.dechlorination.sel_type}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
             </form>
           </div>
         </div>
@@ -1693,7 +1734,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">External Biosolids Flow Rate:</label>
                       <div class="col-md-5">
-                        <input type="number" id="biosolids_flow"  name="biosolids_flow" [(ngModel)]="process.biosolids.flow" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
+                        <input type="number" id="biosolids_flow"  name="biosolids_flow" [(ngModel)]="process.biosolids.flow" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()" [class.readonlyValue]="process.anarobic.isBiosolids=='0'" [readonly]="process.anarobic.isBiosolids=='0'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -1704,7 +1745,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">External Biosolids COD:</label>
                       <div class="col-md-5">
-                        <input type="number" id="biosolids_COD"  name="biosolids_COD" [(ngModel)]="process.biosolids.COD" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
+                        <input type="number" id="biosolids_COD"  name="biosolids_COD" [(ngModel)]="process.biosolids.COD" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()" [class.readonlyValue]="process.anarobic.isBiosolids=='0'" [readonly]="process.anarobic.isBiosolids=='0'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">mg/L</span>
@@ -1718,7 +1759,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">External Organics Flow Rate:</label>
                       <div class="col-md-5">
-                        <input type="number" id="organics_flow"  name="organics_flow" [(ngModel)]="process.organics.flow" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
+                        <input type="number" id="organics_flow"  name="organics_flow" [(ngModel)]="process.organics.flow" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()" [class.readonlyValue]="process.anarobic.isOrganic=='0'" [readonly]="process.anarobic.isOrganic=='0'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -1729,7 +1770,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">External Organics COD:</label>
                       <div class="col-md-5">
-                        <input type="text" id="biosolids_COD"  name="organics_COD" [(ngModel)]="process.organics.COD" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
+                        <input type="text" id="biosolids_COD"  name="organics_COD" [(ngModel)]="process.organics.COD" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()" [class.readonlyValue]="process.anarobic.isOrganic=='0'" [readonly]="process.anarobic.isOrganic=='0'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">mg/L</span>
@@ -2012,7 +2053,7 @@
           </div>
         </div>
       </div>
-      <div class="row" *ngIf="biosolids_disposals.disposal.sel_type=='Landfill without Methane Recovery'">
+      <div class="row" *ngIf="biosolids_disposals.disposal.sel_type!='0'">
         <div class="col-lg-12">
           <div class="card">
             <div class="card-header">
@@ -2024,7 +2065,7 @@
             <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
                 <div class="form-group row">
-                  <label class="col-md-12 col-form-label" ><strong> Node A - Flow Rate of Dewatered Sludge to Landfill without Methane Recovery</strong></label>
+                  <label class="col-md-12 col-form-label" ><strong> Node A - Flow Rate of Dewatered Sludge to {{biosolids_disposals.disposal.sel_type}}</strong></label>
                   <div class="row col-lg-8 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate Sludge Flow Rate Based on % of Plant Influent?</label>

@@ -654,10 +654,10 @@
       },
       "co2": ""
     },
-    {
+      {
       "title":"User Specified",
-      "default":0.1901,
-      "suggested":0.1901,
+      "default":0,
+      "suggested":null,
       "ref":{
         "6":"value"
       },
@@ -692,8 +692,8 @@
     },
     {
       "title":"User Specified",
-      "default":0.1901,
-      "suggested":0.1901,
+      "default":0,
+      "suggested":null,
       "ref":{
         "6":"value"
       },
@@ -758,8 +758,8 @@
       },
       {
         "title":"User Specified",
-        "default":0.1901,
-        "suggested":0.1901,
+        "default":0,
+        "suggested":null,
         "ref":{
           "6":"value"
         },
@@ -778,6 +778,7 @@
     {
       "title":"Energy Recovery",
       "default":0.11575,
+      "suggested": 0.11575,
       "ref":{
         "*":"value"
       },
@@ -792,6 +793,7 @@
     {
       "title":"Flaring",
       "default":null,
+      "suggested": null,
       "ref":{
         "*":"value"
       },
@@ -806,7 +808,7 @@
     {
       "title":"User Specified",
       "default":0,
-      "suggested":0,
+      "suggested":null,
       "ref":{
         "6":"value"
       },
@@ -1379,9 +1381,9 @@
     },
     "anarobic": {
       "plantinfluent":"1",
-      "isOrganic": 1,
-      "isBiosolids": 1,
-      "isFlaring": 1,
+      "isOrganic": 0,
+      "isBiosolids": 0,
+      "isFlaring": 0,
       "co2": 0,
       "ch4": 0,
       "totalCo2": 0,
