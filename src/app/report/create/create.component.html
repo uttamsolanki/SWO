@@ -2623,6 +2623,37 @@
                             <td><strong>{{anarobictotalCo2}}</strong></td>
                             <td><strong>{{OnSiteCo2}}</strong></td>
                           </tr>
+                          <tr>
+                            <td colspan="5"></td>
+                          </tr>
+                          <tr>
+                            <td>CO2, %</td>
+                            <td>{{(active_sludgeco2/OnSiteCo2*100).toFixed(2)}}%</td>
+                            <td>{{(aerobicco2/OnSiteCo2*100).toFixed(2)}}%</td>
+                            <td>{{(anarobicco2/OnSiteCo2*100).toFixed(2)}}%</td>
+                            <td>{{((active_sludgeco2+aerobicco2+anarobicco2)/OnSiteCo2*100).toFixed(2)}}%</td>
+                          </tr>
+                          <tr>
+                            <td>N2O, %</td>
+                            <td>{{(active_sludgeno2/OnSiteCo2*100).toFixed(2)}}%</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>{{(active_sludgeno2/OnSiteCo2*100).toFixed(2)}}%</td>
+                          </tr>
+                          <tr>
+                            <td>CH4, %</td>
+                            <td>0</td>
+                            <td>{{(aerobicch4/OnSiteCo2*100).toFixed(2)}}%</td>
+                            <td>{{(anarobicch4/OnSiteCo2*100).toFixed(2)}}%</td>
+                            <td>{{((aerobicch4+anarobicch4)/OnSiteCo2*100).toFixed(2)}}%</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>{{(active_sludgetotalCo2/OnSiteCo2*100).toFixed(2)}}%</strong></td>
+                            <td><strong>{{(aerobictotalCo2/OnSiteCo2*100).toFixed(2)}}%</strong></td>
+                            <td><strong>{{(anarobictotalCo2/OnSiteCo2*100).toFixed(2)}}%</strong></td>
+                            <td><strong>{{(OnSiteCo2/OnSiteCo2*100).toFixed(2)}}%</strong></td>
+                          </tr>
                           </tbody>
                         </table>
                       </div>
@@ -2683,6 +2714,45 @@
                             <td><strong>{{disposaltotalCo2}}</strong></td>
                             <td><strong>{{transporationtotalCo2}}</strong></td>
                             <td><strong>{{ProcessCo2}}</strong></td>
+                          </tr>
+                          <tr>
+                            <td colspan="5"></td>
+                          </tr>
+                          <tr>
+                            <td>CO2, %</td>
+                            <td>{{(active_sludgeco2/ProcessCo2*100).toFixed(2)}}%</td>
+                            <td>{{(aerobicco2/ProcessCo2*100).toFixed(2)}}%</td>
+                            <td>{{(anarobicco2/ProcessCo2*100).toFixed(2)}}%</td>
+                            <td>{{(disposalco2/ProcessCo2*100).toFixed(2)}}%</td>
+                            <td>{{(transporationtotalCo2/ProcessCo2*100).toFixed(2)}}%</td>
+                            <td>{{((active_sludgeco2+aerobicco2+anarobicco2+disposalco2+transporationtotalCo2)/ProcessCo2*100).toFixed(2)}}%</td>
+                          </tr>
+                          <tr>
+                            <td>N2O, %</td>
+                            <td>{{(active_sludgeno2/ProcessCo2*100).toFixed(2)}}%</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>{{(active_sludgeno2/ProcessCo2*100).toFixed(2)}}%</td>
+                          </tr>
+                          <tr>
+                            <td>CH4, %</td>
+                            <td>0</td>
+                            <td>{{(aerobicch4/ProcessCo2*100).toFixed(2)}}%</td>
+                            <td>{{(anarobicch4/ProcessCo2*100).toFixed(2)}}%</td>
+                            <td>{{(disposalch4/ProcessCo2*100).toFixed(2)}}%</td>
+                            <td>0</td>
+                            <td>{{((aerobicch4+anarobicch4+disposalch4)/ProcessCo2*100).toFixed(2)}}%</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Total, %</strong></td>
+                            <td><strong>{{(active_sludgetotalCo2/ProcessCo2*100).toFixed(2)}}%</strong></td>
+                            <td><strong>{{(aerobictotalCo2/ProcessCo2*100).toFixed(2)}}%</strong></td>
+                            <td><strong>{{(anarobictotalCo2/ProcessCo2*100).toFixed(2)}}%</strong></td>
+                            <td><strong>{{(disposaltotalCo2/ProcessCo2*100).toFixed(2)}}%</strong></td>
+                            <td><strong>{{(transporationtotalCo2/ProcessCo2*100).toFixed(2)}}%</strong></td>
+                            <td><strong>{{(ProcessCo2/ProcessCo2*100).toFixed(2)}}%</strong></td>
                           </tr>
                           </tbody>
                         </table>
