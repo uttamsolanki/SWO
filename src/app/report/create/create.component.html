@@ -2418,14 +2418,14 @@
 
                   <div class="form-group row">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">Energy Recovery Credit(From WWTP):</label>
+                      <label class="col-md-4 col-form-label " for="text-input">Energy Recovery Credit (From WWTP):</label>
                       <label class="col-md-3 col-form-label" for="text-input">{{EnergyCo2}} </label>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">Energy Recovery Credit(From external sources):</label>
+                      <label class="col-md-4 col-form-label " for="text-input">Energy Recovery Credit (From external sources):</label>
                       <label class="col-md-3 col-form-label" for="text-input">?</label>
                     </div>
                   </div>
@@ -2596,21 +2596,21 @@
                           </thead>
                           <tbody>
                           <tr>
-                            <td>CO2 Emission</td>
+                            <td>CO<sub>2</sub> Emission</td>
                             <td>{{active_sludgeco2}}</td>
                             <td>{{aerobicco2}}</td>
                             <td>{{anarobicco2}}</td>
                             <td>{{(active_sludgeco2+aerobicco2+anarobicco2).toFixed(2)}}</td>
                           </tr>
                           <tr>
-                            <td>N2O Emission</td>
+                            <td>N<sub>2</sub>O Emission</td>
                             <td>{{active_sludgeno2}}</td>
                             <td>0</td>
                             <td>0</td>
                             <td>{{active_sludgeno2}}</td>
                           </tr>
                           <tr>
-                            <td>CH4 Emission</td>
+                            <td>CH<sub>4</sub> Emission</td>
                             <td>0</td>
                             <td>{{aerobicch4}}</td>
                             <td>{{anarobicch4}}</td>
@@ -2627,21 +2627,21 @@
                             <td colspan="5"></td>
                           </tr>
                           <tr>
-                            <td>CO2, %</td>
+                            <td>CO<sub>2</sub>, %</td>
                             <td>{{(active_sludgeco2/OnSiteCo2*100).toFixed(2)}}%</td>
                             <td>{{(aerobicco2/OnSiteCo2*100).toFixed(2)}}%</td>
                             <td>{{(anarobicco2/OnSiteCo2*100).toFixed(2)}}%</td>
                             <td>{{((active_sludgeco2+aerobicco2+anarobicco2)/OnSiteCo2*100).toFixed(2)}}%</td>
                           </tr>
                           <tr>
-                            <td>N2O, %</td>
+                            <td>N<sub>2</sub>O, %</td>
                             <td>{{(active_sludgeno2/OnSiteCo2*100).toFixed(2)}}%</td>
                             <td>0</td>
                             <td>0</td>
                             <td>{{(active_sludgeno2/OnSiteCo2*100).toFixed(2)}}%</td>
                           </tr>
                           <tr>
-                            <td>CH4, %</td>
+                            <td>CH<sub>4</sub>, %</td>
                             <td>0</td>
                             <td>{{(aerobicch4/OnSiteCo2*100).toFixed(2)}}%</td>
                             <td>{{(anarobicch4/OnSiteCo2*100).toFixed(2)}}%</td>
@@ -2680,7 +2680,7 @@
                           </thead>
                           <tbody>
                           <tr>
-                            <td>CO2 Emission</td>
+                            <td>CO<sub>2</sub> Emission</td>
                             <td>{{active_sludgeco2}}</td>
                             <td>{{aerobicco2}}</td>
                             <td>{{anarobicco2}}</td>
@@ -2689,7 +2689,7 @@
                             <td>{{(active_sludgeco2+aerobicco2+anarobicco2+disposalco2+transporationtotalCo2).toFixed(2)}}</td>
                           </tr>
                           <tr>
-                            <td>N2O Emission</td>
+                            <td>N<sub>2</sub>O Emission</td>
                             <td>{{active_sludgeno2}}</td>
                             <td>0</td>
                             <td>0</td>
@@ -2698,7 +2698,7 @@
                             <td>{{active_sludgeno2}}</td>
                           </tr>
                           <tr>
-                            <td>CH4 Emission</td>
+                            <td>CH<sub>4</sub> Emission</td>
                             <td>0</td>
                             <td>{{aerobicch4}}</td>
                             <td>{{anarobicch4}}</td>
@@ -2719,7 +2719,7 @@
                             <td colspan="5"></td>
                           </tr>
                           <tr>
-                            <td>CO2, %</td>
+                            <td>CO<sub>2</sub>, %</td>
                             <td>{{(active_sludgeco2/ProcessCo2*100).toFixed(2)}}%</td>
                             <td>{{(aerobicco2/ProcessCo2*100).toFixed(2)}}%</td>
                             <td>{{(anarobicco2/ProcessCo2*100).toFixed(2)}}%</td>
@@ -2728,7 +2728,7 @@
                             <td>{{((active_sludgeco2+aerobicco2+anarobicco2+disposalco2+transporationtotalCo2)/ProcessCo2*100).toFixed(2)}}%</td>
                           </tr>
                           <tr>
-                            <td>N2O, %</td>
+                            <td>N<sub>2</sub>O, %</td>
                             <td>{{(active_sludgeno2/ProcessCo2*100).toFixed(2)}}%</td>
                             <td>0</td>
                             <td>0</td>
@@ -2737,7 +2737,7 @@
                             <td>{{(active_sludgeno2/ProcessCo2*100).toFixed(2)}}%</td>
                           </tr>
                           <tr>
-                            <td>CH4, %</td>
+                            <td>CH<sub>4</sub>, %</td>
                             <td>0</td>
                             <td>{{(aerobicch4/ProcessCo2*100).toFixed(2)}}%</td>
                             <td>{{(anarobicch4/ProcessCo2*100).toFixed(2)}}%</td>
