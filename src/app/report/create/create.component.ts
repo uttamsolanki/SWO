@@ -988,7 +988,7 @@ export class CreateComponent implements OnInit {
       {data: newData, label: 'CO2 Equivalent from Electricity Emissions'}
     ];
     this.pieChartLabels = ['Electricity', 'Chemicals', 'Transportation', 'On-site Emissions Processes', 'Biosolids Disposal'];
-    this.pieChartData = [this.totalElecricalCo2 , this.totalChemicalCo2, this.totalTransportationCo2, this.totalOnSiteCo2, this.totalDisposalCo2];
+    this.pieChartData = [this.totalElecricalCo2.toFixed(2) , this.totalChemicalCo2, this.totalTransportationCo2, this.totalOnSiteCo2, this.totalDisposalCo2];
     this.chart.datasets = this.barChartData;
     this.chart.labels = this.barChartLabels;
     this.chart.ngOnInit();
