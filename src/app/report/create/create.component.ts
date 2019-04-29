@@ -113,6 +113,10 @@ export class CreateComponent implements OnInit {
       sel_type: '0',
       data: {title: null, default: null, co2: null, suggested: null, co2_eq: 0},
     },
+    chlorine: {
+      sel_type: '0',
+      data: {title: null, default: null, co2: null, suggested: null, co2_eq: 0},
+    }
   };
   defaulValaue = {
     sel_type: '0',
@@ -400,6 +404,7 @@ export class CreateComponent implements OnInit {
   metal_salts_type: any;
   chlorination_type: any;
   dechlorination_type: any;
+  chlorine_type:any
   isCollapsed = false;
   isChart = false;
   iconCollapse = 'icon-arrow-up';
@@ -610,17 +615,19 @@ export class CreateComponent implements OnInit {
     this.metal_salts_type = chemical.metal_salts;
     this.chlorination_type = chemical.chlorination;
     this.dechlorination_type = chemical.dechlorination;
+    this.chlorine_type = chemical.Chlorine;
   }
   processData(processData) {
+    console.log()
     this.process.aerobic = processData.aerobic;
     this.process.anarobic = processData.anarobic;
     this.process.active_sludge = processData.active_sludge;
     this.process.disposal = processData.disposal;
     this.process.transporation = processData.transporation;
     this.active_sludgeData.Qin = this.size.data.default;
-    if (this.process.anarobic.Qin) {
-      this.active_sludgeData.Qin = this.process.anarobic.Qin;
-    }
+    // if (this.process.anarobic.Qin) {
+    //   this.active_sludgeData.Qin = this.process.anarobic.Qin;
+    // }
   }
   updateWWTPsize() {
     // console.log(this.size.sel_size);
@@ -659,10 +666,13 @@ export class CreateComponent implements OnInit {
     this.ChemicalCo2Calcaltion(this.chemical.metal_salts.data);
     this.ChemicalCo2Calcaltion(this.chemical.chlorination.data);
     this.ChemicalCo2Calcaltion(this.chemical.dechlorination.data);
+    this.ChemicalCo2Calcaltion(this.chemical.chlorine.data);
     this.active_sludgeData.Qin = this.size.data.default;
-    if (this.process.anarobic.Qin) {
-      this.active_sludgeData.Qin = this.process.anarobic.Qin;
-    }
+
+    // if (this.process.anarobic.Qin) {
+    //   this.active_sludgeData.Qin = this.process.anarobic.Qin;
+    // }
+
     this.createChart();
   }
 
@@ -973,7 +983,9 @@ export class CreateComponent implements OnInit {
     if (this.chemical.dechlorination.sel_type !== '0') {
       this.totalChemicalCo2 += JSON.parse(this.chemical.dechlorination.data.co2);
     }
-
+    if (this.chemical.chlorine.sel_type !== '0') {
+      this.totalChemicalCo2 += JSON.parse(this.chemical.chlorine.data.co2);
+    }
     this.totalOnSiteCo2 = this.totalOnSiteCo2  + this.active_sludgeData.totalCo2;
     this.totalDisposalCo2 = this.totalDisposalCo2 + this.disposalData.totalCo2;
     this.totalTransportationCo2 = this.totalTransportationCo2 + this.process.transporation.totalCo2;

@@ -64,23 +64,33 @@
               <div class="row">
                 <div class="col-lg-{{noOfcolumn}}">
                   <div class="form-group row">
-                    <label class="col-md-12 col-form-label">Electrical Emissions</label>
+                    <label class="col-md-12 col-form-label">Electricity Emissions</label>
                     <label class="col-md-12 col-form-label">On-site Process Emissions</label>
-                    <label class="col-md-12 col-form-label">Biosolids Disposal Emissions</label>
-                    <label class="col-md-12 col-form-label">Energy Recovery</label>
                     <label class="col-md-12 col-form-label">Chemical Usage</label>
-                    <label class="col-md-12 col-form-label">Transportation</label>
+                    <label class="col-md-12 col-form-label">Biosolids Transportation</label>
+                    <label class="col-md-12 col-form-label text-align-right"><strong>Sub Total Prior to Energy Recovery:</strong></label>
+
+                    <label class="col-md-12 col-form-label">Energy Recovery Credit (From WWTP)</label>
+                    <label class="col-md-12 col-form-label">Energy Recovery Credit (From external sources)</label>
+                    <label class="col-md-12 col-form-label text-align-right"><strong>Net Emissions prior to Biosolids Disposal:</strong></label>
+                    <label class="col-md-12 col-form-label">Biosolids Disposal Emissions</label>
+                    <label class="col-md-12 col-form-label text-align-right"><strong>Total Emissions including Biosolids Disposal: </strong></label>
+                    <!--<label class="col-md-12 col-form-label"><strong>Electricity Emissions Summary: </strong></label>-->
                   </div>
                 </div>
                 <ng-container *ngFor="let sc of scenarios;let i = index;">
                 <div class="col-lg-{{noOfcolumn}}" *ngIf="selectScenario[sc.id]">
                   <div class="form-group row" >
                     <label class="col-md-12 col-form-label">{{sc.electical.toFixed(1)}}</label>
-                    <label class="col-md-12 col-form-label">{{sc.process.toFixed(1)}}</label>
-                    <label class="col-md-12 col-form-label">{{sc.disposal.toFixed(1)}}</label>
-                    <label class="col-md-12 col-form-label">{{sc.energy.toFixed(1)}}</label>
+                    <label class="col-md-12 col-form-label">{{sc.OnProcess.toFixed(1)}}</label>
                     <label class="col-md-12 col-form-label">{{sc.chemical.toFixed(1)}}</label>
                     <label class="col-md-12 col-form-label">{{sc.transporation.toFixed(1)}}</label>
+                    <label class="col-md-12 col-form-label">{{sc.priorElectrical}}</label>
+                    <label class="col-md-12 col-form-label">{{sc.energy.toFixed(1)}}</label>
+                    <label class="col-md-12 col-form-label">?</label>
+                    <label class="col-md-12 col-form-label">{{sc.priorBiosolid}}</label>
+                    <label class="col-md-12 col-form-label">{{sc.disposal.toFixed(1)}}</label>
+                    <label class="col-md-12 col-form-label">{{sc.process.toFixed(1)}}</label>
 
                   </div>
                 </div>

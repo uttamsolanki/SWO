@@ -1237,6 +1237,21 @@
                       </div>
                   </div>
                 </accordion-group>
+                  <accordion-group heading="Chlorine for Process">
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label" for="inline-radios_chlorine">Please Select Chemicals</label>
+                      <div class="col-md-9 col-form-label" id="inline-radios_chlorine">
+                        <div class="form-check form-check-inline mr-1">
+                          <input class="form-check-input m-2" type="radio" name="chlorine_0" id="chlorine_0" value="0" [(ngModel)]="chemical.chlorine.sel_type" (change)="selectTreatmentType('chemical','chlorine',chlorine_type)">
+                          <label class="form-check-label" for="Chlorine_0">None</label>
+                        </div>
+                        <div class="form-check form-check-inline mr-1"  *ngFor="let type of chlorine_type">
+                          <input class="form-check-input m-2" type="radio" name="chlorine_{{type.title}}" id="chlorine_{{type.title}}" value="{{type.title}}" [(ngModel)]="chemical.chlorine.sel_type" (change)="selectTreatmentType('chemical','chlorine',chlorine_type)">
+                          <label class="form-check-label" for="chlorine_{{type.title}}">{{type.title}}</label>
+                        </div>
+                      </div>
+                    </div>
+                  </accordion-group>
                 </accordion>
                 <div class="row">
                   <div class="col-sm-6 col-lg-3" *ngIf="chemical.metal_salts.sel_type != '0' ">
@@ -1293,7 +1308,7 @@
           </div>
           <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
 
-            <div class="form-group row" *ngIf="chemical.metal_salts.sel_type == '0' && chemical.chlorination.sel_type == '0' && chemical.dechlorination.sel_type == '0' ">
+            <div class="form-group row" *ngIf="chemical.metal_salts.sel_type == '0' && chemical.chlorination.sel_type == '0' && chemical.dechlorination.sel_type == '0' && chemical.chlorine.sel_type == '0' ">
               <p class="msg-text-center">Please Select Chemicals.</p>
             </div>
 
@@ -1379,6 +1394,34 @@
                   <label class="col-md-5 col-form-label" for="dechlorination_co2">CO2 Equivalent:</label>
                   <div class="col-md-5">
                     <input type="text" id="dechlorination_co2" name="dechlorination_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="chemical.dechlorination.data.co2" readonly>
+                  </div>
+                  <div class="col-md-2 p-0">
+                    <span class="help-block">kg CO2/d</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row" *ngIf="chemical.chlorine.sel_type!='0'">
+                <label class="col-md-12 col-form-label" for="text-input"><strong>Chlorine for Process</strong></label>
+                <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{chemical.chlorine.sel_type}}</p></label>
+                <div class="offset-md-1 col-md-11 row">
+                  <label class="col-md-5 col-form-label" for="chlorine_rate">Actual Dosage Rate:</label>
+                  <div class="col-md-5">
+                    <input type="text" id="chlorine_rate" name="metalsalts_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.chlorine.data.default" (ngModelChange)="updateWWTPsize()">
+                  </div>
+                  <div class="col-md-2 p-0">
+                    <span class="help-block">g/m<sup>3</sup></span>
+                  </div>
+
+                </div>
+              </div>
+              <div class="form-group row" *ngIf="chemical.chlorine.sel_type!='0'">
+                <label class="col-md-12 col-form-label" for="text-input"></label>
+                <div class="offset-md-1 col-md-11 row">
+
+                  <label class="col-md-5 col-form-label" for="chlorine_co2">CO2 Equivalent:</label>
+                  <div class="col-md-5">
+                    <input type="text" id="chlorine_co2" name="chlorine_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="chemical.chlorine.data.co2" readonly>
                   </div>
                   <div class="col-md-2 p-0">
                     <span class="help-block">kg CO2/d</span>
@@ -1663,7 +1706,7 @@
                   <div class="row col-lg-6 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Is the Biogas Flared?</label>
-                      <select class="form-control col-md-2" if="isFlaring" name="isFlaring" (change)="calAnarobicFlow()" [(ngModel)]="process.anarobic.isFlaring">
+                      <select class="form-control col-md-2" if="isFlaring" name="isFlaring" (change)="calAnarobicFlow()" [(ngModel)]="process.anarobic.isFlaring" [disabled]="process.anarobic.isFlaring=='1'">
                         <option value=1>Yes</option>
                         <option value=0>No</option>
                       </select>

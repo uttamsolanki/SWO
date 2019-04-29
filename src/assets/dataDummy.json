@@ -1144,7 +1144,40 @@
         },
         "co2_eq":0.683
       }
-    ]
+    ],
+    "Chlorine": [
+      {
+        "title":"Sodium Hypochlorite(15%)",
+        "default":0,
+        "suggested": null,
+        "ref":{
+
+        },
+        "range":{
+          "min":5,
+          "max":20,
+          "ref":{
+
+          }
+        },
+        "co2_eq":0.92
+      },
+      {
+        "title":"Liquified Chlorine Gas",
+        "default":0,
+        "suggested": null,
+        "ref":{
+
+        },
+        "range":{
+          "min":5,
+          "max":20,
+          "ref":{
+
+          }
+        },
+        "co2_eq":0.744
+      }]
   },
   "process": {
     "active_sludge": {

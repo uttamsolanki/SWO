@@ -133,8 +133,18 @@ export class ViewComponent implements OnInit {
   }
 
   createChart(id){
-   let graphData = {electical:0, process: 0, disposal: 0, energy: 0, chemical: 0, transporation: 0,id:0};
-    //this.isChart=true;
+    console.log(this.chemical);
+   let graphData = {electical:0, OnProcess: 0, process: 0, disposal: 0, energy: 0, chemical: 0, transporation: 0, priorElectrical:0, priorBiosolid:0,id:0};
+   // let selectedOption={
+   //   pumping:'-',
+   //   pri_treat:'-',
+   //   prili_treat:'-',
+   //   secondary:'-',
+   //   sec_clr:'-',
+   //   tertiary:'-',
+   //   disinfection:'-',
+   // }
+   //this.isChart=true;
     //this.barChartLabels=[];
     this.totalElecricalCo2=0;
     this.totalChemicalCo2 = 0;
@@ -204,18 +214,27 @@ export class ViewComponent implements OnInit {
     if(this.chemical.dechlorination.sel_type !== '0'){
       this.totalChemicalCo2 += JSON.parse(this.chemical.dechlorination.data.co2);
     }
-    console.log(this.process.disposal);
+    if(this.chemical.chlorine.sel_type !== '0'){
+      this.totalChemicalCo2 += JSON.parse(this.chemical.chlorine.data.co2);
+    }
+    if (this.biogas.sel_type === 'Energy Recovery') {
+      graphData.electical = this.biogas.data.co2;
+    }
     // this.barChartData = [
     //   {data: newData, label: 'CO2 Equalvalent from Electricity Emissions'}
     // ];
     // this.chart.datasets = this.barChartData;
     // this.chart.labels = this.barChartLabels;
     // this.chart.ngOnInit();
-    graphData.transporation = this.process.transporation.totalCo2;
-    graphData.disposal = this.process.disposal.totalCo2;
-    graphData.process = this.process.aerobic.totalCo2 + this.process.anarobic.totalCo2 + this.process.active_sludge.totalCo2;
-    graphData.chemical = this.totalChemicalCo2;
     graphData.electical = this.totalElecricalCo2;
+    graphData.transporation = this.process.transporation.totalCo2;
+    graphData.OnProcess = this.process.aerobic.totalCo2 + this.process.anarobic.totalCo2 + this.process.active_sludge.totalCo2;
+    graphData.chemical = this.totalChemicalCo2;
+    graphData.priorElectrical = graphData.electical+graphData.transporation +graphData.OnProcess+ graphData.chemical;
+
+    graphData.priorBiosolid = graphData.priorElectrical-graphData.electical;
+    graphData.disposal = this.process.disposal.totalCo2;
+    graphData.process = graphData.priorBiosolid +graphData.disposal;
     graphData.id = id;
     this.scenarios.push(graphData);
     console.log(this.scenarios);
