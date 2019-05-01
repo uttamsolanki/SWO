@@ -1292,6 +1292,18 @@
                       </div>
                     </div>
                   </div>
+                  <div class="col-sm-6 col-lg-3" *ngIf="chemical.chlorine.sel_type != '0' ">
+                    <div class="brand-card">
+                      <div class="brand-card-header bg-header-chemical brand-card-header-ct">
+                        Chlorine for Process
+                      </div>
+                      <div class="brand-card-body bg-header-selected">
+                        <div>
+                          {{chemical.chlorine.sel_type}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                 </div>
             </form>
