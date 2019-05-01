@@ -6,7 +6,7 @@ import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDirective} from 'ngx-bootstrap';
-
+import 'chartjs-plugin-datalabels';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -18,6 +18,7 @@ export class CreateComponent implements OnInit {
 
   @ViewChild('tabset') tabset: TabsetComponent;
   @ViewChild('baseChart') public chart: BaseChartDirective;
+  @ViewChild('piChart') public piChart: BaseChartDirective;
   @ViewChild('successModal') public modal: ModalDirective;
 
   fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering', 'chemical', 'process'];
@@ -500,10 +501,31 @@ export class CreateComponent implements OnInit {
         fontColor: 'black',
         fontSize : 12
       }
+    },
+    plugins: {
+      datalabels: {
+        formatter: (value, piChart) => {
+        piChart.dataset.backgroundColor=["#FEFF00", "#FF98FF",'#6F319F','#02B0F0','#C55A11'];
+          let sum = 0;
+          let dataArr = piChart.dataset.data;
+          dataArr.map(data => {
+            sum += data;
+          });
+          let percentage = (value*100 / sum).toFixed(2)+"%";
+
+          return percentage;
+        },
+        display: function(context) {
+          return context.dataset.data[context.dataIndex] !== 0; // or >= 1 or ...
+        },
+        color: '#000',
+        font:{
+          size:16
+        }
+      }
     }
   };
   ngOnInit() {
-
     const data = this.userService.getData().subscribe((resp: any) => {
       Object.assign(this.primary.pumping, this.defaulValaue.data);
       this.assignFormValue(resp);
@@ -618,7 +640,6 @@ export class CreateComponent implements OnInit {
     this.chlorine_type = chemical.Chlorine;
   }
   processData(processData) {
-    console.log()
     this.process.aerobic = processData.aerobic;
     this.process.anarobic = processData.anarobic;
     this.process.active_sludge = processData.active_sludge;
@@ -999,9 +1020,30 @@ export class CreateComponent implements OnInit {
     this.barChartData = [
       {data: newData, label: 'CO2 Equivalent from Electricity Emissions'}
     ];
+    // this.pieChartLabels = [];
+    // this.pieChartData = [];
+    // if(this.totalElecricalCo2){
+    //   this.pieChartLabels.push('Electricity');
+    //   this.pieChartData.push(this.totalElecricalCo2);
+    // }
+    // if(this.totalChemicalCo2){
+    //   this.pieChartLabels.push('Chemicals');
+    //   this.pieChartData.push(this.totalChemicalCo2);
+    // }
+    // if(this.totalTransportationCo2){
+    //   this.pieChartLabels.push('Transportation');
+    //   this.pieChartData.push(this.totalTransportationCo2);
+    // }
+    // if(this.totalOnSiteCo2){
+    //   this.pieChartLabels.push('On-site Emissions Processes');
+    //   this.pieChartData.push(this.totalOnSiteCo2);
+    // }
+    // if(this.totalDisposalCo2){
+    //   this.pieChartLabels.push('Biosolids Disposal');
+    //   this.pieChartData.push(this.totalDisposalCo2);
+    // }
     this.pieChartLabels = ['Electricity', 'Chemicals', 'Transportation', 'On-site Emissions Processes', 'Biosolids Disposal'];
-    this.pieChartData = [this.totalElecricalCo2.toFixed(2) , this.totalChemicalCo2, this.totalTransportationCo2, this.totalOnSiteCo2, this.totalDisposalCo2];
-    this.chart.datasets = this.barChartData;
+    this.pieChartData = [this.totalElecricalCo2 , this.totalChemicalCo2, this.totalTransportationCo2, this.totalOnSiteCo2, this.totalDisposalCo2];
     this.chart.labels = this.barChartLabels;
     this.chart.ngOnInit();
 

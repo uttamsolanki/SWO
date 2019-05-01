@@ -2610,7 +2610,7 @@
 
                   <div class="form-group row chart-align" *ngIf="isChart">
                     <div class="col-md-11 row">
-                      <canvas baseChart class="chart"
+                      <canvas #piChart baseChart class="chart"
                               [data]="pieChartData"
                               [options]="pieChartOptions"
                               [labels]="pieChartLabels"
