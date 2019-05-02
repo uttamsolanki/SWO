@@ -541,7 +541,7 @@ export class CreateComponent implements OnInit {
   ];
 
   // Pie
-  public pieChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
+  public pieChartLabels: string[] = ['Electricity', 'Chemicals', 'Transportation', 'On-site Emissions Processes', 'Biosolids Disposal'];
   public pieChartData: number[] = [300, 500, 100];
   public pieChartType = 'pie';
   public pieChartLegend = true;
@@ -1101,6 +1101,7 @@ export class CreateComponent implements OnInit {
     // }
     this.pieChartLabels = ['Electricity', 'Chemicals', 'Transportation', 'On-site Emissions Processes', 'Biosolids Disposal'];
     this.pieChartData = [this.totalElecricalCo2 , this.totalChemicalCo2, this.totalTransportationCo2, this.totalOnSiteCo2, this.totalDisposalCo2];
+    console.log(this.chart);
     this.chart.labels = this.barChartLabels;
     this.chart.ngOnInit();
 
