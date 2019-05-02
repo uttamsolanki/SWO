@@ -483,6 +483,63 @@ export class CreateComponent implements OnInit {
   ];
 
 
+  // *************  stackChart Start *************//
+
+  public stackChart1Colours: Array<any> = [
+    {
+      //backgroundColor: 'rgba(102,178,255,.3)',
+      borderWidth: 0
+    }
+  ];
+  public stackChartOptions: any = {
+    scaleShowVerticalLines: false,
+    responsive: true,
+    backgroundColor: 'rgba(148,159,177,0.2)',
+    scales: {
+      xAxes: [{
+
+        categoryPercentage: 1.0,
+        ticks: {
+          autoSkip: false
+        },
+        stacked: true
+      }],
+      yAxes: [{
+        stacked: true
+      }]
+    },
+    plugins: {
+      datalabels: {
+        display: function(context) {
+          return context.dataset.data[context.dataIndex] !== 0; // or >= 1 or ...
+        },
+        color:'#000000'
+      }
+    }
+  };
+
+  public stackChartLabels: string[] = ['Activated Sludge', 'Aerobic Digester', 'Anarobic Digester', 'Total'];
+  public stackChartType = 'bar';
+  public stackChartLegend = true;
+
+  public stackChartData: any[] = [
+     {
+      label: 'CO2 Emission',
+      data: [67.8,12,16],
+      backgroundColor: '#0B59BD' // green
+    },
+    {
+      label: 'N2O Emission',
+      data: [20.7,18,20],
+      backgroundColor: '#ED7D31' // yellow
+    },
+    {
+      label: 'CH4 Emission',
+      data: [11.4,22,24],
+      backgroundColor: '#A5A5A5' // red
+    }
+  ];
+
   // Pie
   public pieChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
   public pieChartData: number[] = [300, 500, 100];
@@ -903,6 +960,12 @@ export class CreateComponent implements OnInit {
     this.SummaryReport();
   }
   createChart() {
+    if (this.biogas.sel_type === 'Flaring') {
+      this.process.anarobic.isFlaring = 1;
+    }
+    else{
+      this.process.anarobic.isFlaring = 0;
+    }
     this.calActiveFlow();
     this.calAerobicFlow();
     this.calAnarobicFlow();
@@ -988,12 +1051,6 @@ export class CreateComponent implements OnInit {
       newData.push(this.totalEnergyCo2);
     }
 
-    if (this.biogas.sel_type === 'Flaring') {
-      this.process.anarobic.isFlaring = 1;
-    }
-    else{
-      this.process.anarobic.isFlaring = 0;
-    }
 
     if (this.chemical.metal_salts.sel_type !== '0') {
       this.totalChemicalCo2 += JSON.parse(this.chemical.metal_salts.data.co2);
@@ -1156,6 +1213,24 @@ export class CreateComponent implements OnInit {
     this.transporationtotalCo2  = parseFloat((this.process.transporation.totalCo2 / this.unitDivider).toFixed(2));
 
     this.ProcessCo2 = parseFloat((this.active_sludgetotalCo2 + this.aerobictotalCo2 + this.anarobictotalCo2 + this.disposaltotalCo2 + this.transporationtotalCo2).toFixed(2));
+
+  this.stackChartData= [
+      {
+        label: 'CO2 Emission',
+        data: [this.active_sludgeco2,this.aerobicco2,this.anarobicco2,JSON.parse((this.active_sludgeco2+this.aerobicco2+this.anarobicco2).toFixed(2))],
+        backgroundColor: '#0B59BD' // green
+      },
+      {
+        label: 'N2O Emission',
+        data: [this.active_sludgeno2,0,0,this.active_sludgeno2],
+        backgroundColor: '#ED7D31' // yellow
+      },
+      {
+        label: 'CH4 Emission',
+        data: [0,this.aerobicch4,this.anarobicch4, JSON.parse((this.aerobicch4+ this.anarobicch4).toFixed(2))],
+        backgroundColor: '#A5A5A5' // red
+      }
+    ];
 
   }
   // *************  Common Function  End *************//

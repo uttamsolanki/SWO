@@ -30,7 +30,6 @@
   <tabset class="navTabBackground" #tabset>
 
 
-
     <tab heading="Project">
     <div class="row">
       <div class="col-lg-12">
@@ -2506,6 +2505,19 @@
                     </div>
                   </div>
 
+                  <div class="form-group row chart-align" >
+                    <div class="col-md-11 row">
+                      <canvas #piChart baseChart class="chart"
+                              [data]="pieChartData"
+                              [options]="pieChartOptions"
+                              [labels]="pieChartLabels"
+                              [legend]="pieChartLegend"
+                              [chartType]="pieChartType"
+                              (chartHover)="chartHovered($event)"
+                              (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                  </div>
+
                   <div class="form-group row" *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
                     <div class="col-md-12 row">
                       <label class="col-md-5 col-form-label " for="text-input"><strong>Electricity Emissions Summary: [<span class="help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="!unit">kg CO<sub>2</sub>/1000m<sup>3</sup></span>]</strong></label>
@@ -2620,14 +2632,16 @@
                   </div>
 
 
-                  <div class="form-group row chart-align" *ngIf="isChart">
+
+                  <div class="form-group row chart-align" *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
                     <div class="col-md-11 row">
-                      <canvas #piChart baseChart class="chart"
-                              [data]="pieChartData"
-                              [options]="pieChartOptions"
-                              [labels]="pieChartLabels"
-                              [legend]="pieChartLegend"
-                              [chartType]="pieChartType"
+                      <canvas style="background-color: beige" baseChart #baseChart="base-chart" class="chart"
+                              [datasets]="barChartData"
+                              [labels]="barChartLabels"
+                              [options]="barChartOptions"
+                              [colors]="barChart1Colours"
+                              [legend]="barChartLegend"
+                              [chartType]="barChartType"
                               (chartHover)="chartHovered($event)"
                               (chartClick)="chartClicked($event)"></canvas>
                     </div>
@@ -2815,16 +2829,15 @@
                     </div>
                   </div>
 
-
                   <div class="form-group row chart-align" *ngIf="isChart">
                     <div class="col-md-11 row">
-                      <canvas style="background-color: beige" baseChart #baseChart="base-chart" class="chart"
-                              [datasets]="barChartData"
-                              [labels]="barChartLabels"
-                              [options]="barChartOptions"
-                              [colors]="barChart1Colours"
-                              [legend]="barChartLegend"
-                              [chartType]="barChartType"
+                      <canvas style="background-color: beige" baseChart #stackChart="base-chart" class="chart"
+                              [datasets]="stackChartData"
+                              [labels]="stackChartLabels"
+                              [options]="stackChartOptions"
+                              [colors]="stackChart1Colours"
+                              [legend]="stackChartLegend"
+                              [chartType]="stackChartType"
                               (chartHover)="chartHovered($event)"
                               (chartClick)="chartClicked($event)"></canvas>
                     </div>
