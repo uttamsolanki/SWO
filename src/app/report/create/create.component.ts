@@ -21,7 +21,7 @@ export class CreateComponent implements OnInit {
   @ViewChild('piChart') public piChart: BaseChartDirective;
   @ViewChild('successModal') public modal: ModalDirective;
 
-  fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering', 'chemical', 'process'];
+  fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering', 'chemical', 'process','constant'];
 
   modelMsg;
   co2_eq = 135.5;
@@ -325,6 +325,10 @@ export class CreateComponent implements OnInit {
       }
     },
   };
+  constant: any = {
+    COD_TOC: { title: null, default: null, suggested: null },
+    Removed_TKN: {title: null, default: null, suggested: null },
+  };
   active_sludgeData = {
     Qin: 0,
     Qwas: 0,
@@ -624,6 +628,7 @@ export class CreateComponent implements OnInit {
     this.biosolids_disposalData(data.biosolids_disposals);
     this.chemicalData(data.chemical);
     this.processData(data.process);
+    this.constantData(data.constant);
     this.createChart();
   }
   assignEditFormValue(editData) {
@@ -707,6 +712,10 @@ export class CreateComponent implements OnInit {
     //   this.active_sludgeData.Qin = this.process.anarobic.Qin;
     // }
   }
+  constantData(data){
+    this.constant = data;
+    console.log(this.constant);
+  }
   updateWWTPsize() {
     // console.log(this.size.sel_size);
     // if(this.size.data.default >= 50000 ){
@@ -761,11 +770,11 @@ export class CreateComponent implements OnInit {
   }
   calcActiveCo2() {
     const c1 = this.active_sludgeData.Qin * this.process.active_sludge.CODin.default - this.active_sludgeData.Qout * this.process.active_sludge.CODout.default - this.active_sludgeData.Qwas * this.process.active_sludge.CODwas.default;
-    const calCo2 = (c1 / this.COD_TOC) * (44 / 12) * (1 / 1000);
+    const calCo2 = (c1 / this.constant.COD_TOC.default) * (44 / 12) * (1 / 1000);
     this.active_sludgeData.co2 = parseFloat(calCo2.toFixed(2));
 
     const n1 = this.active_sludgeData.Qin * this.process.active_sludge.TKNin.default - this.active_sludgeData.Qout * this.process.active_sludge.TKNout.default - this.active_sludgeData.Qwas * this.process.active_sludge.TKNwas.default;
-    const calNo2 = (n1 * this.Removed_TKN * 0.01) * (1 / 1000) * 296;
+    const calNo2 = (n1 * this.constant.Removed_TKN.default * 0.01) * (1 / 1000) * 296;
     this.active_sludgeData.no2 = parseFloat(calNo2.toFixed(2));
 
     this.active_sludgeData.totalCo2 = this.active_sludgeData.co2 + this.active_sludgeData.no2;
@@ -805,8 +814,7 @@ export class CreateComponent implements OnInit {
   }
   calcAerobicCo2() {
     const c1 = this.aerobicData.Qin * this.process.aerobic.CODin.default - this.aerobicData.Qout * this.process.aerobic.CODout.default;
-    const calCo2 = (c1 / this.COD_TOC) * (44 / 12) * (1 / 1000);
-
+    const calCo2 = (c1 / this.constant.COD_TOC.default) * (44 / 12) * (1 / 1000);
     this.aerobicData.co2 =  parseFloat(calCo2.toFixed(2));
     this.aerobicData.ch4 = 0;
     this.aerobicData.totalCo2 = parseFloat(this.aerobicData.co2.toFixed(2));
@@ -865,7 +873,7 @@ export class CreateComponent implements OnInit {
       this.anarobicData.co2  = this.anarobicData.co2 + this.anarobicData.ch4;
       this.anarobicData.ch4 = 0;
     } else {
-      calCh4 = temp * alpha * 0.016 * 23;
+      calCh4 = temp * alpha * 0.016 * 24;
       this.anarobicData.ch4 = parseFloat(calCh4.toFixed(2));
     }
 
@@ -899,7 +907,7 @@ export class CreateComponent implements OnInit {
     const calCo2 = (c1 / this.COD_TOC_PER_MOL) * (1 - alpha) * (44 / 1000);
     this.disposalData.co2 =  parseFloat(calCo2.toFixed(2));
 
-    const calCh4 = (c1 / this.COD_TOC_PER_MOL) * alpha * (16 / 1000) * 23;
+    const calCh4 = (c1 / this.COD_TOC_PER_MOL) * alpha * (16 / 1000) * 25;
     this.disposalData.ch4 = parseFloat(calCh4.toFixed(2));
 
     this.disposalData.totalCo2 = this.disposalData.co2 + this.disposalData.ch4;

@@ -342,7 +342,7 @@
                     <div class="col-md-5">
                       <input type="text" id="pumping_rate"  name="pumping_rate" [(ngModel)]="primary.pumping.data.default" class="form-control" placeholder="0.0" (ngModelChange)="updateWWTPsize()">
                       <div class="p-1">
-                        <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{primary.pumping.data.suggested}}</span>
+                        <p *ngIf="primary.pumping.data.suggested !==null" class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{primary.pumping.data.suggested}}</span>
                           <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                           <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                         </p>
@@ -1101,7 +1101,9 @@
               <div class="form-group row" *ngIf="biosolids_disposals.transportation.sel_type == '0' && biosolids_disposals.disposal.sel_type == '0' ">
                 <p class="msg-text-center">Please Select Biosolids Disposal Line Processes.</p>
               </div>
-
+              <div class="form-group row mb-0" *ngIf="biosolids_disposals.transportation.sel_type !== '0' || biosolids_disposals.disposal.sel_type !== '0' ">
+                <p class="msg-text-center">Please See Process Emissions for Details.</p>
+              </div>
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
 
                 <div class="form-group row" *ngIf="biosolids_disposals.transportation.sel_type!='0'">
@@ -1178,7 +1180,7 @@
         </div>
       </div>
     </tab>
-    <tab heading="Chemical">
+    <tab heading="Chemicals">
       <div class="row">
         <div class="col-lg-6">
           <div class="card">
@@ -1642,6 +1644,43 @@
                   </div>
                 </div>
                 <div class="form-group row">
+                  <label class="col-md-12 col-form-label" ><strong> Calculation Factors</strong></label>
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">COD / TOC Ratio, g-O2/g-C:</label>
+                      <div class="col-md-5">
+                        <input type="text" id="constant_COD_TOC"  name="constant_COD_TOC"  [(ngModel)]="constant.COD_TOC.default" class="form-control" placeholder="0.0" (ngModelChange)="createChart()">
+                        <div class="p-1">
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{constant.COD_TOC.suggested}}</span>
+                          <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
+                          <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-md-2 p-0">
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">% Removed TKN emitted as N2O, g N2O-N/g-TKN-N:</label>
+                      <div class="col-md-5">
+                        <input type="text" id="constant_Removed_TKN"  name="constant_Removed_TKN" [(ngModel)]="constant.Removed_TKN.default" class="form-control" placeholder="0.0" (ngModelChange)="createChart()">
+                        <div class="p-1">
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{constant.Removed_TKN.suggested}}</span>
+                            <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
+                            <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.active_sludge.CODout.unit}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
                   <label class="col-md-12 col-form-label" ><strong> Calculation of Process Emissions of CO<sub>2</sub> & N<sub>2</sub>O</strong></label>
                   <div class="row col-lg-6">
                     <div class="offset-md-1 col-md-11 row">
@@ -1903,7 +1942,7 @@
                   <label class="col-md-12 col-form-label" ><strong> Alpha</strong></label>
                   <div class="row col-lg-6">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Organic Carbon Converted to Methane</label>
+                      <label class="col-md-5 col-form-label" for="text-input">Percent Methane in Biogas (kg/kg)</label>
                       <div class="col-md-5">
                         <input type="text" id="alpha"  name="alpha" [(ngModel)]="process.anarobic.alpha.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
@@ -2107,138 +2146,6 @@
           </div>
         </div>
       </div>
-      <div class="row" *ngIf="biosolids_disposals.disposal.sel_type!='0'">
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card-header">
-              Biosolids Disposal
-              <div class="card-header-actions">
-                <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
-              </div>
-            </div>
-            <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
-              <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
-                <div class="form-group row">
-                  <label class="col-md-12 col-form-label" ><strong> Node A - Flow Rate of Dewatered Sludge to {{biosolids_disposals.disposal.sel_type}}</strong></label>
-                  <div class="row col-lg-8 ">
-                    <div class="offset-md-1 col-md-12 row pb-4">
-                      <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate Sludge Flow Rate Based on % of Plant Influent?</label>
-                      <select class="form-control col-md-2" id="disposal_plantinfluent" name="disposal_plantinfluent" (change)="selectPlantInflent('disposal')" [(ngModel)]="process.disposal.plantinfluent">
-                        <option value=1>Yes</option>
-                        <option value=0>No</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="row col-lg-4"></div>
-                  <div class="row col-lg-6" *ngIf="process.disposal.plantinfluent=='1'">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Flow Rate of Dewatered Sludge:</label>
-                      <div class="col-md-5">
-                        <input type="text" id="disposal_FLOWin"  name="disposal_FLOWin" [(ngModel)]="process.disposal.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" >
-                        <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.FLOWin.suggested}}</span>
-                            <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
-                            <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-md-2 p-0">
-                        <span class="help-block">{{process.disposal.FLOWin.unit}}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row col-lg-6">
-                    <div class="offset-md-1 col-md-11 row" *ngIf="tempBoolen">
-                      <label class="col-md-5 col-form-label" for="text-input">Flow Rate of Dewatered Sludge:</label>
-                      <div class="col-md-5">
-                        <input type="number" id="disposal_Qin"  name="disposal_Qin" [(ngModel)]="disposalData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" [class.readonlyValue]="process.disposal.plantinfluent=='1'" [readonly]="process.disposal.plantinfluent=='1'">
-                      </div>
-                      <div class="col-md-2 p-0">
-                        <span class="help-block">m<sup>3</sup>/d</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row col-lg-6">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">COD of Sludge [CODin]:</label>
-                      <div class="col-md-5">
-                        <input type="number" id="disposal_CODin"  name="disposal_CODin" [(ngModel)]="process.disposal.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()">
-                        <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.CODin.suggested}}</span>
-                            <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
-                            <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-md-2 p-0">
-                        <span class="help-block">{{process.disposal.CODin.unit}}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-md-12 col-form-label" ><strong> Alpha</strong></label>
-                  <div class="row col-lg-6">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Organic Carbon Converted to Methane</label>
-                      <div class="col-md-5">
-                        <input type="number" id="disposal_alpha"  name="disposal_alpha" [(ngModel)]="process.disposal.alpha.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()">
-                        <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.alpha.suggested}}</span>
-                            <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
-                            <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-md-2 p-0">
-                        <span class="help-block">{{process.disposal.alpha.unit}}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-md-12 col-form-label" ><strong>Calculation of Process Emissions of CO<sub>2</sub> & CH<sub>4</sub></strong></label>
-                  <div class="row col-lg-6">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">CO<sub>2</sub> Emissions: CO<sub>2</sub> Eq.:</label>
-                      <div class="col-md-5">
-                        <input type="number" id="disposalData_co2" name="disposalData_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="disposalData.co2" readonly>
-                      </div>
-                      <div class="col-md-2 p-0">
-                        <span class="help-block">kg CO2/d</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row col-lg-6">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">CH<sub>4</sub> Emissions: C0<sub>2</sub> Eq.:</label>
-                      <div class="col-md-5">
-                        <input type="number" id="disposalData_ch4" name="disposalData_ch4" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="disposalData.ch4" readonly>
-                      </div>
-                      <div class="col-md-2 p-0">
-                        <span class="help-block">kg CO2/d</span>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="row col-lg-6">
-                    <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Total Emissions: CO<sub>2</sub> Eq.:</label>
-                      <div class="col-md-5">
-                        <input type="number" id="disposalData_totalCo2" name="disposalData_totalCo2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="disposalData.totalCo2" readonly>
-                      </div>
-                      <div class="col-md-2 p-0">
-                        <span class="help-block">kg CO2/d</span>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
@@ -2352,6 +2259,138 @@
                       <div class="col-md-2 p-0">
                         <span class="help-block">kg CO2/d</span>
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="biosolids_disposals.disposal.sel_type!='0'">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header">
+              Biosolids Disposal
+              <div class="card-header-actions">
+                <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+              </div>
+            </div>
+            <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+              <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+                <div class="form-group row">
+                  <label class="col-md-12 col-form-label" ><strong> Node A - Flow Rate of Dewatered Sludge to {{biosolids_disposals.disposal.sel_type}}</strong></label>
+                  <div class="row col-lg-8 ">
+                    <div class="offset-md-1 col-md-12 row pb-4">
+                      <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate Sludge Flow Rate Based on % of Plant Influent?</label>
+                      <select class="form-control col-md-2" id="disposal_plantinfluent" name="disposal_plantinfluent" (change)="selectPlantInflent('disposal')" [(ngModel)]="process.disposal.plantinfluent">
+                        <option value=1>Yes</option>
+                        <option value=0>No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row col-lg-4"></div>
+                  <div class="row col-lg-6" *ngIf="process.disposal.plantinfluent=='1'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">Flow Rate of Dewatered Sludge:</label>
+                      <div class="col-md-5">
+                        <input type="text" id="disposal_FLOWin"  name="disposal_FLOWin" [(ngModel)]="process.disposal.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" >
+                        <div class="p-1">
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.FLOWin.suggested}}</span>
+                            <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
+                            <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.disposal.FLOWin.unit}}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row" *ngIf="tempBoolen">
+                      <label class="col-md-5 col-form-label" for="text-input">Flow Rate of Dewatered Sludge:</label>
+                      <div class="col-md-5">
+                        <input type="number" id="disposal_Qin"  name="disposal_Qin" [(ngModel)]="disposalData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" [class.readonlyValue]="process.disposal.plantinfluent=='1'" [readonly]="process.disposal.plantinfluent=='1'">
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">m<sup>3</sup>/d</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">COD of Sludge [CODin]:</label>
+                      <div class="col-md-5">
+                        <input type="number" id="disposal_CODin"  name="disposal_CODin" [(ngModel)]="process.disposal.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()">
+                        <div class="p-1">
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.CODin.suggested}}</span>
+                            <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
+                            <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.disposal.CODin.unit}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-12 col-form-label" ><strong> Alpha</strong></label>
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">Percent Methane in Biogas (kg/kg)</label>
+                      <div class="col-md-5">
+                        <input type="number" id="disposal_alpha"  name="disposal_alpha" [(ngModel)]="process.disposal.alpha.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()">
+                        <div class="p-1">
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.alpha.suggested}}</span>
+                            <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
+                            <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.disposal.alpha.unit}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-12 col-form-label" ><strong>Calculation of Process Emissions of CO<sub>2</sub> & CH<sub>4</sub></strong></label>
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">CO<sub>2</sub> Emissions: CO<sub>2</sub> Eq.:</label>
+                      <div class="col-md-5">
+                        <input type="number" id="disposalData_co2" name="disposalData_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="disposalData.co2" readonly>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">kg CO2/d</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">CH<sub>4</sub> Emissions: C0<sub>2</sub> Eq.:</label>
+                      <div class="col-md-5">
+                        <input type="number" id="disposalData_ch4" name="disposalData_ch4" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="disposalData.ch4" readonly>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">kg CO2/d</span>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">Total Emissions: CO<sub>2</sub> Eq.:</label>
+                      <div class="col-md-5">
+                        <input type="number" id="disposalData_totalCo2" name="disposalData_totalCo2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="disposalData.totalCo2" readonly>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">kg CO2/d</span>
+                      </div>
+
                     </div>
                   </div>
                 </div>
