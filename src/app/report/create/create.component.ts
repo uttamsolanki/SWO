@@ -904,19 +904,27 @@ export class CreateComponent implements OnInit {
   calDisposalCo2() {
     const c1 = this.disposalData.Qin * this.process.disposal.CODin.default;
     const alpha = this.process.disposal.alpha.default / 100;
-    const calCo2 = (c1 / this.COD_TOC_PER_MOL) * (1 - alpha) * (44 / 1000);
+    let calCo2 = (c1 / this.COD_TOC_PER_MOL) * (1 - alpha) * (44 / 1000);
+    if (this.biosolids_disposals.disposal.sel_type === 'Landfill with Methane Recovery' || this.biosolids_disposals.disposal.sel_type === 'Incineration' ) {
+      calCo2 = (c1 / this.COD_TOC_PER_MOL) * (44 / 1000);
+    }
+
     this.disposalData.co2 =  parseFloat(calCo2.toFixed(2));
 
     const calCh4 = (c1 / this.COD_TOC_PER_MOL) * alpha * (16 / 1000) * 25;
     this.disposalData.ch4 = parseFloat(calCh4.toFixed(2));
 
-    this.disposalData.totalCo2 = this.disposalData.co2 + this.disposalData.ch4;
-    this.disposalData.totalCo2 = parseFloat(this.disposalData.totalCo2.toFixed(2));
-    if (this.biosolids_disposals.disposal.sel_type !== 'Landfill without Methane Recovery') {
+    if (this.biosolids_disposals.disposal.sel_type === 'Landfill with Methane Recovery' || this.biosolids_disposals.disposal.sel_type === 'Incineration' ) {
+      this.disposalData.ch4 = 0;
+    }
+    else if (this.biosolids_disposals.disposal.sel_type === 'Overland Application') {
       this.disposalData.totalCo2 = 0;
       this.disposalData.ch4 = 0;
       this.disposalData.co2 = 0;
     }
+    this.disposalData.totalCo2 = this.disposalData.co2 + this.disposalData.ch4;
+    this.disposalData.totalCo2 = parseFloat(this.disposalData.totalCo2.toFixed(2));
+
     this.process.disposal.co2 = this.disposalData.co2;
     this.process.disposal.ch4 = this.disposalData.ch4;
     this.process.disposal.totalCo2 =  this.disposalData.totalCo2;
