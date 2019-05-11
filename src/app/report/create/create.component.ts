@@ -226,10 +226,12 @@ export class CreateComponent implements OnInit {
       isOrganic: 1,
       isBiosolids: 1,
       isFlaring: 1,
+      isExternal: 0,
       co2: 0,
       ch4: 0,
       Qin: 0,
       totalCo2: 0,
+      addEnergy:0,
       FLOWin: {
         title: null,
         unit: null,
@@ -260,6 +262,12 @@ export class CreateComponent implements OnInit {
         default: 0,
         suggested: 0,
       },
+      energy: {
+        title: null,
+        unit: null,
+        default: 0,
+        suggested: 0,
+      }
     },
     organics: {
       flow: 0,
@@ -352,7 +360,9 @@ export class CreateComponent implements OnInit {
     CODin: 0,
     co2: 0,
     ch4: 0,
-    totalCo2: 0
+    totalCo2: 0,
+    ch4WWTP:0,
+    ch4External:0
   };
   disposalData = {
     Qin: 0,
@@ -845,11 +855,17 @@ export class CreateComponent implements OnInit {
     if (this.process.anarobic.isOrganic == 1) {
       this.anarobicData.Qin = this.anarobicData.Qin + this.process.organics.flow;
       this.anarobicData.CODLod = this.anarobicData.CODLod + (this.process.organics.flow * this.process.organics.COD / 1000);
+    }else{
+      this.process.organics.flow=0;
+      this.process.organics.COD=0;
     }
 
     if (this.process.anarobic.isBiosolids == 1) {
       this.anarobicData.Qin = this.anarobicData.Qin + this.process.biosolids.flow;
       this.anarobicData.CODLod = this.anarobicData.CODLod + (this.process.biosolids.flow * this.process.biosolids.COD / 1000);
+    }else{
+      this.process.biosolids.flow=0;
+      this.process.biosolids.COD=0;
     }
 
     if (this.anarobicData.Qin) {
@@ -859,6 +875,12 @@ export class CreateComponent implements OnInit {
     }
     this.anarobicData.CODin = parseFloat(this.anarobicData.CODin.toFixed(2));
     this.anarobicData.Qout = this.anarobicData.Qin;
+    if (this.process.anarobic.isOrganic == 0 && this.process.anarobic.isBiosolids == 0) {
+      this.process.anarobic.isExternal=0;
+    } else {
+      this.process.anarobic.isExternal=1;
+    }
+
     this.calcAnarobicCo2();
   }
   calcAnarobicCo2() {
@@ -872,6 +894,7 @@ export class CreateComponent implements OnInit {
       this.anarobicData.ch4 = parseFloat(calCh4.toFixed(2));
       this.anarobicData.co2  = this.anarobicData.co2 + this.anarobicData.ch4;
       this.anarobicData.ch4 = 0;
+      this.process.anarobic.isExternal=0;
     } else {
       calCh4 = temp * alpha * 0.016 * 25;
       this.anarobicData.ch4 = parseFloat(calCh4.toFixed(2));
@@ -888,7 +911,18 @@ export class CreateComponent implements OnInit {
       this.process.anarobic.ch4 = 0;
       this.process.anarobic.totalCo2 = 0;
     }
-
+    //External Enegry Calculation
+    if (this.process.anarobic.isExternal === 1) {
+      this.anarobicData.ch4WWTP = (this.anarobicData.Qap * (this.process.anarobic.CODin.default - this.process.anarobic.CODout.default) / this.COD_TOC_PER_MOL) * alpha * 0.016;
+      let tempEnergy = this.anarobicData.Qin * (this.anarobicData.CODin - this.process.anarobic.CODout.default) - this.anarobicData.Qap * (this.process.anarobic.CODin.default - this.process.anarobic.CODout.default);
+      //  console.log(tempEnergy,this.anarobicData.Qin,this.anarobicData.Qap);
+      this.anarobicData.ch4External = parseFloat(((tempEnergy / this.COD_TOC_PER_MOL) * alpha * 0.016).toFixed(2));
+      this.process.anarobic.addEnergy = parseFloat((this.anarobicData.ch4External * this.process.anarobic.energy.default).toFixed(2));
+    }else{
+      this.anarobicData.ch4WWTP=0;
+      this.anarobicData.ch4External=0;
+      this.process.anarobic.addEnergy=0;
+    }
     this.UpdateProcessValue();
   }
   calDisposalFlow() {
@@ -1209,7 +1243,8 @@ export class CreateComponent implements OnInit {
     this.DisposalCo2 = parseFloat((this.totalDisposalCo2 / this.unitDivider).toFixed(2));
     this.EnergyCo2 = parseFloat((this.totalEnergyCo2 / this.unitDivider).toFixed(2));
     this.TransportationCo2 = parseFloat((this.totalTransportationCo2 / this.unitDivider).toFixed(2));
-    this.EqCo2  = parseFloat((this.ElecricalCo2 + this.OnSiteCo2 + this.ChemicalCo2 + this.DisposalCo2 + this.EnergyCo2 + this.TransportationCo2).toFixed(2));
+    this.process.anarobic.addEnergy = parseFloat((this.process.anarobic.addEnergy / this.unitDivider).toFixed(2));
+    this.EqCo2  = parseFloat((this.ElecricalCo2 + this.OnSiteCo2 + this.ChemicalCo2 + this.DisposalCo2 + this.EnergyCo2 + this.TransportationCo2+this.process.anarobic.addEnergy).toFixed(2));
 
 
     this.active_sludgeco2 = parseFloat((this.process.active_sludge.co2 / this.unitDivider).toFixed(2));

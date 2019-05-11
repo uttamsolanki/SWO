@@ -1738,18 +1738,18 @@
                   <div class="row col-lg-6 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">External Biosolids Source?</label>
-                      <select class="form-control col-md-2" if="isBiosolids" name="isBiosolids" (change)="calAnarobicFlow()" [(ngModel)]="process.anarobic.isBiosolids">
-                        <option value=1>Yes</option>
-                        <option value=0>No</option>
+                      <select class="form-control col-md-2" if="isBiosolids" name="isBiosolids" (change)="createChart()" [(ngModel)]="process.anarobic.isBiosolids">
+                        <option [ngValue]="1">Yes</option>
+                        <option [ngValue]="0">No</option>
                       </select>
                     </div>
                   </div>
                   <div class="row col-lg-6 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">External Organics Source?</label>
-                      <select class="form-control col-md-2" if="isOrganic" name="isOrganic" (change)="calAnarobicFlow()" [(ngModel)]="process.anarobic.isOrganic">
-                        <option value=1>Yes</option>
-                        <option value=0>No</option>
+                      <select class="form-control col-md-2" if="isOrganic" name="isOrganic" (change)="createChart()" [(ngModel)]="process.anarobic.isOrganic">
+                        <option [ngValue]="1">Yes</option>
+                        <option [ngValue]="0">No</option>
                       </select>
                     </div>
                   </div>
@@ -1759,6 +1759,15 @@
                       <select class="form-control col-md-2" if="isFlaring" name="isFlaring" (change)="calAnarobicFlow()" [(ngModel)]="process.anarobic.isFlaring" [disabled]="process.anarobic.isFlaring=='1'">
                         <option value=1>Yes</option>
                         <option value=0>No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row col-lg-6 ">
+                    <div class="offset-md-1 col-md-12 row pb-4">
+                      <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Energy Recovery from External Sources?</label>
+                      <select class="form-control col-md-2" if="isExternal" name="isExternal" (change)="createChart()" [(ngModel)]="process.anarobic.isExternal" [disabled]="process.anarobic.isFlaring=='1'">
+                        <option [ngValue]="1">Yes</option>
+                        <option [ngValue]="0">No</option>
                       </select>
                     </div>
                   </div>
@@ -1827,7 +1836,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">External Biosolids Flow Rate:</label>
                       <div class="col-md-5">
-                        <input type="number" id="biosolids_flow"  name="biosolids_flow" [(ngModel)]="process.biosolids.flow" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()" [class.readonlyValue]="process.anarobic.isBiosolids=='0'" [readonly]="process.anarobic.isBiosolids=='0'">
+                        <input type="number" id="biosolids_flow"  name="biosolids_flow" [(ngModel)]="process.biosolids.flow" class="form-control" placeholder="0.0" (ngModelChange)="createChart()" [class.readonlyValue]="process.anarobic.isBiosolids=='0'" [readonly]="process.anarobic.isBiosolids=='0'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -1838,7 +1847,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">External Biosolids COD:</label>
                       <div class="col-md-5">
-                        <input type="number" id="biosolids_COD"  name="biosolids_COD" [(ngModel)]="process.biosolids.COD" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()" [class.readonlyValue]="process.anarobic.isBiosolids=='0'" [readonly]="process.anarobic.isBiosolids=='0'">
+                        <input type="number" id="biosolids_COD"  name="biosolids_COD" [(ngModel)]="process.biosolids.COD" class="form-control" placeholder="0.0" (ngModelChange)="createChart()" [class.readonlyValue]="process.anarobic.isBiosolids=='0'" [readonly]="process.anarobic.isBiosolids=='0'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">mg/L</span>
@@ -1852,7 +1861,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">External Organics Flow Rate:</label>
                       <div class="col-md-5">
-                        <input type="number" id="organics_flow"  name="organics_flow" [(ngModel)]="process.organics.flow" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()" [class.readonlyValue]="process.anarobic.isOrganic=='0'" [readonly]="process.anarobic.isOrganic=='0'">
+                        <input type="number" id="organics_flow"  name="organics_flow" [(ngModel)]="process.organics.flow" class="form-control" placeholder="0.0" (ngModelChange)="createChart()" [class.readonlyValue]="process.anarobic.isOrganic=='0'" [readonly]="process.anarobic.isOrganic=='0'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -1863,7 +1872,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">External Organics COD:</label>
                       <div class="col-md-5">
-                        <input type="text" id="biosolids_COD"  name="organics_COD" [(ngModel)]="process.organics.COD" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()" [class.readonlyValue]="process.anarobic.isOrganic=='0'" [readonly]="process.anarobic.isOrganic=='0'">
+                        <input type="text" id="biosolids_COD"  name="organics_COD" [(ngModel)]="process.organics.COD" class="form-control" placeholder="0.0" (ngModelChange)="createChart()" [class.readonlyValue]="process.anarobic.isOrganic=='0'" [readonly]="process.anarobic.isOrganic=='0'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">mg/L</span>
@@ -1954,6 +1963,67 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.anarobic.alpha.unit}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-12 col-form-label" ><strong>Additional Energy Recovery Calculations</strong></label>
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">Methane Generation from WWTP:</label>
+                      <div class="col-md-5">
+                        <input type="number" id="methen_wwtp" name="methen_wwtp" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="anarobicData.ch4WWTP" readonly>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">kg/d</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">Methane Generation from External Sources:</label>
+                      <div class="col-md-5">
+                        <input type="number" id="methen_external" name="methen_external" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="anarobicData.ch4External" readonly>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">kg/d</span>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">Energy Recovery Factor from CH4 from External Sources:</label>
+                      <div class="col-md-5">
+                        <input type="number" id="process_factor" name="process_factor" class="form-control"  (]ngModelChange)="createChart()" placeholder="0.0" [(ngModel)]="process.anarobic.energy.default">
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">kg CO2/kg CH4</span>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">Energy Recovered from External Sources, Equivalent CO2, kg/d:</label>
+                      <div class="col-md-5">
+                        <input type="number" id="disposalData_addEnergy" name="disposalData_addEnergy" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="process.anarobic.addEnergy" readonly>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">kg CO2/d</span>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">Energy Recovered from Internal Sources, Equivalent CO2, kg/d:</label>
+                      <div class="col-md-5">
+                        <input type="number" id="energy_internal" name="energy_internal" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="totalEnergyCo2" readonly>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">kg CO2/d</span>
                       </div>
                     </div>
                   </div>
@@ -2519,7 +2589,7 @@
                   <div class="form-group row">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label " for="text-input">Energy Recovery Credit (From external sources):</label>
-                      <label class="col-md-3 col-form-label" for="text-input">?</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{process.anarobic.addEnergy}}</label>
                     </div>
                   </div>
 
@@ -2658,7 +2728,7 @@
                   <div class="form-group row" *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label " for="text-input">Energy Recovery (From external sources)</label>
-                      <label class="col-md-3 col-form-label" for="text-input">?</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{process.anarobic.addEnergy}}</label>
                     </div>
                   </div>
 
@@ -2666,7 +2736,7 @@
                   <div class="form-group row" *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input"><strong>Net Electricity Emissions: </strong></label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(ElecricalCo2+EnergyCo2).toFixed(2)}} </label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(ElecricalCo2+EnergyCo2+process.anarobic.addEnergy).toFixed(2)}} </label>
                     </div>
                   </div>
 

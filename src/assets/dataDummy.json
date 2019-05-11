@@ -1416,10 +1416,12 @@
       "plantinfluent":"1",
       "isOrganic": 0,
       "isBiosolids": 0,
+      "isExternal": 0,
       "isFlaring": 0,
       "co2": 0,
       "ch4": 0,
       "totalCo2": 0,
+      "addEnergy": 0,
       "FLOWin": {
         "title":"Sludge Volume as a % of Plant's Influent Flow",
         "unit": "%",
@@ -1489,6 +1491,22 @@
         "unit": "%",
         "default":67,
         "suggested":67,
+        "ref":{
+
+        },
+        "range":{
+          "min":55,
+          "max":75,
+          "ref":{
+
+          }
+        }
+      },
+      "energy": {
+        "title":"Energy Recovery Factor from CH4 from External Sources",
+        "unit": "kg CO2/kg CH4",
+        "default":-0.3484,
+        "suggested":-0.3484,
         "ref":{
 
         },
