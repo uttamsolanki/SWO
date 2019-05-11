@@ -572,16 +572,34 @@ export class CreateComponent implements OnInit {
         fontColor: 'black',
         fontSize : 12
       }
+      // onClick:function(e, legendItem) {
+      //  var index = legendItem.index;
+      //   console.log(legendItem);
+      //
+      //   var ci = this.chart;
+      //   console.log(ci);
+      //  //  var meta = ci.getDatasetMeta(index);
+      //    console.log(ci.data.datasets[index]);
+      //  // //
+      //  // //  // See controller.isDatasetVisible comment
+      //  //  meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
+      //  // //
+      //  // //  // We hid a dataset ... rerender the chart
+      //  //   ci.update();
+      // }
+
     },
     plugins: {
       datalabels: {
         formatter: (value, piChart) => {
-        piChart.dataset.backgroundColor=["#FEFF00", "#FF98FF",'#6F319F','#02B0F0','#C55A11'];
-          let sum = 0;
-          let dataArr = piChart.dataset.data;
-          dataArr.map(data => {
-            sum += data;
-          });
+          piChart.dataset.backgroundColor=["#FEFF00", "#FF98FF",'#6F319F','#02B0F0','#C55A11'];
+          //let sum = 0;
+          // let dataArr = piChart.dataset.data;
+          // dataArr.map(data => {
+          //   sum += data;
+          // });
+
+          let sum = piChart.dataset._meta[0].total;
           let percentage = (value*100 / sum).toFixed(2)+"%";
 
           return percentage;
