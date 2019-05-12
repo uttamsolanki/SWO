@@ -913,10 +913,10 @@ export class CreateComponent implements OnInit {
       this.anarobicData.ch4 = parseFloat(calCh4.toFixed(2));
       this.anarobicData.co2  = this.anarobicData.co2 + this.anarobicData.ch4;
       this.anarobicData.ch4 = 0;
-      this.process.anarobic.isExternal=0;
     } else {
       calCh4 = temp * alpha * 0.016 * 25;
       this.anarobicData.ch4 = parseFloat(calCh4.toFixed(2));
+      this.process.anarobic.isExternal=0;
     }
 
     this.anarobicData.totalCo2 = this.anarobicData.co2 + this.anarobicData.ch4;

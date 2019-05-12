@@ -1756,7 +1756,7 @@
                   <div class="row col-lg-6 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Is the Biogas Flared?</label>
-                      <select class="form-control col-md-2" if="isFlaring" name="isFlaring" (change)="calAnarobicFlow()" [(ngModel)]="process.anarobic.isFlaring" [disabled]="process.anarobic.isFlaring=='1'">
+                      <select class="form-control col-md-2 readonlyValue" if="isFlaring" name="isFlaring" (change)="calAnarobicFlow()" [(ngModel)]="process.anarobic.isFlaring" disabled>
                         <option value=1>Yes</option>
                         <option value=0>No</option>
                       </select>
