@@ -804,22 +804,6 @@
           "1":"value"
         }
       }
-    },
-    {
-      "title":"User Specified",
-      "default":0,
-      "suggested":null,
-      "ref":{
-        "6":"value"
-      },
-      "range":{
-        "min":null,
-        "max":1,
-        "ref":{
-
-        }
-      },
-      "co2": ""
     }
   ],
   "dewatering":[

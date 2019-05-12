@@ -60,7 +60,7 @@
               <!--</div>-->
               <div class="form-group row">
                 <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
-                <label class="col-md-3 col-form-label" for="text-input">Actual WWTP Inflow(Qin)</label>
+                <label class="col-md-3 col-form-label" for="text-input">WWTP Inflow (Qin)</label>
                 <div class="col-md-9 row">
 
                   <!--<label class="col-md-4 col-form-label" for="text-input">Actual WWTP inflow(Qin)</label>-->
@@ -1764,8 +1764,17 @@
                   </div>
                   <div class="row col-lg-6 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
+                      <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Energy Recovery from WWTP?</label>
+                      <select class="form-control col-md-2 readonlyValue" id="isInternal" name="isInternal" (change)="createChart()" [(ngModel)]="isInternal"  disabled>
+                        <option [ngValue]="1">Yes</option>
+                        <option [ngValue]="0">No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row col-lg-6 ">
+                    <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Energy Recovery from External Sources?</label>
-                      <select class="form-control col-md-2" if="isExternal" name="isExternal" (change)="createChart()" [(ngModel)]="process.anarobic.isExternal" [disabled]="process.anarobic.isFlaring=='1'">
+                      <select class="form-control col-md-2 readonlyValue" id="isExternal" name="isExternal" (change)="createChart()" [(ngModel)]="process.anarobic.isExternal" disabled>
                         <option [ngValue]="1">Yes</option>
                         <option [ngValue]="0">No</option>
                       </select>
@@ -1997,6 +2006,7 @@
                       <label class="col-md-5 col-form-label" for="text-input">Energy Recovery Factor from CH4 from External Sources:</label>
                       <div class="col-md-5">
                         <input type="number" id="process_factor" name="process_factor" class="form-control"  (]ngModelChange)="createChart()" placeholder="0.0" [(ngModel)]="process.anarobic.energy.default">
+                        <span *ngIf="process.anarobic.energy.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{process.anarobic.energy.suggested}}</span>
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">kg CO2/kg CH4</span>
@@ -2960,7 +2970,7 @@
       </div>
       <div class="row">
         <div class="offset-lg-10 col-lg-2">
-          <button type="button" class="btn btn-block btn-success" (click)='save()'>submit</button>
+          <button type="button" class="btn btn-block btn-success" (click)='save()'>Save Scenario</button>
         </div>
       </div>
     </tab>

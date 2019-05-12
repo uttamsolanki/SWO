@@ -464,6 +464,7 @@ export class CreateComponent implements OnInit {
   transporationtotalCo2: any = 0;
 
   ProcessCo2: any = 0;
+  isInternal: number=0;
   // *************  barChart Start *************//
 
   public barChart1Colours: Array<any> = [
@@ -592,14 +593,15 @@ export class CreateComponent implements OnInit {
     plugins: {
       datalabels: {
         formatter: (value, piChart) => {
+          console.log(piChart.dataset._meta[0].total);
           piChart.dataset.backgroundColor=["#FEFF00", "#FF98FF",'#6F319F','#02B0F0','#C55A11'];
-          //let sum = 0;
+          let sum = 0;
           // let dataArr = piChart.dataset.data;
           // dataArr.map(data => {
           //   sum += data;
           // });
 
-          let sum = piChart.dataset._meta[0].total;
+          sum = piChart.dataset._meta[0].total;
           let percentage = (value*100 / sum).toFixed(2)+"%";
 
           return percentage;
@@ -742,7 +744,6 @@ export class CreateComponent implements OnInit {
   }
   constantData(data){
     this.constant = data;
-    console.log(this.constant);
   }
   updateWWTPsize() {
     // console.log(this.size.sel_size);
@@ -907,7 +908,7 @@ export class CreateComponent implements OnInit {
     const calCo2 = temp * (1 - alpha) * 0.044;
     this.anarobicData.co2 = parseFloat(calCo2.toFixed(2));
     let calCh4 = 0;
-    if (this.process.anarobic.isFlaring == 1) {
+    if (this.biogas.sel_type !== '0') {
       calCh4 = temp * alpha * 0.044;
       this.anarobicData.ch4 = parseFloat(calCh4.toFixed(2));
       this.anarobicData.co2  = this.anarobicData.co2 + this.anarobicData.ch4;
@@ -1116,7 +1117,10 @@ export class CreateComponent implements OnInit {
       else
         this.biogas.data.co2 = -this.biogas.data.co2;
       this.totalEnergyCo2 = this.biogas.data.co2;
+      this.isInternal=1;
       newData.push(this.totalEnergyCo2);
+    }else{
+      this.isInternal=0;
     }
 
 
@@ -1169,7 +1173,6 @@ export class CreateComponent implements OnInit {
     // }
     this.pieChartLabels = ['Electricity', 'Chemicals', 'Transportation', 'On-site Emissions Processes', 'Biosolids Disposal'];
     this.pieChartData = [this.totalElecricalCo2 , this.totalChemicalCo2, this.totalTransportationCo2, this.totalOnSiteCo2, this.totalDisposalCo2];
-    console.log(this.chart);
     this.chart.labels = this.barChartLabels;
     this.chart.ngOnInit();
 
