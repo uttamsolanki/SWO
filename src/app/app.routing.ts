@@ -20,6 +20,7 @@ import {AdminComponent} from './admin/admin.component';
 import {MasterDataComponent} from './admin/master-data/master-data.component';
 import {reference} from '@angular/core/src/render3';
 import {ReferenceComponent} from './admin/reference/reference.component';
+import {ProjectComponent} from './report/project/project.component';
 
 export const routes: Routes = [
   {
@@ -77,7 +78,8 @@ export const routes: Routes = [
         children: [
           { path: '',  redirectTo: 'view' , pathMatch: 'full'},
           { path: 'view', component: ViewComponent  },
-          { path: 'create', component: CreateComponent}
+          { path: 'create', component: CreateComponent},
+          {path: 'project', component: ProjectComponent}
           ]
       },
       {

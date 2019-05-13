@@ -573,22 +573,6 @@ export class CreateComponent implements OnInit {
         fontColor: 'black',
         fontSize : 12
       }
-      // onClick:function(e, legendItem) {
-      //  var index = legendItem.index;
-      //   console.log(legendItem);
-      //
-      //   var ci = this.chart;
-      //   console.log(ci);
-      //  //  var meta = ci.getDatasetMeta(index);
-      //    console.log(ci.data.datasets[index]);
-      //  // //
-      //  // //  // See controller.isDatasetVisible comment
-      //  //  meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
-      //  // //
-      //  // //  // We hid a dataset ... rerender the chart
-      //  //   ci.update();
-      // }
-
     },
     plugins: {
       datalabels: {
@@ -744,6 +728,7 @@ export class CreateComponent implements OnInit {
   }
   constantData(data){
     this.constant = data;
+    console.log(this.constant);
   }
   updateWWTPsize() {
     // console.log(this.size.sel_size);

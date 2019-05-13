@@ -30,12 +30,12 @@
   <tabset class="navTabBackground" #tabset>
 
 
-    <tab heading="Project">
+    <tab heading="Scenario">
     <div class="row">
       <div class="col-lg-12">
         <div class="card">
           <div class="card-header">
-            Project Details
+            Scenario Details
             <div class="card-header-actions">
               <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
             </div>
@@ -44,9 +44,15 @@
             <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
 
               <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="p_name" >Enter project name</label>
+                <label class="col-md-3 col-form-label" for="p_name" >Enter Scenario name</label>
                 <div class="col-md-4">
-                  <input type="text" id="p_name" name="p_name" class="form-control" placeholder="Project Name"  [(ngModel)]="projecName">
+                  <input type="text" id="p_name" name="p_name" class="form-control" placeholder="Scenario Name"  [(ngModel)]="projecName">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="description_name" >Description</label>
+                <div class="col-md-4">
+                  <input type="text" id="description_name" name="p_name" class="form-control" placeholder="Description">
                 </div>
               </div>
               <!--<div class="form-group row ">-->

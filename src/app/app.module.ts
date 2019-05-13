@@ -58,6 +58,9 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import { AdminComponent } from './admin/admin.component';
 import { MasterDataComponent } from './admin/master-data/master-data.component';
 import { ReferenceComponent } from './admin/reference/reference.component';
+import { ProjectComponent } from './report/project/project.component';
+//import { ScenarioDetailsComponent } from './scenario-details/scenario-details.component';
+
 
 
 @NgModule({
@@ -99,7 +102,9 @@ import { ReferenceComponent } from './admin/reference/reference.component';
     DashboardComponent,
     AdminComponent,
     MasterDataComponent,
-    ReferenceComponent
+    ReferenceComponent,
+    ProjectComponent,
+   // ScenarioDetailsComponent,
   ],
   providers: [UserService, AuthGuard,
     {
