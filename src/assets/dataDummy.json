@@ -962,20 +962,6 @@
 
           }
         }
-      },
-      {
-        "title":"User Specified",
-        "default":null,
-        "ref":{
-
-        },
-        "range":{
-          "min":null,
-          "max":null,
-          "ref":{
-
-          }
-        }
       }
     ]
   },
