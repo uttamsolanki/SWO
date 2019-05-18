@@ -21,6 +21,7 @@ import {MasterDataComponent} from './admin/master-data/master-data.component';
 import {reference} from '@angular/core/src/render3';
 import {ReferenceComponent} from './admin/reference/reference.component';
 import {ProjectComponent} from './report/project/project.component';
+import {ScenarioDetailsComponent} from './report/scenario-details/scenario-details.component';
 
 export const routes: Routes = [
   {
@@ -79,7 +80,9 @@ export const routes: Routes = [
           { path: '',  redirectTo: 'view' , pathMatch: 'full'},
           { path: 'view', component: ViewComponent  },
           { path: 'create', component: CreateComponent},
-          {path: 'project', component: ProjectComponent}
+          {path: 'project', component: ProjectComponent},
+          {path: 'project/:id', component: ProjectComponent},
+          { path: 'scenario', component : ScenarioDetailsComponent}
           ]
       },
       {

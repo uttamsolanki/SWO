@@ -9,7 +9,8 @@ import {UserService} from '../user.service';
 export class DashboardComponent implements OnInit {
 
   projects:any = [];
-  numberOfProject:number
+  numberOfProject:number;
+
 
   constructor(private  userService: UserService) { }
 
@@ -26,5 +27,7 @@ export class DashboardComponent implements OnInit {
 
     });
   }
+  gotoScenario(projectId) {
 
+  }
 }

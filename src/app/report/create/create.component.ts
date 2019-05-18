@@ -577,7 +577,7 @@ export class CreateComponent implements OnInit {
     plugins: {
       datalabels: {
         formatter: (value, piChart) => {
-          console.log(piChart.dataset._meta[0].total);
+        //  console.log(piChart.dataset._meta[0].total);
           piChart.dataset.backgroundColor=["#FEFF00", "#FF98FF",'#6F319F','#02B0F0','#C55A11'];
           let sum = 0;
           // let dataArr = piChart.dataset.data;
@@ -585,7 +585,7 @@ export class CreateComponent implements OnInit {
           //   sum += data;
           // });
 
-          sum = piChart.dataset._meta[0].total;
+        //  sum = piChart.dataset._meta[0].total;
           let percentage = (value*100 / sum).toFixed(2)+"%";
 
           return percentage;
@@ -1158,8 +1158,8 @@ export class CreateComponent implements OnInit {
     // }
     this.pieChartLabels = ['Electricity', 'Chemicals', 'Transportation', 'On-site Emissions Processes', 'Biosolids Disposal'];
     this.pieChartData = [this.totalElecricalCo2 , this.totalChemicalCo2, this.totalTransportationCo2, this.totalOnSiteCo2, this.totalDisposalCo2];
-    this.chart.labels = this.barChartLabels;
-    this.chart.ngOnInit();
+    //this.chart.labels = this.barChartLabels;
+    //this.chart.ngOnInit();
 
   }
 

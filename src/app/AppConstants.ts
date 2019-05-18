@@ -1,4 +1,5 @@
 export class AppConstants {
-  public static get baseURL(): string { return "https://vast-gorge-98517.herokuapp.com/"; }
+  //public static get baseURL(): string { return "https://vast-gorge-98517.herokuapp.com/"; }
+  public static get baseURL(): string { return "http://10.243.16.202:8042/"; }
 }
 //"https://vast-gorge-98517.herokuapp.com/"
