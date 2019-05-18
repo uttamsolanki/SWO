@@ -43,58 +43,178 @@
             <div class="col-lg-12" *ngIf="selectedProject!='0' && !count">
               <p class="msg-text-center">You have not selected any scenario.</p>
             </div>
-            <div class="col-lg-12" *ngIf="selectedProject!='0' && count">
-              <div class="row">
-                <div class="col-lg-{{noOfcolumn}}">
-                  <div class="form-group row">
-                    <label class="col-md-12 col-form-label"><strong>Total CO2 Equivalent </strong></label>
-                  </div>
-                </div>
-                <ng-container *ngFor="let sc of scenarios;let i = index;">
-                <div class="col-lg-{{noOfcolumn}}"  *ngIf="selectScenario[sc.id]">
-                  <div class="form-group row" >
-                    <label class="col-md-12 col-form-label"><strong>Scenario {{i+1}} </strong></label>
-                  </div>
-                </div>
-                </ng-container>
-              </div>
-            </div>
+<!--            <div class="col-lg-12" *ngIf="selectedProject!='0' && count">-->
+<!--              <div class="row">-->
+<!--                <div class="col-lg-{{noOfcolumn}}">-->
+<!--                  <div class="form-group row">-->
+<!--                    <label class="col-md-12 col-form-label"><strong>Total CO2 Equivalent </strong></label>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <ng-container *ngFor="let sc of scenarios;let i = index;">-->
+<!--                <div class="col-lg-{{noOfcolumn}}"  *ngIf="selectScenario[sc.id]">-->
+<!--                  <div class="form-group row" >-->
+<!--                    <label class="col-md-12 col-form-label"><strong>Scenario {{i+1}} </strong></label>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                </ng-container>-->
+<!--              </div>-->
+<!--            </div>-->
             <hr *ngIf="selectedProject!='0' && count">
             <div class="col-lg-12" *ngIf="selectedProject!='0' && count">
               <div class="row">
-                <div class="col-lg-{{noOfcolumn}}">
-                  <div class="form-group row">
-                    <label class="col-md-12 col-form-label">Electricity Emissions</label>
-                    <label class="col-md-12 col-form-label">On-site Process Emissions</label>
-                    <label class="col-md-12 col-form-label">Chemical Usage</label>
-                    <label class="col-md-12 col-form-label">Biosolids Transportation</label>
-                    <label class="col-md-12 col-form-label text-align-right"><strong>Sub Total Prior to Energy Recovery:</strong></label>
+<!--                <div class="col-lg-{{noOfcolumn}}">-->
+<!--                  <div class="form-group row">-->
+<!--                    <label class="col-md-12 col-form-label">Electricity Emissions</label>-->
+<!--                    <label class="col-md-12 col-form-label">On-site Process Emissions</label>-->
+<!--                    <label class="col-md-12 col-form-label">Chemical Usage</label>-->
+<!--                    <label class="col-md-12 col-form-label">Biosolids Transportation</label>-->
+<!--                    <label class="col-md-12 col-form-label"><strong>Sub Total Prior to Energy Recovery:</strong></label>-->
 
-                    <label class="col-md-12 col-form-label">Energy Recovery Credit (From WWTP)</label>
-                    <label class="col-md-12 col-form-label">Energy Recovery Credit (From external sources)</label>
-                    <label class="col-md-12 col-form-label text-align-right"><strong>Net Emissions prior to Biosolids Disposal:</strong></label>
-                    <label class="col-md-12 col-form-label">Biosolids Disposal Emissions</label>
-                    <label class="col-md-12 col-form-label text-align-right"><strong>Total Emissions including Biosolids Disposal: </strong></label>
-                    <!--<label class="col-md-12 col-form-label"><strong>Electricity Emissions Summary: </strong></label>-->
-                  </div>
-                </div>
+<!--                    <label class="col-md-12 col-form-label">Energy Recovery Credit (From WWTP)</label>-->
+<!--                    <label class="col-md-12 col-form-label">Energy Recovery Credit (From external sources)</label>-->
+<!--                    <label class="col-md-12 col-form-label"><strong>Net Emissions prior to Biosolids Disposal:</strong></label>-->
+<!--                    <label class="col-md-12 col-form-label">Biosolids Disposal Emissions</label>-->
+<!--                    <label class="col-md-12 col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label>-->
+<!--                    &lt;!&ndash;<label class="col-md-12 col-form-label"><strong>Electricity Emissions Summary: </strong></label>&ndash;&gt;-->
+<!--                  </div>-->
+<!--                </div>-->
+                <div class = "row">
                 <ng-container *ngFor="let sc of scenarios;let i = index;">
-                <div class="col-lg-{{noOfcolumn}}" *ngIf="selectScenario[sc.id]">
+                <div class="col-lg-12" *ngIf="selectScenario[sc.id]">
+                  <div class="card card-accent-success">
+                    <div class="card-body">
                   <div class="form-group row" >
-                    <label class="col-md-12 col-form-label">{{sc.electical.toFixed(1)}}</label>
-                    <label class="col-md-12 col-form-label">{{sc.OnProcess.toFixed(1)}}</label>
-                    <label class="col-md-12 col-form-label">{{sc.chemical.toFixed(1)}}</label>
-                    <label class="col-md-12 col-form-label">{{sc.transporation.toFixed(1)}}</label>
-                    <label class="col-md-12 col-form-label">{{sc.priorElectrical}}</label>
-                    <label class="col-md-12 col-form-label">{{sc.energy.toFixed(1)}}</label>
-                    <label class="col-md-12 col-form-label">?</label>
-                    <label class="col-md-12 col-form-label">{{sc.priorBiosolid}}</label>
-                    <label class="col-md-12 col-form-label">{{sc.disposal.toFixed(1)}}</label>
-                    <label class="col-md-12 col-form-label">{{sc.process.toFixed(1)}}</label>
-
+                    <table>
+                      <tr>
+                      <th>Total CO2 Equivalent</th>
+                        <th>Scenario {{i+1}}</th>
+                      </tr>
+                      <tr>
+                        <td><label class="col-md-12 col-form-label">Electricity Emissions</label></td>
+                        <td><label class="col-md-12 col-form-label">{{sc.electical.toFixed(1)}}</label></td>
+                      </tr>
+                      <tr>
+                        <td><label class="col-md-12 col-form-label">On-site Process Emissions</label></td>
+                        <td><label class="col-md-12 col-form-label">{{sc.OnProcess.toFixed(1)}}</label></td>
+                      </tr>
+                      <tr>
+                        <td><label class="col-md-12 col-form-label">Chemical Usage</label></td>
+                        <td><label class="col-md-12 col-form-label">{{sc.chemical.toFixed(1)}}</label></td>
+                      </tr>
+                      <tr>
+                        <td><label class="col-md-12 col-form-label">Biosolids Transportation</label></td>
+                        <td><label class="col-md-12 col-form-label">{{sc.transporation.toFixed(1)}}</label></td>
+                      </tr>
+                    <tr>
+                      <td><label class="col-md-12 col-form-label"><strong>Sub Total Prior to Energy Recovery:</strong></label>
+<!--                    <label class="col-md-12 col-form-label">Energy Recovery Credit (From WWTP)</label>-->
+                      <td><label class="col-md-12 col-form-label">{{sc.priorElectrical}}</label></td>
+                    </tr>
+                      <tr>
+                        <td><label class="col-md-12 col-form-label">Energy Recovery Credit (From external sources)</label></td>
+                        <td><label class="col-md-12 col-form-label">{{sc.energy.toFixed(1)}}</label></td>
+                      </tr>
+<!--                    <label class="col-md-12 col-form-label">?</label>-->
+                      <tr>
+                        <td><label class="col-md-12 col-form-label"><strong>Net Emissions prior to Biosolids Disposal:</strong></label></td>
+                        <td><label class="col-md-12 col-form-label">{{sc.priorBiosolid}}</label></td>
+                      </tr>
+                      <tr>
+                        <td><label class="col-md-12 col-form-label">Biosolids Disposal Emissions</label></td>
+                        <td><label class="col-md-12 col-form-label">{{sc.disposal.toFixed(1)}}</label></td>
+                      </tr>
+                      <tr>
+                        <td><label class="col-md-12 col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label></td>
+                        <td><label class="col-md-12 col-form-label">{{sc.process.toFixed(1)}}</label></td>
+                      </tr>
+                    </table>
+                  </div>
+                      <div class="form-group  col-md-12">
+                        <div class="card">
+                          <div class="card-header">
+                            On-site Process Emissions Summary: [<span class="help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="!unit">kg CO<sub>2</sub>/1000m<sup>3</sup></span>]
+                          </div>
+                          <div class="card-body">
+                            <table class="table table-bordered">
+                              <thead>
+                              <tr>
+                                <th></th>
+                                <th>Activated Sludge</th>
+                                <th>Aerobic Digester</th>
+                                <th>Anaerobic Digester</th>
+                                <th>Total</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                <td>CO<sub>2</sub> Emission</td>
+                                <td>{{active_sludgeco2}}</td>
+                                <td>{{aerobicco2}}</td>
+                                <td>{{anarobicco2}}</td>
+                                <td>{{(active_sludgeco2+aerobicco2+anarobicco2).toFixed(2)}}</td>
+                              </tr>
+                              <tr>
+                                <td>N<sub>2</sub>O Emission</td>
+                                <td>{{active_sludgeno2}}</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>{{active_sludgeno2}}</td>
+                              </tr>
+                              <tr>
+                                <td>CH<sub>4</sub> Emission</td>
+                                <td>0</td>
+                                <td>{{aerobicch4}}</td>
+                                <td>{{anarobicch4}}</td>
+                                <td>{{(aerobicch4+anarobicch4).toFixed(2)}}</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Total</strong></td>
+                                <td><strong>{{active_sludgetotalCo2}}</strong></td>
+                                <td><strong>{{aerobictotalCo2}}</strong></td>
+                                <td><strong>{{anarobictotalCo2}}</strong></td>
+                                <td><strong>{{OnSiteCo2}}</strong></td>
+                              </tr>
+                              <tr>
+                                <td colspan="5"></td>
+                              </tr>
+                              <tr>
+                                <td>CO<sub>2</sub>, %</td>
+                                <td>{{(active_sludgeco2/OnSiteCo2*100).toFixed(2)}}%</td>
+                                <td>{{(aerobicco2/OnSiteCo2*100).toFixed(2)}}%</td>
+                                <td>{{(anarobicco2/OnSiteCo2*100).toFixed(2)}}%</td>
+                                <td>{{((active_sludgeco2+aerobicco2+anarobicco2)/OnSiteCo2*100).toFixed(2)}}%</td>
+                              </tr>
+                              <tr>
+                                <td>N<sub>2</sub>O, %</td>
+                                <td>{{(active_sludgeno2/OnSiteCo2*100).toFixed(2)}}%</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>{{(active_sludgeno2/OnSiteCo2*100).toFixed(2)}}%</td>
+                              </tr>
+                              <tr>
+                                <td>CH<sub>4</sub>, %</td>
+                                <td>0</td>
+                                <td>{{(aerobicch4/OnSiteCo2*100).toFixed(2)}}%</td>
+                                <td>{{(anarobicch4/OnSiteCo2*100).toFixed(2)}}%</td>
+                                <td>{{((aerobicch4+anarobicch4)/OnSiteCo2*100).toFixed(2)}}%</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Total</strong></td>
+                                <td><strong>{{(active_sludgetotalCo2/OnSiteCo2*100).toFixed(2)}}%</strong></td>
+                                <td><strong>{{(aerobictotalCo2/OnSiteCo2*100).toFixed(2)}}%</strong></td>
+                                <td><strong>{{(anarobictotalCo2/OnSiteCo2*100).toFixed(2)}}%</strong></td>
+                                <td><strong>{{(OnSiteCo2/OnSiteCo2*100).toFixed(2)}}%</strong></td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 </ng-container>
+                </div>
               </div>
             </div>
           </form>

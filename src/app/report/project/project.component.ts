@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../user.service';
 import {forEach} from '@angular/router/src/utils/collection';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-project',
@@ -9,37 +10,36 @@ import {forEach} from '@angular/router/src/utils/collection';
 })
 export class ProjectComponent implements OnInit {
   projects: any = [];
-  constructor(private  userService: UserService) { }
+  scenarioData = [];
+  constructor(private  userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    const data = this.userService.getProject().subscribe((rep: any) => {
-      if (rep.status === 1) {
-        this.projects = rep.data;
-        console.log(this.projects);
-      } else {
-        console.log(rep.status);
-      }
-
-    });
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      const data = this.userService.getScenario({project_id: id}).subscribe((response: any) => {
+        console.log("service working");
+        this.setScenarioData(response.data.scenario);
+      });
+    }
+  }
+  setScenarioData(data) {
+    this.scenarioData = data;
+    console.log(this.scenarioData);
   }
 
   deleteRow(deleteId) {
-    for (let i = 0 ; i < this.projects.length ; i++)  {
-      if (this.projects[i]._id === deleteId) {
-        this.projects = this.projects.slice(0);
-        this.projects.splice(i , 1);
+    const data = this.userService.deleteSenario({project_id: deleteId}).subscribe((response: any) => {
+    for (let i = 0 ; i < this.scenarioData.length ; i++) {
+      if (this.scenarioData[i]._id === deleteId) {
+        this.scenarioData = this.projects.slice(0);
+        this.scenarioData.splice(i, 1);
         break;
       }
     }
-    // post call
-    // this.userService.saveProject(this.projects).subscribe((rep: any) => {
-    //  console.log("row deteled at server end");
-    // });
+    });
   }
   duplicateRow(records) {
       console.log(records);
       console.log(new Date());
-      // post call pending
   }
-
 }
