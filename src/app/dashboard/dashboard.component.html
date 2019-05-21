@@ -4,7 +4,7 @@
       <div class="card-header">
         Project
         <div *ngIf="projects.length">
-          <button style="float: right" type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/view']">Compare</button>
+          <button style="float: right" type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/new-project']">Add New Project</button>
         </div>
         <div class="card-header-actions"></div>
       </div>
@@ -13,27 +13,6 @@
           <p class="msg-text-center">You have not created any Project.</p>
           <button type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/create']">Create</button>
         </form>
-        <!--          <table class="table" *ngIf="projects.length">-->
-        <!--            <thead>-->
-        <!--            <tr>-->
-        <!--              <th>Name</th>-->
-        <!--              <th>Date Created</th>-->
-        <!--              <th>Action</th>-->
-        <!--            </tr>-->
-        <!--            </thead>-->
-        <!--            <tbody>-->
-        <!--            <tr *ngFor="let p of projects">-->
-        <!--              <td>{{p.name}}</td>-->
-        <!--              <td>{{p.created_date | date: 'dd/MM/yyyy'}}</td>-->
-        <!--              <td>-->
-        <!--                <div>-->
-        <!--                  <button class="badge badge-success badge-new" (click)="deleteRow(p._id)">Delete</button>-->
-        <!--                  <button class="badge badge-warning badge-new" [routerLink]="['/report/create']" (click)="duplicateRow(p)" >Duplicate</button>-->
-        <!--                </div>-->
-        <!--              </td>-->
-        <!--            </tr>-->
-        <!--            </tbody>-->
-        <!--          </table>-->
         <div class="table" *ngIf="projects.length">
           <div class = "row">
             <div class="col-4 " *ngFor="let p of projects">
@@ -41,7 +20,7 @@
                 <div class="card-header" (click)="gotoScenario()" [routerLink]="['/report/scenario']">
                   Name: {{p.name}}
                 </div>
-                <div class="card-body" [routerLink]="['/report/scenario']">
+                <div class="card-body">
                   {{p.name}}<br/>
                   Created Date:{{p.created_date | date: 'dd/MM/yyyy'}}
                   <div>
@@ -49,7 +28,7 @@
 <!--                    <button class="badge badge-success badge-new"  (click)="deleteRow(p._id)">Delete</button>-->
 <!--                    <button class="badge badge-warning badge-new" [routerLink]="['/report/create']" (click)="duplicateRow(p)" >Duplicate</button>-->
                   </div>
-                </div>
+
               </div>
             </div>
           </div>

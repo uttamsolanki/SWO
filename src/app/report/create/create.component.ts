@@ -7,6 +7,7 @@ import html2canvas from 'html2canvas';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDirective} from 'ngx-bootstrap';
 import 'chartjs-plugin-datalabels';
+import {DataServiceService} from '../../data-service.service';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -14,7 +15,7 @@ import 'chartjs-plugin-datalabels';
 })
 
 export class CreateComponent implements OnInit {
-  constructor(private userService: UserService, private router: Router,  private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private router: Router,  private route: ActivatedRoute, private dataServiceService: DataServiceService) { }
 
   @ViewChild('tabset') tabset: TabsetComponent;
   @ViewChild('baseChart') public chart: BaseChartDirective;
@@ -22,7 +23,7 @@ export class CreateComponent implements OnInit {
   @ViewChild('successModal') public modal: ModalDirective;
 
   fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering', 'chemical', 'process','constant'];
-
+  setScenarioData;
   modelMsg;
   co2_eq = 135.5;
   COD_TOC = 3.33;
@@ -601,6 +602,10 @@ export class CreateComponent implements OnInit {
     }
   };
   ngOnInit() {
+
+    this.setScenarioData = this.dataServiceService.getDate();
+    this.setScenario();
+
     const data = this.userService.getData().subscribe((resp: any) => {
       Object.assign(this.primary.pumping, this.defaulValaue.data);
       this.assignFormValue(resp);
@@ -615,6 +620,11 @@ export class CreateComponent implements OnInit {
       });
     }
 
+  }
+  setScenario() {
+    if (this.setScenarioData) {
+      this.assignFormValue(this.setScenarioData);
+    }
   }
   collapsed(event: any): void {
     // console.log(event);

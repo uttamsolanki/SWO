@@ -3,9 +3,9 @@
     <div class="card">
       <div class="card-header">
         Scenario
-        <!--<div *ngIf="scenarioData.length">
+        <div *ngIf="scenarioData.length">
         <button style="float: right" type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/view']">Compare</button>
-        </div>-->
+        </div>
         <div class="card-header-actions"></div>
       </div>
         <div class="card-body">
@@ -16,6 +16,7 @@
           <table class="table" *ngIf="scenarioData.length">
             <thead>
             <tr>
+              <th></th>
               <th>Name</th>
               <th>Date Created</th>
               <th>Action</th>
@@ -23,6 +24,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let p of scenarioData">
+              <td><input type="checkbox"> </td>
               <td>{{p._id}}</td>
 <!--              <td>{{p.created_date | date: 'dd/MM/yyyy'}}</td>-->
               <td>

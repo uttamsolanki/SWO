@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit,  ViewChild} from '@angular/core';
 import {UserService} from '../../user.service';
 import {forEach} from '@angular/router/src/utils/collection';
 import { ActivatedRoute } from '@angular/router';
+import {CreateComponent} from '../create/create.component';
+import {DataServiceService} from '../../data-service.service';
+
 
 @Component({
   selector: 'app-project',
@@ -9,9 +12,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./project.component.scss']
 })
 export class ProjectComponent implements OnInit {
+
+
+  createComponent: CreateComponent;
   projects: any = [];
   scenarioData = [];
-  constructor(private  userService: UserService, private route: ActivatedRoute) { }
+  constructor(private  userService: UserService, private route: ActivatedRoute, private dataServiceService: DataServiceService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -39,7 +45,6 @@ export class ProjectComponent implements OnInit {
     });
   }
   duplicateRow(records) {
-      console.log(records);
-      console.log(new Date());
+    this.dataServiceService.setData(records.data);
   }
 }

@@ -74,4 +74,8 @@ export class UserService {
     this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
     return  this._http.post(this._baseURL + 'projects/DeleteScenario', data,{headers: this._headers});
   }
+  saveNewProject(data): Observable<any> {
+    this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
+    return  this._http.post(this._baseURL + 'projects/saveProject', data,{headers: this._headers});
+  }
 }

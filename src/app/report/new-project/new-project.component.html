@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-header">
+    New Project
+  </div>
+  <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+    <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="p_name" >Enter Project Name</label>
+        <div class="col-md-4">
+          <input type="text" id="p_name" name="p_name" class="form-control" placeholder="Project Name"  [(ngModel)]="project.name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="description_name" >Enter Description</label>
+        <div class="col-md-4">
+          <input type="text" id="description_name" name="p_description" class="form-control" placeholder="Description" [(ngModel)]="project.desc">
+        </div>
+      </div>
+      <div class="form-group row">
+      <button type="button" class="offset-5 col-md-2 btn btn-block btn-success " (click)="saveProject()">Create Project</button>
+      </div>
+    </form>
+  </div>
+  </div>
+<div class="animated fadeIn">
+  <div bsModal  #successModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-success" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Success</h4>
+          <button type="button" class="close" (click)="successModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>{{sucessMessage}} created</p>
+          Would you like to create Scenario?
+          <button type="button" class="btn btn-success" [routerLink]="['/report/create']">Yes</button>
+          <button type="button" class="btn btn-success" (click)="successModal.hide()">No</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="successModal.hide()">Close</button>
+<!--          <button type="button" class="btn btn-success">Ok</button>-->
+        </div>
+      </div>
+    </div>
+  </div>

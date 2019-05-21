@@ -59,8 +59,8 @@ import { AdminComponent } from './admin/admin.component';
 import { MasterDataComponent } from './admin/master-data/master-data.component';
 import { ReferenceComponent } from './admin/reference/reference.component';
 import { ProjectComponent } from './report/project/project.component';
-import { ScenarioDetailsComponent } from './report/scenario-details/scenario-details.component';
-//import { ScenarioDetailsComponent } from './scenario-details/scenario-details.component';
+import { NewProjectComponent } from './report/new-project/new-project.component';
+
 
 
 
@@ -105,7 +105,7 @@ import { ScenarioDetailsComponent } from './report/scenario-details/scenario-det
     MasterDataComponent,
     ReferenceComponent,
     ProjectComponent,
-    ScenarioDetailsComponent,
+    NewProjectComponent,
    // ScenarioDetailsComponent,
   ],
   providers: [UserService, AuthGuard,
