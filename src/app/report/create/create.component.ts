@@ -603,8 +603,8 @@ export class CreateComponent implements OnInit {
   };
   ngOnInit() {
 
-    this.setScenarioData = this.dataServiceService.getDate();
-    this.setScenario();
+    // this.setScenarioData = this.dataServiceService.getDate();
+    // this.setScenario();
 
     const data = this.userService.getData().subscribe((resp: any) => {
       Object.assign(this.primary.pumping, this.defaulValaue.data);

@@ -80,6 +80,7 @@ export const routes: Routes = [
           { path: '',  redirectTo: 'view' , pathMatch: 'full'},
           { path: 'view', component: ViewComponent  },
           { path: 'create', component: CreateComponent},
+          { path: 'create/:id', component: CreateComponent},
           {path: 'project', component: ProjectComponent},
           {path: 'project/:id', component: ProjectComponent},
           {path: 'new-project', component: NewProjectComponent}
