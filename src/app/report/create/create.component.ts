@@ -613,18 +613,14 @@ export class CreateComponent implements OnInit {
 
     this.id = this.route.snapshot.paramMap.get('id') || null;
     if (this.id !== null) {
-      const details = this.userService.getProjectDatils({project_id: this.id}).subscribe((resp: any) => {
+      const details = this.userService.getScenarioDatils({s_id: this.id}).subscribe((resp: any) => {
         if (resp.status == 1) {
+          console.log(resp.data);
           this.assignEditFormValue(resp.data);
         }
       });
     }
 
-  }
-  setScenario() {
-    if (this.setScenarioData) {
-      this.assignFormValue(this.setScenarioData);
-    }
   }
   collapsed(event: any): void {
     // console.log(event);

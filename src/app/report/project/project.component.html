@@ -30,7 +30,7 @@
               <td>
                 <div>
                   <button class="badge badge-success badge-new" (click)="deleteRow(p._id)">Delete</button>
-                  <button class="badge badge-warning badge-new" [routerLink]="['/report/create/',p._id]" (click)="duplicateRow(p)" >Duplicate</button>
+                  <button class="badge badge-warning badge-new" [routerLink]="['/report/create/',id,p._id]" (click)="duplicateRow(p)" >Duplicate</button>
                 </div>
               </td>
             </tr>

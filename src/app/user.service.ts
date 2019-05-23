@@ -62,6 +62,10 @@ export class UserService {
     this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
     return  this._http.post(this._baseURL + 'projects/details',data,{headers: this._headers});
   }
+  getScenarioDatils(data): Observable<any> {
+    this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
+    return  this._http.post(this._baseURL + 'projects/ScenarioDetails',data,{headers: this._headers});
+  }
   getScenario(data): Observable<any> {
     this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
     return  this._http.post(this._baseURL + 'projects/details', data,{headers: this._headers});

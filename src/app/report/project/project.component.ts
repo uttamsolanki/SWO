@@ -17,12 +17,13 @@ export class ProjectComponent implements OnInit {
   createComponent: CreateComponent;
   projects: any = [];
   scenarioData = [];
+  id:any;
   constructor(private  userService: UserService, private route: ActivatedRoute, private dataServiceService: DataServiceService) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      const data = this.userService.getScenario({project_id: id}).subscribe((response: any) => {
+     this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id) {
+      const data = this.userService.getScenario({project_id: this.id}).subscribe((response: any) => {
         console.log("service working");
         this.setScenarioData(response.data.scenario);
       });
