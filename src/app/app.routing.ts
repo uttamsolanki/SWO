@@ -79,7 +79,7 @@ export const routes: Routes = [
         children: [
           { path: '',  redirectTo: 'view' , pathMatch: 'full'},
           { path: 'view', component: ViewComponent  },
-          { path: 'create', component: CreateComponent},
+          // { path: 'create', component: CreateComponent},
           {path: 'create/:id', component: CreateComponent},
           { path: 'create/:id/:sid', component: CreateComponent},
           {path: 'project', component: ProjectComponent},

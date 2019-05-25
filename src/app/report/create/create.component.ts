@@ -31,7 +31,8 @@ export class CreateComponent implements OnInit {
   Removed_TKN = 0.34;
   gamma = 0.140;
   delta = 8.422;
-  projecName = 'Project-1';
+  scenarioName = 'Scenario-1';
+  scenarioDesc=null;
 
   // ****************** This for data related variable ***********************//
 
@@ -433,6 +434,7 @@ export class CreateComponent implements OnInit {
   totalBiolidDisposalCo2: any = 0;
   result: any = {};
   id: string;
+  sid: string;
   tempBoolen = true;
   unit = 1;
   unitDivider = 1;
@@ -603,6 +605,7 @@ export class CreateComponent implements OnInit {
   };
   ngOnInit() {
 
+    this.id = this.route.snapshot.paramMap.get('id') || null;
     // this.setScenarioData = this.dataServiceService.getDate();
     // this.setScenario();
 
@@ -611,11 +614,12 @@ export class CreateComponent implements OnInit {
       this.assignFormValue(resp);
     });
 
-    this.id = this.route.snapshot.paramMap.get('id') || null;
-    if (this.id !== null) {
-      const details = this.userService.getScenarioDatils({s_id: this.id}).subscribe((resp: any) => {
+    this.sid = this.route.snapshot.paramMap.get('sid') || null;
+
+    if (this.sid !== null) {
+      const details = this.userService.getScenarioDatils({s_id: this.sid}).subscribe((resp: any) => {
+        console.log(resp);
         if (resp.status == 1) {
-          console.log(resp.data);
           this.assignEditFormValue(resp.data);
         }
       });
@@ -652,9 +656,10 @@ export class CreateComponent implements OnInit {
     this.createChart();
   }
   assignEditFormValue(editData) {
-    if (editData.scenario) {
-      this.projecName = editData.name;
-      const fielddData = editData.scenario[0].data;
+    if (editData.data) {
+      this.scenarioName = editData.name;
+      this.scenarioDesc = editData.desc;
+      const fielddData = editData.data;
       for (const field of this.fields) {
         this[field] = fielddData[field];
       }
@@ -1385,14 +1390,11 @@ export class CreateComponent implements OnInit {
     }
     test = this.result;
 
-    const projectData = {projectName: this.projecName, data: test, project_id: null};
-    if (this.id) {
-      projectData.project_id = this.id;
-    }
-
+    const scenarioData = {name: this.scenarioName, desc: this.scenarioDesc, data: test, project_id: this.id};
+    console.log(scenarioData);
     this.modelMsg = "Wait.....";
     this.modal.show();
-    const data = this.userService.saveProject(projectData).subscribe((rep: any) => {
+    const data = this.userService.saveProject(scenarioData).subscribe((rep: any) => {
       this.modelMsg = rep.message;
      // this.modal.show();
     });

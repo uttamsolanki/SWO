@@ -2,7 +2,7 @@
   <div class="col-lg-12">
     <div class="card">
       <div class="card-header">
-        Project
+        Projects
         <div *ngIf="projects.length">
           <button style="float: right" type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/new-project']">Add New Project</button>
         </div>
@@ -21,10 +21,10 @@
                   Name: {{p.name}}
                 </div>
                 <div class="card-body">
-                  {{p.name}}<br/>
-                  Created Date:{{p.created_date | date: 'dd/MM/yyyy'}}
-                  <div>
-                    <button class="badge badge-success badge-new" [routerLink]="['/report/project', p._id]">Scenario</button>
+                  <div class="row"><p>Description: {{p.name}}</p></div>
+                  <div class="row"><p>Created Date: {{p.created_date | date: 'dd/MM/yyyy'}}</p></div>
+                  <div class="row">
+                    <button class="badge badge-success badge-new" [routerLink]="['/report/project', p._id]">View Scenarios</button>
 <!--                    <button class="badge badge-success badge-new"  (click)="deleteRow(p._id)">Delete</button>-->
 <!--                    <button class="badge badge-warning badge-new" [routerLink]="['/report/create']" (click)="duplicateRow(p)" >Duplicate</button>-->
                   </div>

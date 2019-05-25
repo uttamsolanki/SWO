@@ -28,7 +28,7 @@ export const navItems: NavData[] = [
   // },
   {
     name: 'New Project',
-    url: '/report/project',
+    url: '/report/new-project',
     icon: 'icon-pencil'
   },
   {
