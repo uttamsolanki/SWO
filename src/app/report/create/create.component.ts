@@ -34,7 +34,7 @@ export class CreateComponent implements OnInit {
   scenarioName = 'Scenario';
   scenarioDesc = 'Scenario Description';
   scenarioLength;
-
+  setProjectData = 'Project 1';
   // ****************** This for data related variable ***********************//
 
   size = {
@@ -589,7 +589,7 @@ export class CreateComponent implements OnInit {
           //   sum += data;
           // });
 
-        //  sum = piChart.dataset._meta[0].total;
+         sum = piChart.dataset._meta[0].total;
           let percentage = (value*100 / sum).toFixed(2)+"%";
 
           return percentage;
@@ -609,7 +609,10 @@ export class CreateComponent implements OnInit {
     this.scenarioLength = ( parseInt(this.route.snapshot.paramMap.get('sid')) + 1) || null;
     this.scenarioName = this.scenarioName + ' '  + this.scenarioLength;
     this.id = this.route.snapshot.paramMap.get('id') || null;
-    // this.setScenarioData = this.dataServiceService.getDate();
+    if (this.dataServiceService.getProjectData()) {
+      this.setProjectData = this.dataServiceService.getProjectData().name;
+    }
+     console.log(this.setProjectData);
     // this.setScenario();
 
     const data = this.userService.getData().subscribe((resp: any) => {

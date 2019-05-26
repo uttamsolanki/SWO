@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
+import {DataServiceService} from '../data-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,7 @@ export class DashboardComponent implements OnInit {
   numberOfProject:number;
 
 
-  constructor(private  userService: UserService) { }
+  constructor(private  userService: UserService, private dataServiceService: DataServiceService) { }
 
   ngOnInit() {
     console.log('Dashboard call');
@@ -27,7 +28,7 @@ export class DashboardComponent implements OnInit {
 
     });
   }
-  gotoScenario(projectId) {
-
+  setProjectData(data) {
+    this.dataServiceService.setProjectData(data);
   }
 }

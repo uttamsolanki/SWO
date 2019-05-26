@@ -24,7 +24,7 @@
                   <div class="row"><p>Description: {{p.name}}</p></div>
                   <div class="row"><p>Created Date: {{p.created_date | date: 'dd/MM/yyyy'}}</p></div>
                   <div class="row">
-                    <button class="badge badge-success badge-new" [routerLink]="['/report/project', p._id]">View Scenarios</button>
+                    <button class="badge badge-success badge-new" (click)="setProjectData(p)" [routerLink]="['/report/project', p._id]">View Scenarios</button>
 <!--                    <button class="badge badge-success badge-new"  (click)="deleteRow(p._id)">Delete</button>-->
 <!--                    <button class="badge badge-warning badge-new" [routerLink]="['/report/create']" (click)="duplicateRow(p)" >Duplicate</button>-->
                   </div>
