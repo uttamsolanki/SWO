@@ -9,8 +9,8 @@ import {ModalDirective} from 'ngx-bootstrap';
 })
 export class NewProjectComponent implements OnInit {
   project = {
-    name: '',
-    desc: ''
+    name: 'Project name',
+    desc: 'Project Description'
   };
   sucessMessage;
   responseData;

@@ -32,7 +32,7 @@ export class CreateComponent implements OnInit {
   gamma = 0.140;
   delta = 8.422;
   scenarioName = 'Scenario-1';
-  scenarioDesc=null;
+  scenarioDesc = 'Scenario Description';
 
   // ****************** This for data related variable ***********************//
 
