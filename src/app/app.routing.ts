@@ -82,6 +82,7 @@ export const routes: Routes = [
           // { path: 'create', component: CreateComponent},
           {path: 'create/:id', component: CreateComponent},
           { path: 'create/:id/:sid', component: CreateComponent},
+         // { path: 'create/:id/:length', component: CreateComponent},
           {path: 'project', component: ProjectComponent},
           {path: 'project/:id', component: ProjectComponent},
           {path: 'new-project', component: NewProjectComponent}

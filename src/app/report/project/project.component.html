@@ -5,7 +5,7 @@
         Scenarios
         <div *ngIf="scenarioData.length">
         <button style="float: right" type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/view']">Compare</button>
-          <button type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id]">Create</button>
+          <button type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id,scenarioData.length]">Create</button>
         </div>
         <div class="card-header-actions"></div>
       </div>
@@ -30,8 +30,9 @@
               <td>{{p.created_date | date: 'dd/MM/yyyy'}}</td>
               <td>
                 <div>
-                  <button class="badge badge-success badge-new" (click)="deleteRow(p._id)">Delete</button>
+                  <button class="badge badge-primary badge-new view-color bg-primary" [routerLink]="['/report/create/',id, 0]">View</button>
                   <button class="badge badge-warning badge-new" [routerLink]="['/report/create/',id,p._id]" (click)="duplicateRow(p)" >Duplicate</button>
+                  <button class="badge badge-success badge-new" (click)="deleteRow(p._id)">Delete</button>
                 </div>
               </td>
             </tr>

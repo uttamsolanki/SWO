@@ -31,8 +31,9 @@ export class CreateComponent implements OnInit {
   Removed_TKN = 0.34;
   gamma = 0.140;
   delta = 8.422;
-  scenarioName = 'Scenario-1';
+  scenarioName = 'Scenario';
   scenarioDesc = 'Scenario Description';
+  scenarioLength;
 
   // ****************** This for data related variable ***********************//
 
@@ -605,6 +606,8 @@ export class CreateComponent implements OnInit {
   };
   ngOnInit() {
 
+    this.scenarioLength = ( parseInt(this.route.snapshot.paramMap.get('sid')) + 1) || null;
+    this.scenarioName = this.scenarioName + ' '  + this.scenarioLength;
     this.id = this.route.snapshot.paramMap.get('id') || null;
     // this.setScenarioData = this.dataServiceService.getDate();
     // this.setScenario();
