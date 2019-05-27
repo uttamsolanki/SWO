@@ -36,6 +36,7 @@ export class CreateComponent implements OnInit {
   scenarioLength;
   scenarioLengthTemp;
   setProjectData = 'Project 1';
+  scenarioNewName;
   // ****************** This for data related variable ***********************//
 
   size = {
@@ -608,11 +609,9 @@ export class CreateComponent implements OnInit {
   };
   ngOnInit() {
 
-    this.scenarioLengthTemp = parseInt(this.route.snapshot.paramMap.get('sid'));
-    this.scenarioLength = ( parseInt(this.route.snapshot.paramMap.get('sid')) + 1) || null;
-
-    if( this.scenarioLength!=null)
-      this.scenarioName = this.scenarioName + ' '  + this.scenarioLength;
+    this.scenarioLength = ( parseInt(this.route.snapshot.paramMap.get('length')) + 1);
+    if(this.scenarioLength) {
+    this.scenarioName = this.scenarioName + ' '  + this.scenarioLength; }
     this.id = this.route.snapshot.paramMap.get('id') || null;
     if (this.dataServiceService.getProjectData()) {
       this.setProjectData = this.dataServiceService.getProjectData().name;
@@ -625,6 +624,9 @@ export class CreateComponent implements OnInit {
     });
 
     this.sid = this.route.snapshot.paramMap.get('sid') || null;
+    if (this.sid === "null") {
+      this.sid = null;
+    }
 
     if (this.sid !== null) {
       const details = this.userService.getScenarioDatils({s_id: this.sid}).subscribe((resp: any) => {

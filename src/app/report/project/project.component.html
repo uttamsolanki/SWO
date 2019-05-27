@@ -5,7 +5,7 @@
         Scenarios
         <div *ngIf="scenarioData.length">
         <button style="float: right" type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/view']">Compare</button>
-          <button type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id,scenarioData.length]">Create</button>
+          <button type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id,'null',scenarioData.length]">Create</button>
         </div>
         <div class="card-header-actions"></div>
       </div>
