@@ -11,7 +11,7 @@
       <div class="card-body">
         <form class="form-horizontal" *ngIf="!projects.length">
           <p class="msg-text-center">You have not created any Project.</p>
-          <button type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/create']">Create</button>
+          <button type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/new-project']">Create</button>
         </form>
         <div class="table" *ngIf="projects.length">
           <div class = "row">

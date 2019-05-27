@@ -34,6 +34,7 @@ export class CreateComponent implements OnInit {
   scenarioName = 'Scenario';
   scenarioDesc = 'Scenario Description';
   scenarioLength;
+  scenarioLengthTemp;
   setProjectData = 'Project 1';
   // ****************** This for data related variable ***********************//
 
@@ -584,12 +585,13 @@ export class CreateComponent implements OnInit {
         //  console.log(piChart.dataset._meta[0].total);
           piChart.dataset.backgroundColor=["#FEFF00", "#FF98FF",'#6F319F','#02B0F0','#C55A11'];
           let sum = 0;
-          // let dataArr = piChart.dataset.data;
-          // dataArr.map(data => {
-          //   sum += data;
-          // });
+          let dataArr = piChart.dataset.data;
+          dataArr.map(data => {
+            sum += data;
+          });
 
-         sum = piChart.dataset._meta[0].total;
+        // sum = piChart.dataset._meta[0].total;
+
           let percentage = (value*100 / sum).toFixed(2)+"%";
 
           return percentage;
@@ -606,13 +608,15 @@ export class CreateComponent implements OnInit {
   };
   ngOnInit() {
 
+    this.scenarioLengthTemp = parseInt(this.route.snapshot.paramMap.get('sid'));
     this.scenarioLength = ( parseInt(this.route.snapshot.paramMap.get('sid')) + 1) || null;
-    this.scenarioName = this.scenarioName + ' '  + this.scenarioLength;
+
+    if( this.scenarioLength!=null)
+      this.scenarioName = this.scenarioName + ' '  + this.scenarioLength;
     this.id = this.route.snapshot.paramMap.get('id') || null;
     if (this.dataServiceService.getProjectData()) {
       this.setProjectData = this.dataServiceService.getProjectData().name;
     }
-     console.log(this.setProjectData);
     // this.setScenario();
 
     const data = this.userService.getData().subscribe((resp: any) => {
@@ -668,6 +672,15 @@ export class CreateComponent implements OnInit {
       const fielddData = editData.data;
       for (const field of this.fields) {
         this[field] = fielddData[field];
+
+        if(field=='secondary'){
+          for (const type of this.growth_types) {
+            if (type.title === this.secondary.sel_growth_type) {
+              this.secondary_types = type.treatment_type;
+            }
+          }
+        }
+
       }
       this.updateWWTPsize();
     }
@@ -745,7 +758,6 @@ export class CreateComponent implements OnInit {
   }
   constantData(data){
     this.constant = data;
-    console.log(this.constant);
   }
   updateWWTPsize() {
     // console.log(this.size.sel_size);
@@ -915,6 +927,9 @@ export class CreateComponent implements OnInit {
       this.anarobicData.ch4 = parseFloat(calCh4.toFixed(2));
       this.anarobicData.co2  = this.anarobicData.co2 + this.anarobicData.ch4;
       this.anarobicData.ch4 = 0;
+      if(this.process.anarobic.isFlaring==1){
+        this.process.anarobic.isExternal=0;
+      }
     } else {
       calCh4 = temp * alpha * 0.016 * 25;
       this.anarobicData.ch4 = parseFloat(calCh4.toFixed(2));
@@ -1151,8 +1166,8 @@ export class CreateComponent implements OnInit {
     this.barChartData = [
       {data: newData, label: 'CO2 Equivalent from Electricity Emissions'}
     ];
-    // this.pieChartLabels = [];
-    // this.pieChartData = [];
+     this.pieChartLabels = [];
+     this.pieChartData = [];
     // if(this.totalElecricalCo2){
     //   this.pieChartLabels.push('Electricity');
     //   this.pieChartData.push(this.totalElecricalCo2);
@@ -1177,7 +1192,6 @@ export class CreateComponent implements OnInit {
     this.pieChartData = [this.totalElecricalCo2 , this.totalChemicalCo2, this.totalTransportationCo2, this.totalOnSiteCo2, this.totalDisposalCo2];
     //this.chart.labels = this.barChartLabels;
     //this.chart.ngOnInit();
-
   }
 
   // events
@@ -1397,7 +1411,7 @@ export class CreateComponent implements OnInit {
     test = this.result;
 
     const scenarioData = {name: this.scenarioName, desc: this.scenarioDesc, data: test, project_id: this.id};
-    console.log(scenarioData);
+
     this.modelMsg = "Wait.....";
     this.modal.show();
     const data = this.userService.saveProject(scenarioData).subscribe((rep: any) => {
