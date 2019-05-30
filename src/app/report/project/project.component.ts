@@ -18,6 +18,7 @@ export class ProjectComponent implements OnInit {
   projects: any = [];
   scenarioData = [];
   id:any;
+  elements = [];
   constructor(private  userService: UserService, private route: ActivatedRoute, private dataServiceService: DataServiceService) { }
 
   ngOnInit() {
@@ -47,5 +48,17 @@ export class ProjectComponent implements OnInit {
   }
   duplicateRow(records) {
     this.dataServiceService.setData(records.data);
+  }
+  toggleEditable(event, scenariodId, index) {
+    if (event.target.checked) {
+      this.elements.splice(index, 0, scenariodId);
+    } else {
+      if (this.elements.indexOf(scenariodId) > -1) {
+        this.elements.splice(this.elements.indexOf(scenariodId), 1);
+      }
+    }
+  }
+  sendScenarioId() {
+    this.dataServiceService.setSenarioId(this.elements);
   }
 }

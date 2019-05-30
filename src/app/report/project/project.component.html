@@ -4,7 +4,7 @@
       <div class="card-header">
         Scenarios
         <div *ngIf="scenarioData.length">
-        <button style="float: right" type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/view']">Compare</button>
+        <button style="float: right" type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/view']" (click)="sendScenarioId()">Compare</button>
           <button type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id,scenarioData.length]">Create</button>
         </div>
         <div class="card-header-actions"></div>
@@ -24,8 +24,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let p of scenarioData">
-              <td><input type="checkbox"> </td>
+            <tr *ngFor="let p of scenarioData; index as i">
+              <td><input type="checkbox" (change)="toggleEditable($event, p._id, i)"/></td>
               <td>{{p.name}}</td>
               <td>{{p.created_date | date: 'dd/MM/yyyy'}}</td>
               <td>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../user.service';
 import {ActivatedRoute} from '@angular/router';
+import {DataServiceService} from '../../data-service.service';
 
 @Component({
   selector: 'app-view',
@@ -9,7 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ViewComponent implements OnInit {
 
-  constructor(private  userService: UserService, private route: ActivatedRoute) { }
+  constructor(private  userService: UserService, private route: ActivatedRoute, private dataServiceService: DataServiceService) { }
 
   projects:any = [];
   numberOfProject:number;
@@ -72,6 +73,7 @@ export class ViewComponent implements OnInit {
 
 
   ngOnInit() {
+    this.dataServiceService.getScenarioId();
     const data = this.userService.getProject().subscribe((rep: any) => {
       if(rep.status === 1) {
         this.numberOfProject = Object.keys(rep.data).length;

@@ -9,6 +9,7 @@ export class DataServiceService {
   private messageSource = new BehaviorSubject('default message');
   currentMessage = this.messageSource.asObservable();
   newData;
+  scenarioIds;
   constructor() { }
 
   setData(data: string) {
@@ -17,5 +18,11 @@ export class DataServiceService {
   }
   getDate() {
     return this.newData;
+  }
+  setSenarioId(data: any) {
+    this.scenarioIds = data;
+  }
+  getScenarioId() {
+    return this.scenarioIds;
   }
 }
