@@ -4,8 +4,13 @@
       <div class="card-header">
         Scenarios
         <div *ngIf="scenarioData.length">
-        <button style="float: right" type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/view']" (click)="sendScenarioId()">Compare</button>
-          <button type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id,scenarioData.length]">Create</button>
+            <div *ngIf="elements.length> 0">
+              <button style="float: right" type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/view', id]" (click)="sendScenarioId()">Compare</button>
+            </div>
+          <div *ngIf="elements.length<= 0">
+            <button style="float: right" type="button" disabled class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/view',id]" (click)="sendScenarioId()">Compare</button>
+          </div>
+              <button type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id,scenarioData.length]">Create</button>
         </div>
         <div class="card-header-actions"></div>
       </div>
