@@ -2534,6 +2534,10 @@
                         <input class="form-check-input m-2" type="radio" name="unit_2" id="unit_2" [value]=0 [(ngModel)]="unit" (change)="changeUnit()">
                         <label class="form-check-label" for="unit_2"><span>kg CO<sub>2</sub>/1000m<sup>3</sup></span></label>
                       </div>
+                      <div class="form-check form-check-inline mr-1">
+                        <input class="form-check-input m-3" type="radio" name="unit_3" id="unit_3" [value]=2 [(ngModel)]="unit" (change)="changeUnit()">
+                        <label class="form-check-label" for="unit_3"><span>MT CO<sub>2</sub>/Yr</span></label>
+                      </div>
                     </div>
                   </div>
 
@@ -2560,7 +2564,7 @@
 
                   <div class="form-group row">
                     <div class="col-md-12 row">
-                      <label class="col-md-5 col-form-label " for="text-input"><strong>Total CO2 Equivalent Emissions[<span class="help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="!unit">kg CO<sub>2</sub>/1000m<sup>3</sup></span>]</strong></label>
+                      <label class="col-md-5 col-form-label " for="text-input"><strong>Total CO2 Equivalent Emissions[<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span> ]</strong></label>
                       <label class="col-md-3 col-form-label" for="text-input"></label>
                     </div>
                   </div>
@@ -2781,7 +2785,7 @@
                   <div class="form-group  col-md-12">
                     <div class="card">
                       <div class="card-header">
-                        On-site Process Emissions Summary: [<span class="help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="!unit">kg CO<sub>2</sub>/1000m<sup>3</sup></span>]
+                        On-site Process Emissions Summary: [<span class="help-block" *ngIf="unit === 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]
                       </div>
                       <div class="card-body">
                         <table class="table table-bordered">
@@ -2863,7 +2867,7 @@
                   <div class="form-group  col-md-12">
                     <div class="card">
                       <div class="card-header">
-                        Total Process Emissions Summary: [<span class="help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="!unit">kg CO<sub>2</sub>/1000m<sup>3</sup></span>]
+                        Total Process Emissions Summary: [<span class="help-block" *ngIf="unit === 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]
                       </div>
                       <div class="card-body">
                         <table class="table table-bordered">
