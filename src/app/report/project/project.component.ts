@@ -35,10 +35,10 @@ export class ProjectComponent implements OnInit {
 
   // delete complete row based on ID
   deleteRow(deleteId) {
-    const data = this.userService.deleteSenario({project_id: deleteId}).subscribe((response: any) => {
+    const data = this.userService.deleteSenario({s_id: deleteId}).subscribe((response: any) => {
     for (let i = 0 ; i < this.scenarioData.length ; i++) {
       if (this.scenarioData[i]._id === deleteId) {
-        this.scenarioData = this.projects.slice(0);
+        this.scenarioData = this.scenarioData.slice(0);
         this.scenarioData.splice(i, 1);
         break;
       }

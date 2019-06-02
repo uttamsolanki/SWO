@@ -2540,7 +2540,12 @@
                       </div>
                     </div>
                   </div>
-
+                  <div class="form-group row">
+                    <div class="col-md-12 row">
+                      <label class="col-md-3 col-form-label " for="project_name">Project Name:</label>
+                      <label class="col-md-3 col-form-label" id="project_name"> {{setProjectData}}</label>
+                    </div>
+                  </div>
                   <div class="form-group row">
                     <div class="col-md-12 row">
                       <label class="col-md-3 col-form-label " for="text-input">Scenario Name:</label>
@@ -2640,7 +2645,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group row chart-align" >
+                  <div class="form-group row chart-align">
                     <div class="col-md-11 row">
                       <canvas #piChart baseChart class="chart"
                               [data]="pieChartData"
@@ -2769,7 +2774,7 @@
 
 
                   <div class="form-group row chart-align" *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
-                    <div class="col-md-11 row">
+                    <div class="col-md-11 row" >
                       <canvas style="background-color: beige" baseChart #baseChart="base-chart" class="chart"
                               [datasets]="barChartData"
                               [labels]="barChartLabels"
@@ -2985,7 +2990,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="offset-lg-10 col-lg-2" *ngIf="sid!=0">
+        <div class="offset-lg-10 col-lg-2" *ngIf="scenarioLengthTemp!=0">
           <button type="button" class="btn btn-block btn-success" (click)='save()'>Save Scenario</button>
         </div>
       </div>
