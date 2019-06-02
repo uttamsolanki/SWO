@@ -4,6 +4,7 @@ import {forEach} from '@angular/router/src/utils/collection';
 import { ActivatedRoute } from '@angular/router';
 import {CreateComponent} from '../create/create.component';
 import {DataServiceService} from '../../data-service.service';
+import {ModalDirective} from 'ngx-bootstrap';
 
 
 @Component({
@@ -19,6 +20,8 @@ export class ProjectComponent implements OnInit {
   scenarioData = [];
   id: any;
   elements = [];
+  deleteID;
+  @ViewChild('successModal') public modal: ModalDirective;
   constructor(private  userService: UserService, private route: ActivatedRoute, private dataServiceService: DataServiceService) { }
 
   ngOnInit() {
@@ -33,17 +36,23 @@ export class ProjectComponent implements OnInit {
     this.scenarioData = data;
   }
 
+  // modal dailog to ask whether you want to delete scenario
+    deleteConformation(deleteId) {
+    this.modal.show();
+      this.deleteID = deleteId;
+    }
   // delete complete row based on ID
-  deleteRow(deleteId) {
-    const data = this.userService.deleteSenario({s_id: deleteId}).subscribe((response: any) => {
+  deleteRow() {
+    const data = this.userService.deleteSenario({s_id: this.deleteID}).subscribe((response: any) => {
     for (let i = 0 ; i < this.scenarioData.length ; i++) {
-      if (this.scenarioData[i]._id === deleteId) {
+      if (this.scenarioData[i]._id === this.deleteID) {
         this.scenarioData = this.scenarioData.slice(0);
         this.scenarioData.splice(i, 1);
         break;
       }
     }
     });
+    this.modal.hide();
   }
 
   // Duplicate the create page
