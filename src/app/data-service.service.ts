@@ -10,6 +10,7 @@ export class DataServiceService {
   currentMessage = this.messageSource.asObservable();
   newData;
   projectData;
+  scenarioIds;
   constructor() { }
 
   setData(data: string) {
@@ -24,5 +25,11 @@ export class DataServiceService {
   }
   getProjectData() {
     return this.projectData;
+  }
+  setSenarioId(data: any) {
+    this.scenarioIds = data;
+  }
+  getScenarioId() {
+    return this.scenarioIds;
   }
 }

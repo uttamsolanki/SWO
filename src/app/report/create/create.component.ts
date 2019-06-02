@@ -22,7 +22,7 @@ export class CreateComponent implements OnInit {
   @ViewChild('piChart') public piChart: BaseChartDirective;
   @ViewChild('successModal') public modal: ModalDirective;
 
-  fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering', 'chemical', 'process','constant'];
+  fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering', 'chemical', 'process','constant', 'size'];
   setScenarioData;
   modelMsg;
   co2_eq = 135.5;
@@ -621,6 +621,14 @@ export class CreateComponent implements OnInit {
     const data = this.userService.getData().subscribe((resp: any) => {
       Object.assign(this.primary.pumping, this.defaulValaue.data);
       this.assignFormValue(resp);
+
+      if (this.sid !== null) {
+        const details = this.userService.getScenarioDatils({s_id: this.sid}).subscribe((resp: any) => {
+          if (resp.status == 1) {
+            this.assignEditFormValue(resp.data);
+          }
+        });
+      }
     });
 
     this.sid = this.route.snapshot.paramMap.get('sid') || null;
@@ -628,14 +636,7 @@ export class CreateComponent implements OnInit {
       this.sid = null;
     }
 
-    if (this.sid !== null) {
-      const details = this.userService.getScenarioDatils({s_id: this.sid}).subscribe((resp: any) => {
-        console.log(resp);
-        if (resp.status == 1) {
-          this.assignEditFormValue(resp.data);
-        }
-      });
-    }
+
 
   }
   collapsed(event: any): void {

@@ -17,35 +17,53 @@ export class ProjectComponent implements OnInit {
   createComponent: CreateComponent;
   projects: any = [];
   scenarioData = [];
-  id:any;
+  id: any;
+  elements = [];
   constructor(private  userService: UserService, private route: ActivatedRoute, private dataServiceService: DataServiceService) { }
 
   ngOnInit() {
-     this.id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {
       const data = this.userService.getScenario({project_id: this.id}).subscribe((response: any) => {
-        console.log("service working");
         this.setScenarioData(response.data.scenario);
       });
     }
   }
   setScenarioData(data) {
     this.scenarioData = data;
-    console.log(this.scenarioData);
   }
 
+  // delete complete row based on ID
   deleteRow(deleteId) {
-    const data = this.userService.deleteSenario({project_id: deleteId}).subscribe((response: any) => {
+    const data = this.userService.deleteSenario({s_id: deleteId}).subscribe((response: any) => {
     for (let i = 0 ; i < this.scenarioData.length ; i++) {
       if (this.scenarioData[i]._id === deleteId) {
-        this.scenarioData = this.projects.slice(0);
+        this.scenarioData = this.scenarioData.slice(0);
         this.scenarioData.splice(i, 1);
         break;
       }
     }
     });
   }
+
+  // Duplicate the create page
   duplicateRow(records) {
     this.dataServiceService.setData(records.data);
   }
-}
+
+  // based on which scenario is selected on the checkbox. It stores that data in the elements data.
+  toggleEditable(event, scenariodId, index) {
+    if (event.target.checked) {
+      this.elements.splice(index, 0, scenariodId);
+    } else {
+      if (this.elements.indexOf(scenariodId) > -1) {
+        this.elements.splice(this.elements.indexOf(scenariodId), 1);
+      }
+    }
+  }
+
+  // send scenario Id on click of compare button to the view page
+  sendScenarioId() {
+    this.dataServiceService.setSenarioId(this.elements);
+  }
+  }
