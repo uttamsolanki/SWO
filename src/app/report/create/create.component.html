@@ -77,7 +77,12 @@
                   <div class="col-md-1">
                     <span class="help-block">m<sup>3</sup>/d</span>
                   </div>
-
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="description_name" >Created Date:</label>
+                <div class="col-md-4">
+                  <label id="created_date" name="created_date" class="col-form-label">{{scenarioDate |  date: 'dd-MMM-yyyy'}}</label>
                 </div>
               </div>
 
@@ -2498,7 +2503,7 @@
     <tab heading="Summary" >
       <div class="row">
         <div class="col-lg-12">
-          <div class="card">
+          <div class="card" style="background-color: #CCFFFF;">
             <div class="card-header">
               Summary
               <div class="card-header-actions">
@@ -2598,7 +2603,7 @@
                   <div class="form-group row">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label " for="text-input">	From Biosolids Transportation:</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{TransportationCo2}} </label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{TransportationCo2.toFixed(2)}} </label>
                     </div>
                   </div>
 
@@ -2633,7 +2638,7 @@
 
                   <div class="form-group row">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">From Biosolids Disposal Emissions:</label>
+                      <label class="col-md-4 col-form-label " for="text-input">Emissions from Biosolids Disposal:</label>
                       <label class="col-md-3 col-form-label" for="text-input">{{DisposalCo2}} </label>
                     </div>
                   </div>
@@ -2775,7 +2780,7 @@
 
                   <div class="form-group row chart-align" *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
                     <div class="col-md-11 row" >
-                      <canvas style="background-color: beige" baseChart #baseChart="base-chart" class="chart"
+                      <canvas style="background-color: white" baseChart #baseChart="base-chart" class="chart"
                               [datasets]="barChartData"
                               [labels]="barChartLabels"
                               [options]="barChartOptions"
@@ -2971,7 +2976,7 @@
 
                   <div class="form-group row chart-align" *ngIf="isChart">
                     <div class="col-md-11 row">
-                      <canvas style="background-color: beige" baseChart #stackChart="base-chart" class="chart"
+                      <canvas style="background-color: white" baseChart #stackChart="base-chart" class="chart"
                               [datasets]="stackChartData"
                               [labels]="stackChartLabels"
                               [options]="stackChartOptions"
