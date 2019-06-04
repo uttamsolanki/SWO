@@ -37,12 +37,36 @@
                 <div>
                   <button class="badge badge-primary badge-new view-color bg-primary" [routerLink]="['/report/create/',id, 0]">View</button>
                   <button class="badge badge-warning badge-new" [routerLink]="['/report/create/',id,p._id]" (click)="duplicateRow(p)" >Duplicate</button>
-                  <button class="badge badge-success badge-new" (click)="deleteRow(p._id)">Delete</button>
+                  <button class="badge badge-success badge-new" (click)="deleteConformation(p._id)">Delete</button>
                 </div>
               </td>
             </tr>
             </tbody>
           </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="animated fadeIn">
+  <div bsModal  #successModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-success" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Success</h4>
+          <button type="button" class="close" (click)="successModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body new-project-modal">
+          <p>{{sucessMessage}}</p>
+          Would you like to delete a Scenario?
+          <button type="button" class="btn btn-success yes-button" (click)="deleteRow()">Yes</button>
+          <button type="button" class="btn btn-success" (click)="successModal.hide()">No</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="successModal.hide()">Close</button>
+          <!--          <button type="button" class="btn btn-success">Ok</button>-->
+        </div>
       </div>
     </div>
   </div>

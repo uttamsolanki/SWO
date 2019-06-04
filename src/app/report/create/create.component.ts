@@ -610,6 +610,7 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
 
     this.scenarioLength = ( parseInt(this.route.snapshot.paramMap.get('length')) + 1);
+    this.scenarioLengthTemp = parseInt(this.route.snapshot.paramMap.get('sid'));
     if(this.scenarioLength) {
     this.scenarioName = this.scenarioName + ' '  + this.scenarioLength; }
     this.id = this.route.snapshot.paramMap.get('id') || null;
@@ -1267,10 +1268,12 @@ export class CreateComponent implements OnInit {
   }
 
   changeUnit() {
-    if (!this.unit) {
+    if (this.unit === 1) {
       this.unitDivider = this.size.data.default / 1000;
-    } else {
+    } else if (this.unit === 0) {
       this.unitDivider = 1;
+    } else if (this.unit === 2) {
+      this.unitDivider = this.size.data.default *365 / 1000;
     }
 
     this.createChart();

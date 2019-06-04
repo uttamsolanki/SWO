@@ -30,8 +30,9 @@ export class ViewComponent implements OnInit {
   chemical: any;
   process: any;
   unit = 1;
+  scenarioname;
   fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering',
-    'chemical', 'process'];
+    'chemical', 'process', 'scenarioname'];
   scenarios: any = [];
   processEmission: { co2, no2, totalCo2 };
   totalElecricalCo2 = 0;
@@ -146,6 +147,7 @@ export class ViewComponent implements OnInit {
       if (resp.status === 1) {
         if (resp.data.scenario) {
           for (let s of resp.data.scenario) {
+           // this.scenarioname = s.name['scenarioname'];
             let scenarioData = s.data;
             for (const field of this.fields) {
               this[field] = scenarioData[field];
@@ -162,6 +164,12 @@ export class ViewComponent implements OnInit {
 
   setSenarioData(resp) {
     this.scenariosData = resp.data.scenario;
+    this.scenarioname =[];
+     for (let s of resp.data.scenario) {
+       if(s.name) {
+         this.scenarioname.push(s.name);
+       }
+     }
   }
 
 
@@ -170,7 +178,8 @@ export class ViewComponent implements OnInit {
     const processEmission = {co2: 0, no2: 0, totalCo2: 0, ch4: 0};
    const graphData = {electical: 0, OnProcess: 0, process: 0, disposal: 0, disposalData: processEmission, energy: 0, chemical: 0, id:0,
      transporation: 0, priorElectrical: 0, priorBiosolid: 0,  activeSludge: processEmission, anaerobic: processEmission, ProcessCo2: 0,
-     aerobic: processEmission, co2Total: 0, no2Total: 0, ch4Totoal: 0, transporationData: processEmission, OnSiteCo2: 0};
+     aerobic: processEmission, co2Total: 0, no2Total: 0, ch4Totoal: 0, transporationData: processEmission, OnSiteCo2: 0,
+     scenarioName: 'Scenario'};
 
    // let selectedOption={
    //   pumping:'-',
@@ -276,11 +285,7 @@ export class ViewComponent implements OnInit {
       graphData.process = graphData.priorBiosolid + graphData.disposal;
       graphData.id = id;
       graphData.transporationData = this.setProcessData(this.process.transporation);
-      console.log("process");
-      console.log(this.process);
-      console.log(this.biosolids_disposals);
-      console.log("after");
-    console.log(graphData.transporationData);
+      graphData.scenarioName = this.scenarioname;
       graphData.activeSludge = this.setProcessData(this.process.active_sludge);
       graphData.aerobic = this.setProcessData(this.process.aerobic);
       graphData.anaerobic = this.setProcessData(this.process.anarobic);
