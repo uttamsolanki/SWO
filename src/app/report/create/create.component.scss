@@ -53,3 +53,14 @@
   background-color: #FFEFD5 !important;
   cursor: not-allowed;
 }
+.tooltip-width {
+  width: 25%!important;
+}
+
+.tooltip-arrow,
+.red-tooltip + .tooltip > .tooltip-inner {background-color: #f00;}
+
+.button-placement {
+  margin-top: 29%;
+  margin-right: 40%;
+}
