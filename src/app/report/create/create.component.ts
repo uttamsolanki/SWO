@@ -33,6 +33,7 @@ export class CreateComponent implements OnInit {
   delta = 8.422;
   scenarioName = 'Scenario';
   scenarioDesc = 'Scenario Description';
+  scenarioDate = new Date();
   scenarioLength;
   scenarioLengthTemp;
   setProjectData = 'Project 1';
@@ -480,6 +481,11 @@ export class CreateComponent implements OnInit {
     }
   ];
   public barChartOptions: any = {
+    title: {
+      display: true,
+      text: 'CO2 Equivalent from Electricity Emissions',
+      fontSize: 14
+    },
     scaleShowVerticalLines: false,
     responsive: true,
     backgroundColor: 'rgba(148,159,177,0.2)',
@@ -497,10 +503,10 @@ export class CreateComponent implements OnInit {
 
   public barChartLabels: string[] = ['206', '2007', '2008', '2009', '2010', '2011', '2012'];
   public barChartType = 'bar';
-  public barChartLegend = true;
+  public barChartLegend = false;
 
   public barChartData: any[] = [
-    {data: [65, 59, 80, 81, 56, 55, 40, 21], label: 'CO2 Equivalent from Electricity Emissions'}
+    {data: [65, 59, 80, 81, 56, 55, 40, 21]}
   ];
 
 
@@ -513,6 +519,11 @@ export class CreateComponent implements OnInit {
     }
   ];
   public stackChartOptions: any = {
+    title: {
+      display: true,
+      text: 'CO2 Equivalent of On-Site Emissions',
+      fontSize: 14
+    },
     scaleShowVerticalLines: false,
     responsive: true,
     backgroundColor: 'rgba(148,159,177,0.2)',
@@ -539,7 +550,7 @@ export class CreateComponent implements OnInit {
     }
   };
 
-  public stackChartLabels: string[] = ['Activated Sludge', 'Aerobic Digester', 'Anarobic Digester', 'Total'];
+  public stackChartLabels: string[] = ['Activated Sludge', 'Aerobic Digester', 'Anaerobic Digester', 'Total'];
   public stackChartType = 'bar';
   public stackChartLegend = true;
 
@@ -1162,13 +1173,13 @@ export class CreateComponent implements OnInit {
     this.totalTransportationCo2 = this.totalTransportationCo2 + this.process.transporation.totalCo2;
 
     for (let i = 0, length = newData.length; i < length; i++) {
-      newData[i] = newData[i] / this.unitDivider;
+      newData[i] = (newData[i] / this.unitDivider).toFixed(2);
     }
 
     this.SummaryReport();
 
     this.barChartData = [
-      {data: newData, label: 'CO2 Equivalent from Electricity Emissions'}
+      {data: newData}
     ];
      this.pieChartLabels = [];
      this.pieChartData = [];
@@ -1194,8 +1205,8 @@ export class CreateComponent implements OnInit {
     // }
     this.pieChartLabels = ['Electricity', 'Chemicals', 'Transportation', 'On-site Emissions Processes', 'Biosolids Disposal'];
     this.pieChartData = [this.totalElecricalCo2 , this.totalChemicalCo2, this.totalTransportationCo2, this.totalOnSiteCo2, this.totalDisposalCo2];
-    //this.chart.labels = this.barChartLabels;
-    //this.chart.ngOnInit();
+    this.chart.labels = this.barChartLabels;
+    this.chart.ngOnInit();
   }
 
   // events
@@ -1268,9 +1279,9 @@ export class CreateComponent implements OnInit {
   }
 
   changeUnit() {
-    if (this.unit === 1) {
+    if (this.unit === 0) {
       this.unitDivider = this.size.data.default / 1000;
-    } else if (this.unit === 0) {
+    } else if (this.unit === 1) {
       this.unitDivider = 1;
     } else if (this.unit === 2) {
       this.unitDivider = this.size.data.default *365 / 1000;
