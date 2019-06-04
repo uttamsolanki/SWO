@@ -355,13 +355,6 @@
                       <div class="p-1">
                         <p *ngIf="primary.pumping.data.suggested !==null" class="help-block p-1 m-0" style="color:#4dbd74">
                           <span>Suggested value {{primary.pumping.data.suggested}}
-                            <ng-template #popTemplate>Here we go: <div [innerHtml]="html"></div></ng-template>
-                            <button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width"
-                             tooltip = "Suggested value:{{primary.pumping.data.suggested}}"
-                                    placement="right"
-                            >
-                            Rs
-                          </button>
                           </span>
 
 
@@ -372,10 +365,15 @@
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup>
+                        <ng-template #popTemplate style="width: 170%"> <span style="color: #00aced" >
+                          Rs: This is reference for suggested value
+                          Rr: This is for reference for Range value
+                          Info: This is the Info
+
+                        </span></ng-template>
                       <button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width button-placement"
-                              data-toggle="tooltip" data-placement="top" title="Suggested value: {{primary.pumping.data.suggested}}"
-                              placement="top">
-                      I
+                              [popover]="popTemplate" popoverTitle="{{primary.pumping.sel_type}}">
+                                              I
                     </button>
                       </span>
                     </div>

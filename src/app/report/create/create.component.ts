@@ -621,8 +621,8 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
 
     this.scenarioLength = ( parseInt(this.route.snapshot.paramMap.get('length')) + 1);
-    this.scenarioLengthTemp = parseInt(this.route.snapshot.paramMap.get('sid'));
-    if(this.scenarioLength) {
+    this.scenarioLengthTemp = parseInt(this.route.snapshot.paramMap.get('viewFlag'));
+    if (this.scenarioLength) {
     this.scenarioName = this.scenarioName + ' '  + this.scenarioLength; }
     this.id = this.route.snapshot.paramMap.get('id') || null;
     if (this.dataServiceService.getProjectData()) {
@@ -1205,8 +1205,8 @@ export class CreateComponent implements OnInit {
     // }
     this.pieChartLabels = ['Electricity', 'Chemicals', 'Transportation', 'On-site Emissions Processes', 'Biosolids Disposal'];
     this.pieChartData = [this.totalElecricalCo2 , this.totalChemicalCo2, this.totalTransportationCo2, this.totalOnSiteCo2, this.totalDisposalCo2];
-    this.chart.labels = this.barChartLabels;
-    this.chart.ngOnInit();
+   // this.chart.labels = this.barChartLabels;
+  //  this.chart.ngOnInit();
   }
 
   // events
