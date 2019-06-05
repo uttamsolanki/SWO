@@ -97,7 +97,7 @@
       </div>
     </div>
   </tab>
-    <tab heading="Electrical Emission">
+    <tab heading="Electrical Emission" >
       <div class="row">
         <div class="col-lg-6">
           <div class="card">
@@ -2500,7 +2500,7 @@
         </div>
       </div>
     </tab>
-    <tab heading="Summary" >
+    <tab heading="Summary" (select)="tabClick()">
       <div class="row">
         <div class="col-lg-12">
           <div class="card" style="background-color: #CCFFFF;">
@@ -2564,6 +2564,12 @@
                     </div>
                   </div>
 
+                  <div class="form-group row">
+                    <div class="col-md-12 row">
+                      <label class="col-md-3 col-form-label " for="Date">Created Date:</label>
+                      <label class="col-md-3 col-form-label" id="date"> {{scenarioDate |  date: 'dd-MMM-yyyy'}}</label>
+                    </div>
+                  </div>
 
                   <div class="form-group row">
                     <div class="col-md-12 row">

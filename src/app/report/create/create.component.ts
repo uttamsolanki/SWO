@@ -18,8 +18,8 @@ export class CreateComponent implements OnInit {
   constructor(private userService: UserService, private router: Router,  private route: ActivatedRoute, private dataServiceService: DataServiceService) { }
 
   @ViewChild('tabset') tabset: TabsetComponent;
-  @ViewChild('baseChart') public chart: BaseChartDirective;
-  @ViewChild('piChart') public piChart: BaseChartDirective;
+  @ViewChild('baseChart') chart: BaseChartDirective;
+  @ViewChild('piChart') piChart: BaseChartDirective;
   @ViewChild('successModal') public modal: ModalDirective;
 
   fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering', 'chemical', 'process','constant', 'size'];
@@ -621,7 +621,7 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
 
     this.scenarioLength = ( parseInt(this.route.snapshot.paramMap.get('length')) + 1);
-    this.scenarioLengthTemp = parseInt(this.route.snapshot.paramMap.get('sid'));
+    this.scenarioLengthTemp = parseInt(this.route.snapshot.paramMap.get('viewFlag'));
     if(this.scenarioLength) {
     this.scenarioName = this.scenarioName + ' '  + this.scenarioLength; }
     this.id = this.route.snapshot.paramMap.get('id') || null;
@@ -651,6 +651,7 @@ export class CreateComponent implements OnInit {
 
 
   }
+
   collapsed(event: any): void {
     // console.log(event);
   }
@@ -684,18 +685,17 @@ export class CreateComponent implements OnInit {
     if (editData.data) {
       this.scenarioName = editData.name;
       this.scenarioDesc = editData.desc;
+      this.scenarioDate = editData.created_date;
       const fielddData = editData.data;
       for (const field of this.fields) {
         this[field] = fielddData[field];
-
-        if(field=='secondary'){
+        if(field === 'secondary'){
           for (const type of this.growth_types) {
             if (type.title === this.secondary.sel_growth_type) {
               this.secondary_types = type.treatment_type;
             }
           }
         }
-
       }
       this.updateWWTPsize();
     }
@@ -1205,8 +1205,12 @@ export class CreateComponent implements OnInit {
     // }
     this.pieChartLabels = ['Electricity', 'Chemicals', 'Transportation', 'On-site Emissions Processes', 'Biosolids Disposal'];
     this.pieChartData = [this.totalElecricalCo2 , this.totalChemicalCo2, this.totalTransportationCo2, this.totalOnSiteCo2, this.totalDisposalCo2];
-    this.chart.labels = this.barChartLabels;
-    this.chart.ngOnInit();
+
+    console.log(this.chart);
+    if(this.chart!==undefined) {
+       this.chart.labels = this.barChartLabels;
+       this.chart.ngOnInit();
+    }
   }
 
   // events
@@ -1341,7 +1345,12 @@ export class CreateComponent implements OnInit {
   }
   // *************  Common Function  End *************//
 
-
+  tabClick(){
+    if(this.chart!==undefined) {
+      this.chart.labels = this.barChartLabels;
+      this.chart.ngOnInit();
+    }
+  }
   goto(id) {
     this.tabset.tabs[id].active = true;
   }
