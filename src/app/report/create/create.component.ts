@@ -18,8 +18,8 @@ export class CreateComponent implements OnInit {
   constructor(private userService: UserService, private router: Router,  private route: ActivatedRoute, private dataServiceService: DataServiceService) { }
 
   @ViewChild('tabset') tabset: TabsetComponent;
-  @ViewChild('baseChart') chart: BaseChartDirective;
-  @ViewChild('piChart') piChart: BaseChartDirective;
+  @ViewChild('baseChart') public chart: BaseChartDirective;
+  @ViewChild('piChart') public piChart: BaseChartDirective;
   @ViewChild('successModal') public modal: ModalDirective;
 
   fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering', 'chemical', 'process','constant', 'size'];
@@ -623,7 +623,7 @@ export class CreateComponent implements OnInit {
 
     this.scenarioLength = ( parseInt(this.route.snapshot.paramMap.get('length')) + 1);
     this.scenarioLengthTemp = parseInt(this.route.snapshot.paramMap.get('viewFlag'));
-    if(this.scenarioLength) {
+    if (this.scenarioLength) {
     this.scenarioName = this.scenarioName + ' '  + this.scenarioLength; }
     this.id = this.route.snapshot.paramMap.get('id') || null;
     if (this.dataServiceService.getProjectData()) {
@@ -652,7 +652,6 @@ export class CreateComponent implements OnInit {
 
 
   }
-
   collapsed(event: any): void {
     // console.log(event);
   }

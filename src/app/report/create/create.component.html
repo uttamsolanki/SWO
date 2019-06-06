@@ -353,15 +353,31 @@
                     <div class="col-md-5">
                       <input type="text" id="pumping_rate"  name="pumping_rate" [(ngModel)]="primary.pumping.data.default" class="form-control" placeholder="0.0" (ngModelChange)="updateWWTPsize()">
                       <div class="p-1">
-                        <p *ngIf="primary.pumping.data.suggested !==null" class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{primary.pumping.data.suggested}}</span>
+                        <p *ngIf="primary.pumping.data.suggested !==null" class="help-block p-1 m-0" style="color:#4dbd74">
+                          <span>Suggested value {{primary.pumping.data.suggested}}
+                          </span>
+
+
                           <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                           <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                         </p>
                       </div>
                     </div>
                     <div class="col-md-2 p-0">
-                      <span class="help-block">kWh/m<sup>3</sup></span>
+                      <span class="help-block">kWh/m<sup>3</sup>
+                        <ng-template #popTemplate style="width: 170%"> <span style="color: #00aced" >
+                          Rs: This is reference for suggested value
+                          Rr: This is for reference for Range value
+                          Info: This is the Info
+
+                        </span></ng-template>
+                      <button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width button-placement"
+                              [popover]="popTemplate" popoverTitle="{{primary.pumping.sel_type}}">
+                                              I
+                    </button>
+                      </span>
                     </div>
+
                   </div>
                 </div>
                 <div class="form-group row" *ngIf="primary.pumping.sel_type != '0' ">
