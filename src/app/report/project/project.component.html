@@ -42,8 +42,8 @@
               <td>
                 <div>
                   <button class="badge badge-primary badge-new view-color bg-primary" [routerLink]="['/report/create/',id,p._id,undefined,0]">View</button>
-                  <button class="badge badge-warning badge-new" [routerLink]="['/report/create/',id,p._id]" (click)="duplicateRow(p)" >Duplicate</button>
-                  <button class="badge badge-success badge-new" (click)="deleteConformation(p._id)">Delete</button>
+                  <button class="badge dup-color badge-new" [routerLink]="['/report/create/',id,p._id]" (click)="duplicateRow(p)" >Duplicate</button>
+                  <button class="badge badge-warning badge-new" (click)="deleteConformation(p._id)">Delete</button>
                 </div>
               </td>
             </tr>

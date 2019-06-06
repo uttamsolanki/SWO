@@ -33,7 +33,7 @@
               <div class="col-md-5 col-form-label" >
                 <div class="form-check form-check-inline mr-1" *ngFor="let sc of scenarios;let i = index;">
                   <input class="form-check-input" [disabled]="!selectScenario[sc.id] && isDisable"  type="checkbox" id="inline-checkbox1" [(ngModel)]="selectScenario[sc.id]" value="{{sc.id}}"(ngModelChange)="selectSenario()" [ngModelOptions]="{standalone: true}">
-                  <label class="form-check-label p-1" for="inline-checkbox1">Scenario {{i+1}}</label>
+                  <label class="form-check-label p-1" for="inline-checkbox1">{{sc.name}}</label>
                 </div>
               </div>
             </div>
@@ -68,7 +68,7 @@
                     <table>
                       <tr>
                       <th>Total CO2 Equivalent</th>
-                        <th>Scenario {{i+1}}</th>
+                        <th>{{sc.name}}</th>
                       </tr>
                       <tr>
                         <td><label class=" col-form-label">Electricity Emissions</label></td>
