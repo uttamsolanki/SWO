@@ -368,7 +368,8 @@ export class CreateComponent implements OnInit {
     ch4: 0,
     totalCo2: 0,
     ch4WWTP:0,
-    ch4External:0
+    ch4External:0,
+    addEnergy:0
   };
   disposalData = {
     Qin: 0,
@@ -684,18 +685,17 @@ export class CreateComponent implements OnInit {
     if (editData.data) {
       this.scenarioName = editData.name;
       this.scenarioDesc = editData.desc;
+      this.scenarioDate = editData.created_date;
       const fielddData = editData.data;
       for (const field of this.fields) {
         this[field] = fielddData[field];
-
-        if(field=='secondary'){
+        if(field === 'secondary'){
           for (const type of this.growth_types) {
             if (type.title === this.secondary.sel_growth_type) {
               this.secondary_types = type.treatment_type;
             }
           }
         }
-
       }
       this.updateWWTPsize();
     }
@@ -915,7 +915,7 @@ export class CreateComponent implements OnInit {
       this.process.biosolids.flow=0;
       this.process.biosolids.COD=0;
     }
-
+    this.anarobicData.CODLod = parseFloat(this.anarobicData.CODLod.toFixed(2));
     if (this.anarobicData.Qin) {
       this.anarobicData.CODin = (this.anarobicData.CODLod / this.anarobicData.Qin) * 1000;
     } else {
@@ -963,16 +963,18 @@ export class CreateComponent implements OnInit {
       this.process.anarobic.totalCo2 = 0;
     }
     //External Enegry Calculation
+
     if (this.process.anarobic.isExternal === 1) {
       this.anarobicData.ch4WWTP = (this.anarobicData.Qap * (this.process.anarobic.CODin.default - this.process.anarobic.CODout.default) / this.COD_TOC_PER_MOL) * alpha * 0.016;
-      let tempEnergy = this.anarobicData.Qin * (this.anarobicData.CODin - this.process.anarobic.CODout.default) - this.anarobicData.Qap * (this.process.anarobic.CODin.default - this.process.anarobic.CODout.default);
+      this.anarobicData.ch4WWTP = parseFloat(this.anarobicData.ch4WWTP.toFixed(2));
+      const tempEnergy = this.anarobicData.Qin * (this.anarobicData.CODin - this.process.anarobic.CODout.default) - this.anarobicData.Qap * (this.process.anarobic.CODin.default - this.process.anarobic.CODout.default);
       //  console.log(tempEnergy,this.anarobicData.Qin,this.anarobicData.Qap);
       this.anarobicData.ch4External = parseFloat(((tempEnergy / this.COD_TOC_PER_MOL) * alpha * 0.016).toFixed(2));
-      this.process.anarobic.addEnergy = parseFloat((this.anarobicData.ch4External * this.process.anarobic.energy.default).toFixed(2));
-    }else{
+      this.anarobicData.addEnergy = parseFloat((this.anarobicData.ch4External * this.process.anarobic.energy.default).toFixed(2));
+    } else {
       this.anarobicData.ch4WWTP=0;
       this.anarobicData.ch4External=0;
-      this.process.anarobic.addEnergy=0;
+      this.anarobicData.addEnergy=0;
     }
     this.UpdateProcessValue();
   }
@@ -1155,7 +1157,6 @@ export class CreateComponent implements OnInit {
       this.isInternal=0;
     }
 
-
     if (this.chemical.metal_salts.sel_type !== '0') {
       this.totalChemicalCo2 += JSON.parse(this.chemical.metal_salts.data.co2);
     }
@@ -1171,13 +1172,16 @@ export class CreateComponent implements OnInit {
     this.totalOnSiteCo2 = this.totalOnSiteCo2  + this.active_sludgeData.totalCo2;
     this.totalDisposalCo2 = this.totalDisposalCo2 + this.disposalData.totalCo2;
     this.totalTransportationCo2 = this.totalTransportationCo2 + this.process.transporation.totalCo2;
-
     for (let i = 0, length = newData.length; i < length; i++) {
       newData[i] = (newData[i] / this.unitDivider).toFixed(2);
     }
 
     this.SummaryReport();
 
+    if(this.process.anarobic.addEnergy>0){
+      this.barChartLabels.push("External Energy Recovery");
+      newData.push(-this.process.anarobic.addEnergy);
+    }
     this.barChartData = [
       {data: newData}
     ];
@@ -1205,8 +1209,10 @@ export class CreateComponent implements OnInit {
     // }
     this.pieChartLabels = ['Electricity', 'Chemicals', 'Transportation', 'On-site Emissions Processes', 'Biosolids Disposal'];
     this.pieChartData = [this.totalElecricalCo2 , this.totalChemicalCo2, this.totalTransportationCo2, this.totalOnSiteCo2, this.totalDisposalCo2];
-   // this.chart.labels = this.barChartLabels;
-  //  this.chart.ngOnInit();
+    if(this.chart!==undefined) {
+       this.chart.labels = this.barChartLabels;
+       this.chart.ngOnInit();
+    }
   }
 
   // events
@@ -1284,7 +1290,7 @@ export class CreateComponent implements OnInit {
     } else if (this.unit === 1) {
       this.unitDivider = 1;
     } else if (this.unit === 2) {
-      this.unitDivider = this.size.data.default *365 / 1000;
+      this.unitDivider = 1000 / 365;
     }
 
     this.createChart();
@@ -1297,7 +1303,7 @@ export class CreateComponent implements OnInit {
     this.DisposalCo2 = parseFloat((this.totalDisposalCo2 / this.unitDivider).toFixed(2));
     this.EnergyCo2 = parseFloat((this.totalEnergyCo2 / this.unitDivider).toFixed(2));
     this.TransportationCo2 = parseFloat((this.totalTransportationCo2 / this.unitDivider).toFixed(2));
-    this.process.anarobic.addEnergy = parseFloat((this.process.anarobic.addEnergy / this.unitDivider).toFixed(2));
+    this.process.anarobic.addEnergy = parseFloat((this.anarobicData.addEnergy / this.unitDivider).toFixed(2));
     this.EqCo2  = parseFloat((this.ElecricalCo2 + this.OnSiteCo2 + this.ChemicalCo2 + this.DisposalCo2 + this.EnergyCo2 + this.TransportationCo2+this.process.anarobic.addEnergy).toFixed(2));
 
 
@@ -1341,7 +1347,12 @@ export class CreateComponent implements OnInit {
   }
   // *************  Common Function  End *************//
 
-
+  tabClick(){
+    if(this.chart!==undefined) {
+      this.chart.labels = this.barChartLabels;
+      this.chart.ngOnInit();
+    }
+  }
   goto(id) {
     this.tabset.tabs[id].active = true;
   }
