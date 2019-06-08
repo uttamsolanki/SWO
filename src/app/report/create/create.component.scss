@@ -54,10 +54,12 @@
   cursor: not-allowed;
 }
 .tooltip-width {
-  width: 25%!important;
+  width: 25px !important;
+  display: inherit !important;
 }
 
 .button-placement {
   margin-top: 29%;
   margin-right: 40%;
 }
+
