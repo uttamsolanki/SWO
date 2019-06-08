@@ -2698,7 +2698,7 @@
 
                   <div class="form-group row">
                     <div class="col-md-12 row">
-                      <label class="col-md-5 col-form-label " for="text-input"><strong>Total CO2 Equivalent Emissions[<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span> ]</strong></label>
+                      <label class="col-md-5 col-form-label " for="text-input"><strong>Total CO2 Equivalent Emissions [<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</strong></label>
                       <label class="col-md-3 col-form-label" for="text-input"></label>
                     </div>
                   </div>
@@ -2749,7 +2749,7 @@
                   <div class="form-group row">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label " for="text-input">Energy Recovery Credit (From external sources):</label>
-                      <label class="col-md-3 col-form-label" for="text-input">-{{process.anarobic.addEnergy}}</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{process.anarobic.addEnergy}}</label>
                     </div>
                   </div>
 
@@ -2789,7 +2789,7 @@
 
                   <div class="form-group row" *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
                     <div class="col-md-12 row">
-                      <label class="col-md-5 col-form-label " for="text-input"><strong>Electricity Emissions Summary: [<span class="help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="!unit">kg CO<sub>2</sub>/1000m<sup>3</sup></span>]</strong></label>
+                      <label class="col-md-5 col-form-label " for="text-input"><strong>Electricity Emissions Summary: [<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</strong></label>
                       <label class="col-md-3 col-form-label" for="text-input"></label>
                     </div>
                   </div>
