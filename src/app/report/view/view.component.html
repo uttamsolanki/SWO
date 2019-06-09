@@ -19,7 +19,7 @@
               <label class="offset-md-2 col-md-3 col-form-label" for="project">Select Project</label>
               <div class="col-md-3">
                 <select id="project" name="project" class="form-control"  [(ngModel)]="selectedProject" (change)="changeProject()">
-                  <option value="0">Please Project</option>
+                  <option value="0">Project</option>
                   <option *ngFor="let p of projects" value="{{p._id}}" >{{p.name}}</option>
                 </select>
               </div>
