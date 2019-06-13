@@ -1178,9 +1178,9 @@ export class CreateComponent implements OnInit {
 
     this.SummaryReport();
 
-    if(this.process.anarobic.addEnergy>0){
+    if(this.process.anarobic.addEnergy!==0){
       this.barChartLabels.push("External Energy Recovery");
-      newData.push(-this.process.anarobic.addEnergy);
+      newData.push(this.process.anarobic.addEnergy);
     }
     this.barChartData = [
       {data: newData}
@@ -1208,7 +1208,7 @@ export class CreateComponent implements OnInit {
     //   this.pieChartData.push(this.totalDisposalCo2);
     // }
     this.pieChartLabels = ['Electricity', 'Chemicals', 'Transportation', 'On-site Emissions Processes', 'Biosolids Disposal'];
-    this.pieChartData = [this.totalElecricalCo2 , this.totalChemicalCo2, this.totalTransportationCo2, this.totalOnSiteCo2, this.totalDisposalCo2];
+    this.pieChartData = [this.ElecricalCo2 , this.ChemicalCo2, this.TransportationCo2, this.OnSiteCo2, this.DisposalCo2];
     if(this.chart!==undefined) {
        this.chart.labels = this.barChartLabels;
        this.chart.ngOnInit();
