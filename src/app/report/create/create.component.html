@@ -110,7 +110,7 @@
             <div class="card-body">
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
                 <accordion class="test">
-                  <accordion-group heading="Pumping" class="custom-header-color" [panelClass]="customClass">
+                  <accordion-group heading="Pumping" [panelClass]="customClass">
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_pumping">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_pumping" >
@@ -125,7 +125,7 @@
                       </div>
                     </div>
                   </accordion-group>
-                  <accordion-group heading="Preliminary Treatment">
+                  <accordion-group heading="Preliminary Treatment" [panelClass]="customClass">
 
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_preliminary">Please select</label>
@@ -143,7 +143,7 @@
                     </div>
 
                   </accordion-group>
-                  <accordion-group heading="Primary Treatment">
+                  <accordion-group heading="Primary Treatment" [panelClass]="customClass">
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_primary">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_primary">
@@ -158,7 +158,7 @@
                       </div>
                     </div>
                   </accordion-group>
-                  <accordion-group heading="Secondary Treatment">
+                  <accordion-group heading="Secondary Treatment" [panelClass]="customClass">
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="sec_growth_type">Select Type</label>
                       <div class="col-md-6">
@@ -182,7 +182,7 @@
                       </div>
                     </div>
                   </accordion-group>
-                  <accordion-group heading="Secondary Clarification">
+                  <accordion-group heading="Secondary Clarification" [panelClass]="customClass">
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_clari">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_clari">
@@ -197,7 +197,7 @@
                       </div>
                     </div>
                   </accordion-group>
-                  <accordion-group heading="Tertiary Treatment">
+                  <accordion-group heading="Tertiary Treatment" [panelClass]="customClass">
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_tertiary">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_tertiary">
@@ -212,7 +212,7 @@
                       </div>
                     </div>
                   </accordion-group>
-                  <accordion-group heading="Disinfection">
+                  <accordion-group heading="Disinfection" [panelClass]="customClass">
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_disinfection">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_disinfection">
@@ -612,7 +612,7 @@
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
 
                 <accordion>
-                  <accordion-group heading="Sludge Thickening">
+                  <accordion-group heading="Sludge Thickening" [panelClass]="customClass">
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_thickening">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_thickening">
@@ -628,7 +628,7 @@
                     </div>
                   </accordion-group>
 
-                  <accordion-group heading="Aerobic Digestion" *ngIf="biosolid.anaerobic.sel_type=='0'">
+                  <accordion-group heading="Aerobic Digestion" *ngIf="biosolid.anaerobic.sel_type=='0'" [panelClass]="customClass">
 
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_aerobic">Please select</label>
@@ -646,7 +646,7 @@
 
                   </accordion-group>
 
-                  <accordion-group heading="Anaerobic Digestion" *ngIf="biosolid.aerobic.sel_type=='0'">
+                  <accordion-group heading="Anaerobic Digestion" *ngIf="biosolid.aerobic.sel_type=='0'" [panelClass]="customClass">
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_anaerobic">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_anaerobic">
@@ -854,7 +854,7 @@
 
                 <accordion>
 
-                  <accordion-group heading="Biogas">
+                  <accordion-group heading="Biogas" [panelClass]="customClass">
 
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_biogas">Please select</label>
@@ -968,7 +968,7 @@
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
 
                 <accordion>
-                  <accordion-group heading="Dewatering" >
+                  <accordion-group heading="Dewatering" [panelClass]="customClass">
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_dewatering">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_dewatering">
@@ -1079,7 +1079,7 @@
 
                 <accordion>
 
-                  <accordion-group heading="Biosolids Transportation">
+                  <accordion-group heading="Biosolids Transportation" [panelClass]="customClass">
 
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_transportation">Please select</label>
@@ -1096,7 +1096,7 @@
                     </div>
 
                   </accordion-group>
-                  <accordion-group heading="Biosolids Disposal">
+                  <accordion-group heading="Biosolids Disposal" [panelClass]="customClass">
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_disposal">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_disposal">
@@ -1245,7 +1245,7 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header cd-header-color">
               Chemicals Line
               <div class="card-header-actions">
                 <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
@@ -1254,7 +1254,7 @@
             <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
                 <accordion>
-                  <accordion-group heading="Metal Salts for Phosphorus Removal">
+                  <accordion-group heading="Metal Salts for Phosphorus Removal" [panelClass]="customClass">
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_metalsalts">Please Select Chemicals</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_metalsalts">
@@ -1299,7 +1299,7 @@
                       </div>
                   </div>
                 </accordion-group>
-                  <accordion-group heading="Chlorine for Process">
+                  <accordion-group heading="Chlorine for Process" [panelClass]="customClass">
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_chlorine">Please Select Chemicals</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_chlorine">
@@ -1374,7 +1374,7 @@
       </div>
       <div class="col-lg-6">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header cd-header-color">
             Chemicals
             <div class="card-header-actions">
               <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
@@ -1389,10 +1389,10 @@
             <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
 
               <div class="form-group row" *ngIf="chemical.metal_salts.sel_type!='0'">
-                <label class="col-md-12 col-form-label" for="text-input"><strong>Metal Salts for Phosphorus Removal</strong></label>
-                <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{chemical.metal_salts.sel_type}}</p></label>
+                <label class="col-md-12 col-form-label custom-font-color" for="text-input"><strong>Metal Salts for Phosphorus Removal</strong></label>
+                <label class="col-md-12 col-form-label p-0 custom-font-color"><p class="sub-title-padding m-0">{{chemical.metal_salts.sel_type}}</p></label>
                 <div class="offset-md-1 col-md-11 row">
-                  <label class="col-md-5 col-form-label" for="metalsalts_rate">Actual Dosage Rate:</label>
+                  <label class="col-md-5 col-form-label custom-inner-text-color" for="metalsalts_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
                     <input type="text" id="metalsalts_rate" name="metalsalts_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.metal_salts.data.default" (ngModelChange)="updateWWTPsize()">
                     <span *ngIf="chemical.metal_salts.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.metal_salts.data.suggested}}
@@ -1425,7 +1425,7 @@
                 <label class="col-md-12 col-form-label" for="text-input"><strong>Chlorine for Disinfection</strong></label>
                 <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{chemical.chlorination.sel_type}}</p></label>
                 <div class="offset-md-1 col-md-11 row">
-                  <label class="col-md-5 col-form-label" for="chlorination_rate">Actual Dosage Rate:</label>
+                  <label class="col-md-5 col-form-label custom-inner-text-color" for="chlorination_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
                     <input type="text" id="chlorination_rate" name="chlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.chlorination.data.default" (ngModelChange)="updateWWTPsize()">
                     <span *ngIf="chemical.chlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.chlorination.data.suggested}}
@@ -1458,7 +1458,7 @@
                 <label class="col-md-12 col-form-label" for="text-input"><strong>Dechlorination Chemicals</strong></label>
                 <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{chemical.dechlorination.sel_type}}</p></label>
                 <div class="offset-md-1 col-md-11 row">
-                  <label class="col-md-5 col-form-label" for="dechlorination_rate">Actual Dosage Rate:</label>
+                  <label class="col-md-5 col-form-label custom-inner-text-color" for="dechlorination_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
                     <input type="text" id="dechlorination_rate" name="dechlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.dechlorination.data.default" (ngModelChange)="updateWWTPsize()">
                     <span *ngIf="chemical.dechlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.dechlorination.data.suggested}}
@@ -1488,10 +1488,10 @@
               </div>
 
               <div class="form-group row" *ngIf="chemical.chlorine.sel_type!='0'">
-                <label class="col-md-12 col-form-label" for="text-input"><strong>Chlorine for Process</strong></label>
-                <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{chemical.chlorine.sel_type}}</p></label>
+                <label class="col-md-12 col-form-label custom-font-color" for="text-input"><strong>Chlorine for Process</strong></label>
+                <label class="col-md-12 col-form-label p-0 custom-font-color"><p class="sub-title-padding m-0">{{chemical.chlorine.sel_type}}</p></label>
                 <div class="offset-md-1 col-md-11 row">
-                  <label class="col-md-5 col-form-label" for="chlorine_rate">Actual Dosage Rate:</label>
+                  <label class="col-md-5 col-form-label custom-inner-text-color" for="chlorine_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
                     <input type="text" id="chlorine_rate" name="metalsalts_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.chlorine.data.default" (ngModelChange)="updateWWTPsize()">
                   </div>

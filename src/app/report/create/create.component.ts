@@ -21,7 +21,7 @@ export class CreateComponent implements OnInit {
   @ViewChild('baseChart') public chart: BaseChartDirective;
   @ViewChild('piChart') public piChart: BaseChartDirective;
   @ViewChild('successModal') public modal: ModalDirective;
-  customClass = 'customClass';
+  customClass = 'custom-class';
   fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering', 'chemical', 'process','constant', 'size'];
   setScenarioData;
   modelMsg;

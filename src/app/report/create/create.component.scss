@@ -68,16 +68,16 @@ thead{
 }
 
 .cd-header-color {
-  background-color: #428BCA!important;
+  background-color: #2b4de7e6!important;
 }
-.panel-heading {
-  background-color: cornflowerblue!important;
+::ng-deep.custom-class > .card-header {
+  background-color: #1730d154;
 }
-.test .custom-header-color .panel-default .panel-heading {
-  background-color: cornflowerblue!important;
+::ng-deep.custom-class > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
+  color: black!important;
 }
-.customClass{
-  background-color: cornflowerblue!important;
+::ng-deep.custom-class > .card-header > .panel-title > .accordion-toggle > .btn-link{
+  color: black!important;
 }
 .custom-font-color {
   color: #428BCA!important;
