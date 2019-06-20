@@ -21,7 +21,7 @@ export class CreateComponent implements OnInit {
   @ViewChild('baseChart') public chart: BaseChartDirective;
   @ViewChild('piChart') public piChart: BaseChartDirective;
   @ViewChild('successModal') public modal: ModalDirective;
-
+  customClass = 'customClass';
   fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering', 'chemical', 'process','constant', 'size'];
   setScenarioData;
   modelMsg;
@@ -37,6 +37,7 @@ export class CreateComponent implements OnInit {
   scenarioLength;
   scenarioLengthTemp;
   setProjectData = 'Project 1';
+  setProjectDescription ='Project Description 1';
   scenarioNewName;
   // ****************** This for data related variable ***********************//
 
@@ -628,6 +629,15 @@ export class CreateComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id') || null;
     if (this.dataServiceService.getProjectData()) {
       this.setProjectData = this.dataServiceService.getProjectData().name;
+      this.setProjectDescription = this.dataServiceService.getProjectData().desc;
+    } else  {
+      if (this.id) {
+        this.userService.getScenario({project_id: this.id}).subscribe((response: any) => {
+          console.log(response.data.scenario);
+          this.setProjectData = response.data.name;
+          this.setProjectDescription = response.data.desc;
+        });
+      }
     }
     // this.setScenario();
 

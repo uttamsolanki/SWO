@@ -101,7 +101,7 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header cd-header-color" style="background-color: #428BCA">
               Liquid Line
               <div class="card-header-actions">
                 <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
@@ -109,8 +109,8 @@
             </div>
             <div class="card-body">
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
-                <accordion>
-                  <accordion-group heading="Pumping">
+                <accordion class="test">
+                  <accordion-group heading="Pumping" class="custom-header-color" [panelClass]="customClass">
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_pumping">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_pumping" >
@@ -334,7 +334,7 @@
         <!--*ngIf="this.primary.pumping.sel_type != '0' || this.primary.prili_treat.sel_type != '0' || this.primary.pri_treat.sel_type != '0' || this.secondary.sel_growth_type != '0' || this.sec_clr.sel_type != '0' || this.tertiary.sel_type != '0' || this.disinfection.sel_type != '0'"-->
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header cd-header-color">
               Liquid Line Units
               <div class="card-header-actions">
                 <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
@@ -346,10 +346,10 @@
               </div>
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
                 <div class="form-group row" *ngIf="primary.pumping.sel_type != '0' ">
-                  <label class="col-md-12 col-form-label" ><strong> Pumping</strong></label>
-                  <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{primary.pumping.sel_type}}</p></label>
+                  <label class="col-md-12 col-form-label custom-font-color" ><strong> Pumping</strong></label>
+                  <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0 custom-font-color">{{primary.pumping.sel_type}}</p></label>
                   <div class="offset-md-1 col-md-11 row">
-                    <label class="col-md-5 col-form-label" for="text-input">Actual Energy Use Rate:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="pumping_rate"  name="pumping_rate" [(ngModel)]="primary.pumping.data.default" class="form-control" placeholder="0.0" (ngModelChange)="updateWWTPsize()">
                       <div class="p-1">
@@ -374,7 +374,7 @@
                   <label class="col-md-12 col-form-label" for="text-input"></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">CO2 Equivalent:</label>
                     <div class="col-md-5">
                       <input type="text" id="pumping_co2" name="pumping_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="primary.pumping.data.co2" readonly>
                     </div>
@@ -385,11 +385,11 @@
                 </div>
 
                 <div class="form-group row" *ngIf="primary.prili_treat.sel_type != '0' ">
-                  <label class="col-md-12 col-form-label" for="sel_prili_treat"><strong>Preliminary Treatment</strong></label>
-                  <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{primary.prili_treat.sel_type}}</p></label>
+                  <div class="col-md-12 col-form-label custom-font-color" for="sel_prili_treat"><strong>Preliminary Treatment</strong></div>
+                  <label class="col-md-12 col-form-label p-0 custom-font-color" ><p class="sub-title-padding m-0">{{primary.prili_treat.sel_type}}</p></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">Actual Energy Use Rate:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="prili_treat_rate" name="prili_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.prili_treat.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="primary.prili_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.prili_treat.data.suggested}}
@@ -407,7 +407,7 @@
                   <label class="col-md-12 col-form-label" for="text-input"></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">CO2 Equivalent:</label>
                     <div class="col-md-5">
                       <input type="text" id="prili_treat_co2" name="prili_treat_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="primary.prili_treat.data.co2" readonly>
                     </div>
@@ -419,11 +419,11 @@
                 </div>
 
                 <div class="form-group row" *ngIf="primary.pri_treat.sel_type != '0' ">
-                  <label class="col-md-12 col-form-label" for="sel_pri_treat"><strong>Primary Treatment</strong></label>
-                  <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{primary.pri_treat.sel_type}}</p></label>
+                  <label class="col-md-12 col-form-label custom-font-color" for="sel_pri_treat"><strong>Primary Treatment</strong></label>
+                  <label class="col-md-12 col-form-label p-0 custom-font-color" ><p class="sub-title-padding m-0">{{primary.pri_treat.sel_type}}</p></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">Actual Energy Use Rate:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="pri_treat_rate" name="pri_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.pri_treat.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="primary.pri_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.pri_treat.data.suggested}}
@@ -442,7 +442,7 @@
                   <label class="col-md-12 col-form-label" for="text-input"></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="pri_treat_co2">CO2 Equivalent:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="pri_treat_co2">CO2 Equivalent:</label>
                     <div class="col-md-5">
                       <input type="text" id="pri_treat_co2" name="pri_treat_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="primary.pri_treat.data.co2" readonly>
                     </div>
@@ -454,12 +454,12 @@
                 </div>
 
                 <div class="form-group row" *ngIf="secondary.sel_type != '0' ">
-                  <label class="col-md-12 col-form-label" for="text-input"><strong>Secondary Treatment</strong></label>
-                  <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{secondary.sel_growth_type}}</p></label>
-                  <label class="col-md-12 col-form-label" ><p class="sub-sub-title-padding m-0">{{secondary.sel_type}}</p></label>
+                  <div class="col-md-12 col-form-label custom-font-color"><strong>Secondary Treatment</strong></div>
+                  <label class="col-md-12 col-form-label p-0 custom-font-color" ><p class="sub-title-padding m-0">{{secondary.sel_growth_type}}</p></label>
+                  <label class="col-md-12 col-form-label custom-font-color" ><p class="sub-sub-title-padding m-0">{{secondary.sel_type}}</p></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">Actual Energy Use Rate:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="second_rate" name="second_rate" class="form-control" placeholder="0.0" [(ngModel)]="secondary.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="secondary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{secondary.data.suggested}}
@@ -478,7 +478,7 @@
                   <label class="col-md-12 col-form-label" for="text-input"></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">CO2 Equivalent:</label>
                     <div class="col-md-5">
                       <input type="text" id="second_co2" name="second_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="secondary.data.co2" readonly>
                     </div>
@@ -490,11 +490,11 @@
                 </div>
 
                 <div class="form-group row" *ngIf="sec_clr.sel_type != '0'">
-                  <label class="col-md-12 col-form-label" for="sec_clr_rate"> <strong>Secondary Clarification </strong></label>
-                  <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{sec_clr.sel_type}}</p></label>
+                  <div class="col-md-12 col-form-label custom-font-color" for="sec_clr_rate"> <strong>Secondary Clarification </strong></div>
+                  <label class="col-md-12 col-form-label p-0 custom-font-color" ><p class="sub-title-padding m-0">{{sec_clr.sel_type}}</p></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">Actual Energy Use Rate:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="sec_clr_rate" name="sec_clr_rate" class="form-control" placeholder="0.0" [(ngModel)]="sec_clr.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="sec_clr.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{sec_clr.data.suggested}}
@@ -512,7 +512,7 @@
                   <label class="col-md-12 col-form-label" for="text-input"></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">CO2 Equivalent:</label>
                     <div class="col-md-5">
                       <input type="text" id="sec_clr_co2" name="sec_clr_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="sec_clr.data.co2" readonly>
                     </div>
@@ -524,10 +524,10 @@
                 </div>
 
                 <div class="form-group row" *ngIf="tertiary.sel_type != '0'">
-                  <label class="col-md-12 col-form-label" for="text-input"><strong>Tertiary Treatment</strong></label>
-                  <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{tertiary.sel_type}}</p></label>
+                  <div class="col-md-12 col-form-label custom-font-color" for="text-input"><strong>Tertiary Treatment</strong></div>
+                  <label class="col-md-12 col-form-label p-0 custom-font-color" ><p class="sub-title-padding m-0">{{tertiary.sel_type}}</p></label>
                   <div class="offset-md-1 col-md-11 row">
-                    <label class="col-md-5 col-form-label" for="text-input">Actual Energy Use Rate:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="tertiary_rate" name="tertiary_rate" class="form-control" placeholder="0.0" [(ngModel)]="tertiary.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="tertiary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{tertiary.data.suggested}}
@@ -545,7 +545,7 @@
                   <label class="col-md-12 col-form-label" for="text-input"></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">CO2 Equivalent:</label>
                     <div class="col-md-5">
                       <input type="text" id="tertiary_co2" name="tertiary_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="tertiary.data.co2" readonly>
                     </div>
@@ -557,11 +557,11 @@
                 </div>
 
                 <div class="form-group row" *ngIf="disinfection.sel_type != '0'">
-                  <label class="col-md-12 col-form-label" for="text-input"><strong>Disinfection</strong></label>
-                  <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0">{{disinfection.sel_type}}</p></label>
+                  <div class="col-md-12 col-form-label custom-font-color" for="text-input"><strong>Disinfection</strong></div>
+                  <label class="col-md-12 col-form-label p-0 custom-font-color" ><p class="sub-title-padding m-0">{{disinfection.sel_type}}</p></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">Actual Energy Use Rate:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="disinfection_rate" name="disinfection_rate" class="form-control" placeholder="0.0" [(ngModel)]="disinfection.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="disinfection.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{disinfection.data.suggested}}
@@ -580,7 +580,7 @@
                   <label class="col-md-12 col-form-label" for="text-input"></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">CO2 Equivalent:</label>
                     <div class="col-md-5">
                       <input type="text" id="disinfection_co2" name="disinfection_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="disinfection.data.co2" readonly>
                     </div>
@@ -599,7 +599,7 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header cd-header-color">
               Liquid Sludge Line
               <div class="card-header-actions">
 
@@ -713,7 +713,7 @@
         </div>
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header cd-header-color">
               Liquid Sludge Line Units
               <div class="card-header-actions">
 
@@ -730,11 +730,11 @@
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
 
                 <div class="form-group row" *ngIf="biosolid.thickener.sel_type!='0'">
-                  <label class="col-md-12 col-form-label" for="text-input"><strong>Thickening</strong></label>
-                  <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{biosolid.thickener.sel_type}}</p></label>
+                  <div class="col-md-12 col-form-label custom-font-color" for="text-input"><strong>Thickening</strong></div>
+                  <label class="col-md-12 col-form-label p-0 custom-font-color"><p class="sub-title-padding m-0">{{biosolid.thickener.sel_type}}</p></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="anaerobic_rate">Actual Energy Use Rate:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="anaerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="thickener_rate" name="thickener_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.thickener.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="biosolid.thickener.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.thickener.data.suggested}}
@@ -753,7 +753,7 @@
                   <label class="col-md-12 col-form-label" for="text-input"></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">CO2 Equivalent:</label>
                     <div class="col-md-5">
                       <input type="text" id="thickener_co2" name="thickener_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="biosolid.thickener.data.co2" readonly>
                     </div>
@@ -768,7 +768,7 @@
                   <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{biosolid.aerobic.sel_type}}</p></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="aerobic_rate">Actual Energy Use Rate:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="aerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="aerobic_rate" name="aerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.aerobic.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="biosolid.aerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.aerobic.data.suggested}}
@@ -787,7 +787,7 @@
                   <label class="col-md-12 col-form-label" for="text-input"></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">CO2 Equivalent:</label>
                     <div class="col-md-5">
                       <input type="text" id="aerobic_co2" name="aerobic_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="biosolid.aerobic.data.co2" readonly>
                     </div>
@@ -798,11 +798,11 @@
                 </div>
 
                 <div class="form-group row" *ngIf="biosolid.anaerobic.sel_type!='0'">
-                  <label class="col-md-12 col-form-label" for="text-input"><strong>Anaerobic Digestion</strong></label>
-                  <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{biosolid.anaerobic.sel_type}}</p></label>
+                  <div class="col-md-12 col-form-label custom-font-color" for="text-input"><strong>Anaerobic Digestion</strong></div>
+                  <label class="col-md-12 col-form-label p-0 custom-font-color"><p class="sub-title-padding m-0">{{biosolid.anaerobic.sel_type}}</p></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="anaerobic_rate">Actual Energy Use Rate:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="anaerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="anaerobic_rate" name="anaerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.anaerobic.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="biosolid.anaerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.anaerobic.data.suggested}}
@@ -821,7 +821,7 @@
                   <label class="col-md-12 col-form-label" for="text-input"></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">CO2 Equivalent:</label>
                     <div class="col-md-5">
                       <input type="text" id="anaerobic_co2" name="anaerobic_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="biosolid.anaerobic.data.co2" readonly>
                     </div>
@@ -839,7 +839,7 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header cd-header-color">
               Biogas Line
               <div class="card-header-actions">
 
@@ -898,7 +898,7 @@
         </div>
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header cd-header-color">
               Biogas Units
               <div class="card-header-actions">
                 <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
@@ -913,11 +913,11 @@
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
 
                 <div class="form-group row" *ngIf="biogas.sel_type!='0'">
-                  <label class="col-md-12 col-form-label" for="text-input"><strong>Biogas</strong></label>
-                  <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{biogas.sel_type}}</p></label>
+                  <div class="col-md-12 col-form-label custom-font-color" for="text-input"><strong>Biogas</strong></div>
+                  <label class="col-md-12 col-form-label p-0 custom-font-color"><p class="sub-title-padding m-0">{{biogas.sel_type}}</p></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="biogas_rate">Actual Biogas Energy Factor:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="biogas_rate">Actual Biogas Energy Factor:</label>
                     <div class="col-md-5">
                       <input type="text" id="biogas_rate" name="biogas_rate" class="form-control" placeholder="0.0" [(ngModel)]="biogas.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="biogas.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biogas.data.suggested}}
@@ -936,7 +936,7 @@
                   <label class="col-md-12 col-form-label" for="text-input"></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">Recovery:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">Recovery:</label>
                     <div class="col-md-5">
                       <input type="number" id="biogas_co2" name="biogas_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="biogas.data.co2" readonly>
                     </div>
@@ -954,7 +954,7 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header cd-header-color">
               Solids Dewatering Line
               <div class="card-header-actions">
 
@@ -1009,7 +1009,7 @@
         </div>
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header cd-header-color">
               Solids Dewatering Units
               <div class="card-header-actions">
                 <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
@@ -1023,11 +1023,11 @@
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
 
                 <div class="form-group row" *ngIf="dewatering.sel_type!='0'">
-                  <label class="col-md-12 col-form-label" for="text-input"><strong>Dewatering</strong></label>
-                  <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{dewatering.sel_type}}</p></label>
+                  <div class="col-md-12 col-form-label custom-font-color" for="text-input"><strong>Dewatering</strong></div>
+                  <label class="col-md-12 col-form-label p-0 custom-font-color"><p class="sub-title-padding m-0">{{dewatering.sel_type}}</p></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="dewatering_rate">Actual Energy Use Rate:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="dewatering_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="dewatering_rate" name="dewatering_rate" class="form-control" placeholder="0.0" [(ngModel)]="dewatering.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="dewatering.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{dewatering.data.suggested}}
@@ -1046,7 +1046,7 @@
                   <label class="col-md-12 col-form-label" for="text-input"></label>
                   <div class="offset-md-1 col-md-11 row">
 
-                    <label class="col-md-5 col-form-label" for="text-input">CO2 Equivalent:</label>
+                    <label class="col-md-5 col-form-label custom-inner-text-color" for="text-input">CO2 Equivalent:</label>
                     <div class="col-md-5">
                       <input type="text" id="dewatering_co2" name="dewatering_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="dewatering.data.co2" readonly>
                     </div>
@@ -1064,7 +1064,7 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header cd-header-color">
               Biosolids Disposal Line
               <div class="card-header-actions">
 
@@ -1149,7 +1149,7 @@
         </div>
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header cd-header-color">
               Biosolids Disposal Units
               <div class="card-header-actions">
 
@@ -1168,7 +1168,7 @@
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
 
                 <div class="form-group row" *ngIf="biosolids_disposals.transportation.sel_type!='0'">
-                  <label class="col-md-12 col-form-label" for="text-input"><strong>Transportation</strong></label>
+                  <div class="col-md-12 col-form-label custom-font-color" for="text-input"><strong>Transportation</strong></div>
                   <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{biosolids_disposals.transportation.sel_type}}</p></label>
                   <!--<div class="offset-md-1 col-md-11 row">-->
                     <!--<label class="col-md-5 col-form-label" for="transportation_rate">Actual Energy Use Rate:</label>-->
@@ -1197,7 +1197,7 @@
                 <!--</div>-->
 
                 <div class="form-group row" *ngIf="biosolids_disposals.disposal.sel_type!='0'">
-                  <label class="col-md-12 col-form-label" for="text-input"><strong>Disposal</strong></label>
+                  <div class="col-md-12 col-form-label custom-font-color" for="text-input"><strong>Disposal</strong></div>
                   <label class="col-md-12 col-form-label p-0"><p class="sub-title-padding m-0">{{biosolids_disposals.disposal.sel_type}}</p></label>
                   <!--<div class="offset-md-1 col-md-11 row">-->
 
@@ -1411,7 +1411,7 @@
                 <label class="col-md-12 col-form-label" for="text-input"></label>
                 <div class="offset-md-1 col-md-11 row">
 
-                  <label class="col-md-5 col-form-label" for="metalsalts_co2">CO2 Equivalent:</label>
+                  <label class="col-md-5 col-form-label custom-inner-text-color" for="metalsalts_co2">CO2 Equivalent:</label>
                   <div class="col-md-5">
                     <input type="text" id="metalsalts_co2" name="metalsalts_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="chemical.metal_salts.data.co2" readonly>
                   </div>
@@ -1444,7 +1444,7 @@
                 <label class="col-md-12 col-form-label" for="text-input"></label>
                 <div class="offset-md-1 col-md-11 row">
 
-                  <label class="col-md-5 col-form-label" for="chlorination_co2">CO2 Equivalent:</label>
+                  <label class="col-md-5 col-form-label custom-inner-text-color" for="chlorination_co2">CO2 Equivalent:</label>
                   <div class="col-md-5">
                     <input type="text" id="chlorination_co2" name="chlorination_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="chemical.chlorination.data.co2" readonly>
                   </div>
@@ -1477,7 +1477,7 @@
                 <label class="col-md-12 col-form-label" for="text-input"></label>
                 <div class="offset-md-1 col-md-11 row">
 
-                  <label class="col-md-5 col-form-label" for="dechlorination_co2">CO2 Equivalent:</label>
+                  <label class="col-md-5 col-form-label custom-inner-text-color" for="dechlorination_co2">CO2 Equivalent:</label>
                   <div class="col-md-5">
                     <input type="text" id="dechlorination_co2" name="dechlorination_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="chemical.dechlorination.data.co2" readonly>
                   </div>
@@ -1507,7 +1507,7 @@
                 <label class="col-md-12 col-form-label" for="text-input"></label>
                 <div class="offset-md-1 col-md-11 row">
 
-                  <label class="col-md-5 col-form-label" for="chlorine_co2">CO2 Equivalent:</label>
+                  <label class="col-md-5 col-form-label custom-inner-text-color" for="chlorine_co2">CO2 Equivalent:</label>
                   <div class="col-md-5">
                     <input type="text" id="chlorine_co2" name="chlorine_co2" class="form-control readonlyValue" placeholder="0.0" [(ngModel)]="chemical.chlorine.data.co2" readonly>
                   </div>
@@ -2667,6 +2667,12 @@
                     <div class="col-md-12 row">
                       <label class="col-md-3 col-form-label " for="project_name">Project Name:</label>
                       <label class="col-md-3 col-form-label" id="project_name"> {{setProjectData}}</label>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-md-12 row">
+                      <label class="col-md-3 col-form-label " for="project_name">Project Description:</label>
+                      <label class="col-md-3 col-form-label" id="project_name"> {{setProjectDescription}}</label>
                     </div>
                   </div>
                   <div class="form-group row">
