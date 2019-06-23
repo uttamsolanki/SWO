@@ -62,27 +62,281 @@
   margin-top: 29%;
   margin-right: 40%;
 }
-thead{
+
+::ng-deep.tab-content{
+  border: 1px solid #337ab7;
+}
+
+::ng-deep.navTabBackground > ul {
+  background: #337ab7;
+  border: 1px solid #337ab7;
+  color: #fff;
+  line-height: 2;
+}
+
+::ng-deep.nav-link > span {
+  color: #fff !important;
+  font-weight: 700;
+}
+::ng-deep.nav-link.active > span {
+  color: black !important;
+  font-weight: 700;
+}
+
+.details-border{
+  border: 1px solid #4dbd74 !important;
+}
+.details-border > .card-header{
+  color: #3c763d !important;
+  background-color: #dff0d8 !important;
+  border-color: #d6e9c6 !important;
+  font-weight: 700 !important;
+}
+
+//Liquid line
+
+.liquid-border {
+  border: 1px solid #4E76F9 !important;
+}
+.liquid-main-heading{
+  background-color: #4E76F9!important;
+  color:white !important;
+  font-weight: 700 !important;
+}
+::ng-deep.liquid-custom-class{
+  border: 1px solid #B1C3F9 !important;
+}
+::ng-deep.liquid-custom-class > .card-header {
+  background-color: #B1C3F9 !important;
+}
+::ng-deep.liquid-custom-class > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
+  color: black!important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+::ng-deep.liquid-custom-class > .card-header> .panel-title > .accordion-toggle > .btn-link{
+  color: black!important;
+  font-weight: 500 !important;
+}
+.liquid-font-color {
+  color: #4E76F9 !important;
+}
+
+//Liquid Sludge
+
+.liquid-slude-border {
+  border: 1px solid #F94659 !important;
+}
+.liquid-slude-main-heading{
+  background-color: #F94659 !important;
+  color:white !important;
+  font-weight: 700 !important;
+}
+::ng-deep.liquid-slude-custom-heading {
+  border: 1px solid #FDADB1 !important;
+}
+::ng-deep.liquid-slude-custom-heading > .card-header {
+  background-color: #FDADB1 !important;
+}
+::ng-deep.liquid-slude-custom-heading > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
+  color: black!important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+::ng-deep.liquid-slude-custom-heading > .card-header> .panel-title > .accordion-toggle > .btn-link{
+  color: black!important;
+  font-weight: 500 !important;
+}
+.liquid-sludge-font-color {
+  color: #F94659 !important;
+}
+
+//Biogas
+
+.biogas-border {
+  border: 1px solid #47F646 !important;
+}
+.biogas-main-heading{
+  background-color: #47F646 !important;
+  color:black !important;
+  font-weight: 700 !important;
+}
+::ng-deep.biogas-custom-heading {
+  border: 1px solid #B1F0AD !important;
+}
+::ng-deep.biogas-custom-heading > .card-header {
+  background-color: #B1F0AD !important;
+}
+::ng-deep.biogas-custom-heading > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
+  color: black!important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+::ng-deep.biogas-custom-heading > .card-header> .panel-title > .accordion-toggle > .btn-link{
+  color: black!important;
+  font-weight: 500 !important;
+}
+.biogas-font-color {
+  color: #47F646 !important;
+}
+
+// Dewatering
+
+.dewatering-border {
+  border: 1px solid #A3BDD6 !important;
+}
+.dewatering-main-heading{
+  background-color: #A3BDD6 !important;
+  color:black !important;
+  font-weight: 700 !important;
+}
+::ng-deep.dewatering-custom-heading {
+  border: 1px solid #c4dcf2 !important;
+}
+::ng-deep.dewatering-custom-heading > .card-header {
+  background-color: #c4dcf2 !important;
+}
+::ng-deep.dewatering-custom-heading > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
+  color: black!important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+::ng-deep.dewatering-custom-heading > .card-header> .panel-title > .accordion-toggle > .btn-link{
+  color: black!important;
+  font-weight: 500 !important;
+}
+.dewatering-font-color {
+  color: #A3BDD6 !important;
+}
+
+//Disposal
+
+.disposal-border {
+  border: 1px solid #AAAAAA !important;
+}
+.disposal-main-heading{
+  background-color: #AAAAAA !important;
+  color:black !important;
+  font-weight: 700 !important;
+}
+::ng-deep.disposal-custom-heading{
+  border: 1px solid #d3d1d1 !important;
+}
+::ng-deep.disposal-custom-heading > .card-header {
+  background-color: #d3d1d1 !important;
+}
+::ng-deep.disposal-custom-heading > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
+  color: black!important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+::ng-deep.disposal-custom-heading > .card-header> .panel-title > .accordion-toggle > .btn-link{
+  color: black!important;
+  font-weight: 500 !important;
+}
+.disposal-font-color {
+  color: #AAAAAA !important;
+}
+
+//Chemical Style
+
+.chemical-border {
+  border: 1px solid #c819aa !important;
+}
+.chemical-main-heading{
+  background-color: #c819aa !important;
+  color:black !important;
+  font-weight: 700 !important;
+}
+::ng-deep.chemical-custom-heading{
+  border: 1px solid #f48de1 !important;
+}
+::ng-deep.chemical-custom-heading > .card-header {
+  background-color: #f48de1 !important;
+}
+::ng-deep.chemical-custom-heading > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
+  color: black!important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+::ng-deep.chemical-custom-heading > .card-header> .panel-title > .accordion-toggle > .btn-link{
+  color: black!important;
+  font-weight: 500 !important;
+}
+.chemical-font-color {
+  color: #c819aa !important;
+}
+
+
+.summary-border{
+  border: 1px solid #20a8d8 !important;
+}
+
+.summary-border > .card-header {
+  font-weight: 700 !important
+}
+
+.table-border{
+  border: 1px solid #4dbd74 !important;
+}
+.table-border > .card-header{
+  color: #3c763d !important;
+  background-color: #dff0d8 !important;
+  border-color: #d6e9c6 !important;
+}
+.table-border > .card-body> table{
+  border: 1px solid #428BCA !important;
+}
+
+.table-border > .card-body > table > thead{
   background-color: #428BCA !important;
-  border: #428BCA solid 1px !important;
+  border: 1px solid #428BCA !important;
+  color:white !important;
 }
 
-.cd-header-color {
-  background-color: #2b4de7e6!important;
+.activeSludgeImage{
+  text-align: center;
+  display: block;
 }
-::ng-deep.custom-class > .card-header {
-  background-color: #1730d154;
+.activeSludgeImage > img{
+  width: 60%;
+  overflow: hidden;
 }
-::ng-deep.custom-class > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
-  color: black!important;
+.aerobicImg{
+  text-align: center;
+  display: block;
 }
-::ng-deep.custom-class > .card-header > .panel-title > .accordion-toggle > .btn-link{
-  color: black!important;
-}
-.custom-font-color {
-  color: #428BCA!important;
-}
-.custom-inner-text-color {
-  color: #f8cb00!important;
+.aerobicImg > img{
+  width: 55%;
+  overflow: hidden;
 }
 
+.anaerobicImg{
+  text-align: center;
+  display: block;
+}
+.anaerobicImg > img{
+  width: 55%;
+  overflow: hidden;
+}
+
+.transportation{
+  text-align: center;
+  display: block;
+}
+.transportation > img{
+  width: 40%;
+  overflow: hidden;
+}
+
+.disposal{
+  text-align: center;
+  display: block;
+}
+.disposal > img{
+  width: 40%;
+  overflow: hidden;
+}
+.bg-img{
+  background-image: url("/assets/img/avatars/Liquid_Line.png");
+}
