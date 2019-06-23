@@ -2366,9 +2366,9 @@
             </div>
             <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
-                <div class="row transportation container">
+                <div class="row transportation">
                   <img src="assets/img/avatars/transportation.png"  alt="Biosolids Transportation"/>
-                  <div class=" custom-text-image">Centered</div>
+                  <div class=" custom-text-image">{{biosolids_disposals.transportation.sel_type}}</div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-12 col-form-label" ><strong> Node A - Flow Rate of Dewatered Sludge Transported</strong></label>
@@ -2500,7 +2500,7 @@
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
                 <div class="row disposal">
                   <img src="assets/img/avatars/disposal.png"  alt="Biosolids Disposal"/>
-                  <div class=" custom-text-image biosolid-text-image">Centered</div>
+                  <div class=" custom-text-image biosolid-text-image">{{biosolids_disposals.disposal.sel_type}}</div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-12 col-form-label" ><strong> Node A - Flow Rate of Dewatered Sludge to {{biosolids_disposals.disposal.sel_type}}</strong></label>
