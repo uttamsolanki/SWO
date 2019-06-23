@@ -1389,7 +1389,7 @@
             <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
 
               <div class="form-group row" *ngIf="chemical.metal_salts.sel_type!='0'">
-                <label class="col-md-12 col-form-label custom-font-color" for="text-input"><strong>Metal Salts for Phosphorus Removal</strong></label>
+                <label class="col-md-12 col-form-label custom-font+-color" for="text-input"><strong>Metal Salts for Phosphorus Removal</strong></label>
                 <label class="col-md-12 col-form-label p-0 custom-font-color"><p class="sub-title-padding m-0">{{chemical.metal_salts.sel_type}}</p></label>
                 <div class="offset-md-1 col-md-11 row">
                   <label class="col-md-5 col-form-label custom-inner-text-color" for="metalsalts_rate">Actual Dosage Rate:</label>
@@ -2802,78 +2802,78 @@
 
                   <div class="form-group row" *ngIf="primary.pumping.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{primary.pumping.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(primary.pumping.data.co2/unitDivider).toFixed(2)}} </label>
+                      <label class="col-md-4 col-form-label " for="text-input">Pumping</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(primary.pumping.data.co2/unitDivider).toFixed(2)}}  [{{primary.pumping.sel_type}}]  </label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="primary.prili_treat.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{primary.prili_treat.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(primary.prili_treat.data.co2/unitDivider).toFixed(2)}}</label>
+                      <label class="col-md-4 col-form-label " for="text-input">Preliminary Treatment</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(primary.prili_treat.data.co2/unitDivider).toFixed(2)}}  [{{primary.prili_treat.sel_type}}]</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="primary.pri_treat.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{primary.pri_treat.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(primary.pri_treat.data.co2/unitDivider).toFixed(2)}}</label>
+                      <label class="col-md-4 col-form-label " for="text-input">Primary Treatment</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(primary.pri_treat.data.co2/unitDivider).toFixed(2)}}  [{{primary.pri_treat.sel_type}}]</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="secondary.sel_growth_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{secondary.sel_growth_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(secondary.data.co2/unitDivider).toFixed(2)}}</label>
+                      <label class="col-md-4 col-form-label " for="text-input">Secondary Treatment</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(secondary.data.co2/unitDivider).toFixed(2)}}  [{{secondary.sel_growth_type}}]</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="sec_clr.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{sec_clr.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(sec_clr.data.co2/unitDivider).toFixed(2)}}</label>
+                      <label class="col-md-4 col-form-label " for="text-input">Secondary Clarification</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(sec_clr.data.co2/unitDivider).toFixed(2)}}  [{{sec_clr.sel_type}}]</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="tertiary.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{tertiary.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(tertiary.data.co2/unitDivider).toFixed(2)}}</label>
+                      <label class="col-md-4 col-form-label " for="text-input">Tertiary Treatment</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(tertiary.data.co2/unitDivider).toFixed(2)}}  [{{tertiary.sel_type}}]</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="disinfection.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{disinfection.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(disinfection.data.co2/unitDivider).toFixed(2)}}</label>
+                      <label class="col-md-4 col-form-label " for="text-input">Disinfection</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(disinfection.data.co2/unitDivider).toFixed(2)}}  [{{disinfection.sel_type}}]</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="biosolid.thickener.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{biosolid.thickener.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.thickener.data.co2/unitDivider).toFixed(2)}}</label>
+                      <label class="col-md-4 col-form-label " for="text-input">Thickening</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.thickener.data.co2/unitDivider).toFixed(2)}}  [{{biosolid.thickener.sel_type}}]</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="biosolid.aerobic.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{biosolid.aerobic.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.aerobic.data.co2/unitDivider).toFixed(2)}}</label>
+                      <label class="col-md-4 col-form-label " for="text-input">Anaerobic Digestion</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.aerobic.data.co2/unitDivider).toFixed(2)}}  [{{biosolid.aerobic.sel_type}}]</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="biosolid.anaerobic.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{biosolid.anaerobic.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.anaerobic.data.co2/unitDivider).toFixed(2)}}</label>
+                      <label class="col-md-4 col-form-label " for="text-input">Anaerobic Digestion</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.anaerobic.data.co2/unitDivider).toFixed(2)}}  [{{biosolid.anaerobic.sel_type}}]</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="dewatering.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{dewatering.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(dewatering.data.co2/unitDivider).toFixed(2)}}</label>
+                      <label class="col-md-4 col-form-label " for="text-input">Dewatering</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(dewatering.data.co2/unitDivider).toFixed(2)}}  [{{dewatering.sel_type}}]</label>
                     </div>
                   </div>
 
@@ -2886,8 +2886,8 @@
 
                   <div class="form-group row" *ngIf="biogas.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{biogas.sel_type}}</label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(biogas.data.co2/unitDivider).toFixed(2)}}</label>
+                      <label class="col-md-4 col-form-label " for="text-input">Biogas</label>
+                      <label class="col-md-3 col-form-label" for="text-input">{{(biogas.data.co2/unitDivider).toFixed(2)}}  [{{biogas.sel_type}}]</label>
                     </div>
                   </div>
 
