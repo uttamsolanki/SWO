@@ -125,18 +125,18 @@
 //Liquid Sludge
 
 .liquid-slude-border {
-  border: 1px solid #F94659 !important;
+  border: 1px solid #C5671C !important;
 }
 .liquid-slude-main-heading{
-  background-color: #F94659 !important;
+  background-color: #C5671C !important;
   color:white !important;
   font-weight: 700 !important;
 }
 ::ng-deep.liquid-slude-custom-heading {
-  border: 1px solid #FDADB1 !important;
+  border: 1px solid #edac7b !important;
 }
 ::ng-deep.liquid-slude-custom-heading > .card-header {
-  background-color: #FDADB1 !important;
+  background-color: #edac7b !important;
 }
 ::ng-deep.liquid-slude-custom-heading > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
   color: black!important;
@@ -148,24 +148,24 @@
   font-weight: 500 !important;
 }
 .liquid-sludge-font-color {
-  color: #F94659 !important;
+  color: #C5671C !important;
 }
 
 //Biogas
 
 .biogas-border {
-  border: 1px solid #47F646 !important;
+  border: 1px solid #94CE58 !important;
 }
 .biogas-main-heading{
-  background-color: #47F646 !important;
+  background-color: #94CE58 !important;
   color:black !important;
   font-weight: 700 !important;
 }
 ::ng-deep.biogas-custom-heading {
-  border: 1px solid #B1F0AD !important;
+  border: 1px solid #b5f76f !important;
 }
 ::ng-deep.biogas-custom-heading > .card-header {
-  background-color: #B1F0AD !important;
+  background-color: #b5f76f !important;
 }
 ::ng-deep.biogas-custom-heading > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
   color: black!important;
@@ -177,7 +177,7 @@
   font-weight: 500 !important;
 }
 .biogas-font-color {
-  color: #47F646 !important;
+  color: #94CE58 !important;
 }
 
 // Dewatering
@@ -351,4 +351,7 @@ margin-bottom: 4%;
 .biosolid-text-image {
   margin-top: -6% !important;
   margin-left: -16% !important;
+}
+.brand-card{
+  text-align: center !important;
 }
