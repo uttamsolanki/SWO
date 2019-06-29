@@ -427,7 +427,7 @@
                     <div class="col-md-5">
                       <input type="text" id="pri_treat_rate" name="pri_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.pri_treat.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="primary.pri_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.pri_treat.data.suggested}}
-                      <span>Range value  0.1 - 0.5</span>
+                      <span>Range value {{primary.pri_treat.data.range.min}} - {{primary.pri_treat.data.range.max}}</span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
@@ -1678,9 +1678,9 @@
                         <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>
                         <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>
                         <ng-template #popTemplate style="width: 170%">
-                          <span style="color: #00aced" >
-                          Rs: This is reference for suggested value
-                          Rr: This is for reference for Range value
+                          <span style="color: #00aced">
+                            <h6><b>Rs:</b></h6> {{primary.pri_treat.data.ref[5]}}<hr>
+                            <h6><b>Rr:</b></h6> {{primary.pri_treat.data.range.ref[6]}}<hr>
                           Info: This is the Info
                           </span>
                         </ng-template>
@@ -2633,6 +2633,181 @@
         </div>
         <div class="offset-lg-8 col-lg-2">
           <button type="button" class="btn btn-block btn-success" (click)='goto(4)'>Next</button>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Flow Diagrams">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card liquid-border">
+            <div class="card-header cd-header-color liquid-main-heading" style="background-color: #428BCA">
+              Liquid Line
+            </div>
+            <div class="card-body pumping-line">
+              <div *ngIf="primary.pumping.sel_type != '0'" style="display: inline">
+                <img class="blue-arrow"  src="assets/img/arrows/bluearrow.png"/>
+                  <div class=" prelimary-treatment-image" style=" width: 9%!important; height: 69px!important; background-image: url('assets/img/avatars/pumping.png')">
+                    <h1 class="pumping-text prelimary-treatment-text" style="margin-top: 42%!important;">{{primary.pumping.sel_type}}</h1>
+                  </div>
+              </div>
+              <div *ngIf="primary.prili_treat.sel_type != '0'" style="display: inline">
+              <img class="blue-arrow"  src="assets/img/arrows/bluearrow.png"/>
+                <div class=" prelimary-treatment-image" *ngIf="primary.prili_treat.sel_type != '0'" style="background-image: url('assets/img/avatars/preliminarytreatment.png') ">
+                  <h1 class="pumping-text prelimary-treatment-text">{{primary.prili_treat.sel_type}}</h1>
+                </div>
+              </div>
+              <div *ngIf="primary.pri_treat.sel_type != '0' " style="display: inline">
+                <img class="blue-arrow"  src="assets/img/arrows/bluearrow.png"/>
+                <div class=" prelimary-treatment-image" style="background-image: url('assets/img/avatars/primarytreatment.png') ">
+                  <h1 class="pumping-text prelimary-treatment-text">{{primary.pri_treat.sel_type}}</h1>
+                </div>
+              </div>
+              <div *ngIf="secondary.sel_type != '0'" style="display: inline">
+              <img class="blue-arrow"  src="assets/img/arrows/bluearrow.png"/>
+                <div class=" prelimary-treatment-image" *ngIf="secondary.sel_type != '0'" style="height: 113px!important; padding: 2%!important; background-image: url('assets/img/avatars/secondaryTreatment1.png') ">
+                  <h1 class="pumping-text prelimary-treatment-text">{{secondary.sel_type}}</h1>
+                </div>
+              </div>
+              <div *ngIf="sec_clr.sel_type != '0'" style="display: inline">
+                <img class="seconadry-arrow"  src="assets/img/arrows/arrow.png"/>
+                <img class="blue-arrow arrow-align" src="assets/img/arrows/bluearrow.png"/>
+                <div class=" prelimary-treatment-image" *ngIf="sec_clr.sel_type != '0'" style="background-image: url('assets/img/avatars/secondaryclarification.png') ">
+                  <h1 class="pumping-text prelimary-treatment-text" >{{sec_clr.sel_type}}</h1>
+                </div>
+              </div>
+              <div *ngIf="tertiary.sel_type != '0'" style="display: inline">
+                <img class="blue-arrow"  src="assets/img/arrows/bluearrow.png"/>
+                <div class=" prelimary-treatment-image" style="background-image: url('assets/img/avatars/tertarytreatment.png') ">
+                  <h1 class="pumping-text prelimary-treatment-text">{{tertiary.sel_type}}</h1>
+                </div>
+              </div>
+              <div *ngIf="disinfection.sel_type != '0'" style="display: inline">
+                <img class="blue-arrow"  src="assets/img/arrows/bluearrow.png"/>
+                <div class=" prelimary-treatment-image" *ngIf="disinfection.sel_type != '0'" style="width: 10%!important; height: 76px!important; background-image: url('assets/img/avatars/disinfection.png') ">
+                  <h1 class="pumping-text prelimary-treatment-text" style="margin-top: 45%!important;" >{{disinfection.sel_type}}</h1>
+                </div>
+              </div>
+              <img class="blue-arrow" src="assets/img/arrows/bluearrow.png"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card liquid-border">
+            <div class="card-header cd-header-color liquid-slude-main-heading" style="background-color: #428BCA">
+              Liquid Sludge Line
+            </div>
+            <div class="card-body pumping-line">
+              <div *ngIf="biosolid.thickener.sel_type!='0'"  style="display: inline">
+                <img class="blue-arrow" src="assets/img/arrows/brownarrow.png"/>
+                <div class=" prelimary-treatment-image" style="background-image: url('assets/img/avatars/sludge.png') ">
+                  <h1 class="pumping-text prelimary-treatment-text">{{biosolid.thickener.sel_type}}</h1>
+                </div>
+              </div>
+
+              <div *ngIf="biosolid.aerobic.sel_type!='0'" style="display: inline">
+                <img class="blue-arrow"  src="assets/img/arrows/brownarrow.png"/>
+                <div class=" prelimary-treatment-image" style="background-image: url('assets/img/avatars/aerobicdigestion.png')">
+                  <h1 class="prelimary-treatment-text">{{biosolid.aerobic.sel_type}}</h1>
+                </div>
+              </div>
+              <div *ngIf="biosolid.anaerobic.sel_type!='0'"  style="display: inline">
+                <img class="blue-arrow" src="assets/img/arrows/brownarrow.png"/>
+                <div class=" prelimary-treatment-image" style="height: 71px!important; background-image: url('assets/img/avatars/anerobicdigestion.png') ">
+                  <h1 class="pumping-text prelimary-treatment-text">{{biosolid.anaerobic.sel_type}}</h1>
+                </div>
+              </div>
+              <img class="blue-arrow" src="assets/img/arrows/brownarrow.png"/>
+              <ng-template #prelimary_treatment_content>
+                <h1 class="pumping-text prelimary-treatment-text" >None</h1>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card liquid-border">
+            <div class="card-header cd-header-color biogas-main-heading" style="background-color: #428BCA">
+              Biogas Line
+            </div>
+            <div class="card-body pumping-line">
+              <img class="blue-arrow" src="assets/img/arrows/greenarrow.png"/>
+              <div class=" prelimary-treatment-image" style="background-image: url('assets/img/avatars/biogasline.png') ">
+                <h1 class="pumping-text prelimary-treatment-text" *ngIf="biogas.sel_type!='0';else prelimary_treatment_content">{{biogas.sel_type}}</h1>
+              </div>
+              <img class="blue-arrow" src="assets/img/arrows/greenarrow.png"/>
+              <ng-template #prelimary_treatment_content>
+                <h1 class="pumping-text prelimary-treatment-text" >None</h1>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card liquid-border">
+            <div class="card-header cd-header-color dewatering-main-heading" style="background-color: #428BCA">
+              Solid Dewatering Line
+            </div>
+            <div class="card-body pumping-line">
+              <div *ngIf="dewatering.sel_type != '0'"  style="display: inline">
+                <img class="blue-arrow" src="assets/img/arrows/lightgreyarrow.png"/>
+                <div class=" prelimary-treatment-image" style="width: 10%!important; height: 73px!important; background-image: url('assets/img/avatars/dewatering.png') ">
+                  <h1 class="pumping-text prelimary-treatment-text" style="margin-top: 46%!important;">{{dewatering.sel_type}}</h1>
+                </div>
+                <img class="blue-arrow" src="assets/img/arrows/lightgreyarrow.png"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card liquid-border">
+            <div class="card-header cd-header-color chemical-main-heading" style="background-color: #428BCA">
+              Chemicals Line
+            </div>
+            <div class="card-body pumping-line">
+              <div class=" prelimary-treatment-image" *ngIf="chemical.metal_salts.sel_type!='0'" style="background-image: url('assets/img/avatars/phosphoros.png') ">
+                <h1 class="pumping-text prelimary-treatment-text">{{chemical.metal_salts.sel_type}}</h1>
+              </div>
+              <div class=" prelimary-treatment-image" *ngIf="chemical.chlorination.sel_type!='0'" style="background-image: url('assets/img/avatars/chorination.png') ">
+                <h1 class="pumping-text prelimary-treatment-text">{{chemical.chlorination.sel_type}}</h1>
+              </div>
+              <div class=" prelimary-treatment-image" *ngIf="chemical.dechlorination.sel_type!='0'" style="height: 80px!important; width: 11%!important; background-image: url('assets/img/avatars/dechlorinationchemcials.png') ">
+                <h1 class="pumping-text prelimary-treatment-text" style="margin-top: 41%!important;">{{chemical.dechlorination.sel_type}}</h1>
+              </div>
+              <div class=" prelimary-treatment-image" *ngIf="chemical.chlorine.sel_type!='0'" style="background-image: url('assets/img/avatars/chlorineprocess.png') ">
+                <h1 class="pumping-text prelimary-treatment-text">{{chemical.chlorine.sel_type}}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card liquid-border">
+            <div class="card-header cd-header-color liquid-slude-main-heading" style="background-color: #428BCA">
+              Biosolids Line
+            </div>
+            <div class="card-body pumping-line">
+              <div *ngIf="biosolids_disposals.transportation.sel_type!='0'"  style="display: inline">
+                <img class="blue-arrow" src="assets/img/arrows/greyarrow.png"/>
+                <div class="prelimary-treatment-image" style="background-image: url('assets/img/avatars/biosolid.png') ">
+                  <h1 class="prelimary-treatment-text">{{biosolids_disposals.transportation.sel_type}}</h1>
+                </div>
+              </div>
+              <div *ngIf="biosolids_disposals.disposal.sel_type!='0'"  style="display: inline">
+                <img class="blue-arrow" src="assets/img/arrows/greyarrow.png"/>
+                <div class="prelimary-treatment-image" style="background-image: url('assets/img/avatars/biosoliddisposal.png') ">
+                  <h1 class="prelimary-treatment-text">{{biosolids_disposals.disposal.sel_type}}</h1>
+                </div>
+                <img class="blue-arrow" src="assets/img/arrows/greyarrow.png"/>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </tab>
