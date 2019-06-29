@@ -10,7 +10,7 @@ export class UserService {
   _headers : any;
   _baseURL : string;
   constructor(private _http: HttpClient) {
-    this._headers = new HttpHeaders({'Content-Type':'application/json','No-Auth':'True'});
+    this._headers = new HttpHeaders({'Content-Type':'application/json','No-Auth':'False'});
     this._baseURL = AppConstants.baseURL;
   }
 

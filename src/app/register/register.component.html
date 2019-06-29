@@ -3,30 +3,33 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
-          <div *ngFor="let alert of alertsDismiss">
-            <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" [dismissible]="dismissible">{{ alert.msg }}</alert>
-          </div>
           <div class="card mx-4">
             <div class="card-body p-4">
-              <form role="form" [formGroup]="employeeForm" (ngSubmit)="onSubmit()" id="RegisterForm">
+              <form role="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" [mustMatch]="['password', 'repeat_password']" novalidate id="RegisterForm">
                 <h1>Register</h1>
                 <p class="text-muted">Create your account</p>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="icon-user"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="First name" formControlName="first_name" required>
-                  <div class="col-12 text-danger" *ngIf="formErrors.first_name">
-                    <span class="help-block">{{formErrors.first_name}}</span>
+                  <input type="text" class="form-control" placeholder="First name" name="Decs" [(ngModel)]="formModal.first_name" #first_name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && first_name.invalid }" required minlength="3"/>
+
+                  <div *ngIf="f.submitted && first_name.invalid" class="invalid-feedback">
+                    <div *ngIf="first_name.errors.required">Full name is required</div>
+                    <div *ngIf="first_name.errors.minlength">Full name must be greater then 2 character</div>
+                    <div *ngIf="first_name.errors.maxlength">Full name must be less then 10 character</div>
                   </div>
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="icon-user"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Last name" formControlName="last_name" required>
-                  <div class="col-12 text-danger" *ngIf="formErrors.last_name">
-                    <span class="help-block">{{formErrors.last_name}}</span>
+                  <input type="text" class="form-control" placeholder="Last name" name="last_name" [(ngModel)]="formModal.last_name" #last_name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && last_name.invalid }" required minlength="3" />
+
+                  <div *ngIf="f.submitted && last_name.invalid" class="invalid-feedback">
+                    <div *ngIf="last_name.errors.required">Last name is required</div>
+                    <div *ngIf="last_name.errors.minlength">Last name must be greater then 2 character</div>
+                    <div *ngIf="last_name.errors.maxlength">Last name must be less then 10 character</div>
                   </div>
                 </div>
 
@@ -34,42 +37,38 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">@</span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Email" formControlName="email" required>
-                  <div class="col-12 text-danger" *ngIf="formErrors.email">
-                    <span class="help-block">{{formErrors.email}}</span>
+                  <input type="text" class="form-control" placeholder="Email" name="email" [(ngModel)]="formModal.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required />
+
+                  <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                    <div *ngIf="email.errors.required">Email is required</div>
+                    <div *ngIf="email.errors.email">Email must be a valid email address</div>
                   </div>
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="icon-lock"></i></span>
                   </div>
-                  <input type="password" class="form-control" placeholder="Password" formControlName="password" required>
-                  <div class="col-12 text-danger" *ngIf="formErrors.password">
-                    <span class="help-block">{{formErrors.password}}</span>
+                  <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="formModal.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6"/>
+
+                  <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                    <div *ngIf="password.errors.required">Password is required</div>
+                    <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
                   </div>
                 </div>
                 <div class="input-group mb-4">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="icon-lock"></i></span>
                   </div>
-                  <input type="password" class="form-control" placeholder="Repeat password" formControlName="repeat_password" required>
-                  <div class="col-12 text-danger" *ngIf="formErrors.repeat_password">
-                    <span class="help-block">{{formErrors.repeat_password}}</span>
+                  <input type="password" class="form-control" placeholder="Repeat password" name="repeat_password" [(ngModel)]="formModal.repeat_password" #repeat_password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && repeat_password.invalid }" required />
+
+                  <div *ngIf="f.submitted && repeat_password.invalid" class="invalid-feedback">
+                    <div *ngIf="repeat_password.errors.required">Repeat password is required</div>
+                    <div *ngIf="repeat_password.errors.mustMatch">Passwords must match</div>
                   </div>
                 </div>
                 <button type="submit" class="btn btn-block btn-success" id="createAccount">Create Account</button>
               </form>
             </div>
-            <!--<div class="card-footer p-4">-->
-              <!--<div class="row">-->
-                <!--<div class="col-6">-->
-                  <!--<button class="btn btn-block btn-facebook" type="button"><span>facebook</span></button>-->
-                <!--</div>-->
-                <!--<div class="col-6">-->
-                  <!--<button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
           </div>
         </div>
       </div>

@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
              });
            } else if (error instanceof Object) {
              console.log(error.error);
-             if (error.error.status == 0) {
+             if (error.status == 0) {
                this.alertsDismiss.push({
                  type: 'danger',
                  msg: error.error.error,

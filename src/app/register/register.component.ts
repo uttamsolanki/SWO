@@ -20,7 +20,8 @@ export class RegisterComponent implements OnInit {
     'email': '',
     'password': '',
     'repeat_password': ''
-  }
+  };
+  formModal: any = {};
   validationsMessages = {
     'first_name':{
       'required': 'Full name is required',
@@ -61,17 +62,18 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-
-    if (this.employeeForm.valid) {
-      delete this.employeeForm.value['repeat_password'];
-      this.UserService.SignUp(this.employeeForm.value).subscribe((res: any) => {
-        if(res.status ==0){
+console.log(this.formModal);
+this.employeeForm =  JSON.parse(JSON.stringify(this.formModal));
+    if (this.formModal) {
+      delete this.employeeForm['repeat_password'];
+      this.UserService.SignUp(this.employeeForm).subscribe((res: any) => {
+        if (res.status === 0) {
           this.alertsDismiss.push({
             type: 'danger',
             msg: res.errors,
             timeout: 5000
           });
-        } else{
+        } else {
           localStorage.setItem('token', res.data.token);
           localStorage.setItem('currentUser', JSON.stringify(res.data.user));
           this.alertsDismiss.push({
@@ -82,36 +84,35 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/dashboard']);
         }
       }, (error: HttpErrorResponse) => {
-        if(error.status<=0) {
+        if (error.status <= 0) {
           this.alertsDismiss.push({
             type: 'danger',
             msg: "Internet connection error",
             timeout: 5000,
           });
-        } else if(error instanceof Object){
-
-          if(error.error.status == 0){
-            this.alertsDismiss.push({
-              type: 'danger',
-              msg: error.error.error,
-              timeout: 5000,
-            });
-          }else{
-            this.alertsDismiss.push({
-              type: 'danger',
-              msg: error.error.details[0].message.replace(/"/g, ' '),
-              timeout: 5000,
-            });
+        } else if(error instanceof Object) {
+          if (error.status) {
+            if (error.status === 0) {
+              this.alertsDismiss.push({
+                type: 'danger',
+                msg: error.error.error,
+                timeout: 5000,
+              });
+            } else {
+              this.alertsDismiss.push({
+                type: 'danger',
+                msg: error.error.details[0].message.replace(/"/g, ' '),
+                timeout: 5000,
+              });
+            }
           }
-
-
         }
       });
 
-    }else{
-      this.logKeyValuePair(this.employeeForm);
+    } else {
+      this.logKeyValuePair(this.formModal);
     }
-  };
+  }
 
   logKeyValuePair(group: FormGroup ): void{
       Object.keys(group.controls).forEach((key:string)=>{
