@@ -32,7 +32,7 @@ export const navItems: NavData[] = [
     icon: 'icon-pencil'
   },
   {
-    name: 'View Project',
+    name: 'Compare Scenarios',
     url: '/report/view',
     icon: 'fa fa-eye'
   }
