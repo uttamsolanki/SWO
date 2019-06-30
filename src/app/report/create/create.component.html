@@ -354,8 +354,8 @@
                       <input type="text" id="pumping_rate"  name="pumping_rate" [(ngModel)]="primary.pumping.data.default" class="form-control" placeholder="0.0" (ngModelChange)="updateWWTPsize()">
                       <div class="p-1">
                         <p *ngIf="primary.pumping.data.suggested !==null" class="help-block p-1 m-0" style="color:#4dbd74">
-                          <span>Suggested value {{primary.pumping.data.suggested}}</span>
-                          <span>Range value  0.1 - 0.5</span>
+                          <span>Suggested value {{primary.pumping.data.suggested}}</span><br/>
+                          <span>Range value  {{primary.pumping.data.range.min}} - {{primary.pumping.data.range.max}}</span>
 
                           <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                           <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -364,7 +364,7 @@
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{primary.pumping.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="pumpingPopOver" popoverTitle="{{primary.pumping.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -392,13 +392,13 @@
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="prili_treat_rate" name="prili_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.prili_treat.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="primary.prili_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.prili_treat.data.suggested}}
-                      <span>Range value  0.1 - 0.5</span>
+                      <span *ngIf="primary.prili_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.prili_treat.data.suggested}}<br/>
+                      <span>Range value  {{primary.prili_treat.data.range.min}} - {{primary.prili_treat.data.range.max}}</span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{primary.prili_treat.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="pumpingPopOver" popoverTitle="{{primary.prili_treat.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
                   </div>
@@ -426,13 +426,13 @@
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="pri_treat_rate" name="pri_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.pri_treat.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="primary.pri_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.pri_treat.data.suggested}}
+                      <span *ngIf="primary.pri_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.pri_treat.data.suggested}}<br/>
                       <span>Range value {{primary.pri_treat.data.range.min}} - {{primary.pri_treat.data.range.max}}</span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" placement="left" container="body" [popover]="popTemplate" popoverTitle="{{primary.pri_treat.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" placement="left" container="body" [popover]="pumpingPopOver" popoverTitle="{{primary.pri_treat.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -462,13 +462,13 @@
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="second_rate" name="second_rate" class="form-control" placeholder="0.0" [(ngModel)]="secondary.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="secondary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{secondary.data.suggested}}
-                      <span>Range value  0.1 - 0.5</span>
+                      <span *ngIf="secondary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{secondary.data.suggested}}<br/>
+                      <span>Range value  {{secondary.data.range.min}} - {{secondary.data.range.max}}</span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{secondary.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="secondaryPopover" popoverTitle="{{secondary.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -497,13 +497,13 @@
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="sec_clr_rate" name="sec_clr_rate" class="form-control" placeholder="0.0" [(ngModel)]="sec_clr.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="sec_clr.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{sec_clr.data.suggested}}
-                      <span>Range value  0.1 - 0.5</span>
+                      <span *ngIf="sec_clr.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{sec_clr.data.suggested}}<br/>
+                      <span>Range value  {{sec_clr.data.range.min}} - {{sec_clr.data.range.max}}</span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{sec_clr.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="secondaryClrPopover" popoverTitle="{{sec_clr.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
                   </div>
@@ -530,13 +530,13 @@
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="tertiary_rate" name="tertiary_rate" class="form-control" placeholder="0.0" [(ngModel)]="tertiary.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="tertiary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{tertiary.data.suggested}}
-                      <span>Range value  0.1 - 0.5</span>
+                      <span *ngIf="tertiary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{tertiary.data.suggested}}<br/>
+                      <span>Range value  {{tertiary.data.range.min}} - {{tertiary.data.range.max}}</span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{tertiary.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="tertiaryPopover" popoverTitle="{{tertiary.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
                   </div>
@@ -564,13 +564,13 @@
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="disinfection_rate" name="disinfection_rate" class="form-control" placeholder="0.0" [(ngModel)]="disinfection.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="disinfection.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{disinfection.data.suggested}}
-                      <span>Range value  0.1 - 0.5</span>
+                      <span *ngIf="disinfection.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{disinfection.data.suggested}}<br/>
+                      <span>Range value  {{disinfection.data.range.min}} - {{disinfection.data.range.max}}</span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{disinfection.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="disinfectionPopover" popoverTitle="{{disinfection.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -737,13 +737,13 @@
                     <label class="col-md-5 col-form-label " for="anaerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="thickener_rate" name="thickener_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.thickener.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="biosolid.thickener.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.thickener.data.suggested}}
-                      <span>Range value  0.1 - 0.5</span>
+                      <span *ngIf="biosolid.thickener.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.thickener.data.suggested}}<br/>
+                      <span>Range value  {{biosolid.thickener.data.range.min}} - {{biosolid.thickener.data.range.max}}</span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{biosolid.thickener.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="biosolidThickPopover" popoverTitle="{{biosolid.thickener.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -771,13 +771,13 @@
                     <label class="col-md-5 col-form-label " for="aerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="aerobic_rate" name="aerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.aerobic.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="biosolid.aerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.aerobic.data.suggested}}
-                      <span>Range value  0.1 - 0.5</span>
+                      <span *ngIf="biosolid.aerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.aerobic.data.suggested}}<br/>
+                      <span>Range value  {{biosolid.aerobic.data.range.min}} - {{biosolid.aerobic.data.range.max}}</span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{biosolid.aerobic.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="biosolidAreobicPopover" popoverTitle="{{biosolid.aerobic.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -805,13 +805,13 @@
                     <label class="col-md-5 col-form-label " for="anaerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="anaerobic_rate" name="anaerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.anaerobic.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="biosolid.anaerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.anaerobic.data.suggested}}
-                      <span>Range value  0.1 - 0.5</span>
+                      <span *ngIf="biosolid.anaerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.anaerobic.data.suggested}}<br/>
+                      <span>Range value  {{biosolid.anaerobic.data.range.min}} - {{biosolid.anaerobic.data.range.max}}</span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{biosolid.anaerobic.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="biosolidanerobicPopover" popoverTitle="{{biosolid.anaerobic.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -920,13 +920,13 @@
                     <label class="col-md-5 col-form-label " for="biogas_rate">Actual Biogas Energy Factor:</label>
                     <div class="col-md-5">
                       <input type="text" id="biogas_rate" name="biogas_rate" class="form-control" placeholder="0.0" [(ngModel)]="biogas.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="biogas.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biogas.data.suggested}}
-                      <span>Range value  0.1 - 0.5</span>
+                      <span *ngIf="biogas.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biogas.data.suggested}}<br/>
+                      <span>Range value  {{biogas.data.range.min}}- {{biogas.data.range.max}}</span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{biogas.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="biogasPopover" popoverTitle="{{biogas.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -1030,13 +1030,13 @@
                     <label class="col-md-5 col-form-label " for="dewatering_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="dewatering_rate" name="dewatering_rate" class="form-control" placeholder="0.0" [(ngModel)]="dewatering.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="dewatering.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{dewatering.data.suggested}}
-                      <span>Range value  0.1 - 0.5</span>
+                      <span *ngIf="dewatering.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{dewatering.data.suggested}}<br/>
+                      <span>Range value  {{dewatering.data.range.min}} - {{dewatering.data.range.max}}</span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{dewatering.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="dewateringPopover" popoverTitle="{{dewatering.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -1395,13 +1395,13 @@
                   <label class="col-md-5 col-form-label " for="metalsalts_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
                     <input type="text" id="metalsalts_rate" name="metalsalts_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.metal_salts.data.default" (ngModelChange)="updateWWTPsize()">
-                    <span *ngIf="chemical.metal_salts.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.metal_salts.data.suggested}}
-                    <span>Range value  0.1 - 0.5</span>
+                    <span *ngIf="chemical.metal_salts.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.metal_salts.data.suggested}}<br/>
+                    <span>Range value  {{chemical.metal_salts.data.range.min}} - {{chemical.metal_salts.data.range.max}}</span>
                     </span>
                   </div>
                   <div class="col-md-2 p-0">
                     <span class="help-block">g/m<sup>3</sup></span>
-                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{chemical.metal_salts.sel_type}}" >I</button></span>
+                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="{{chemical.metal_salts.sel_type}}" >I</button></span>
                     <app-information></app-information>
                   </div>
 
@@ -1428,13 +1428,13 @@
                   <label class="col-md-5 col-form-label " for="chlorination_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
                     <input type="text" id="chlorination_rate" name="chlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.chlorination.data.default" (ngModelChange)="updateWWTPsize()">
-                    <span *ngIf="chemical.chlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.chlorination.data.suggested}}
-                    <span>Range value  0.1 - 0.5</span>
+                    <span *ngIf="chemical.chlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.chlorination.data.suggested}}<br/>
+                    <span>Range value  {{chemical.chlorination.data.range.min}} - {{chemical.chlorination.data.range.max}}</span>
                     </span>
                   </div>
                   <div class="col-md-2 p-0">
                     <span class="help-block">g/m<sup>3</sup></span>
-                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{chemical.chlorination.sel_type}}" >I</button></span>
+                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="{{chemical.chlorination.sel_type}}" >I</button></span>
                     <app-information></app-information>
                   </div>
 
@@ -1461,13 +1461,13 @@
                   <label class="col-md-5 col-form-label " for="dechlorination_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
                     <input type="text" id="dechlorination_rate" name="dechlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.dechlorination.data.default" (ngModelChange)="updateWWTPsize()">
-                    <span *ngIf="chemical.dechlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.dechlorination.data.suggested}}
-                    <span>Range value  0.1 - 0.5</span>
+                    <span *ngIf="chemical.dechlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.dechlorination.data.suggested}}<br/>
+                    <span>Range value  {{chemical.dechlorination.data.range.min}} - {{chemical.dechlorination.data.range.max}}</span>
                     </span>
                   </div>
                   <div class="col-md-2 p-0">
                     <span class="help-block">g/m<sup>3</sup></span>
-                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{chemical.dechlorination.sel_type}}" >I</button></span>
+                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="{{chemical.dechlorination.sel_type}}" >I</button></span>
                     <app-information></app-information>
                   </div>
 
@@ -1497,7 +1497,7 @@
                   </div>
                   <div class="col-md-2 p-0">
                     <span class="help-block">g/m<sup>3</sup></span>
-                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="{{chemical.chlorine.sel_type}}" >I</button></span>
+                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="{{chemical.chlorine.sel_type}}" >I</button></span>
                     <app-information></app-information>
                   </div>
 
@@ -1567,7 +1567,7 @@
                       <div class="col-md-5">
                         <input type="text" id="active_sludge_CODin"  name="active_sludge_CODin" [(ngModel)]="process.active_sludge.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODin.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODin.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -1576,7 +1576,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.active_sludge.CODin.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="Influent COD - CODin" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="Influent COD - CODin" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -1587,7 +1587,7 @@
                       <div class="col-md-5">
                         <input type="text" id="active_sludge_TKNin"  name="active_sludge_TKNin" [(ngModel)]="process.active_sludge.TKNin.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.TKNin.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.TKNin.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -1596,7 +1596,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.active_sludge.TKNin.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="Influent TKN - TKNin" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="Influent TKN - TKNin" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -1610,7 +1610,7 @@
                       <div class="col-md-5">
                         <input type="text" id="active_sludge_FLOWwas"  name="active_sludge_FLOWwas" [(ngModel)]="process.active_sludge.FLOWwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.FLOWwas.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.FLOWwas.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -1619,7 +1619,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.active_sludge.FLOWwas.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="WAS Rate" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="WAS Rate" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -1647,7 +1647,7 @@
                       <div class="col-md-5">
                         <input type="text" id="active_sludge_CODwas"  name="active_sludge_CODwas" [(ngModel)]="process.active_sludge.CODwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODwas.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODwas.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -1656,7 +1656,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.active_sludge.CODwas.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="WAS COD" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="WAS COD" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -1667,7 +1667,7 @@
                       <div class="col-md-5">
                         <input type="text" id="active_sludge_TKNwas"  name="active_sludge_TKNwas" [(ngModel)]="process.active_sludge.TKNwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.TKNwas.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.TKNwas.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -1676,14 +1676,120 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="WAS TKN">I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>
                         <ng-template #popTemplate style="width: 170%">
                           <span style="color: #00aced">
                             <h6><b>Rs:</b></h6> {{primary.pri_treat.data.ref[5]}}<hr>
                             <h6><b>Rr:</b></h6> {{primary.pri_treat.data.range.ref[6]}}<hr>
-                          Info: This is the Info
                           </span>
                         </ng-template>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="secondaryPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>
+                        <ng-template #secondaryPopover style="width: 170%">
+                          <span style="color: #00aced">
+                            <h6><b>Rs:</b></h6> {{secondary.data.ref[5]}} {{secondary.data.ref[8]}} {{secondary.data.ref[6]}}<hr>
+                            <h6><b>Rr:</b></h6>{{secondary.data.range.ref[7]}} {{secondary.data.range.ref[6]}}<hr>
+                          </span>
+                        </ng-template>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="secondaryClrPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>
+                        <ng-template #secondaryClrPopover style="width: 170%">
+                          <span style="color: #00aced">
+                            <h6><b>Rs:</b></h6> {{sec_clr.data.ref[5]}}<hr>
+                          </span>
+                        </ng-template>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="tertiaryPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>
+                        <ng-template #tertiaryPopover style="width: 170%">
+                          <span style="color: #00aced">
+                            <h6><b>Rs:</b></h6> {{tertiary.data.ref[6]}} {{tertiary.data.ref[7]}} {{tertiary.data.ref[9]}}<hr>
+                            <h6><b>Rr:</b></h6>{{tertiary.data.range.ref[7]}} {{tertiary.data.range.ref[9]}}<hr>
+                          </span>
+                        </ng-template>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="disinfectionPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>
+                        <ng-template #disinfectionPopover style="width: 170%">
+                          <span style="color: #00aced">
+                            <h6><b>Rs:</b></h6> {{disinfection.data.ref[6]}}<hr>
+                            <h6><b>Rr:</b></h6>{{disinfection.data.range.ref[6]}} {{disinfection.data.range.ref[7]}} {{disinfection.data.range.ref[10]}} {{disinfection.data.range.ref[11]}}<hr>
+                          </span>
+                        </ng-template>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="biosolidThickPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>
+                        <ng-template #biosolidThickPopover style="width: 170%">
+                          <span style="color: #00aced">
+                            <h6><b>Rs:</b></h6> {{biosolid.thickener.data.ref[6]}}<hr>
+                            <h6><b>Rr:</b></h6>{{biosolid.thickener.data.range.ref[6]}} {{biosolid.thickener.data.range.ref[7]}} {{biosolid.thickener.data.range.ref[10]}} {{disinfection.data.range.ref[11]}}<hr>
+                          </span>
+                        </ng-template>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="biosolidAreobicPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>
+                        <ng-template #biosolidAreobicPopover style="width: 170%">
+                          <span style="color: #00aced">
+                            <h6><b>Rs:</b></h6> {{biosolid.aerobic.data.ref[6]}}<hr>
+                          </span>
+                        </ng-template>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="biosolidanerobicPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>
+                        <ng-template #biosolidanerobicPopover style="width: 170%">
+                          <span style="color: #00aced">
+                            <h6><b>Rs:</b></h6> {{biosolid.anaerobic.data.ref[6]}}<hr>
+                            <h6><b>Rr:</b></h6>{{biosolid.anaerobic.data.range.ref[6]}} {{biosolid.anaerobic.data.range.ref[12]}}<hr>
+                          </span>
+                        </ng-template>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="biogasPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>
+                        <ng-template #biogasPopover style="width: 170%">
+                          <span style="color: #00aced">
+                            <h6><b>Rr:</b></h6>{{biogas.data.range.ref[1]}}<hr>
+                          </span>
+                        </ng-template>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="dewateringPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>
+                        <ng-template #dewateringPopover style="width: 170%">
+                          <span style="color: #00aced">
+                            <h6><b>Rs:</b></h6> {{dewatering.data.ref[5]}}<hr>
+                            <h6><b>Rr:</b></h6>{{dewatering.data.range.ref[10]}} {{dewatering.data.range.ref[12]}} {{dewatering.data.range.ref[13]}}<hr>
+                          </span>
+                        </ng-template>
+                      </div>
+
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>
+                        <ng-template #commonPopover style="width: 170%">
+                          <span style="color: #00aced">
+                            <h6><b>Rs:</b></h6><hr>
+                            <h6><b>Rr:</b></h6><hr>
+                          </span>
+                        </ng-template>
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body"  [popover]="pumpingPopOver" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>
+                      <ng-template #pumpingPopOver style="width: 170%">
+                          <span style="color: #00aced">
+                            <h6><b>Rs:</b></h6> {{primary.pumping.data.ref[5]}}<hr>
+                          </span>
+                      </ng-template>
                       </div>
                     </div>
                   </div>
@@ -1713,7 +1819,7 @@
                       <div class="col-md-5">
                         <input type="text" id="active_sludge_CODout"  name="active_sludge_CODout" [(ngModel)]="process.active_sludge.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODout.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODout.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -1722,7 +1828,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.active_sludge.CODout.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="Outflow COD - CODout" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="Outflow COD - CODout" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -1733,7 +1839,7 @@
                       <div class="col-md-5">
                         <input type="text" id="active_sludge_TKNout"  name="active_sludge_TKNout" [(ngModel)]="process.active_sludge.TKNout.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.TKNout.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.TKNout.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -1742,7 +1848,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.active_sludge.TKNout.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="Outflow TKN - TKNout" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="Outflow TKN - TKNout" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -1756,7 +1862,7 @@
                       <div class="col-md-5">
                         <input type="text" id="constant_COD_TOC"  name="constant_COD_TOC"  [(ngModel)]="constant.COD_TOC.default" class="form-control" placeholder="0.0" (ngModelChange)="createChart()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{constant.COD_TOC.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{constant.COD_TOC.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                           <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                           <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -1764,7 +1870,7 @@
                         </div>
                       </div>
                       <div class="col-md-2 p-0">
-                          <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="COD / TOC Ratio, g-O2/g-C" >I</button></span>
+                          <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="COD / TOC Ratio, g-O2/g-C" >I</button></span>
                           <app-information></app-information>
                       </div>
                     </div>
@@ -1775,7 +1881,7 @@
                       <div class="col-md-5">
                         <input type="text" id="constant_Removed_TKN"  name="constant_Removed_TKN" [(ngModel)]="constant.Removed_TKN.default" class="form-control" placeholder="0.0" (ngModelChange)="createChart()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{constant.Removed_TKN.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{constant.Removed_TKN.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -1785,7 +1891,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <!--<span class="help-block">{{process.active_sludge.CODout.unit}}</span>-->
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="% Removed TKN emitted as N2O, g N2O-N/g-TKN-N" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="% Removed TKN emitted as N2O, g N2O-N/g-TKN-N" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -1914,7 +2020,7 @@
                       <div class="col-md-5">
                         <input type="number" id="anarobic_FLOWin"  name="anarobic_FLOWin" [(ngModel)]="process.anarobic.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.FLOWin.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.FLOWin.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -1943,7 +2049,7 @@
                       <div class="col-md-5">
                         <input type="number" id="aerobic_CODin"  name="aerobic_CODin" [(ngModel)]="process.anarobic.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.CODin.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.CODin.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -2002,7 +2108,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">mg/L</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="External Biosolids COD" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="External Biosolids COD" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -2063,7 +2169,7 @@
                       <div class="col-md-5">
                         <input type="text" id="anarobic_CODout"  name="anarobic_CODout" [(ngModel)]="process.anarobic.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.CODout.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.CODout.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -2084,7 +2190,7 @@
                       <div class="col-md-5">
                         <input type="text" id="alpha"  name="alpha" [(ngModel)]="process.anarobic.alpha.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.alpha.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.alpha.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -2127,7 +2233,7 @@
                       <label class="col-md-5 col-form-label" for="text-input">Energy Recovery Factor from CH4 from External Sources:</label>
                       <div class="col-md-5">
                         <input type="number" id="process_factor" name="process_factor" class="form-control"  (]ngModelChange)="createChart()" placeholder="0.0" [(ngModel)]="process.anarobic.energy.default">
-                        <span *ngIf="process.anarobic.energy.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{process.anarobic.energy.suggested}}
+                        <span *ngIf="process.anarobic.energy.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{process.anarobic.energy.suggested}}<br/>
                           <span>Range value  0.1 - 0.5</span>
                         </span>
                       </div>
@@ -2237,7 +2343,7 @@
                       <div class="col-md-5">
                         <input type="text" id="aerobic_FLOWin"  name="aerobic_FLOWin" [(ngModel)]="process.aerobic.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.FLOWin.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.FLOWin.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -2266,7 +2372,7 @@
                       <div class="col-md-5">
                         <input type="text" id="aerobic_CODin"  name="aerobic_CODin" [(ngModel)]="process.aerobic.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.CODin.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.CODin.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -2298,7 +2404,7 @@
                       <div class="col-md-5">
                         <input type="text" id="aerobic_CODout"  name="aerobic_CODout" [(ngModel)]="process.aerobic.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.CODout.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.CODout.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -2388,7 +2494,7 @@
                       <div class="col-md-5">
                         <input type="text" id="transporation_FLOWin"  name="transporation_FLOWin" [(ngModel)]="process.transporation.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.transporation.FLOWin.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.transporation.FLOWin.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -2397,7 +2503,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.transporation.FLOWin.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="Flow Rate of Dewatered Sludge" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="Flow Rate of Dewatered Sludge" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -2434,7 +2540,7 @@
                       <div class="col-md-5">
                         <input type="text" id="distance_distance"  name="distance_distance" [(ngModel)]="process.transporation.distance.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.transporation.distance.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.transporation.distance.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -2443,7 +2549,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.transporation.distance.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="Single Travel Distance" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="Single Travel Distance" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -2454,7 +2560,7 @@
                       <div class="col-md-5">
                         <input type="text" id="time_distance"  name="time_distance" [(ngModel)]="process.transporation.time.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.transporation.time.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.transporation.time.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -2520,7 +2626,7 @@
                       <div class="col-md-5">
                         <input type="text" id="disposal_FLOWin"  name="disposal_FLOWin" [(ngModel)]="process.disposal.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" >
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.FLOWin.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.FLOWin.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -2549,7 +2655,7 @@
                       <div class="col-md-5">
                         <input type="number" id="disposal_CODin"  name="disposal_CODin" [(ngModel)]="process.disposal.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.CODin.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.CODin.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -2570,7 +2676,7 @@
                       <div class="col-md-5">
                         <input type="number" id="disposal_alpha"  name="disposal_alpha" [(ngModel)]="process.disposal.alpha.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.alpha.suggested}}</span>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.alpha.suggested}}</span><br/>
                             <span>Range value  0.1 - 0.5</span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -2651,7 +2757,7 @@
             <div class="card-body pumping-line" *ngIf="this.primary.pumping.sel_type != '0' || this.primary.prili_treat.sel_type != '0' || this.primary.pri_treat.sel_type != '0' || this.secondary.sel_type != '0' || this.sec_clr.sel_type != '0' || this.tertiary.sel_type != '0' || this.disinfection.sel_type != '0'">
               <div *ngIf="primary.pumping.sel_type != '0'" style="display: inline">
                 <img class="blue-arrow"  src="assets/img/arrows/bluearrow.png"/>
-                  <div class=" prelimary-treatment-image" style=" width: 9%!important; height: 69px!important; background-image: url('assets/img/avatars/pumping.png')">
+                  <div class=" prelimary-treatment-image" style=" width: 10%!important; height: 83px!important; background-image: url('assets/img/avatars/pumping.png')">
                     <h1 class="pumping-text prelimary-treatment-text" style="margin-top: 42%!important;">{{primary.pumping.sel_type}}</h1>
                   </div>
               </div>
@@ -2669,9 +2775,10 @@
               </div>
               <div *ngIf="secondary.sel_type != '0'" style="display: inline">
               <img class="blue-arrow"  src="assets/img/arrows/bluearrow.png"/>
-                <div class=" prelimary-treatment-image" *ngIf="secondary.sel_type != '0'" style="height: 113px!important; padding: 2%!important; background-image: url('assets/img/avatars/secondaryTreatment1.png') ">
-                  <h1 class="pumping-text prelimary-treatment-text">{{secondary.sel_type}}</h1>
-                </div>
+                  <div class=" prelimary-treatment-image" style="height: 119px!important; padding: 2%!important; background-image: url('assets/img/avatars/secondaryTreatment1.png') ">
+                    <h1 class="pumping-text prelimary-treatment-text">{{secondary.sel_growth_type}}</h1>
+                    <h1 class="pumping-text prelimary-treatment-text" style="margin-top: -12%!important;">{{secondary.sel_type}}</h1>
+                  </div>
               </div>
               <div *ngIf="sec_clr.sel_type != '0'" style="display: inline">
                 <img class="seconadry-arrow"  src="assets/img/arrows/arrow.png"/>
@@ -2688,7 +2795,7 @@
               </div>
               <div *ngIf="disinfection.sel_type != '0'" style="display: inline">
                 <img class="blue-arrow"  src="assets/img/arrows/bluearrow.png"/>
-                <div class=" prelimary-treatment-image" *ngIf="disinfection.sel_type != '0'" style="width: 10%!important; height: 76px!important; background-image: url('assets/img/avatars/disinfection.png') ">
+                <div class=" prelimary-treatment-image" *ngIf="disinfection.sel_type != '0'" style="width: 9%!important; height: 85px!important; background-image: url('assets/img/avatars/disinfection.png') ">
                   <h1 class="pumping-text prelimary-treatment-text" style="margin-top: 45%!important;" >{{disinfection.sel_type}}</h1>
                 </div>
               </div>
@@ -2774,7 +2881,7 @@
             <div class="card-body pumping-line" *ngIf="dewatering.sel_type != '0'">
               <div *ngIf="dewatering.sel_type != '0'"  style="display: inline">
                 <img class="blue-arrow" src="assets/img/arrows/lightgreyarrow.png"/>
-                <div class=" prelimary-treatment-image" style="width: 10%!important; height: 73px!important; background-image: url('assets/img/avatars/dewatering.png') ">
+                <div class=" prelimary-treatment-image" style="width: 10%!important; height: 81px!important; background-image: url('assets/img/avatars/dewatering.png') ">
                   <h1 class="pumping-text prelimary-treatment-text" style="margin-top: 46%!important;">{{dewatering.sel_type}}</h1>
                 </div>
                 <img class="blue-arrow" src="assets/img/arrows/lightgreyarrow.png"/>
@@ -2835,7 +2942,9 @@
                 <div class="prelimary-treatment-image" style="background-image: url('assets/img/avatars/biosoliddisposal.png') ">
                   <h1 class="prelimary-treatment-text">{{biosolids_disposals.disposal.sel_type}}</h1>
                 </div>
-                <img class="blue-arrow" src="assets/img/arrows/greyarrow.png"/>
+              </div>
+              <div *ngIf="biosolids_disposals.disposal.sel_type!='0' || biosolids_disposals.transportation.sel_type!='0'" style="display: inline">
+              <img class="blue-arrow" src="assets/img/arrows/greyarrow.png"/>
               </div>
             </div>
           </div>
