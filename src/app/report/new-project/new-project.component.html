@@ -36,18 +36,26 @@
 
 
     <form name="form" (ngSubmit)="f.form.valid && saveProject()" #f="ngForm" novalidate>
-      <div class="form-group">
-        <label for="Name" class="col-md-3 col-form-label">Enter Project Name</label>
-        <input type="text" class="form-control col-md-2" name="Name" [(ngModel)]="project.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required />
+      <div class="form-group row">
+        <div class="col-md-3">
+          <label for="Name" class="col-form-label">Enter Project Name</label>
+        </div>
+      <div class="col-md-5">
+          <input type="text" class="form-control" name="Name" [(ngModel)]="project.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required />
         <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
           <div *ngIf="name.errors.required">Project Name is required</div>
         </div>
       </div>
-      <div class="form-group">
-        <label for="Decs" class="col-md-3 col-form-label">Enter Description</label>
-        <input type="text" class="form-control col-md-2" name="Decs" [(ngModel)]="project.desc" #desc="ngModel" [ngClass]="{ 'is-invalid': f.submitted && desc.invalid }" required />
-        <div *ngIf="f.submitted && desc.invalid" class="invalid-feedback">
-          <div *ngIf="desc.errors.required">Project Description Name is required</div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-3">
+          <label for="Decs" class="col-form-label">Enter Description</label>
+        </div>
+        <div class="col-md-5">
+          <input type="text" class="form-control" name="Decs" [(ngModel)]="project.desc" #desc="ngModel" [ngClass]="{ 'is-invalid': f.submitted && desc.invalid }" required />
+          <div *ngIf="f.submitted && desc.invalid" class="invalid-feedback">
+            <div *ngIf="desc.errors.required">Project Description Name is required</div>
+          </div>
         </div>
       </div>
       <div class="form-group">
