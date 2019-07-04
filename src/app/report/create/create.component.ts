@@ -882,7 +882,7 @@ export class CreateComponent implements OnInit {
       this.aerobicData.Qin = this.process.aerobic.Qin;
       }
     }
-    this.aerobicData.Qout = this.aerobicData.Qin;
+    this.aerobicData.Qout =  parseFloat(this.aerobicData.Qin.toFixed(2));
     this.calcAerobicCo2();
   }
   calcAerobicCo2() {
@@ -937,7 +937,7 @@ export class CreateComponent implements OnInit {
       this.anarobicData.CODin = 0;
     }
     this.anarobicData.CODin = parseFloat(this.anarobicData.CODin.toFixed(2));
-    this.anarobicData.Qout = this.anarobicData.Qin;
+    this.anarobicData.Qout = parseFloat(this.anarobicData.Qin.toFixed(2));
     if (this.process.anarobic.isOrganic == 0 && this.process.anarobic.isBiosolids == 0) {
       this.process.anarobic.isExternal=0;
     } else {
@@ -987,7 +987,7 @@ export class CreateComponent implements OnInit {
       this.anarobicData.ch4External = parseFloat(((tempEnergy / this.COD_TOC_PER_MOL) * alpha * 0.016).toFixed(2));
       this.anarobicData.addEnergy = parseFloat((this.anarobicData.ch4External * this.process.anarobic.energy.default).toFixed(2));
     } else {
-      this.anarobicData.ch4WWTP=0;
+     // this.anarobicData.ch4WWTP=0;
       this.anarobicData.ch4External=0;
       this.anarobicData.addEnergy=0;
     }
