@@ -374,11 +374,6 @@ width: 12%;
   width: 16%;
 }
 
-.pumping-line .seconadry-arrow {
-  margin-left: -7%;
-  width: 18%;
-  margin-bottom: 15%;
-}
 .pumping-line .arrow-align {
   margin-left: -12%;
 }
@@ -403,6 +398,84 @@ width: 12%;
   width: 20%!important;
   padding: 1% !important
 }
-.brand-card{
-  text-align: center !important;
+//.brand-card{
+//  text-align: center !important;
+//}
+
+//* {
+//  box-sizing: border-box;
+//}
+
+.btn-grad {
+  background-image: linear-gradient(to right, #d7bd6e61 0%, #e9dbb0 12%, #d7bd6e61 100%);
+  margin: 0.3px;
+  padding: 7px;
+  text-align: center;
+  background-size: 100% auto;
+  border-radius: 4px;
+  display: block;
+  font-size: 77%;
+  font-family: serif;
+  border-color: #bcb5b5;
+  border-style: groove;
+}
+.btn-grad:hover { background-position: right center; }
+
+.col-20 {
+  float: left;
+  width: 11.7%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-20, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  .arrow-right {
+    transform: rotate(180deg) !important;
+    margin-left: 215px;
+  }
+}
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-bottom: 35px solid #569cbd;
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  transform: rotate(90deg);
+}
+.grey-arrow {
+  padding: 0%;
+  width: 2%;
+}
+.image-style {
+  width: 118%;
+  margin-top: 168%
+}
+.disposal-image-background {
+  background-image: linear-gradient(to right, #acabaaa1 0%, #acabaa 12%, #acabaaa1 100%);
+}
+.liquid-image-background {
+  background-image: linear-gradient(to right, #4898c6 0%, #3ca1d1 12%, #4898c6 100%);
+}
+.seconadry-arrow {
+  width: 615%;
+  margin-top: -117%;
+  margin-left: -168%;
+}
+.liquid-sludge-image-background {
+  background-image: linear-gradient(to right, #ca3e1eb8 0%, #ca3e1e 12%, #ca3e1eb8 100%);
+}
+.biogas-image-background {
+  background-image: linear-gradient(to right, #6fe352f2 0%, #6fe352a6 12%, #6fe352fa 100%);
 }
