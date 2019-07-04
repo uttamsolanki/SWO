@@ -172,10 +172,10 @@
             "title":"Rotating Biological Contactor (RBC)",
             "default":0.28,
             "suggested":0.28,
-            "ref":[{
+            "ref":{
               "8":"Degrémont Limitée (2010). Personal communications between Lynne Maclennan, XCG Consultants Ltd. and Francoise Petitpain Perrin, Degrémont Limitée.  : https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures",
               "*":"*"
-            }],
+            },
             "range":{
               "min":0.2,
               "max":0.35,

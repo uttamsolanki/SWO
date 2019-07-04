@@ -483,7 +483,7 @@ export class CreateComponent implements OnInit {
 
   public barChart1Colours: Array<any> = [
     {
-      backgroundColor: 'rgba(102,178,255,.3)',
+      backgroundColor: 'rgb(181,230,29)',
       borderWidth: 0
     }
   ];
@@ -495,10 +495,10 @@ export class CreateComponent implements OnInit {
     },
     scaleShowVerticalLines: false,
     responsive: true,
-    backgroundColor: 'rgba(148,159,177,0.2)',
+   //backgroundColor: 'rgba(148,159,177,0.2)',
     scales: {
       xAxes: [{
-        barPercentage: 1.0,
+        barPercentage: 1.5,
         categoryPercentage: 1.0,
         barThickness: 30,
         ticks: {
@@ -536,8 +536,10 @@ export class CreateComponent implements OnInit {
     backgroundColor: 'rgba(148,159,177,0.2)',
     scales: {
       xAxes: [{
-
+        //categoryPercentage: 1.0,
+        barPercentage: 2.0,
         categoryPercentage: 1.0,
+        barThickness: 50,
         ticks: {
           autoSkip: false
         },
@@ -565,17 +567,17 @@ export class CreateComponent implements OnInit {
      {
       label: 'CO2 Emission',
       data: [67.8,12,16],
-      backgroundColor: '#0B59BD' // green
+      backgroundColor: '#00A2E8' // green
     },
     {
       label: 'N2O Emission',
       data: [20.7,18,20],
-      backgroundColor: '#ED7D31' // yellow
+      backgroundColor: '#FF7F27' // yellow
     },
     {
       label: 'CH4 Emission',
       data: [11.4,22,24],
-      backgroundColor: '#A5A5A5' // red
+      backgroundColor: '#B5E61D' // red
     }
   ];
 
@@ -1345,17 +1347,17 @@ export class CreateComponent implements OnInit {
       {
         label: 'CO2 Emission',
         data: [this.active_sludgeco2,this.aerobicco2,this.anarobicco2,JSON.parse((this.active_sludgeco2+this.aerobicco2+this.anarobicco2).toFixed(2))],
-        backgroundColor: '#0B59BD' // green
+        backgroundColor: '#00A2E8' // green
       },
       {
         label: 'N2O Emission',
         data: [this.active_sludgeno2,0,0,this.active_sludgeno2],
-        backgroundColor: '#ED7D31' // yellow
+        backgroundColor: '#FF7F27' // yellow
       },
       {
         label: 'CH4 Emission',
         data: [0,this.aerobicch4,this.anarobicch4, JSON.parse((this.aerobicch4+ this.anarobicch4).toFixed(2))],
-        backgroundColor: '#A5A5A5' // red
+        backgroundColor: '#B5E61D' // red
       }
     ];
 
