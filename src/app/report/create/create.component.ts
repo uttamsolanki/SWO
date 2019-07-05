@@ -498,9 +498,9 @@ export class CreateComponent implements OnInit {
    //backgroundColor: 'rgba(148,159,177,0.2)',
     scales: {
       xAxes: [{
-        barPercentage: 1.5,
+        barPercentage: 2.0,
         categoryPercentage: 1.0,
-        barThickness: 30,
+        barThickness: 50,
         ticks: {
           autoSkip: false
         }
@@ -957,7 +957,8 @@ export class CreateComponent implements OnInit {
     if (this.biogas.sel_type !== '0') {
       calCh4 = temp * alpha * 0.044;
       this.anarobicData.ch4 = parseFloat(calCh4.toFixed(2));
-      this.anarobicData.co2  = this.anarobicData.co2 + this.anarobicData.ch4;
+      let anCh4 = this.anarobicData.co2 + this.anarobicData.ch4;
+      this.anarobicData.co2  = parseFloat(anCh4.toFixed(2));
       this.anarobicData.ch4 = 0;
       if(this.process.anarobic.isFlaring==1){
         this.process.anarobic.isExternal=0;

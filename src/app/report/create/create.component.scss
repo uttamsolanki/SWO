@@ -398,17 +398,17 @@ width: 12%;
   width: 20%!important;
   padding: 1% !important
 }
-//.brand-card{
-//  text-align: center !important;
-//}
+.brand-card{
+  text-align: center !important;
+}
 
 //* {
 //  box-sizing: border-box;
 //}
 
 .btn-grad {
-  background-image: linear-gradient(to right, #d7bd6e61 0%, #e9dbb0 12%, #d7bd6e61 100%);
-  margin: 0.3px;
+  background-image: linear-gradient(to right, #F1CDAD 0%, #F1CDAD 12%, #F1CDAD 100%);
+ // margin: 0.3px;
   padding: 7px;
   text-align: center;
   background-size: 100% auto;
@@ -417,13 +417,17 @@ width: 12%;
   font-size: 77%;
   font-family: serif;
   border-color: #bcb5b5;
-  border-style: groove;
+  //border-style: groove;
 }
 .btn-grad:hover { background-position: right center; }
 
+.btn-grad > b{
+  font-weight: inherit;
+  font-size: larger;
+}
 .col-20 {
   float: left;
-  width: 11.7%;
+  width: 11%;
   margin-top: 6px;
 }
 
@@ -463,10 +467,11 @@ width: 12%;
   margin-top: 168%
 }
 .disposal-image-background {
-  background-image: linear-gradient(to right, #acabaaa1 0%, #acabaa 12%, #acabaaa1 100%);
+  background-image: linear-gradient(to right, #AAAAAA 0%, #AAAAAA 12%, #AAAAAA 100%);
 }
 .liquid-image-background {
-  background-image: linear-gradient(to right, #4898c6 0%, #3ca1d1 12%, #4898c6 100%);
+  //background-color: #14A2D7 !important;
+  background-image: linear-gradient(to right, #14A2D7 0%, #14A2D7 12%, #14A2D7 100%);
 }
 .seconadry-arrow {
   width: 615%;
@@ -474,8 +479,8 @@ width: 12%;
   margin-left: -168%;
 }
 .liquid-sludge-image-background {
-  background-image: linear-gradient(to right, #ca3e1eb8 0%, #ca3e1e 12%, #ca3e1eb8 100%);
+  background-image: linear-gradient(to right, #C5681B 0%, #C5681B 12%, #C5681B 100%);
 }
 .biogas-image-background {
-  background-image: linear-gradient(to right, #6fe352f2 0%, #6fe352a6 12%, #6fe352fa 100%);
+  background-image: linear-gradient(to right, #95CE58 0%, #95CE58 12%, #95CE58 100%);
 }
