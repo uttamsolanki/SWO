@@ -2745,6 +2745,17 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card liquid-border">
+            <div class="card-header cd-header-color liquid-slude-main-heading" style="background-color: #94CE58!important;text-align: center">
+              {{setProjectData}} -
+              {{scenarioName}} -
+              {{scenarioDate |  date: 'dd-MMM-yyyy'}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card liquid-border">
             <div class="card-header cd-header-color liquid-main-heading" style="background-color: #428BCA">
               Liquid Line
             </div>
@@ -2957,11 +2968,26 @@
             </div>
             <div class="card-body pumping-line" *ngIf="dewatering.sel_type != '0'">
               <div *ngIf="dewatering.sel_type != '0'"  style="display: inline">
-                <img class="blue-arrow" src="assets/img/arrows/lightgreyarrow.png"/>
-                <div class=" prelimary-treatment-image" style="width: 10%!important; height: 81px!important; background-image: url('assets/img/avatars/dewatering.png') ">
-                  <h1 class="pumping-text prelimary-treatment-text" style="margin-top: 46%!important;">{{dewatering.sel_type}}</h1>
+                <div class="container" style="padding: 0%;">
+                  <div>
+                    <div class="row" >
+                      <div class="grey-arrow" *ngIf="dewatering.sel_type!='0'">
+                        <img class="image-style" src="assets/img/arrows/lightgreyarrow.png"/>
+                      </div>
+                      <div class="col-20" *ngIf="dewatering.sel_type!='0'">
+                        <a class="btn-grad dewatering-image-background">
+                          <b>Dewatering</b>
+                        </a>
+                        <a class="btn-grad">
+                          {{dewatering.sel_type}}
+                        </a>
+                      </div>
+                      <div class="grey-arrow" *ngIf="dewatering.sel_type!='0'" >
+                        <img class="image-style" src="assets/img/arrows/lightgreyarrow.png"/>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <img class="blue-arrow" src="assets/img/arrows/lightgreyarrow.png"/>
               </div>
             </div>
           </div>
@@ -2979,17 +3005,43 @@
               </div>
             </div>
             <div class="card-body pumping-line" style="display: inherit;" *ngIf="chemical.metal_salts.sel_type != '0' || chemical.chlorination.sel_type != '0' || chemical.dechlorination.sel_type != '0' || chemical.chlorine.sel_type != '0' ">
-              <div class=" prelimary-treatment-image" *ngIf="chemical.metal_salts.sel_type!='0'" style="background-image: url('assets/img/avatars/phosphoros.png') ">
-                <h1 class="pumping-text prelimary-treatment-text">{{chemical.metal_salts.sel_type}}</h1>
-              </div>
-              <div class=" prelimary-treatment-image" *ngIf="chemical.chlorination.sel_type!='0'" style="background-image: url('assets/img/avatars/chorination.png') ">
-                <h1 class="pumping-text prelimary-treatment-text">{{chemical.chlorination.sel_type}}</h1>
-              </div>
-              <div class=" prelimary-treatment-image" *ngIf="chemical.dechlorination.sel_type!='0'" style="height: 80px!important; width: 11%!important; background-image: url('assets/img/avatars/dechlorinationchemcials.png') ">
-                <h1 class="pumping-text prelimary-treatment-text" style="margin-top: 41%!important;">{{chemical.dechlorination.sel_type}}</h1>
-              </div>
-              <div class=" prelimary-treatment-image" *ngIf="chemical.chlorine.sel_type!='0'" style="background-image: url('assets/img/avatars/chlorineprocess.png') ">
-                <h1 class="pumping-text prelimary-treatment-text">{{chemical.chlorine.sel_type}}</h1>
+              <div class="container" style="padding: 0%;">
+                <div>
+                  <div class="row" >
+                    <div class="col-20" style="margin-left: 2%"  *ngIf="chemical.metal_salts.sel_type!='0'">
+                      <a class="btn-grad chemicals-image-background">
+                        <b>phosphorus Removal</b>
+                      </a>
+                      <a class="btn-grad">
+                        {{chemical.metal_salts.sel_type}}
+                      </a>
+                    </div>
+                    <div class="col-20" style="margin-left: 2%"  *ngIf="chemical.chlorination.sel_type!='0'">
+                      <a class="btn-grad chemicals-image-background">
+                        <b>Chlorination</b>
+                      </a>
+                      <a class="btn-grad">
+                        {{chemical.chlorination.sel_type}}
+                      </a>
+                    </div>
+                    <div class="col-20" style="margin-left: 2%"  *ngIf="chemical.dechlorination.sel_type!='0'">
+                      <a class="btn-grad chemicals-image-background">
+                        <b>Dechlorination Chemicals</b>
+                      </a>
+                      <a class="btn-grad">
+                        {{chemical.dechlorination.sel_type}}
+                      </a>
+                    </div>
+                    <div class="col-20" style="margin-left: 2%" *ngIf="chemical.chlorine.sel_type!='0'">
+                      <a class="btn-grad chemicals-image-background">
+                        <b>chlorine for Process</b>
+                      </a>
+                      <a class="btn-grad">
+                        {{chemical.chlorine.sel_type}}
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
