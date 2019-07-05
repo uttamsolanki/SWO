@@ -2776,9 +2776,9 @@
         <div class="col-lg-12">
           <div class="card liquid-border">
             <div class="card-header cd-header-color liquid-slude-main-heading" style="background-color: #94CE58!important;text-align: center">
-              {{setProjectData}} -
+             Process Flow Diagrams [{{setProjectData}} -
               {{scenarioName}} -
-              {{scenarioDate |  date: 'dd-MMM-yyyy'}}
+              {{scenarioDate |  date: 'dd-MMM-yyyy'}}]
             </div>
           </div>
         </div>
@@ -3249,7 +3249,7 @@
                   <div class="form-group row">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input"><strong>Sub Total Prior to Energy Recovery:</strong></label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(ElecricalCo2+OnSiteCo2+ChemicalCo2+TransportationCo2).toFixed(2)}} </label>
+                      <label class="col-md-3 col-form-label" for="text-input"><strong>{{(ElecricalCo2+OnSiteCo2+ChemicalCo2+TransportationCo2).toFixed(2)}} </strong></label>
                     </div>
                   </div>
 
@@ -3270,7 +3270,7 @@
                   <div class="form-group row">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input"><strong>Net Emissions prior to Biosolids Disposal:</strong></label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(EqCo2-DisposalCo2).toFixed(2)}} </label>
+                      <label class="col-md-3 col-form-label" for="text-input"><strong>{{(EqCo2-DisposalCo2).toFixed(2)}} </strong></label>
                     </div>
                   </div>
 
@@ -3284,7 +3284,7 @@
                   <div class="form-group row" >
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input"><strong>Total Emissions including Biosolids Disposal: </strong></label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{EqCo2}} </label>
+                      <label class="col-md-3 col-form-label" for="text-input"><strong>{{EqCo2}} </strong></label>
                     </div>
                   </div>
                   <hr>
@@ -3388,7 +3388,7 @@
                   <div class="form-group row" *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input"><strong>Sub Total Prior to Energy Recovery:</strong></label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(ElecricalCo2).toFixed(2)}}</label>
+                      <label class="col-md-3 col-form-label" for="text-input"><strong>{{(ElecricalCo2).toFixed(2)}}</strong></label>
                     </div>
                   </div>
 
@@ -3410,7 +3410,7 @@
                   <div class="form-group row" *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-4 col-form-label text-align-right" for="text-input"><strong>Net Electricity Emissions: </strong></label>
-                      <label class="col-md-3 col-form-label" for="text-input">{{(ElecricalCo2+EnergyCo2+process.anarobic.addEnergy).toFixed(2)}} </label>
+                      <label class="col-md-3 col-form-label" for="text-input"><strong>{{(ElecricalCo2+EnergyCo2+process.anarobic.addEnergy).toFixed(2)}} </strong></label>
                     </div>
                   </div>
 

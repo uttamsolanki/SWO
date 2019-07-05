@@ -22,7 +22,7 @@
       </div>
         <div class="card-body">
           <form class="form-horizontal" *ngIf="!scenarioData.length">
-            <p class="msg-text-center">You have not created any Scenario.</p>
+            <p class="msg-text-center">Please create a Scenario.</p>
             <button type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id]">Create</button>
           </form>
           <table class="table" *ngIf="scenarioData.length">
