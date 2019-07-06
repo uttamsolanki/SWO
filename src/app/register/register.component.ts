@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { FormGroup,FormBuilder,Validators} from '@angular/forms';
 import {log} from 'util';
 import {UserService} from '../user.service';
 import {Router} from '@angular/router';
 import {HttpErrorResponse} from '@angular/common/http';
+import {ModalDirective} from 'ngx-bootstrap';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './register.component.html',
@@ -14,12 +15,14 @@ export class RegisterComponent implements OnInit {
   alertsDismiss: any = [];
   dismissible = true;
   employeeForm: FormGroup;
+  @ViewChild('successModal') public modal: ModalDirective;
   formErrors={
     'first_name': '',
     'last_name': '',
     'email': '',
     'password': '',
-    'repeat_password': ''
+    'repeat_password': '',
+    'agree_checkbox': ''
   }
   validationsMessages = {
     'first_name':{
@@ -40,6 +43,9 @@ export class RegisterComponent implements OnInit {
     },
     'repeat_password':{
       'required': 'Repeat password is required'
+    },
+    'agree_checkbox': {
+      'required': 'Please check the disclaimer checkbox'
     }
   }
 
@@ -52,7 +58,8 @@ export class RegisterComponent implements OnInit {
       last_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]],
       email: ['', Validators.required],
       password: ['', Validators.required],
-      repeat_password: ['', Validators.required]
+      repeat_password: ['', Validators.required],
+      agree_checkbox: ['', Validators.required]
     });
 
     this.employeeForm.valueChanges.subscribe((res: string) => {
