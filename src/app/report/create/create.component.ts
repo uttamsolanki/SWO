@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDirective} from 'ngx-bootstrap';
 import 'chartjs-plugin-datalabels';
 import {DataServiceService} from '../../data-service.service';
+import {forEach} from '@angular/router/src/utils/collection';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -479,6 +480,7 @@ export class CreateComponent implements OnInit {
 
   ProcessCo2: any = 0;
   isInternal: number=0;
+  html:string="test";
   // *************  barChart Start *************//
 
   public barChart1Colours: Array<any> = [
@@ -1470,5 +1472,15 @@ export class CreateComponent implements OnInit {
     this.modal.hide();
      this.router.navigate(['dashboard']);
   }
-
+  testU(data){
+    let test = data.ref;
+    var tempHtml="<h6><b>Rs:</b></h6>";
+    for (let key in test) {
+      let value = test[key];
+      tempHtml+=value;
+    }
+  //  console.log(data.hasOwnProperty("ref"));
+    this.html=tempHtml;
+    //console.log(data);
+  }
 }
