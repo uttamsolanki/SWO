@@ -354,15 +354,12 @@
                         <p *ngIf="primary.pumping.data.suggested !==null" class="help-block p-1 m-0" style="color:#4dbd74">
                           <span>Suggested value {{primary.pumping.data.suggested}}</span><br/>
                           <span>Range value  {{primary.pumping.data.range.min}} - {{primary.pumping.data.range.max}}</span>
-
-                          <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
-                          <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                         </p>
                       </div>
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.pumping.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{primary.pumping.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(primary.pumping.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{primary.pumping.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -396,7 +393,7 @@
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.prili_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{primary.prili_treat.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(primary.prili_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{primary.prili_treat.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
                   </div>
@@ -466,7 +463,7 @@
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{secondary.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(secondary.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{secondary.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -501,7 +498,7 @@
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{sec_clr.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(sec_clr.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{sec_clr.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
                   </div>
@@ -534,7 +531,7 @@
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{tertiary.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(tertiary.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{tertiary.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
                   </div>
@@ -568,7 +565,7 @@
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{disinfection.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(disinfection.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{disinfection.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -741,7 +738,7 @@
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biosolid.thickener.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(biosolid.thickener.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biosolid.thickener.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -775,7 +772,7 @@
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biosolid.aerobic.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(biosolid.aerobic.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biosolid.aerobic.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -809,7 +806,7 @@
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biosolid.anaerobic.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body"  placement="left" (click)="testU(biosolid.anaerobic.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biosolid.anaerobic.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -924,7 +921,7 @@
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biogas.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(biogas.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biogas.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -1034,7 +1031,7 @@
                     </div>
                     <div class="col-md-2 p-0">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{dewatering.sel_type}}" >I</button></span>
+                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(dewatering.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{dewatering.sel_type}}" >I</button></span>
                       <app-information></app-information>
                     </div>
 
@@ -1399,7 +1396,7 @@
                   </div>
                   <div class="col-md-2 p-0">
                     <span class="help-block">g/m<sup>3</sup></span>
-                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.metal_salts.sel_type}}" >I</button></span>
+                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(chemical.metal_salts.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.metal_salts.sel_type}}" >I</button></span>
                     <app-information></app-information>
                   </div>
 
@@ -1432,7 +1429,7 @@
                   </div>
                   <div class="col-md-2 p-0">
                     <span class="help-block">g/m<sup>3</sup></span>
-                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.chlorination.sel_type}}" >I</button></span>
+                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(chemical.chlorination.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.chlorination.sel_type}}" >I</button></span>
                     <app-information></app-information>
                   </div>
 
@@ -1465,7 +1462,7 @@
                   </div>
                   <div class="col-md-2 p-0">
                     <span class="help-block">g/m<sup>3</sup></span>
-                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.dechlorination.sel_type}}" >I</button></span>
+                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(chemical.dechlorination.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.dechlorination.sel_type}}" >I</button></span>
                     <app-information></app-information>
                   </div>
 
@@ -1495,7 +1492,7 @@
                   </div>
                   <div class="col-md-2 p-0">
                     <span class="help-block">g/m<sup>3</sup></span>
-                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.chlorine.sel_type}}" >I</button></span>
+                    <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(chemical.chlorine.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.chlorine.sel_type}}" >I</button></span>
                     <app-information></app-information>
                   </div>
 
@@ -1574,7 +1571,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.active_sludge.CODin.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="Influent COD - CODin" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" placement="left" (click)="testU(process.active_sludge.CODin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Influent COD - CODin" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -1594,7 +1591,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.active_sludge.TKNin.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="Influent TKN - TKNin" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.active_sludge.TKNin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Influent TKN - TKNin" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -1617,7 +1614,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.active_sludge.FLOWwas.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="WAS Rate" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.active_sludge.FLOWwas)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="WAS Rate" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -1654,7 +1651,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.active_sludge.CODwas.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="WAS COD" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.active_sludge.CODwas)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="WAS COD" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -1826,7 +1823,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.active_sludge.CODout.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="Outflow COD - CODout" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.active_sludge.CODout)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Outflow COD - CODout" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -1846,7 +1843,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.active_sludge.TKNout.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="Outflow TKN - TKNout" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.active_sludge.TKNout)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Outflow TKN - TKNout" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -1868,7 +1865,7 @@
                         </div>
                       </div>
                       <div class="col-md-2 p-0">
-                          <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="COD / TOC Ratio, g-O2/g-C" >I</button></span>
+                          <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(constant.COD_TOC)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="COD / TOC Ratio, g-O2/g-C" >I</button></span>
                           <app-information></app-information>
                       </div>
                     </div>
@@ -1889,7 +1886,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <!--<span class="help-block">{{process.active_sludge.CODout.unit}}</span>-->
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="% Removed TKN emitted as N2O, g N2O-N/g-TKN-N" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(constant.Removed_TKN)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="% Removed TKN emitted as N2O, g N2O-N/g-TKN-N" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -2106,7 +2103,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">mg/L</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="External Biosolids COD" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.organics.COD)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="External Biosolids COD" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -2516,7 +2513,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.transporation.FLOWin.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="Flow Rate of Dewatered Sludge" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.transporation.FLOWin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Flow Rate of Dewatered Sludge" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
@@ -2562,7 +2559,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.transporation.distance.unit}}</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="Single Travel Distance" >I</button></span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.transporation.distance)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Single Travel Distance" >I</button></span>
                         <app-information></app-information>
                       </div>
                     </div>
