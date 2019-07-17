@@ -353,7 +353,9 @@
                       <div class="p-1">
                         <p *ngIf="primary.pumping.data.suggested !==null" class="help-block p-1 m-0" style="color:#4dbd74">
                           <span>Suggested value {{primary.pumping.data.suggested}}</span><br/>
-                          <span>Range value  {{primary.pumping.data.range.min}} - {{primary.pumping.data.range.max}}</span>
+                          <span *ngIf="primary.pumping.data.range.min || primary.pumping.data.range.max">
+                            Range value  {{primary.pumping.data.range.min}} - {{primary.pumping.data.range.max}}
+                          </span>
                         </p>
                       </div>
                     </div>
@@ -388,7 +390,9 @@
                     <div class="col-md-5">
                       <input type="text" id="prili_treat_rate" name="prili_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.prili_treat.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="primary.prili_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.prili_treat.data.suggested}}<br/>
-                      <span>Range value  {{primary.prili_treat.data.range.min}} - {{primary.prili_treat.data.range.max}}</span>
+                        <span *ngIf="primary.prili_treat.data.range.min || primary.prili_treat.data.range.max">
+                          Range value  {{primary.prili_treat.data.range.min}} - {{primary.prili_treat.data.range.max}}
+                        </span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
@@ -422,7 +426,9 @@
                     <div class="col-md-5">
                       <input type="text" id="pri_treat_rate" name="pri_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.pri_treat.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="primary.pri_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.pri_treat.data.suggested}}<br/>
-                      <span>Range value {{primary.pri_treat.data.range.min}} - {{primary.pri_treat.data.range.max}}</span>
+                        <span *ngIf="primary.pri_treat.data.range.min || primary.pri_treat.data.range.max">
+                          Range value {{primary.pri_treat.data.range.min}} - {{primary.pri_treat.data.range.max}}
+                        </span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
@@ -458,7 +464,9 @@
                     <div class="col-md-5">
                       <input type="text" id="second_rate" name="second_rate" class="form-control" placeholder="0.0" [(ngModel)]="secondary.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="secondary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{secondary.data.suggested}}<br/>
-                      <span>Range value  {{secondary.data.range.min}} - {{secondary.data.range.max}}</span>
+                        <span *ngIf="secondary.data.range.min || secondary.data.range.max">
+                          Range value  {{secondary.data.range.min}} - {{secondary.data.range.max}}
+                        </span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
@@ -493,7 +501,9 @@
                     <div class="col-md-5">
                       <input type="text" id="sec_clr_rate" name="sec_clr_rate" class="form-control" placeholder="0.0" [(ngModel)]="sec_clr.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="sec_clr.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{sec_clr.data.suggested}}<br/>
-                      <span>Range value  {{sec_clr.data.range.min}} - {{sec_clr.data.range.max}}</span>
+                        <span *ngIf="sec_clr.data.range.min || sec_clr.data.range.max">
+                          Range value  {{sec_clr.data.range.min}} - {{sec_clr.data.range.max}}
+                        </span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
@@ -526,7 +536,9 @@
                     <div class="col-md-5">
                       <input type="text" id="tertiary_rate" name="tertiary_rate" class="form-control" placeholder="0.0" [(ngModel)]="tertiary.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="tertiary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{tertiary.data.suggested}}<br/>
-                      <span>Range value  {{tertiary.data.range.min}} - {{tertiary.data.range.max}}</span>
+                        <span *ngIf="tertiary.data.range.min || tertiary.data.range.max">
+                          Range value  {{tertiary.data.range.min}} - {{tertiary.data.range.max}}
+                        </span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
@@ -560,7 +572,9 @@
                     <div class="col-md-5">
                       <input type="text" id="disinfection_rate" name="disinfection_rate" class="form-control" placeholder="0.0" [(ngModel)]="disinfection.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="disinfection.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{disinfection.data.suggested}}<br/>
-                      <span>Range value  {{disinfection.data.range.min}} - {{disinfection.data.range.max}}</span>
+                        <span *ngIf="disinfection.data.range.min || disinfection.data.range.max">
+                          Range value  {{disinfection.data.range.min}} - {{disinfection.data.range.max}}
+                        </span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
@@ -733,7 +747,9 @@
                     <div class="col-md-5">
                       <input type="text" id="thickener_rate" name="thickener_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.thickener.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="biosolid.thickener.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.thickener.data.suggested}}<br/>
-                      <span>Range value  {{biosolid.thickener.data.range.min}} - {{biosolid.thickener.data.range.max}}</span>
+                        <span *ngIf="biosolid.thickener.data.range.min || biosolid.thickener.data.range.max">
+                          Range value  {{biosolid.thickener.data.range.min}} - {{biosolid.thickener.data.range.max}}
+                        </span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
@@ -767,7 +783,9 @@
                     <div class="col-md-5">
                       <input type="text" id="aerobic_rate" name="aerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.aerobic.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="biosolid.aerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.aerobic.data.suggested}}<br/>
-                      <span>Range value  {{biosolid.aerobic.data.range.min}} - {{biosolid.aerobic.data.range.max}}</span>
+                        <span *ngIf="biosolid.aerobic.data.range.min || biosolid.aerobic.data.range.max">
+                          Range value  {{biosolid.aerobic.data.range.min}} - {{biosolid.aerobic.data.range.max}}
+                        </span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
@@ -801,7 +819,9 @@
                     <div class="col-md-5">
                       <input type="text" id="anaerobic_rate" name="anaerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.anaerobic.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="biosolid.anaerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.anaerobic.data.suggested}}<br/>
-                      <span>Range value  {{biosolid.anaerobic.data.range.min}} - {{biosolid.anaerobic.data.range.max}}</span>
+                        <span *ngIf="biosolid.anaerobic.data.range.min || biosolid.anaerobic.data.range.max">
+                          Range value  {{biosolid.anaerobic.data.range.min}} - {{biosolid.anaerobic.data.range.max}}
+                        </span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
@@ -916,7 +936,9 @@
                     <div class="col-md-5">
                       <input type="text" id="biogas_rate" name="biogas_rate" class="form-control" placeholder="0.0" [(ngModel)]="biogas.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="biogas.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biogas.data.suggested}}<br/>
-                      <span>Range value  {{biogas.data.range.min}}- {{biogas.data.range.max}}</span>
+                      <span *ngIf="biogas.data.range.min || biogas.data.range.max">
+                        Range value  {{biogas.data.range.min}}- {{biogas.data.range.max}}
+                      </span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
@@ -1026,7 +1048,9 @@
                     <div class="col-md-5">
                       <input type="text" id="dewatering_rate" name="dewatering_rate" class="form-control" placeholder="0.0" [(ngModel)]="dewatering.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="dewatering.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{dewatering.data.suggested}}<br/>
-                      <span>Range value  {{dewatering.data.range.min}} - {{dewatering.data.range.max}}</span>
+                      <span *ngIf="dewatering.data.range.min || dewatering.data.range.max">
+                        Range value  {{dewatering.data.range.min}} - {{dewatering.data.range.max}}
+                      </span>
                       </span>
                     </div>
                     <div class="col-md-2 p-0">
@@ -1391,7 +1415,9 @@
                   <div class="col-md-5">
                     <input type="text" id="metalsalts_rate" name="metalsalts_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.metal_salts.data.default" (ngModelChange)="updateWWTPsize()">
                     <span *ngIf="chemical.metal_salts.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.metal_salts.data.suggested}}<br/>
-                    <span>Range value  {{chemical.metal_salts.data.range.min}} - {{chemical.metal_salts.data.range.max}}</span>
+                    <span *ngIf="chemical.metal_salts.data.range.min || chemical.metal_salts.data.range.max">
+                      Range value  {{chemical.metal_salts.data.range.min}} - {{chemical.metal_salts.data.range.max}}
+                    </span>
                     </span>
                   </div>
                   <div class="col-md-2 p-0">
@@ -1424,7 +1450,9 @@
                   <div class="col-md-5">
                     <input type="text" id="chlorination_rate" name="chlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.chlorination.data.default" (ngModelChange)="updateWWTPsize()">
                     <span *ngIf="chemical.chlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.chlorination.data.suggested}}<br/>
-                    <span>Range value  {{chemical.chlorination.data.range.min}} - {{chemical.chlorination.data.range.max}}</span>
+                      <span *ngIf="chemical.chlorination.data.range.min || chemical.chlorination.data.range.max">
+                        Range value  {{chemical.chlorination.data.range.min}} - {{chemical.chlorination.data.range.max}}
+                      </span>
                     </span>
                   </div>
                   <div class="col-md-2 p-0">
@@ -1457,7 +1485,9 @@
                   <div class="col-md-5">
                     <input type="text" id="dechlorination_rate" name="dechlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.dechlorination.data.default" (ngModelChange)="updateWWTPsize()">
                     <span *ngIf="chemical.dechlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.dechlorination.data.suggested}}<br/>
-                    <span>Range value  {{chemical.dechlorination.data.range.min}} - {{chemical.dechlorination.data.range.max}}</span>
+                      <span *ngIf="chemical.dechlorination.data.range.min || chemical.dechlorination.data.range.max">
+                        Range value  {{chemical.dechlorination.data.range.min}} - {{chemical.dechlorination.data.range.max}}
+                      </span>
                     </span>
                   </div>
                   <div class="col-md-2 p-0">
@@ -1563,7 +1593,9 @@
                         <input type="text" id="active_sludge_CODin"  name="active_sludge_CODin" [(ngModel)]="process.active_sludge.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODin.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.active_sludge.CODin.range.min || process.active_sludge.CODin.range.max">
+                              Range value  {{process.active_sludge.CODin.range.min}} - {{process.active_sludge.CODin.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -1583,7 +1615,9 @@
                         <input type="text" id="active_sludge_TKNin"  name="active_sludge_TKNin" [(ngModel)]="process.active_sludge.TKNin.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.TKNin.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.active_sludge.TKNin.range.min || process.active_sludge.TKNin.range.max">
+                              Range value  {{process.active_sludge.TKNin.range.min}} - {{process.active_sludge.TKNin.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -1606,7 +1640,9 @@
                         <input type="text" id="active_sludge_FLOWwas"  name="active_sludge_FLOWwas" [(ngModel)]="process.active_sludge.FLOWwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.FLOWwas.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.active_sludge.FLOWwas.range.min || process.active_sludge.FLOWwas.range.max">
+                              Range value  {{process.active_sludge.FLOWwas.range.min}} - {{process.active_sludge.FLOWwas.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -1643,7 +1679,9 @@
                         <input type="text" id="active_sludge_CODwas"  name="active_sludge_CODwas" [(ngModel)]="process.active_sludge.CODwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODwas.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.active_sludge.FLOWwas.range.min || process.active_sludge.FLOWwas.range.max">
+                              Range value  {{process.active_sludge.FLOWwas.range.min}} - {{process.active_sludge.FLOWwas.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -1663,13 +1701,17 @@
                         <input type="text" id="active_sludge_TKNwas"  name="active_sludge_TKNwas" [(ngModel)]="process.active_sludge.TKNwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.TKNwas.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.active_sludge.TKNwas.range.min || process.active_sludge.TKNwas.range.max">
+                              Range value  {{process.active_sludge.TKNwas.range.min}} - {{process.active_sludge.TKNwas.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
                         </div>
                       </div>
                       <div class="col-md-2 p-0">
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.active_sludge.TKNwas)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="WAS TKN" >I</button></span>
+                        <app-information></app-information>
 <!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
 <!--                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
                         <ng-template #popTemplate style="width: 170%">
@@ -1781,7 +1823,7 @@
 <!--                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body"  [popover]="pumpingPopOver" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
                       <ng-template #pumpingPopOver style="width: 170%">
                           <span style="color: #00aced">
-                            <div [innerHtml]="html"></div>
+                            <div [innerHtml]="newHtml"></div>
 
                           </span>
                       </ng-template>
@@ -1815,7 +1857,9 @@
                         <input type="text" id="active_sludge_CODout"  name="active_sludge_CODout" [(ngModel)]="process.active_sludge.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODout.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.active_sludge.CODout.range.min || process.active_sludge.CODout.range.max">
+                              Range value  {{process.active_sludge.CODout.range.min}} - {{process.active_sludge.CODout.range.min}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -1835,7 +1879,9 @@
                         <input type="text" id="active_sludge_TKNout"  name="active_sludge_TKNout" [(ngModel)]="process.active_sludge.TKNout.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.TKNout.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.active_sludge.TKNout.range.min || process.active_sludge.TKNout.range.max">
+                              Range value  {{process.active_sludge.TKNout.range.min}} - {{process.active_sludge.TKNout.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -1858,7 +1904,9 @@
                         <input type="text" id="constant_COD_TOC"  name="constant_COD_TOC"  [(ngModel)]="constant.COD_TOC.default" class="form-control" placeholder="0.0" (ngModelChange)="createChart()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{constant.COD_TOC.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="constant.COD_TOC.range.min || constant.COD_TOC.range.max">
+                              Range value  {{constant.COD_TOC.range.min}} - {{constant.COD_TOC.range.max}}
+                            </span>
                           <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                           <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -1877,7 +1925,9 @@
                         <input type="text" id="constant_Removed_TKN"  name="constant_Removed_TKN" [(ngModel)]="constant.Removed_TKN.default" class="form-control" placeholder="0.0" (ngModelChange)="createChart()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{constant.Removed_TKN.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="constant.Removed_TKN.range.min || constant.Removed_TKN.range.max">
+                              Range value  {{constant.Removed_TKN.range.min}} - {{constant.Removed_TKN.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -2016,7 +2066,9 @@
                         <input type="number" id="anarobic_FLOWin"  name="anarobic_FLOWin" [(ngModel)]="process.anarobic.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.FLOWin.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.anarobic.FLOWin.range.min || process.anarobic.FLOWin.range.max">
+                              Range value  {{process.anarobic.FLOWin.range.min}} - {{process.anarobic.FLOWin.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -2024,6 +2076,8 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.aerobic.FLOWin.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.anarobic.FLOWin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Inflow Node Ap to Anaerobic Digester[Qap]" >I</button></span>
+                        <app-information></app-information>
                       </div>
                     </div>
                   </div>
@@ -2045,7 +2099,9 @@
                         <input type="number" id="aerobic_CODin"  name="aerobic_CODin" [(ngModel)]="process.anarobic.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.CODin.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.anarobic.CODin.range.min || process.anarobic.CODin.range.max">
+                              Range value  {{process.anarobic.CODin.range.min}} - {{process.anarobic.CODin.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -2053,6 +2109,8 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.aerobic.CODin.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.anarobic.CODin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Inflow COD [CODin]" >I</button></span>
+                        <app-information></app-information>
                       </div>
                     </div>
                   </div>
@@ -2103,8 +2161,6 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">mg/L</span>
-                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.organics.COD)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="External Biosolids COD" >I</button></span>
-                        <app-information></app-information>
                       </div>
                     </div>
                   </div>
@@ -2165,7 +2221,9 @@
                         <input type="text" id="anarobic_CODout"  name="anarobic_CODout" [(ngModel)]="process.anarobic.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.CODout.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.anarobic.CODout.range.min || process.anarobic.CODout.range.max">
+                              Range value  {{process.anarobic.CODout.range.min}} - {{process.anarobic.CODout.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -2173,6 +2231,8 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.anarobic.CODout.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.anarobic.CODout)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Outflow COD (CODout)" >I</button></span>
+                        <app-information></app-information>
                       </div>
                     </div>
                   </div>
@@ -2186,7 +2246,9 @@
                         <input type="text" id="alpha"  name="alpha" [(ngModel)]="process.anarobic.alpha.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.alpha.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.anarobic.alpha.range.min || process.anarobic.alpha.range.max" >
+                              Range value  {{process.anarobic.alpha.range.min}} - {{process.anarobic.alpha.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -2194,6 +2256,8 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.anarobic.alpha.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.anarobic.alpha)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Percent Methane in Biogas (kg/kg)" >I</button></span>
+                        <app-information></app-information>
                       </div>
                     </div>
                   </div>
@@ -2229,11 +2293,15 @@
                       <div class="col-md-5">
                         <input type="number" id="process_factor" name="process_factor" class="form-control"  (]ngModelChange)="createChart()" placeholder="0.0" [(ngModel)]="process.anarobic.energy.default">
                         <span *ngIf="process.anarobic.energy.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{process.anarobic.energy.suggested}}<br/>
-                          <span>Range value  0.1 - 0.5</span>
+                          <span *ngIf="process.anarobic.energy.range.min || process.anarobic.energy.range.max">
+                            Range value  {{process.anarobic.energy.range.min}} - {{process.anarobic.energy.range.max}}
+                          </span>
                         </span>
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">kg CO2/kg CH4</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.anarobic.energy)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Energy Recovery Factor from CH4 from External Sources" >I</button></span>
+                        <app-information></app-information>
                       </div>
 
                     </div>
@@ -2339,7 +2407,9 @@
                         <input type="text" id="aerobic_FLOWin"  name="aerobic_FLOWin" [(ngModel)]="process.aerobic.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.FLOWin.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.aerobic.FLOWin.range.min || process.aerobic.FLOWin.range.max">
+                              Range value  {{process.aerobic.FLOWin.range.min}} - {{process.aerobic.FLOWin.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -2368,7 +2438,9 @@
                         <input type="text" id="aerobic_CODin"  name="aerobic_CODin" [(ngModel)]="process.aerobic.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.CODin.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.aerobic.CODin.range.min || process.aerobic.CODin.range.min">
+                              Range value  {{process.aerobic.CODin.range.min}} - {{process.aerobic.CODin.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -2400,7 +2472,9 @@
                         <input type="text" id="aerobic_CODout"  name="aerobic_CODout" [(ngModel)]="process.aerobic.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.CODout.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.aerobic.CODout.range.min || process.aerobic.CODout.range.max">
+                              Range value  {{process.aerobic.CODout.range.min}} - {{process.aerobic.CODout.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -2505,7 +2579,9 @@
                         <input type="text" id="transporation_FLOWin"  name="transporation_FLOWin" [(ngModel)]="process.transporation.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.transporation.FLOWin.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.transporation.FLOWin.range.min || process.transporation.FLOWin.range.max">
+                              Range value  {{process.transporation.FLOWin.range.min}} - {{process.transporation.FLOWin.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -2551,7 +2627,9 @@
                         <input type="text" id="distance_distance"  name="distance_distance" [(ngModel)]="process.transporation.distance.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.transporation.distance.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.transporation.distance.range.min || process.transporation.distance.range.max">
+                              Range value  {{process.transporation.distance.range.min}} - {{process.transporation.distance.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -2571,7 +2649,9 @@
                         <input type="text" id="time_distance"  name="time_distance" [(ngModel)]="process.transporation.time.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.transporation.time.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.transporation.time.range.min || process.transporation.time.range.max">
+                              Range value  {{process.transporation.time.range.min}} - {{process.transporation.time.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -2652,7 +2732,9 @@
                         <input type="text" id="disposal_FLOWin"  name="disposal_FLOWin" [(ngModel)]="process.disposal.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" >
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.FLOWin.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.disposal.FLOWin.range.min || process.disposal.FLOWin.range.max">
+                              Range value  {{process.disposal.FLOWin.range.min}} - {{process.disposal.FLOWin.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -2660,6 +2742,8 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.disposal.FLOWin.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.disposal.FLOWin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Flow Rate of Dewatered Sludge" >I</button></span>
+                        <app-information></app-information>
                       </div>
                     </div>
                   </div>
@@ -2681,7 +2765,9 @@
                         <input type="number" id="disposal_CODin"  name="disposal_CODin" [(ngModel)]="process.disposal.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.CODin.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.disposal.CODin.range.min || process.disposal.CODin.range.max">
+                              Range value  {{process.disposal.CODin.range.min}} - {{process.disposal.CODin.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -2689,6 +2775,8 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.disposal.CODin.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.disposal.CODin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="COD of Sludge [CODin]" >I</button></span>
+                        <app-information></app-information>
                       </div>
                     </div>
                   </div>
@@ -2702,7 +2790,9 @@
                         <input type="number" id="disposal_alpha"  name="disposal_alpha" [(ngModel)]="process.disposal.alpha.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.alpha.suggested}}</span><br/>
-                            <span>Range value  0.1 - 0.5</span>
+                            <span *ngIf="process.disposal.alpha.range.min || process.disposal.alpha.range.min">
+                              Range value  {{process.disposal.alpha.range.min}} - {{process.disposal.alpha.range.max}}
+                            </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -2710,6 +2800,8 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.disposal.alpha.unit}}</span>
+                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" placement="left" (click)="testU(process.disposal.alpha)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Percent Methane in Biogas " >I</button></span>
+                        <app-information></app-information>
                       </div>
                     </div>
                   </div>
