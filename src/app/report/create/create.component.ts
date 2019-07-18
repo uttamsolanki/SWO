@@ -47,6 +47,18 @@ export class CreateComponent implements OnInit {
   scenarioNewName;
   // ****************** This for data related variable ***********************//
 
+  defaultStructure = {
+    title: null,
+    unit: null,
+    default: 0,
+    suggested: 0,
+    ref: [],
+    range: {
+        min: 0,
+        max: 0,
+        ref: []
+    }
+  };
   size = {
     sel_size: 'Small WWTP',
     data: {default: 5000, suggested: 5000}
@@ -137,71 +149,21 @@ export class CreateComponent implements OnInit {
     data: {title: '0', default: 0, co2: 0, suggested: 0},
   };
 
-  process = {
+   process = {
     active_sludge: {
       co2: 0,
       no2: 0,
       totalCo2: 0,
-      CODin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      TKNin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODout: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      TKNout: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      FLOWwas: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODwas: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      TKNwas: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      COD_BOD5: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      WAS_COD_VSS: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      COD_BOD5out: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      }
+      CODin: this.defaultStructure,
+      TKNin: this.defaultStructure,
+      CODout: this.defaultStructure,
+      TKNout: this.defaultStructure,
+      FLOWwas: this.defaultStructure,
+      CODwas: this.defaultStructure,
+      TKNwas: this.defaultStructure,
+      COD_BOD5: this.defaultStructure,
+      WAS_COD_VSS: this.defaultStructure,
+      COD_BOD5out: this.defaultStructure
     },
     aerobic: {
       plantinfluent: null,
@@ -209,30 +171,10 @@ export class CreateComponent implements OnInit {
       ch4: 0,
       totalCo2: 0,
       Qin: 0,
-      FLOWin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODout: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODred: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      }
+      FLOWin: this.defaultStructure,
+      CODin: this.defaultStructure,
+      CODout: this.defaultStructure,
+      CODred: this.defaultStructure
     },
     anarobic: {
       plantinfluent: '1',
@@ -245,42 +187,12 @@ export class CreateComponent implements OnInit {
       Qin: 0,
       totalCo2: 0,
       addEnergy:0,
-      FLOWin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODout: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODred: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      alpha: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      energy: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      }
+      FLOWin: this.defaultStructure,
+      CODin: this.defaultStructure,
+      CODout: this.defaultStructure,
+      CODred: this.defaultStructure,
+      alpha: this.defaultStructure,
+      energy: this.defaultStructure
     },
     organics: {
       flow: 0,
@@ -296,59 +208,24 @@ export class CreateComponent implements OnInit {
       ch4: 0,
       Qin: 0,
       totalCo2: 0,
-      FLOWin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      carbon_methane: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      alpha: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
+      FLOWin: this.defaultStructure,
+      CODin: this.defaultStructure,
+      carbon_methane: this.defaultStructure,
+      alpha: this.defaultStructure,
     },
     transporation: {
       plantinfluent: '1',
       totalCo2: 0,
       Qin: 0,
       travel_type: 'distance',
-      FLOWin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      distance: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      time: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      }
+      FLOWin: this.defaultStructure,
+      distance: this.defaultStructure,
+      time: this.defaultStructure
     },
   };
   constant: any = {
-    COD_TOC: { title: null, default: null, suggested: null },
-    Removed_TKN: {title: null, default: null, suggested: null },
+    COD_TOC: this.defaultStructure,
+    Removed_TKN: this.defaultStructure
   };
   active_sludgeData = {
     Qin: 0,
@@ -480,7 +357,7 @@ export class CreateComponent implements OnInit {
 
   ProcessCo2: any = 0;
   isInternal: number=0;
-  html:string="test";
+  newHtml:string="test";
   // *************  barChart Start *************//
 
   public barChart1Colours: Array<any> = [
@@ -1488,7 +1365,7 @@ export class CreateComponent implements OnInit {
     }
 
   //  console.log(data.hasOwnProperty("ref"));
-    this.html=tempHtml;
+    this.newHtml=tempHtml;
     //console.log(data);
   }
 }
