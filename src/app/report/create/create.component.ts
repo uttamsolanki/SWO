@@ -52,11 +52,11 @@ export class CreateComponent implements OnInit {
     unit: null,
     default: 0,
     suggested: 0,
-    ref: [],
+    ref: null,
     range: {
         min: 0,
         max: 0,
-        ref: []
+        ref: null
     }
   };
   size = {
@@ -1350,6 +1350,7 @@ export class CreateComponent implements OnInit {
      this.router.navigate(['dashboard']);
   }
   testU(data){
+    console.log(data);
     let refs = data.ref;
     var tempHtml="<h6><b>Rs:</b></h6>";
     for (let rs in refs) {
@@ -1366,6 +1367,6 @@ export class CreateComponent implements OnInit {
 
   //  console.log(data.hasOwnProperty("ref"));
     this.newHtml=tempHtml;
-    //console.log(data);
+
   }
 }
