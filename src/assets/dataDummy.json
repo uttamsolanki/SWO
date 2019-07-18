@@ -101,7 +101,8 @@
           "default":0.0061,
           "suggested":0.0061,
           "ref":{
-            "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation."
+            "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation.",
+            "7":"Uttam dstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation."
           },
           "range":{
             "min":0.0009,
@@ -161,7 +162,7 @@
               "min":0.1,
               "max":0.425,
               "ref":{
-                "7":"H. Monteith, Y. Kalogo, and N. Louzeiro (2007). “Acheiving Stringent Effluent Limits Takes a Lot of Energy”. Proceedings of the Water Environment Federation, WEFTEC 2007: Session 51 through Session 60, pp. 4343-4356(14) https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050"
+                "7":"H. Monteith, Y. Kalogo, and N. Louzeiro (2007). “Acheiving Stringent Effluent Limits Takes a Lot of Energy”. Proceedings of the Water Environment Federation, WEFTEC 2007: Session 51 through Session 60, pp. 4343-4356(14) <a href=\"https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050\">https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050</a>"
               }
             },
             "co2":""

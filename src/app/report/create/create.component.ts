@@ -1473,12 +1473,20 @@ export class CreateComponent implements OnInit {
      this.router.navigate(['dashboard']);
   }
   testU(data){
-    let test = data.ref;
+    let refs = data.ref;
     var tempHtml="<h6><b>Rs:</b></h6>";
-    for (let key in test) {
-      let value = test[key];
-      tempHtml+=value;
+    for (let rs in refs) {
+      tempHtml+=refs[rs]+'<br>';
     }
+    if(Object.keys(data.range.ref).length !== 0 ){
+      let refr = data.range.ref;
+      var rrHtml="<hr><h6><b>Rs:</b></h6>";
+      for (let rr in refr) {
+        rrHtml+=refr[rr]+'<br>';
+      }
+      tempHtml=tempHtml+rrHtml;
+    }
+
   //  console.log(data.hasOwnProperty("ref"));
     this.html=tempHtml;
     //console.log(data);
