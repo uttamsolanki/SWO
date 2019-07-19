@@ -16,7 +16,7 @@
           <div *ngIf="elements.length<= 0">
             <button style="float: right" type="button" disabled class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/view',id]" (click)="sendScenarioId()">Compare</button>
           </div>
-          <button type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id,'null',scenarioData.length,1]">Create</button>
+          <button type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id,'null',scenarioData.length,1]">Create New</button>
         </div>
         <div class="card-header-actions"></div>
       </div>
