@@ -1231,7 +1231,7 @@ export class CreateComponent implements OnInit {
 
     this.active_sludgeno2 = parseFloat((this.process.active_sludge.no2 / this.unitDivider).toFixed(2));
 
-    this.aerobicch4 =  ((this.process.aerobic.ch4 / this.unitDivider).toFixed(2));
+    this.aerobicch4 =  parseFloat((this.process.aerobic.ch4 / this.unitDivider).toFixed(2));
     this.anarobicch4 = parseFloat((this.process.anarobic.ch4 / this.unitDivider).toFixed(2));
     this.disposalch4 = parseFloat((this.process.disposal.ch4 / this.unitDivider).toFixed(2));
 
