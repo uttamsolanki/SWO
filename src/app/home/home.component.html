@@ -1,6 +1,6 @@
 <app-header
   [fixed]="true"
-  [navbarBrandFull]="{width: 89, height: 25, alt: 'SOWC-GHG'}"
+  [navbarBrandFull]="{src: 'assets/img/logo.jpg',width: 161, height: 70, alt: 'SOWC-GHG'}"
   [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
   [sidebarToggler]="'lg'"
   [asideMenuToggler]="'lg'">
@@ -324,6 +324,6 @@
   </app-aside>
 </div>
 <app-footer>
-  <span>SOWC GHG Calculator 2019</span>
+  <span>Wastewater Treatment Plant Green House Gas Emissions Calculator {{ year | date : 'yyyy' }}</span>
   <span class="ml-auto">Powered by EasyLogbook</span>
 </app-footer>

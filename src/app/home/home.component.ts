@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   private changes: MutationObserver;
   public element: HTMLElement;
   public loginUser:any='';
+  year = new Date();
   // @ts-ignore
   constructor(@Inject(DOCUMENT) _document?: any, private router: Router ) {
 
