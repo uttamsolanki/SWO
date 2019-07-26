@@ -1356,13 +1356,15 @@ export class CreateComponent implements OnInit {
     for (let rs in refs) {
       tempHtml+=refs[rs]+'<br>';
     }
-    if(Object.keys(data.range.ref).length !== 0 ){
-      let refr = data.range.ref;
-      var rrHtml="<hr><h6><b>Rs:</b></h6>";
-      for (let rr in refr) {
-        rrHtml+=refr[rr]+'<br>';
+    if(data.range.ref) {
+      if (Object.keys(data.range.ref).length !== 0) {
+        let refr = data.range.ref;
+        var rrHtml = "<hr><h6><b>Rs:</b></h6>";
+        for (let rr in refr) {
+          rrHtml += refr[rr] + '<br>';
+        }
+        tempHtml = tempHtml + rrHtml;
       }
-      tempHtml=tempHtml+rrHtml;
     }
 
   //  console.log(data.hasOwnProperty("ref"));
