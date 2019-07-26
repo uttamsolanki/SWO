@@ -357,7 +357,8 @@ export class CreateComponent implements OnInit {
 
   ProcessCo2: any = 0;
   isInternal: number=0;
-  newHtml:string="test";
+  newHtml:string="No references";
+  viewMode:boolean=false;
   // *************  barChart Start *************//
 
   public barChart1Colours: Array<any> = [
@@ -530,6 +531,10 @@ export class CreateComponent implements OnInit {
 
     this.scenarioLength = ( parseInt(this.route.snapshot.paramMap.get('length')) + 1);
     this.scenarioLengthTemp = parseInt(this.route.snapshot.paramMap.get('viewFlag'));
+    console.log(this.scenarioLengthTemp);
+    if(this.scenarioLengthTemp==0){
+      this.viewMode=true;
+    }
     if (this.scenarioLength) {
     this.scenarioName = this.scenarioName + ' '  + this.scenarioLength; }
     this.id = this.route.snapshot.paramMap.get('id') || null;
@@ -1370,6 +1375,7 @@ export class CreateComponent implements OnInit {
      this.router.navigate(['dashboard']);
   }
   testU(data){
+    console.log(data);
     var tempHtml;
     if(Object.keys(data.ref).length !== 0 ) {
       let refs = data.ref;
@@ -1378,13 +1384,15 @@ export class CreateComponent implements OnInit {
         tempHtml += refs[rs] + '<br>';
       }
     }
-    if(Object.keys(data.range.ref).length !== 0 ){
-      let refr = data.range.ref;
-      var rrHtml="<hr><h6><b>Rs:</b></h6>";
-      for (let rr in refr) {
-        rrHtml+=refr[rr]+'<br>';
+    if(data.range.ref) {
+      if (Object.keys(data.range.ref).length !== 0) {
+        let refr = data.range.ref;
+        var rrHtml = "<hr><h6><b>Rs:</b></h6>";
+        for (let rr in refr) {
+          rrHtml += refr[rr] + '<br>';
+        }
+        tempHtml = tempHtml + rrHtml;
       }
-      tempHtml=tempHtml+rrHtml;
     }
     if(Object.keys(data.ref).length == 0 && Object.keys(data.range.ref).length == 0 ){
       tempHtml = 'No references';
