@@ -1,6 +1,12 @@
 <div class="animated fadeIn">
   <div class="col-lg-12">
-    <div class="card">
+    <div class="d-flex justify-content-center" *ngIf="!isLoad">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <div class="card details-border" *ngIf="isLoad">
       <div class="card-header">
         Projects
         <div *ngIf="projects.length">
@@ -10,7 +16,7 @@
       </div>
       <div class="card-body">
         <form class="form-horizontal" *ngIf="!projects.length">
-          <p class="msg-text-center">You have not created any Project.</p>
+          <p class="msg-text-center">Please create a project.</p>
           <button type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/new-project']">Create</button>
         </form>
         <div class="table" *ngIf="projects.length">

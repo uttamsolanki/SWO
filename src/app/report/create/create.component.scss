@@ -62,27 +62,442 @@
   margin-top: 29%;
   margin-right: 40%;
 }
-thead{
+
+::ng-deep.tab-content{
+  border: 1px solid #337ab7;
+}
+
+::ng-deep.navTabBackground > ul {
+  background: #337ab7;
+  border: 1px solid #337ab7;
+  color: #fff;
+  line-height: 2;
+}
+
+::ng-deep.nav-link > span {
+  color: #fff !important;
+  font-weight: 700;
+}
+::ng-deep.nav-link.active > span {
+  color: black !important;
+  font-weight: 700;
+}
+
+.details-border{
+  border: 1px solid #4dbd74 !important;
+}
+.details-border > .card-header{
+  color: #3c763d !important;
+  background-color: #dff0d8 !important;
+  border-color: #d6e9c6 !important;
+  font-weight: 700 !important;
+}
+
+//Liquid line
+
+.liquid-border {
+  border: 1px solid #4E76F9 !important;
+}
+.liquid-main-heading{
+  background-color: #4E76F9!important;
+  color:white !important;
+  font-weight: 700 !important;
+}
+::ng-deep.liquid-custom-class{
+  border: 1px solid #B1C3F9 !important;
+}
+::ng-deep.liquid-custom-class > .card-header {
+  background-color: #B1C3F9 !important;
+}
+::ng-deep.liquid-custom-class > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
+  color: black!important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+::ng-deep.liquid-custom-class > .card-header> .panel-title > .accordion-toggle > .btn-link{
+  color: black!important;
+  font-weight: 500 !important;
+}
+.liquid-font-color {
+  color: #4E76F9 !important;
+}
+
+//Liquid Sludge
+
+.liquid-slude-border {
+  border: 1px solid #C5671C !important;
+}
+.liquid-slude-main-heading{
+  background-color: #C5671C !important;
+  color:white !important;
+  font-weight: 700 !important;
+}
+::ng-deep.liquid-slude-custom-heading {
+  border: 1px solid #edac7b !important;
+}
+::ng-deep.liquid-slude-custom-heading > .card-header {
+  background-color: #edac7b !important;
+}
+::ng-deep.liquid-slude-custom-heading > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
+  color: black!important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+::ng-deep.liquid-slude-custom-heading > .card-header> .panel-title > .accordion-toggle > .btn-link{
+  color: black!important;
+  font-weight: 500 !important;
+}
+.liquid-sludge-font-color {
+  color: #C5671C !important;
+}
+
+//Biogas
+
+.biogas-border {
+  border: 1px solid #94CE58 !important;
+}
+.biogas-main-heading{
+  background-color: #94CE58 !important;
+  color:black !important;
+  font-weight: 700 !important;
+}
+::ng-deep.biogas-custom-heading {
+  border: 1px solid #b5f76f !important;
+}
+::ng-deep.biogas-custom-heading > .card-header {
+  background-color: #b5f76f !important;
+}
+::ng-deep.biogas-custom-heading > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
+  color: black!important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+::ng-deep.biogas-custom-heading > .card-header> .panel-title > .accordion-toggle > .btn-link{
+  color: black!important;
+  font-weight: 500 !important;
+}
+.biogas-font-color {
+  color: #94CE58 !important;
+}
+
+// Dewatering
+
+.dewatering-border {
+  border: 1px solid #A3BDD6 !important;
+}
+.dewatering-main-heading{
+  background-color: #A3BDD6 !important;
+  color:black !important;
+  font-weight: 700 !important;
+}
+::ng-deep.dewatering-custom-heading {
+  border: 1px solid #c4dcf2 !important;
+}
+::ng-deep.dewatering-custom-heading > .card-header {
+  background-color: #c4dcf2 !important;
+}
+::ng-deep.dewatering-custom-heading > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
+  color: black!important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+::ng-deep.dewatering-custom-heading > .card-header> .panel-title > .accordion-toggle > .btn-link{
+  color: black!important;
+  font-weight: 500 !important;
+}
+.dewatering-font-color {
+  color: #A3BDD6 !important;
+}
+
+//Disposal
+
+.disposal-border {
+  border: 1px solid #AAAAAA !important;
+}
+.disposal-main-heading{
+  background-color: #AAAAAA !important;
+  color:black !important;
+  font-weight: 700 !important;
+}
+::ng-deep.disposal-custom-heading{
+  border: 1px solid #d3d1d1 !important;
+}
+::ng-deep.disposal-custom-heading > .card-header {
+  background-color: #d3d1d1 !important;
+}
+::ng-deep.disposal-custom-heading > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
+  color: black!important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+::ng-deep.disposal-custom-heading > .card-header> .panel-title > .accordion-toggle > .btn-link{
+  color: black!important;
+  font-weight: 500 !important;
+}
+.disposal-font-color {
+  color: #AAAAAA !important;
+}
+
+//Chemical Style
+
+.chemical-border {
+  border: 1px solid #c819aa !important;
+}
+.chemical-main-heading{
+  background-color: #c819aa !important;
+  color:black !important;
+  font-weight: 700 !important;
+}
+::ng-deep.chemical-custom-heading{
+  border: 1px solid #f48de1 !important;
+}
+::ng-deep.chemical-custom-heading > .card-header {
+  background-color: #f48de1 !important;
+}
+::ng-deep.chemical-custom-heading > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
+  color: black!important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+::ng-deep.chemical-custom-heading > .card-header> .panel-title > .accordion-toggle > .btn-link{
+  color: black!important;
+  font-weight: 500 !important;
+}
+.chemical-font-color {
+  color: #c819aa !important;
+}
+
+
+.summary-border{
+  border: 1px solid #20a8d8 !important;
+}
+
+.summary-border > .card-header {
+  font-weight: 700 !important
+}
+
+.table-border{
+  border: 1px solid #4dbd74 !important;
+}
+.table-border > .card-header{
+  color: #3c763d !important;
+  background-color: #dff0d8 !important;
+  border-color: #d6e9c6 !important;
+}
+.table-border > .card-body> table{
+  border: 1px solid #428BCA !important;
+}
+
+.table-border > .card-body > table > thead{
   background-color: #428BCA !important;
-  border: #428BCA solid 1px !important;
+  border: 1px solid #428BCA !important;
+  color:white !important;
 }
 
-.cd-header-color {
-  background-color: #2b4de7e6!important;
+.activeSludgeImage{
+  text-align: center;
+  display: block;
 }
-::ng-deep.custom-class > .card-header {
-  background-color: #1730d154;
+.activeSludgeImage > img{
+  width: 60%;
+  overflow: hidden;
 }
-::ng-deep.custom-class > .card-header > .panel-title > .accordion-toggle > .btn-link:hover{
-  color: black!important;
+.aerobicImg{
+  text-align: center;
+  display: block;
 }
-::ng-deep.custom-class > .card-header > .panel-title > .accordion-toggle > .btn-link{
-  color: black!important;
-}
-.custom-font-color {
-  color: #428BCA!important;
-}
-.custom-inner-text-color {
-  color: #f8cb00!important;
+.aerobicImg > img{
+  width: 55%;
+  overflow: hidden;
 }
 
+.anaerobicImg{
+  text-align: center;
+  display: block;
+}
+.anaerobicImg > img{
+  width: 55%;
+  overflow: hidden;
+}
+
+.transportation{
+  text-align: center;
+  display: block;
+}
+.transportation > img{
+  width: 40%;
+  overflow: hidden;
+}
+
+.disposal{
+  text-align: center;
+  display: block;
+}
+.disposal > img{
+  width: 40%;
+  overflow: hidden;
+}
+.bg-img{
+  background-image: url("/assets/img/avatars/Liquid_Line.png");
+}
+.custom-text-image {
+margin-bottom: 4%;
+  margin-top: -5%;
+  margin-left: -13%;
+  text-align: center;
+  font-weight: 900;
+  font-size: 16px;
+}
+.biosolid-text-image {
+  margin-top: -6% !important;
+  margin-left: -16% !important;
+}
+.pumping .prelimary-image {
+  width: 18%;
+}
+pumping-line {
+  display: block;
+}
+.pumping-line > img {
+  overflow: hidden;
+}
+.pumping-line .blue-arrow {
+  width: 2.7%;
+  margin-top: -6%;
+  margin-left: -1%;
+  margin-right: -1%;
+}
+.pumping-line .pumping1 {
+width: 12%;
+}
+.pumping-line .prelimary-image {
+  width: 16%;
+}
+
+.pumping-line .arrow-align {
+  margin-left: -12%;
+}
+.prelimary-treatment-image  {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 75px !important;
+  width: 13% !important;
+  padding: 1% !important
+}
+.prelimary-treatment-text {
+  font-size: 12px;
+  margin-top: 28% !important;
+  margin-left: 49% !important;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+}
+.biosolid-line {
+  height: 93px!important;
+  width: 20%!important;
+  padding: 1% !important
+}
+.brand-card{
+  text-align: center !important;
+}
+
+//* {
+//  box-sizing: border-box;
+//}
+
+.btn-grad {
+  background-image: linear-gradient(to right, #F1CDAD 0%, #F1CDAD 12%, #F1CDAD 100%);
+ // margin: 0.3px;
+  padding: 7px;
+  text-align: center;
+  background-size: 100% auto;
+  border-radius: 4px;
+  display: block;
+  font-size: 77%;
+  font-family: serif;
+  border-color: #bcb5b5;
+  //border-style: groove;
+}
+.btn-grad:hover { background-position: right center; }
+
+.btn-grad > b{
+  font-weight: inherit;
+  font-size: larger;
+}
+.col-20 {
+  float: left;
+  width: 11%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-20, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  .arrow-right {
+    transform: rotate(180deg) !important;
+    margin-left: 215px;
+  }
+}
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-bottom: 35px solid #569cbd;
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  transform: rotate(90deg);
+}
+.grey-arrow {
+  padding: 0%;
+  width: 2%;
+}
+.image-style {
+  width: 118%;
+  margin-top: 168%
+}
+.disposal-image-background {
+  background-image: linear-gradient(to right, #AAAAAA 0%, #AAAAAA 12%, #AAAAAA 100%);
+}
+.liquid-image-background {
+  //background-color: #14A2D7 !important;
+  background-image: linear-gradient(to right, #14A2D7 0%, #14A2D7 12%, #14A2D7 100%);
+}
+.seconadry-arrow {
+  width: 615%;
+  margin-top: -117%;
+  margin-left: -168%;
+}
+.liquid-sludge-image-background {
+  background-image: linear-gradient(to right, #C5681B 0%, #C5681B 12%, #C5681B 100%);
+}
+.biogas-image-background {
+  background-image: linear-gradient(to right, #95CE58 0%, #95CE58 12%, #95CE58 100%);
+}
+.dewatering-image-background {
+  background-image: linear-gradient(to right, #A3BED7 0%, #A3BED7 12%, #A3BED7 100%);
+}
+.chemicals-image-background {
+  background-image: linear-gradient(to right, #C81AAA 0%, #C81AAA 12%, #C81AAA 100%);
+}
+.secondary-third-image-background {
+  background-image: linear-gradient(to right, #f1cdad70 0%, #f1cdad6b 12%, #f1cdad69 100%);
+}
+.process-grey-arrow-width {
+  padding: 0%;
+  width: 3%;
+  margin-top: -2%;
+}
+.process-biosolid-font-size {
+  font-size: 100% !important;
+ }

@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   alertsDismiss: any = [];
   dismissible = true;
+  isLoading:boolean=false;
   lognForm: FormGroup;
   formErrors = {
     'email': '',
@@ -45,9 +46,11 @@ export class LoginComponent implements OnInit {
 
   }
   onSubmit(): void {
+
     if (this.lognForm.valid) {
+      this.isLoading=true;
       this.UserService.SignIn(this.lognForm.value).subscribe((res: any) => {
-        console.log(res);
+        this.isLoading=false;
         if (res.status == 0) {
           this.alertsDismiss.push({
             type: 'danger',

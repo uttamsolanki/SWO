@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDirective} from 'ngx-bootstrap';
 import 'chartjs-plugin-datalabels';
 import {DataServiceService} from '../../data-service.service';
+import {forEach} from '@angular/router/src/utils/collection';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -21,7 +22,12 @@ export class CreateComponent implements OnInit {
   @ViewChild('baseChart') public chart: BaseChartDirective;
   @ViewChild('piChart') public piChart: BaseChartDirective;
   @ViewChild('successModal') public modal: ModalDirective;
-  customClass = 'custom-class';
+  liquidClass = 'liquid-custom-class';
+  liquidSludeClass="liquid-slude-custom-heading";
+  biogasClass="biogas-custom-heading";
+  dewateringClass="dewatering-custom-heading";
+  disposalClass="disposal-custom-heading";
+  chemicalClass="chemical-custom-heading";
   fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering', 'chemical', 'process','constant', 'size'];
   setScenarioData;
   modelMsg;
@@ -41,6 +47,18 @@ export class CreateComponent implements OnInit {
   scenarioNewName;
   // ****************** This for data related variable ***********************//
 
+  defaultStructure = {
+    title: null,
+    unit: null,
+    default: 0,
+    suggested: 0,
+    ref: null,
+    range: {
+        min: 0,
+        max: 0,
+        ref: null
+    }
+  };
   size = {
     sel_size: 'Small WWTP',
     data: {default: 5000, suggested: 5000}
@@ -131,71 +149,21 @@ export class CreateComponent implements OnInit {
     data: {title: '0', default: 0, co2: 0, suggested: 0},
   };
 
-  process = {
+   process = {
     active_sludge: {
       co2: 0,
       no2: 0,
       totalCo2: 0,
-      CODin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      TKNin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODout: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      TKNout: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      FLOWwas: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODwas: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      TKNwas: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      COD_BOD5: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      WAS_COD_VSS: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      COD_BOD5out: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      }
+      CODin: this.defaultStructure,
+      TKNin: this.defaultStructure,
+      CODout: this.defaultStructure,
+      TKNout: this.defaultStructure,
+      FLOWwas: this.defaultStructure,
+      CODwas: this.defaultStructure,
+      TKNwas: this.defaultStructure,
+      COD_BOD5: this.defaultStructure,
+      WAS_COD_VSS: this.defaultStructure,
+      COD_BOD5out: this.defaultStructure
     },
     aerobic: {
       plantinfluent: null,
@@ -203,30 +171,10 @@ export class CreateComponent implements OnInit {
       ch4: 0,
       totalCo2: 0,
       Qin: 0,
-      FLOWin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODout: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODred: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      }
+      FLOWin: this.defaultStructure,
+      CODin: this.defaultStructure,
+      CODout: this.defaultStructure,
+      CODred: this.defaultStructure
     },
     anarobic: {
       plantinfluent: '1',
@@ -239,42 +187,12 @@ export class CreateComponent implements OnInit {
       Qin: 0,
       totalCo2: 0,
       addEnergy:0,
-      FLOWin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODout: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODred: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      alpha: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      energy: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      }
+      FLOWin: this.defaultStructure,
+      CODin: this.defaultStructure,
+      CODout: this.defaultStructure,
+      CODred: this.defaultStructure,
+      alpha: this.defaultStructure,
+      energy: this.defaultStructure
     },
     organics: {
       flow: 0,
@@ -290,59 +208,24 @@ export class CreateComponent implements OnInit {
       ch4: 0,
       Qin: 0,
       totalCo2: 0,
-      FLOWin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      CODin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      carbon_methane: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      alpha: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
+      FLOWin: this.defaultStructure,
+      CODin: this.defaultStructure,
+      carbon_methane: this.defaultStructure,
+      alpha: this.defaultStructure,
     },
     transporation: {
       plantinfluent: '1',
       totalCo2: 0,
       Qin: 0,
       travel_type: 'distance',
-      FLOWin: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      distance: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      },
-      time: {
-        title: null,
-        unit: null,
-        default: 0,
-        suggested: 0,
-      }
+      FLOWin: this.defaultStructure,
+      distance: this.defaultStructure,
+      time: this.defaultStructure
     },
   };
   constant: any = {
-    COD_TOC: { title: null, default: null, suggested: null },
-    Removed_TKN: {title: null, default: null, suggested: null },
+    COD_TOC: this.defaultStructure,
+    Removed_TKN: this.defaultStructure
   };
   active_sludgeData = {
     Qin: 0,
@@ -474,11 +357,12 @@ export class CreateComponent implements OnInit {
 
   ProcessCo2: any = 0;
   isInternal: number=0;
+  newHtml:string="test";
   // *************  barChart Start *************//
 
   public barChart1Colours: Array<any> = [
     {
-      backgroundColor: 'rgba(102,178,255,.3)',
+      backgroundColor: 'rgb(181,230,29)',
       borderWidth: 0
     }
   ];
@@ -490,12 +374,12 @@ export class CreateComponent implements OnInit {
     },
     scaleShowVerticalLines: false,
     responsive: true,
-    backgroundColor: 'rgba(148,159,177,0.2)',
+   //backgroundColor: 'rgba(148,159,177,0.2)',
     scales: {
       xAxes: [{
-        barPercentage: 1.0,
+        barPercentage: 2.0,
         categoryPercentage: 1.0,
-        barThickness: 30,
+        barThickness: 50,
         ticks: {
           autoSkip: false
         }
@@ -531,8 +415,10 @@ export class CreateComponent implements OnInit {
     backgroundColor: 'rgba(148,159,177,0.2)',
     scales: {
       xAxes: [{
-
+        //categoryPercentage: 1.0,
+        barPercentage: 2.0,
         categoryPercentage: 1.0,
+        barThickness: 50,
         ticks: {
           autoSkip: false
         },
@@ -560,17 +446,17 @@ export class CreateComponent implements OnInit {
      {
       label: 'CO2 Emission',
       data: [67.8,12,16],
-      backgroundColor: '#0B59BD' // green
+      backgroundColor: '#00A2E8' // green
     },
     {
       label: 'N2O Emission',
       data: [20.7,18,20],
-      backgroundColor: '#ED7D31' // yellow
+      backgroundColor: '#FF7F27' // yellow
     },
     {
       label: 'CH4 Emission',
       data: [11.4,22,24],
-      backgroundColor: '#A5A5A5' // red
+      backgroundColor: '#B5E61D' // red
     }
   ];
 
@@ -584,6 +470,26 @@ export class CreateComponent implements OnInit {
       display: true,
       text: 'CO2 Equivalent Emissions by Category',
       fontSize: 14
+    },
+    tooltips: {
+     // mode: 'average',
+    //  intersect:true,
+      position: 'average',
+      callbacks: {
+        label: function(tooltipItem, data) {
+
+          var dataset = data.datasets[tooltipItem.datasetIndex];
+          var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+            return previousValue + currentValue;
+          });
+
+          var currentValue = dataset.data[tooltipItem.index];
+
+          let temp = (currentValue /total) * 100;
+          let percenta = parseFloat(temp.toFixed(2));
+          return data.labels[tooltipItem.index]+":"+percenta + "%";
+        }
+      }
     },
     legend: {
       display: true,
@@ -877,7 +783,7 @@ export class CreateComponent implements OnInit {
       this.aerobicData.Qin = this.process.aerobic.Qin;
       }
     }
-    this.aerobicData.Qout = this.aerobicData.Qin;
+    this.aerobicData.Qout =  parseFloat(this.aerobicData.Qin.toFixed(2));
     this.calcAerobicCo2();
   }
   calcAerobicCo2() {
@@ -932,7 +838,7 @@ export class CreateComponent implements OnInit {
       this.anarobicData.CODin = 0;
     }
     this.anarobicData.CODin = parseFloat(this.anarobicData.CODin.toFixed(2));
-    this.anarobicData.Qout = this.anarobicData.Qin;
+    this.anarobicData.Qout = parseFloat(this.anarobicData.Qin.toFixed(2));
     if (this.process.anarobic.isOrganic == 0 && this.process.anarobic.isBiosolids == 0) {
       this.process.anarobic.isExternal=0;
     } else {
@@ -950,7 +856,8 @@ export class CreateComponent implements OnInit {
     if (this.biogas.sel_type !== '0') {
       calCh4 = temp * alpha * 0.044;
       this.anarobicData.ch4 = parseFloat(calCh4.toFixed(2));
-      this.anarobicData.co2  = this.anarobicData.co2 + this.anarobicData.ch4;
+      let anCh4 = this.anarobicData.co2 + this.anarobicData.ch4;
+      this.anarobicData.co2  = parseFloat(anCh4.toFixed(2));
       this.anarobicData.ch4 = 0;
       if(this.process.anarobic.isFlaring==1){
         this.process.anarobic.isExternal=0;
@@ -982,7 +889,7 @@ export class CreateComponent implements OnInit {
       this.anarobicData.ch4External = parseFloat(((tempEnergy / this.COD_TOC_PER_MOL) * alpha * 0.016).toFixed(2));
       this.anarobicData.addEnergy = parseFloat((this.anarobicData.ch4External * this.process.anarobic.energy.default).toFixed(2));
     } else {
-      this.anarobicData.ch4WWTP=0;
+     // this.anarobicData.ch4WWTP=0;
       this.anarobicData.ch4External=0;
       this.anarobicData.addEnergy=0;
     }
@@ -1324,7 +1231,7 @@ export class CreateComponent implements OnInit {
 
     this.active_sludgeno2 = parseFloat((this.process.active_sludge.no2 / this.unitDivider).toFixed(2));
 
-    this.aerobicch4 = parseFloat((this.process.aerobic.ch4 / this.unitDivider).toFixed(2));
+    this.aerobicch4 =  parseFloat((this.process.aerobic.ch4 / this.unitDivider).toFixed(2));
     this.anarobicch4 = parseFloat((this.process.anarobic.ch4 / this.unitDivider).toFixed(2));
     this.disposalch4 = parseFloat((this.process.disposal.ch4 / this.unitDivider).toFixed(2));
 
@@ -1340,17 +1247,17 @@ export class CreateComponent implements OnInit {
       {
         label: 'CO2 Emission',
         data: [this.active_sludgeco2,this.aerobicco2,this.anarobicco2,JSON.parse((this.active_sludgeco2+this.aerobicco2+this.anarobicco2).toFixed(2))],
-        backgroundColor: '#0B59BD' // green
+        backgroundColor: '#00A2E8' // green
       },
       {
         label: 'N2O Emission',
         data: [this.active_sludgeno2,0,0,this.active_sludgeno2],
-        backgroundColor: '#ED7D31' // yellow
+        backgroundColor: '#FF7F27' // yellow
       },
       {
         label: 'CH4 Emission',
         data: [0,this.aerobicch4,this.anarobicch4, JSON.parse((this.aerobicch4+ this.anarobicch4).toFixed(2))],
-        backgroundColor: '#A5A5A5' // red
+        backgroundColor: '#B5E61D' // red
       }
     ];
 
@@ -1462,5 +1369,29 @@ export class CreateComponent implements OnInit {
     this.modal.hide();
      this.router.navigate(['dashboard']);
   }
+  testU(data){
+    var tempHtml;
+    if(Object.keys(data.ref).length !== 0 ) {
+      let refs = data.ref;
+      tempHtml = "<h6><b>Rs:</b></h6>";
+      for (let rs in refs) {
+        tempHtml += refs[rs] + '<br>';
+      }
+    }
+    if(Object.keys(data.range.ref).length !== 0 ){
+      let refr = data.range.ref;
+      var rrHtml="<hr><h6><b>Rs:</b></h6>";
+      for (let rr in refr) {
+        rrHtml+=refr[rr]+'<br>';
+      }
+      tempHtml=tempHtml+rrHtml;
+    }
+    if(Object.keys(data.ref).length == 0 && Object.keys(data.range.ref).length == 0 ){
+      tempHtml = 'No references';
+    }
 
+  //  console.log(data.hasOwnProperty("ref"));
+    this.newHtml=tempHtml;
+
+  }
 }

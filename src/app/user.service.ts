@@ -16,14 +16,20 @@ export class UserService {
 
   SignIn(user){
     console.log('Sign in call');
+    this._headers = new HttpHeaders({'Content-Type':'application/json','No-Auth':'True'});
+    this._baseURL = AppConstants.baseURL;
     return this._http.post(this._baseURL+'users/signin', user,{headers:this._headers});
   }
 
   SignUp(user){
+    this._headers = new HttpHeaders({'Content-Type':'application/json','No-Auth':'True'});
+    this._baseURL = AppConstants.baseURL;
     return this._http.post(this._baseURL+'users/signup', user,{headers:this._headers});
   }
 
   forgotPassword(user){
+    this._headers = new HttpHeaders({'Content-Type':'application/json','No-Auth':'True'});
+    this._baseURL = AppConstants.baseURL;
     return this._http.post(this._baseURL+'users/forgotPassword', user,{headers:this._headers});
   }
 

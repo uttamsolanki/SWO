@@ -21,7 +21,7 @@
         "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation"
       },
       "range":{
-        "min":null,
+        "min":0,
         "max":1,
         "ref":{
 
@@ -52,8 +52,7 @@
           "default":0.005,
           "suggested":0.005,
           "ref":{
-            "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by HydromantisInc. in Association with XCG Consultants Ltd.",
-            "*":"value"
+            "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd."
           },
           "range":{
             "min":0,
@@ -69,8 +68,7 @@
           "default":0.05,
           "suggested":0.05,
           "ref":{
-            "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by HydromantisInc. in Association with XCG Consultants Ltd",
-            "**":"value"
+            "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by HydromantisInc. in Association with XCG Consultants Ltd"
           },
           "range":{
             "min":0,
@@ -133,11 +131,11 @@
         {
           "title": "User Specified",
           "default":0,
-          "suggested":null,
+          "suggested":0.0181,
           "ref":{
           },
           "range":{
-            "min":null,
+            "min":0,
             "max":1,
             "ref":{
 
@@ -157,13 +155,13 @@
             "default":0.134,
             "suggested":0.134,
             "ref":{
-              "5":"value"
+              "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation"
             },
             "range":{
               "min":0.1,
               "max":0.425,
               "ref":{
-                "7":"value"
+                "7":"H. Monteith, Y. Kalogo, and N. Louzeiro (2007). “Acheiving Stringent Effluent Limits Takes a Lot of Energy”. Proceedings of the Water Environment Federation, WEFTEC 2007: Session 51 through Session 60, pp. 4343-4356(14) <a href=\"https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050\" target=\"_blank\" >https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050</a>"
               }
             },
             "co2":""
@@ -173,14 +171,13 @@
             "default":0.28,
             "suggested":0.28,
             "ref":{
-              "8":"value",
-              "*":"*"
+              "8":"Degrémont Limitée (2010). Personal communications between Lynne Maclennan, XCG Consultants Ltd. and Francoise Petitpain Perrin, Degrémont Limitée.  : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
             },
             "range":{
               "min":0.2,
               "max":0.35,
               "ref":{
-                "7":"value"
+                "7":"H. Monteith, Y. Kalogo, and N. Louzeiro (2007). “Acheiving Stringent Effluent Limits Takes a Lot of Energy”. Proceedings of the Water Environment Federation, WEFTEC 2007: Session 51 through Session 60, pp. 4343-4356(14) <a href=\"https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050\" target=\"_blank\">https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050</a>"
               }
             },
             "co2":""
@@ -190,10 +187,10 @@
             "default":0.65,
             "suggested":0.65,
             "ref":{
-              "8":"value"
+              "8":"Degrémont Limitée (2010). Personal communications between Lynne Maclennan, XCG Consultants Ltd. and Francoise Petitpain Perrin, Degrémont Limitée.  : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
             },
             "range":{
-              "min":null,
+              "min":0,
               "max":1,
               "ref":{
 
@@ -206,10 +203,10 @@
             "default":0.8,
             "suggested":0.8,
             "ref":{
-              "8":"value"
+              "8":"Degrémont Limitée (2010). Personal communications between Lynne Maclennan, XCG Consultants Ltd. and Francoise Petitpain Perrin, Degrémont Limitée.  : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
             },
             "range":{
-              "min":null,
+              "min":0,
               "max":1,
               "ref":{
 
@@ -222,14 +219,14 @@
             "default":0,
             "suggested":null,
             "ref":{
-              "6":"value",
+              "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>",
               "*":""
             },
             "range":{
               "min":0.22,
               "max":0.42,
               "ref":{
-                "7":"value"
+                "7":"H. Monteith, Y. Kalogo, and N. Louzeiro (2007). “Acheiving Stringent Effluent Limits Takes a Lot of Energy”. Proceedings of the Water Environment Federation, WEFTEC 2007: Session 51 through Session 60, pp. 4343-4356(14) <a href=\"https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050\" target=\"_blank\">https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050</a>"
               }
             },
             "co2": ""
@@ -244,14 +241,13 @@
             "default":0.301582,
             "suggested":0.301582,
             "ref":{
-              "6":"value",
-              "*":""
+              "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
             },
             "range":{
               "min":0.2438,
               "max":0.548,
               "ref":{
-                "6":"value"
+                "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
               }
             },
             "co2":""
@@ -261,14 +257,13 @@
             "default":0.32,
             "suggested":0.32,
             "ref":{
-              "6":"value",
-              "**":"*"
+              "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
             },
             "range":{
               "min":0.2503,
               "max":0.3951,
               "ref":{
-                "6":"value"
+                "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
               }
             },
             "co2":""
@@ -278,11 +273,10 @@
             "default":0.6166,
             "suggested":0.6166,
             "ref":{
-              "6":"value",
-              "***":""
+              "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
             },
             "range":{
-              "min":null,
+              "min":0,
               "max":1,
               "ref":{
 
@@ -292,14 +286,14 @@
           },
           {
             "title":"Fine Bubble + Mechanical Mixing",
-            "default":null,
-            "suggested":null,
+            "default":0.0641,
+            "suggested":0.0641,
             "ref":{
 
             },
             "range":{
-              "min":null,
-              "max":null,
+              "min":0,
+              "max":0,
               "ref":{
 
               }
@@ -308,14 +302,14 @@
           },
           {
             "title":"Coarse Bubble + Mechanical Mixing",
-            "default":null,
-            "suggested":null,
+            "default":0.0641,
+            "suggested":0.0641,
             "ref":{
 
             },
             "range":{
-              "min":null,
-              "max":null,
+              "min":0,
+              "max":1,
               "ref":{
 
               }
@@ -327,14 +321,13 @@
             "default":0,
             "suggested":null,
             "ref":{
-              "6":"value",
-              "*":""
+              "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
             },
             "range":{
               "min":0.22,
               "max":0.42,
               "ref":{
-                "7":"value"
+                "7":"H. Monteith, Y. Kalogo, and N. Louzeiro (2007). “Acheiving Stringent Effluent Limits Takes a Lot of Energy”. Proceedings of the Water Environment Federation, WEFTEC 2007: Session 51 through Session 60, pp. 4343-4356(14) <a href=\"https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050\" target=\"_blank\">https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050</a> "
               }
             },
             "co2": ""
@@ -349,14 +342,13 @@
             "default":0.24514,
             "suggested":0.24514,
             "ref":{
-              "6":"value",
-              "*":""
+              "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
             },
             "range":{
               "min":0.0641,
               "max":0.628,
               "ref":{
-                "6":"value"
+                "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
               }
             },
             "co2":""
@@ -366,14 +358,13 @@
             "default":0.33,
             "suggested":0.33,
             "ref":{
-              "6":"value",
-              "**":"*"
+              "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
             },
             "range":{
               "min":0.107,
               "max":0.628,
               "ref":{
-                "6":"value"
+                "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
               }
             },
             "co2":""
@@ -386,8 +377,8 @@
 
             },
             "range":{
-              "min":null,
-              "max":null,
+              "min":0,
+              "max":0,
               "ref":{
 
               }
@@ -396,14 +387,14 @@
           },
           {
             "title":"Fine Bubble + Mechanical Mixing",
-            "default":null,
-            "suggested":null,
+            "default":0.0641,
+            "suggested":0.0641,
             "ref":{
 
             },
             "range":{
-              "min":null,
-              "max":null,
+              "min":0,
+              "max":0,
               "ref":{
 
               }
@@ -412,14 +403,14 @@
           },
           {
             "title":"Coarse Bubble + Mechanical Mixing",
-            "default":null,
-            "suggested":null,
+            "default":0.0641,
+            "suggested":0.0641,
             "ref":{
 
             },
             "range":{
-              "min":null,
-              "max":null,
+              "min":0,
+              "max":0,
               "ref":{
 
               }
@@ -431,14 +422,13 @@
             "default":0,
             "suggested":null,
             "ref":{
-              "6":"value",
-              "*":""
+
             },
             "range":{
               "min":0.22,
               "max":0.42,
               "ref":{
-                "7":"value"
+
               }
             },
             "co2": ""
@@ -453,10 +443,10 @@
       "default":0.0185,
       "suggested":0.0185,
       "ref":{
-        "5":""
+        "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation. "
       },
       "range":{
-        "min":null,
+        "min":0,
         "max":1,
         "ref":{
 
@@ -469,7 +459,7 @@
       "default":0,
       "suggested":null,
       "ref":{
-        "5":""
+        "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation. "
       },
       "range":{
         "min":null,
@@ -486,11 +476,11 @@
       "default":0.029,
       "suggested":0.029,
       "ref":{
-        "6":"value"
+        "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
       },
       "range":{
-        "min":null,
-        "max":null,
+        "min":0,
+        "max":0,
         "ref":{
 
         }
@@ -502,13 +492,13 @@
       "default":0.4,
       "suggested":0.4,
       "ref":{
-        "9":"value"
+        "9":"Metcalf & Eddy and AECOM (2007), Water Reuse: Issues, Technologies, and Applications. Takashi Asano, Franklin Burton, Harold Leverenz.  ISBN: 978-0-07-145927-3. <a href=\"https://www.accessengineeringlibrary.com/browse/water-reuse-issues-technologies-and-applications\" target=\"_blank\">https://www.accessengineeringlibrary.com/browse/water-reuse-issues-technologies-and-applications</a>"
       },
       "range":{
-        "min":null,
-        "max":null,
+        "min":0,
+        "max":0,
         "ref":{
-          "9":"value"
+          "9":"Metcalf & Eddy and AECOM (2007), Water Reuse: Issues, Technologies, and Applications. Takashi Asano, Franklin Burton, Harold Leverenz.  ISBN: 978-0-07-145927-3. <a href=\"https://www.accessengineeringlibrary.com/browse/water-reuse-issues-technologies-and-applications\" target=\"_blank\">https://www.accessengineeringlibrary.com/browse/water-reuse-issues-technologies-and-applications</a>"
         }
       },
       "co2": ""
@@ -518,13 +508,13 @@
       "default":0.4,
       "suggested":0.4,
       "ref":{
-        "9":"value"
+        "9":"Metcalf & Eddy and AECOM (2007), Water Reuse: Issues, Technologies, and Applications. Takashi Asano, Franklin Burton, Harold Leverenz.  ISBN: 978-0-07-145927-3. <a href=\"https://www.accessengineeringlibrary.com/browse/water-reuse-issues-technologies-and-applications\" target=\"_blank\">https://www.accessengineeringlibrary.com/browse/water-reuse-issues-technologies-and-applications</a>"
       },
       "range":{
         "min":0.4,
         "max":3,
         "ref":{
-          "9":"value"
+          "9":"Metcalf & Eddy and AECOM (2007), Water Reuse: Issues, Technologies, and Applications. Takashi Asano, Franklin Burton, Harold Leverenz.  ISBN: 978-0-07-145927-3. <a href=\"https://www.accessengineeringlibrary.com/browse/water-reuse-issues-technologies-and-applications\" target=\"_blank\">https://www.accessengineeringlibrary.com/browse/water-reuse-issues-technologies-and-applications</a>"
         }
       },
       "co2": ""
@@ -534,14 +524,13 @@
       "default":0.32,
       "suggested":0.32,
       "ref":{
-        "6":"value",
-        "*":""
+        "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
       },
       "range":{
         "min":0.22,
         "max":0.42,
         "ref":{
-          "7":"value"
+          "7":"H. Monteith, Y. Kalogo, and N. Louzeiro (2007). “Acheiving Stringent Effluent Limits Takes a Lot of Energy”. Proceedings of the Water Environment Federation, WEFTEC 2007: Session 51 through Session 60, pp. 4343-4356(14) <a href=\"https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050\" target=\"_blank\">https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050</a>"
         }
       },
       "co2": ""
@@ -551,14 +540,13 @@
       "default":0,
       "suggested":null,
       "ref":{
-        "6":"value",
-        "*":""
+        "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
       },
       "range":{
         "min":0.22,
         "max":0.42,
         "ref":{
-          "7":"value"
+          "7":"H. Monteith, Y. Kalogo, and N. Louzeiro (2007). “Acheiving Stringent Effluent Limits Takes a Lot of Energy”. Proceedings of the Water Environment Federation, WEFTEC 2007: Session 51 through Session 60, pp. 4343-4356(14) <a href=\"https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050\" target=\"_blank\">https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050</a>"
         }
       },
       "co2": ""
@@ -570,16 +558,15 @@
       "default":0.0041,
       "suggested":0.0041,
       "ref":{
-        "6":"value",
-        "*":""
+        "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
       },
       "range":{
         "min":0.0003,
         "max":0.0079,
         "ref":{
-          "6":"value",
-          "10":"value",
-          "11":"value"
+          "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>",
+          "10":"New York State Energy Research and Development Authority (NYSERDA), (1995). Wastewater Treatment and Sludge Management – Energy Reference Guide. Report prepared by Smith D.A. and Clark K.W., 2034-ERTER-MW-93. ",
+          "11":"Evans, B. and Laughton, P. (1994). Emerging Trends in Electrical Energy Usage at Canadian (Ontario) Municipal Wastewater Treatment Plant Facilities and Strategies for Improving Energy Efficiency. Water Science and Technology, 30(4): 17-23. <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
         }
       },
       "co2": ""
@@ -589,14 +576,13 @@
       "default":0.056,
       "suggested":0.056,
       "ref":{
-        "6":"value",
-        "*":""
+        "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
       },
       "range":{
         "min":0.0451,
         "max":0.066,
         "ref":{
-          "6":"value"
+          "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
         }
       },
       "co2": ""
@@ -606,14 +592,14 @@
       "default":0.135,
       "suggested":0.135,
       "ref":{
-        "6":"value",
-        "*":""
+        "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
       },
       "range":{
         "min":0.123,
         "max":0.147,
         "ref":{
-          "7":"value"
+          "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>",
+          "11": "Evans, B. and Laughton, P. (1994). Emerging Trends in Electrical Energy Usage at Canadian (Ontario) Municipal Wastewater Treatment Plant Facilities and Strategies for Improving Energy Efficiency. Water Science and Technology, 30(4): 17-23. <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
         }
       },
       "co2": ""
@@ -623,14 +609,13 @@
       "default":0,
       "suggested":null,
       "ref":{
-        "6":"value",
-        "*":""
+        "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
       },
       "range":{
         "min":0.22,
         "max":0.42,
         "ref":{
-          "7":"value"
+          "7":"H. Monteith, Y. Kalogo, and N. Louzeiro (2007). “Acheiving Stringent Effluent Limits Takes a Lot of Energy”. Proceedings of the Water Environment Federation, WEFTEC 2007: Session 51 through Session 60, pp. 4343-4356(14). <a href=\"https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050\" target=\"_blank\">https://www.ingentaconnect.com/contentone/wef/wefproc/2007/00002007/00000014/art00050</a>"
         }
       },
       "co2": ""
@@ -643,10 +628,10 @@
       "default":0.1901,
       "suggested":0.1901,
       "ref":{
-        "6":"value"
+        "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
       },
       "range":{
-        "min":null,
+        "min":0,
         "max":1,
         "ref":{
 
@@ -659,7 +644,7 @@
       "default":0,
       "suggested":null,
       "ref":{
-        "6":"value"
+        "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
       },
       "range":{
         "min":null,
@@ -677,15 +662,14 @@
       "default":0.0643,
       "suggested":0.0643,
       "ref":{
-        "6":"value",
-        "*":""
+        "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
       },
       "range":{
         "min":0.0149,
         "max":0.1137,
         "ref":{
-          "6":"value",
-          "12":""
+          "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>",
+          "12":"Electric Power Research Institute (EPRI), (1996). Water and Wastewater Industries; Characteristics and Energy Management Opportunities. Prepared by Franklin L. Burton, Burton Environmental Engineering."
         }
       },
       "co2": ""
@@ -695,7 +679,7 @@
       "default":0,
       "suggested":null,
       "ref":{
-        "6":"value"
+        "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
       },
       "range":{
         "min":null,
@@ -713,13 +697,13 @@
         "default":0.0103,
         "suggested":0.0103,
         "ref":{
-          "5":"value"
+          "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation"
         },
         "range":{
-          "min":null,
-          "max":null,
+          "min":0,
+          "max":0,
           "ref":{
-
+            "12":"Electric Power Research Institute (EPRI), (1996). Water and Wastewater Industries; Characteristics and Energy Management Opportunities. Prepared by Franklin L. Burton, Burton Environmental Engineering."
           }
         },
         "co2": ""
@@ -729,11 +713,11 @@
         "default":0.0064,
         "suggested":0.0064,
         "ref":{
-          "5":"value"
+          "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation"
         },
         "range":{
-          "min":null,
-          "max":null,
+          "min":0,
+          "max":1,
           "ref":{
 
           }
@@ -745,13 +729,13 @@
         "default":0.044,
         "suggested":0.044,
         "ref":{
-          "5":"value"
+          "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation"
         },
         "range":{
           "min":0.0331,
           "max":0.0505,
           "ref":{
-            "12":"value"
+            "12":"Electric Power Research Institute (EPRI), (1996). Water and Wastewater Industries; Characteristics and Energy Management Opportunities. Prepared by Franklin L. Burton, Burton Environmental Engineering."
           }
         },
         "co2": ""
@@ -786,7 +770,7 @@
         "min":0.0925,
         "max":0.139,
         "ref":{
-          "1":"value"
+          "1":"Stillwell, Ashlynn S., David C. Hoppock, and Michael E. Webber. \"Energy recovery from wastewater treatment plants in the United States: a case study of the energy-water nexus.\" Sustainability 2, no. 4 (2010): 945-962"
         }
       }
     },
@@ -795,13 +779,13 @@
       "default":null,
       "suggested": null,
       "ref":{
-        "*":"value"
+
       },
       "range":{
         "min":null,
         "max":null,
         "ref":{
-          "1":"value"
+
         }
       }
     }
@@ -812,15 +796,15 @@
       "default":0.0051,
       "suggested":0.0051,
       "ref":{
-        "5":"value"
+        "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation"
       },
       "range":{
         "min":0.0041,
         "max":0.0111,
         "ref":{
-          "10":"value",
-          "12":"value",
-          "13":"value"
+          "10":"New York State Energy Research and Development Authority (NYSERDA), (1995). Wastewater Treatment and Sludge Management – Energy Reference Guide. Report prepared by Smith D.A. and Clark K.W., 2034-ERTER-MW-93. ",
+          "12":"Electric Power Research Institute (EPRI), (1996). Water and Wastewater Industries; Characteristics and Energy Management Opportunities. Prepared by Franklin L. Burton, Burton Environmental Engineering.",
+          "13":"Water and Energy Conservation Guidance Manual for Sewage Works., Energy Conservation Measures (2016, October 6). <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
         }
       },
       "co2": ""
@@ -830,11 +814,11 @@
       "default":0.0027,
       "suggested":0.0027,
       "ref":{
-        "5":"value"
+          "5": "sss"
       },
       "range":{
-        "min":null,
-        "max":null,
+        "min":0,
+        "max":1,
         "ref":{
 
         }
@@ -846,14 +830,14 @@
       "default":0.0689,
       "suggested":0.0689,
       "ref":{
-        "5":"value"
+        "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation."
       },
       "range":{
         "min":0.0413,
         "max":0.1888,
         "ref":{
-          "10":"value",
-          "11":"value"
+          "10":"New York State Energy Research and Development Authority (NYSERDA), (1995). Wastewater Treatment and Sludge Management – Energy Reference Guide. Report prepared by Smith D.A. and Clark K.W., 2034-ERTER-MW-93. ",
+          "11":"Evans, B. and Laughton, P. (1994). Emerging Trends in Electrical Energy Usage at Canadian (Ontario) Municipal Wastewater Treatment Plant Facilities and Strategies for Improving Energy Efficiency. Water Science and Technology, 30(4): 17-23.  <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
         }
       },
       "co2": ""
@@ -869,8 +853,8 @@
         "min":0.0413,
         "max":0.1888,
         "ref":{
-          "10":"value",
-          "11":"value"
+          "10":"New York State Energy Research and Development Authority (NYSERDA), (1995). Wastewater Treatment and Sludge Management – Energy Reference Guide. Report prepared by Smith D.A. and Clark K.W., 2034-ERTER-MW-93. ",
+          "11":"Evans, B. and Laughton, P. (1994). Emerging Trends in Electrical Energy Usage at Canadian (Ontario) Municipal Wastewater Treatment Plant Facilities and Strategies for Improving Energy Efficiency. Water Science and Technology, 30(4): 17-23.  <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
         }
       },
       "co2": ""
@@ -885,8 +869,8 @@
 
         },
         "range":{
-          "min":null,
-          "max":null,
+          "min":0,
+          "max":1,
           "ref":{
 
           }
@@ -972,13 +956,13 @@
         "default":168,
         "suggested": 168,
         "ref":{
-
+          "1": "ss"
         },
         "range":{
           "min":110,
           "max":225,
           "ref":{
-
+            "1": "ss"
           }
         },
         "co2_eq":0.493
@@ -988,13 +972,13 @@
         "default":15.25,
         "suggested": 15.25,
         "ref":{
-
+          "1": "ss"
         },
         "range":{
           "min":10.0,
           "max":20.43,
           "ref":{
-
+            "1": "ss"
           }
         },
         "co2_eq":5.43
@@ -1004,13 +988,13 @@
         "default":18,
         "suggested": 18,
         "ref":{
-
+          "1": "ss"
         },
         "range":{
           "min":6,
           "max":30,
           "ref":{
-
+            "1": "ss"
           }
         },
         "co2_eq":0.167
@@ -1020,13 +1004,13 @@
         "default":220,
         "suggested": 220,
         "ref":{
-
+          "1": "ss"
         },
         "range":{
           "min":40,
           "max":400,
           "ref":{
-
+            "1": "ss"
           }
         },
         "co2_eq":0.846
@@ -1038,13 +1022,13 @@
         "default":12.5,
         "suggested": 12.5,
         "ref":{
-
+          "2": "ss"
         },
         "range":{
           "min":5,
           "max":20,
           "ref":{
-
+            "2": "ss"
           }
         },
         "co2_eq":0.92
@@ -1054,13 +1038,13 @@
         "default":12.5,
         "suggested": 12.5,
         "ref":{
-
+          "2": "ss"
         },
         "range":{
           "min":5,
           "max":20,
           "ref":{
-
+            "2": "ss"
           }
         },
         "co2_eq":0.744
@@ -1071,13 +1055,13 @@
         "default":0.9,
         "suggested": 0.9,
         "ref":{
-
+          "1": "ss"
         },
         "range":{
           "min":null,
           "max":null,
           "ref":{
-
+            "1": "ss"
           }
         },
         "co2_eq":0.418
@@ -1087,13 +1071,13 @@
         "default":1.46,
         "suggested": 1.46,
         "ref":{
-
+          "1": "ss"
         },
         "range":{
-          "min":5,
-          "max":20,
+          "min":null,
+          "max":null,
           "ref":{
-
+            "1": "ss"
           }
         },
         "co2_eq":0.42
@@ -1103,13 +1087,13 @@
         "default":0.90,
         "suggested": 0.90,
         "ref":{
-
+          "1": "ss"
         },
         "range":{
-          "min":3.08,
-          "max":12.30,
+          "min":null,
+          "max":null,
           "ref":{
-
+            "1": "ss"
           }
         },
         "co2_eq":0.683
@@ -1157,13 +1141,13 @@
         "default":300,
         "suggested":300,
         "ref":{
-
+          "3": "ds"
         },
         "range":{
           "min":175,
           "max":560,
           "ref":{
-
+            "3": "ds"
           }
         }
       },
@@ -1173,13 +1157,13 @@
         "default":40,
         "suggested":40,
         "ref":{
-
+          "1": "ds"
         },
         "range":{
           "min":35,
           "max":45,
           "ref":{
-
+            "1": "ds"
           }
         }
       },
@@ -1189,13 +1173,13 @@
         "default":7.4,
         "suggested":7.4,
         "ref":{
-
+          "1": "ds"
         },
         "range":{
           "min":5.2,
           "max":9.6,
           "ref":{
-
+            "1": "ds"
           }
         }
       },
@@ -1205,13 +1189,13 @@
         "default":3,
         "suggested":3,
         "ref":{
-
+          "1": "ds"
         },
         "range":{
           "min":2,
           "max":4,
           "ref":{
-
+            "1": "ds"
           }
         }
       },
@@ -1225,7 +1209,7 @@
         },
         "range":{
           "min":0.1,
-          "max":5,
+          "max":4,
           "ref":{
 
           }
@@ -1253,13 +1237,13 @@
         "default":800,
         "suggested":800,
         "ref":{
-
+          "2": "ds"
         },
         "range":{
           "min":700,
           "max":900,
           "ref":{
-
+            "2": "ds"
           }
         }
       },
@@ -1323,13 +1307,13 @@
         "default":2,
         "suggested":2,
         "ref":{
-
+            "1": "cc"
         },
         "range":{
-          "min":0.5,
-          "max":3,
+          "min":0.1,
+          "max":4,
           "ref":{
-
+            "1": "cc"
           }
         }
       },
@@ -1339,13 +1323,13 @@
         "default":10000,
         "suggested":10000,
         "ref":{
-
+          "1": "cc"
         },
         "range":{
           "min":null,
           "max":null,
           "ref":{
-
+            "1": "cc"
           }
         }
       },
@@ -1355,13 +1339,13 @@
         "default":5800,
         "suggested":5800,
         "ref":{
-
+          "1": "cc"
         },
         "range":{
           "min":null,
           "max":null,
           "ref":{
-
+            "1": "cc"
           }
         }
       },
@@ -1398,7 +1382,7 @@
         "default":1,
         "suggested":1,
         "ref":{
-
+          "1": "cc"
         },
         "range":{
           "min":0.5,
@@ -1414,13 +1398,13 @@
         "default":28000,
         "suggested":28000,
         "ref":{
-
+          "1": "cc"
         },
         "range":{
           "min":24000,
           "max":32000,
           "ref":{
-
+            "1": "cc"
           }
         }
       },
@@ -1430,7 +1414,7 @@
         "default":14560,
         "suggested":14560,
         "ref":{
-
+          "2": "cc"
         },
         "range":{
           "min":null,
@@ -1481,8 +1465,8 @@
 
         },
         "range":{
-          "min":55,
-          "max":75,
+          "min":-0.2784,
+          "max":-0.4183,
           "ref":{
 
           }
@@ -1619,7 +1603,6 @@
       "default": 3.33,
       "suggested": 3.33,
       "ref": {
-        "*": "value"
       },
       "range": {
         "min": 0.0925,
@@ -1634,7 +1617,7 @@
       "default": 0.34,
       "suggested": 0.34,
       "ref": {
-        "*": "value"
+
       },
       "range": {
         "min": 0.0925,

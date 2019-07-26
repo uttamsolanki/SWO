@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
   <div class="col-lg-12">
-    <div class="card">
+    <div class="card details-border">
       <div class="card-header">
         Scenarios
         <div *ngIf="!scenarioData.length">
@@ -16,14 +16,14 @@
           <div *ngIf="elements.length<= 0">
             <button style="float: right" type="button" disabled class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/view',id]" (click)="sendScenarioId()">Compare</button>
           </div>
-          <button type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id,'null',scenarioData.length,1]">Create</button>
+          <button type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id,'null',scenarioData.length,1]">Create New</button>
         </div>
         <div class="card-header-actions"></div>
       </div>
         <div class="card-body">
           <form class="form-horizontal" *ngIf="!scenarioData.length">
-            <p class="msg-text-center">You have not created any Scenario.</p>
-            <button type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id]">Create</button>
+            <p class="msg-text-center">Please create a Scenario.</p>
+            <button type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id]">Create New</button>
           </form>
           <table class="table" *ngIf="scenarioData.length">
             <thead>

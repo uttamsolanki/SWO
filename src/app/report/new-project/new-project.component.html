@@ -1,27 +1,65 @@
-<div class="card">
+<div class="card details-border">
   <div class="card-header">
     New Project
   </div>
   <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
-    <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="" #heroForm="ngForm">
+<!--    <form class="form" (ngSubmit)="f.form.valid && saveProject()" #f="ngForm" novalidate>-->
+<!--    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>-->
+<!--      <div class="form-group row">-->
+<!--        <label class="col-md-3 col-form-label" for="p_name" >Enter Project Name</label>-->
+<!--        <div class="col-md-4">-->
+<!--&lt;!&ndash;          <input type="text" id="p_name" name="p_name" class="form-control"  placeholder="Project Name"  [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required [(ngModel)]="project.name">&ndash;&gt;-->
+<!--          <input type="text" class="form-control" name="firstName" [(ngModel)]="project.name" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required />-->
+<!--          <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">-->
+<!--            <div *ngIf="name.errors.required">First Name is required</div>-->
+<!--          </div>-->
+<!--&lt;!&ndash;         &lt;!&ndash; <div [hidden]="name.valid || heroForm.name.pristine"&ndash;&gt;-->
+<!--&lt;!&ndash;               class="alert alert-danger">&ndash;&gt;-->
+<!--&lt;!&ndash;            Name is required&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;&ndash;&gt;-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="form-group row">-->
+<!--        <label class="col-md-3 col-form-label" for="description_name" >Enter Description</label>-->
+<!--        <div class="col-md-4">-->
+<!--&lt;!&ndash;          <input type="text" id="description_name"   name="p_description"   class="form-control" placeholder="Description" [ngClass]="{ 'is-invalid': f.submitted && desc.invalid }" required [(ngModel)]="project.desc">&ndash;&gt;-->
+<!--          <input type="text" class="form-control" name="firstName" [(ngModel)]="project.desc" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && desc.invalid }" required />-->
+<!--          <div *ngIf="submitted && f.desc.errors" class="invalid-feedback">-->
+<!--            <div *ngIf="f.desc.errors.required">Project Description is required</div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="form-group row">-->
+<!--      <button type="button" class="offset-5 col-md-2 btn btn-block btn-success " (click)="saveProject()">Create Project</button>-->
+<!--      </div>-->
+<!--    </form>-->
+
+
+    <form name="form" (ngSubmit)="f.form.valid && saveProject()" #f="ngForm" novalidate>
       <div class="form-group row">
-        <label class="col-md-3 col-form-label" for="p_name" >Enter Project Name</label>
-        <div class="col-md-4">
-          <input type="text" id="p_name" name="p_name" class="form-control" required  placeholder="Project Name" [(ngModel)]="project.name">
-<!--         &lt;!&ndash; <div [hidden]="name.valid || heroForm.name.pristine"-->
-<!--               class="alert alert-danger">-->
-<!--            Name is required-->
-<!--          </div>&ndash;&gt;-->
+        <div class="col-md-3">
+          <label for="Name" class="col-form-label">Enter Project Name</label>
+        </div>
+      <div class="col-md-5">
+          <input type="text" class="form-control" name="Name" [(ngModel)]="project.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required />
+        <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+          <div *ngIf="name.errors.required">Project Name is required</div>
         </div>
       </div>
-      <div class="form-group row">
-        <label class="col-md-3 col-form-label" for="description_name" >Enter Description</label>
-        <div class="col-md-4">
-          <input type="text" id="description_name"  name="p_description" required  class="form-control" placeholder="Description" [(ngModel)]="project.desc">
-        </div>
       </div>
       <div class="form-group row">
-      <button type="button" class="offset-5 col-md-2 btn btn-block btn-success " (click)="saveProject()" [disabled]="!heroForm.form.valid">Create Project</button>
+        <div class="col-md-3">
+          <label for="Decs" class="col-form-label">Enter Description</label>
+        </div>
+        <div class="col-md-5">
+          <input type="text" class="form-control" name="Decs" [(ngModel)]="project.desc" #desc="ngModel" [ngClass]="{ 'is-invalid': f.submitted && desc.invalid }" required />
+          <div *ngIf="f.submitted && desc.invalid" class="invalid-feedback">
+            <div *ngIf="desc.errors.required">Project Description Name is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success" >Create Project</button>
       </div>
     </form>
   </div>
@@ -38,10 +76,9 @@
         </div>
         <div class="modal-body new-project-modal">
           <p>{{sucessMessage}}</p>
-          <button type="button" class="btn btn-success yes-button" [routerLink]="['/report/create', responseDataID]">Ok</button>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" [routerLink]="['/report/create', responseDataID]">Close</button>
+          <button type="button" class="btn btn-success yes-button" [routerLink]="['/report/create', responseDataID]">Ok</button>
 <!--          <button type="button" class="btn btn-success">Ok</button>-->
         </div>
       </div>
