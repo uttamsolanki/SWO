@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
 
   projects:any = [];
   numberOfProject:number;
-
+  isLoad:boolean=false;
 
   constructor(private  userService: UserService, private dataServiceService: DataServiceService) { }
 
@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
         this.numberOfProject = Object.keys(rep.data).length;
         this.projects = rep.data;
         console.log(this.projects);
+        this.isLoad=true;
       } else {
         console.log(rep.status);
       }

@@ -1,6 +1,12 @@
 <div class="animated fadeIn">
   <div class="col-lg-12">
-    <div class="card details-border">
+    <div class="d-flex justify-content-center" *ngIf="!isLoad">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <div class="card details-border" *ngIf="isLoad">
       <div class="card-header">
         Projects
         <div *ngIf="projects.length">

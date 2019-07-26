@@ -20,7 +20,16 @@
       </div>
     </div>
   </div>
+  <div class="col-md-2 p-0">
+    <!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
+    <!--                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body"  [popover]="pumpingPopOver" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
+    <ng-template #pumpingPopOver style="width: 170%">
+                          <span style="color: #00aced">
+                            <div [innerHtml]="newHtml"></div>
 
+                          </span>
+    </ng-template>
+  </div>
   <div class="row">
   <div class="col-md-12 mb-4">
   <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -44,13 +53,13 @@
               <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="p_name" >Enter Scenario name</label>
                 <div class="col-md-4">
-                  <input type="text" id="p_name" name="p_name" class="form-control" placeholder="Scenario Name"  [(ngModel)]="scenarioName">
+                  <input type="text" id="p_name" [disabled]="viewMode" name="p_name" class="form-control" placeholder="Scenario Name"  [(ngModel)]="scenarioName">
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="description_name" >Description</label>
                 <div class="col-md-4">
-                  <input type="text" id="description_name" name="desc_name" class="form-control" placeholder="Description" [(ngModel)]="scenarioDesc">
+                  <input type="text" id="description_name" [disabled]="viewMode" name="desc_name" class="form-control" placeholder="Description" [(ngModel)]="scenarioDesc">
                 </div>
               </div>
               <!--<div class="form-group row ">-->
@@ -69,7 +78,7 @@
 
                   <!--<label class="col-md-4 col-form-label" for="text-input">Actual WWTP inflow(Qin)</label>-->
                   <div class="col-md-4">
-                    <input type="text" id="WWTP_size" name="WWTP_size" class="form-control" placeholder="0.0" [(ngModel)]="size.data.default" (ngModelChange)="updateWWTPsize()">
+                    <input type="text" id="WWTP_size" [disabled]="viewMode" name="WWTP_size" class="form-control" placeholder="0.0" [(ngModel)]="size.data.default" (ngModelChange)="updateWWTPsize()">
                     <!--<span  *ngIf="size.data.suggested!==0" class="help-block" style="color:#4dbd74">Suggested value {{size.data.suggested}}</span>-->
                   </div>
                   <div class="col-md-1">
@@ -113,11 +122,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_pumping">Please select</label>
                       <div class="col-md-9 col-form-label" id="inlineBiosolids Disposal-radios_pumping" >
                         <div class="form-check form-check-inline mr-1" >
-                          <input class="form-check-input m-2" type="radio" name="pumping_0" id="pumping_0" value="0" [(ngModel)]="primary.pumping.sel_type" (change)="selectTreatmentType('primary','pumping',pumping_types)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="pumping_0" id="pumping_0" value="0" [(ngModel)]="primary.pumping.sel_type" (change)="selectTreatmentType('primary','pumping',pumping_types)">
                           <label class="form-check-label" for="pumping_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of pumping_types">
-                          <input class="form-check-input m-2" type="radio" name="pumping_{{type.title}}" id="pumping_{{type.title}}" value="{{type.title}}" [(ngModel)]="primary.pumping.sel_type" (change)="selectTreatmentType('primary','pumping',pumping_types)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="pumping_{{type.title}}" id="pumping_{{type.title}}" value="{{type.title}}" [(ngModel)]="primary.pumping.sel_type" (change)="selectTreatmentType('primary','pumping',pumping_types)">
                           <label class="form-check-label" for="pumping_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -129,12 +138,12 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_preliminary">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_preliminary" >
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input m-2" type="radio" name="preliminary_0" id="preliminary_0" value="0" [(ngModel)]="primary.prili_treat.sel_type" (change)="selectTreatmentType('primary','prili_treat',prili_treat_types)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="preliminary_0" id="preliminary_0" value="0" [(ngModel)]="primary.prili_treat.sel_type" (change)="selectTreatmentType('primary','prili_treat',prili_treat_types)">
                           <label class="form-check-label" for="preliminary_0">None</label>
                         </div>
 
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of prili_treat_types">
-                          <input class="form-check-input m-2" type="radio" name="preliminary_{{type.title}}" id="preliminary_{{type.title}}" value="{{type.title}}" [(ngModel)]="primary.prili_treat.sel_type" (change)="selectTreatmentType('primary','prili_treat',prili_treat_types)" >
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="preliminary_{{type.title}}" id="preliminary_{{type.title}}" value="{{type.title}}" [(ngModel)]="primary.prili_treat.sel_type" (change)="selectTreatmentType('primary','prili_treat',prili_treat_types)" >
                           <label class="form-check-label" for="preliminary_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -146,11 +155,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_primary">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_primary">
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input m-2" type="radio" name="primary_0" id="primary_0" value="0" [(ngModel)]="primary.pri_treat.sel_type" (change)="selectTreatmentType('primary','pri_treat',pri_treat_types)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="primary_0" id="primary_0" value="0" [(ngModel)]="primary.pri_treat.sel_type" (change)="selectTreatmentType('primary','pri_treat',pri_treat_types)">
                           <label class="form-check-label" for="primary_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of pri_treat_types">
-                          <input class="form-check-input m-2" type="radio" name="inline-radios" id="primary_{{type.title}}" value="{{type.title}}" [(ngModel)]="primary.pri_treat.sel_type" (change)="selectTreatmentType('primary','pri_treat',pri_treat_types)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="primary_{{type.title}}" id="primary_{{type.title}}" value="{{type.title}}" [(ngModel)]="primary.pri_treat.sel_type" (change)="selectTreatmentType('primary','pri_treat',pri_treat_types)">
                           <label class="form-check-label" for="primary_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -160,7 +169,7 @@
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="sec_growth_type">Select Type</label>
                       <div class="col-md-6">
-                        <select id="sec_growth_type" name="sec_growth_type" class="form-control" (change)="selectGrowthTypeChange($event,growth_types)" [(ngModel)]="secondary.sel_growth_type">
+                        <select id="sec_growth_type" name="sec_growth_type" [disabled]="viewMode" class="form-control" (change)="selectGrowthTypeChange($event,growth_types)" [(ngModel)]="secondary.sel_growth_type">
                           <option value="0" >Select Type</option>
                           <option *ngFor="let type of growth_types" value={{type.title}} >{{type.title}}</option>
                         </select>
@@ -170,11 +179,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_secondary_types">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_secondary_types">
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input m-2" type="radio" name="sec_types_0" id="sec_types_0" value="0" (change)="selectTreatmentType('','secondary',secondary_types)" [(ngModel)]="secondary.sel_type">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="sec_types_0" id="sec_types_0" value="0" (change)="selectTreatmentType('','secondary',secondary_types)" [(ngModel)]="secondary.sel_type">
                           <label class="form-check-label" for="sec_types_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of secondary_types">
-                          <input class="form-check-input m-2" type="radio" name="sec_types_{{type.title}}" id="sec_types_{{type.title}}" value="{{type.title}}" (change)="selectTreatmentType('','secondary',secondary_types)" [(ngModel)]="secondary.sel_type">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="sec_types_{{type.title}}" id="sec_types_{{type.title}}" value="{{type.title}}" (change)="selectTreatmentType('','secondary',secondary_types)" [(ngModel)]="secondary.sel_type">
                           <label class="form-check-label" for="sec_types_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -185,11 +194,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_clari">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_clari">
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input" type="radio" name="sec_clari_0" id="sec_clari_0" value="0" [(ngModel)]="sec_clr.sel_type" (change)="selectTreatmentType('','sec_clr',sec_clr_types)">
+                          <input class="form-check-input" type="radio" [disabled]="viewMode" name="sec_clari_0" id="sec_clari_0" value="0" [(ngModel)]="sec_clr.sel_type" (change)="selectTreatmentType('','sec_clr',sec_clr_types)">
                           <label class="form-check-label" for="sec_clari_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1" *ngFor="let type of sec_clr_types">
-                          <input class="form-check-input m-2" type="radio" name="sec_clari_{{type.title}}" id="sec_clari_{{type.title}}" value="{{type.title}}" [(ngModel)]="sec_clr.sel_type" (change)="selectTreatmentType('','sec_clr',sec_clr_types)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="sec_clari_{{type.title}}" id="sec_clari_{{type.title}}" value="{{type.title}}" [(ngModel)]="sec_clr.sel_type" (change)="selectTreatmentType('','sec_clr',sec_clr_types)">
                           <label class="form-check-label" for="sec_clari_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -200,11 +209,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_tertiary">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_tertiary">
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input m-2" type="radio" name="tertiary_0" id="tertiary_0" value="0" (change)="selectTreatmentType('','tertiary',tertiary_types)" [(ngModel)]="tertiary.sel_type">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="tertiary_0" id="tertiary_0" value="0" (change)="selectTreatmentType('','tertiary',tertiary_types)" [(ngModel)]="tertiary.sel_type">
                           <label class="form-check-label" for="tertiary_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1" *ngFor="let type of tertiary_types">
-                          <input class="form-check-input m-2" type="radio" name="tertiary_{{type.title}}" id="tertiary_{{type.title}}" value="{{type.title}}" (change)="selectTreatmentType('','tertiary',tertiary_types)" [(ngModel)]="tertiary.sel_type">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="tertiary_{{type.title}}" id="tertiary_{{type.title}}" value="{{type.title}}" (change)="selectTreatmentType('','tertiary',tertiary_types)" [(ngModel)]="tertiary.sel_type">
                           <label class="form-check-label" for="tertiary_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -216,11 +225,11 @@
                       <div class="col-md-9 col-form-label" id="inline-radios_disinfection">
 
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input m-2" type="radio" name="disinfection_0" id="disinfection_0" value="0" (change)="selectTreatmentType('','disinfection',disinfection_types)" [(ngModel)]="disinfection.sel_type">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="disinfection_0" id="disinfection_0" value="0" (change)="selectTreatmentType('','disinfection',disinfection_types)" [(ngModel)]="disinfection.sel_type">
                           <label class="form-check-label" for="disinfection_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of disinfection_types">
-                          <input class="form-check-input m-2" type="radio" name="disinfection_{{type.title}}" id="disinfection_{{type.title}}" value="{{type.title}}" (change)="selectTreatmentType('','disinfection',disinfection_types)" [(ngModel)]="disinfection.sel_type">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="disinfection_{{type.title}}" id="disinfection_{{type.title}}" value="{{type.title}}" (change)="selectTreatmentType('','disinfection',disinfection_types)" [(ngModel)]="disinfection.sel_type">
                           <label class="form-check-label" for="disinfection_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -349,7 +358,7 @@
                   <div class="offset-md-1 col-md-11 row">
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="pumping_rate"  name="pumping_rate" [(ngModel)]="primary.pumping.data.default" class="form-control" placeholder="0.0" (ngModelChange)="updateWWTPsize()">
+                      <input type="text" id="pumping_rate"  [disabled]="viewMode" name="pumping_rate" [(ngModel)]="primary.pumping.data.default" class="form-control" placeholder="0.0" (ngModelChange)="updateWWTPsize()">
                       <div class="p-1">
                         <p *ngIf="primary.pumping.data.suggested !==null" class="help-block p-1 m-0" style="color:#4dbd74">
                           <span>Suggested value {{primary.pumping.data.suggested}}</span><br/>
@@ -390,7 +399,7 @@
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="prili_treat_rate" name="prili_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.prili_treat.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="text" id="prili_treat_rate" [disabled]="viewMode" name="prili_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.prili_treat.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="primary.prili_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.prili_treat.data.suggested}}<br/>
                         <span *ngIf="primary.prili_treat.data.range.min || primary.prili_treat.data.range.max">
                           Range value  {{primary.prili_treat.data.range.min}} - {{primary.prili_treat.data.range.max}}
@@ -428,7 +437,7 @@
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="pri_treat_rate" name="pri_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.pri_treat.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="text" id="pri_treat_rate" [disabled]="viewMode" name="pri_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.pri_treat.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="primary.pri_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.pri_treat.data.suggested}}<br/>
                         <span *ngIf="primary.pri_treat.data.range.min || primary.pri_treat.data.range.max">
                           Range value {{primary.pri_treat.data.range.min}} - {{primary.pri_treat.data.range.max}}
@@ -468,7 +477,7 @@
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="second_rate" name="second_rate" class="form-control" placeholder="0.0" [(ngModel)]="secondary.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="text" id="second_rate" [disabled]="viewMode" name="second_rate" class="form-control" placeholder="0.0" [(ngModel)]="secondary.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="secondary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{secondary.data.suggested}}<br/>
                         <span *ngIf="secondary.data.range.min || secondary.data.range.max">
                           Range value  {{secondary.data.range.min}} - {{secondary.data.range.max}}
@@ -507,7 +516,7 @@
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="sec_clr_rate" name="sec_clr_rate" class="form-control" placeholder="0.0" [(ngModel)]="sec_clr.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="text" id="sec_clr_rate" [disabled]="viewMode" name="sec_clr_rate" class="form-control" placeholder="0.0" [(ngModel)]="sec_clr.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="sec_clr.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{sec_clr.data.suggested}}<br/>
                         <span *ngIf="sec_clr.data.range.min || sec_clr.data.range.max">
                           Range value  {{sec_clr.data.range.min}} - {{sec_clr.data.range.max}}
@@ -544,7 +553,7 @@
                   <div class="offset-md-1 col-md-11 row">
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="tertiary_rate" name="tertiary_rate" class="form-control" placeholder="0.0" [(ngModel)]="tertiary.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="text" id="tertiary_rate" [disabled]="viewMode" name="tertiary_rate" class="form-control" placeholder="0.0" [(ngModel)]="tertiary.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="tertiary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{tertiary.data.suggested}}<br/>
                         <span *ngIf="tertiary.data.range.min || tertiary.data.range.max">
                           Range value  {{tertiary.data.range.min}} - {{tertiary.data.range.max}}
@@ -582,7 +591,7 @@
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="disinfection_rate" name="disinfection_rate" class="form-control" placeholder="0.0" [(ngModel)]="disinfection.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="text" id="disinfection_rate" [disabled]="viewMode" name="disinfection_rate" class="form-control" placeholder="0.0" [(ngModel)]="disinfection.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="disinfection.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{disinfection.data.suggested}}<br/>
                         <span *ngIf="disinfection.data.range.min || disinfection.data.range.max">
                           Range value  {{disinfection.data.range.min}} - {{disinfection.data.range.max}}
@@ -625,26 +634,22 @@
             <div class="card-header cd-header-color liquid-slude-main-heading">
               Liquid Sludge Line
               <div class="card-header-actions">
-
                 <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
-
               </div>
             </div>
             <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
-
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
-
                 <accordion>
                   <accordion-group heading="Sludge Thickening" [panelClass]="liquidSludeClass">
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="inline-radios_thickening">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_thickening">
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input m-2" type="radio" name="thickening_0" id="thickening_0" value="0" [(ngModel)]="biosolid.thickener.sel_type" (change)="selectTreatmentType('biosolid','thickener',thickener_types)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="thickening_0" id="thickening_0" value="0" [(ngModel)]="biosolid.thickener.sel_type" (change)="selectTreatmentType('biosolid','thickener',thickener_types)">
                           <label class="form-check-label" for="thickening_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of thickener_types">
-                          <input class="form-check-input m-2" type="radio" name="thickening_{{type.title}" id="thickening_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolid.thickener.sel_type" (change)="selectTreatmentType('biosolid','thickener',thickener_types)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="thickening_{{type.title}}" id="thickening_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolid.thickener.sel_type" (change)="selectTreatmentType('biosolid','thickener',thickener_types)">
                           <label class="form-check-label" for="thickening_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -657,11 +662,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_aerobic">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_aerobic">
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input m-2" type="radio" name="aerobic_0" id="aerobic_0" value="0" [(ngModel)]="biosolid.aerobic.sel_type" (change)="selectTreatmentType('biosolid','aerobic',aerobic_digester)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="aerobic_0" id="aerobic_0" value="0" [(ngModel)]="biosolid.aerobic.sel_type" (change)="selectTreatmentType('biosolid','aerobic',aerobic_digester)">
                           <label class="form-check-label" for="aerobic_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of aerobic_digester">
-                          <input class="form-check-input m-2" type="radio" name="aerobic_{{type.title}}" id="aerobic_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolid.aerobic.sel_type" (change)="selectTreatmentType('biosolid','aerobic',aerobic_digester)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="aerobic_{{type.title}}" id="aerobic_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolid.aerobic.sel_type" (change)="selectTreatmentType('biosolid','aerobic',aerobic_digester)">
                           <label class="form-check-label" for="aerobic_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -674,11 +679,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_anaerobic">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_anaerobic">
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input m-2" type="radio" name="anaerobic_0" id="anaerobic_0" value="0" [(ngModel)]="biosolid.anaerobic.sel_type" (change)="selectTreatmentType('biosolid','anaerobic',anaerobic_digester)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="anaerobic_0" id="anaerobic_0" value="0" [(ngModel)]="biosolid.anaerobic.sel_type" (change)="selectTreatmentType('biosolid','anaerobic',anaerobic_digester)">
                           <label class="form-check-label" for="anaerobic_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of anaerobic_digester">
-                          <input class="form-check-input m-2" type="radio" name="anaerobic_{{type.title}}" id="anaerobic_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolid.anaerobic.sel_type" (change)="selectTreatmentType('biosolid','anaerobic',anaerobic_digester)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="anaerobic_{{type.title}}" id="anaerobic_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolid.anaerobic.sel_type" (change)="selectTreatmentType('biosolid','anaerobic',anaerobic_digester)">
                           <label class="form-check-label" for="anaerobic_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -759,7 +764,7 @@
 
                     <label class="col-md-5 col-form-label " for="anaerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="thickener_rate" name="thickener_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.thickener.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="text" id="thickener_rate" [disabled]="viewMode" name="thickener_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.thickener.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="biosolid.thickener.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.thickener.data.suggested}}<br/>
                         <span *ngIf="biosolid.thickener.data.range.min || biosolid.thickener.data.range.max">
                           Range value  {{biosolid.thickener.data.range.min}} - {{biosolid.thickener.data.range.max}}
@@ -797,7 +802,7 @@
 
                     <label class="col-md-5 col-form-label " for="aerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="aerobic_rate" name="aerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.aerobic.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="text" id="aerobic_rate" [disabled]="viewMode" name="aerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.aerobic.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="biosolid.aerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.aerobic.data.suggested}}<br/>
                         <span *ngIf="biosolid.aerobic.data.range.min || biosolid.aerobic.data.range.max">
                           Range value  {{biosolid.aerobic.data.range.min}} - {{biosolid.aerobic.data.range.max}}
@@ -835,7 +840,7 @@
 
                     <label class="col-md-5 col-form-label " for="anaerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="anaerobic_rate" name="anaerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.anaerobic.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="text" id="anaerobic_rate" [disabled]="viewMode" name="anaerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.anaerobic.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="biosolid.anaerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.anaerobic.data.suggested}}<br/>
                         <span *ngIf="biosolid.anaerobic.data.range.min || biosolid.anaerobic.data.range.max">
                           Range value  {{biosolid.anaerobic.data.range.min}} - {{biosolid.anaerobic.data.range.max}}
@@ -895,11 +900,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_biogas">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_biogas" >
                         <div class="form-check form-check-inline mr-1" >
-                          <input class="form-check-input m-2" type="radio" name="biogas_0" id="biogas_0" value="0" [(ngModel)]="biogas.sel_type"  (change)="selectTreatmentType('','biogas',biogas_type)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="biogas_0" id="biogas_0" value="0" [(ngModel)]="biogas.sel_type"  (change)="selectTreatmentType('','biogas',biogas_type)">
                           <label class="form-check-label" for="biogas_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of biogas_type">
-                          <input class="form-check-input m-2" type="radio" name="biogas_{{type.title}}" id="biogas_{{type.title}}" value="{{type.title}}" [(ngModel)]="biogas.sel_type" (change)="selectTreatmentType('','biogas',biogas_type)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="biogas_{{type.title}}" id="biogas_{{type.title}}" value="{{type.title}}" [(ngModel)]="biogas.sel_type" (change)="selectTreatmentType('','biogas',biogas_type)">
                           <label class="form-check-label" for="biogas_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -954,7 +959,7 @@
 
                     <label class="col-md-5 col-form-label " for="biogas_rate">Actual Biogas Energy Factor:</label>
                     <div class="col-md-5">
-                      <input type="text" id="biogas_rate" name="biogas_rate" class="form-control" placeholder="0.0" [(ngModel)]="biogas.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="text" id="biogas_rate" [disabled]="viewMode" name="biogas_rate" class="form-control" placeholder="0.0" [(ngModel)]="biogas.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="biogas.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biogas.data.suggested}}<br/>
                       <span *ngIf="biogas.data.range.min || biogas.data.range.max">
                         Range value  {{biogas.data.range.min}}- {{biogas.data.range.max}}
@@ -1012,11 +1017,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_dewatering">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_dewatering">
                         <div class="form-check form-check-inline mr-1" >
-                          <input class="form-check-input m-2" type="radio" name="dewatering_0" id="dewatering_0" value="0" [(ngModel)]="dewatering.sel_type" (change)="selectTreatmentType('','dewatering',dewatering_types)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="dewatering_0" id="dewatering_0" value="0" [(ngModel)]="dewatering.sel_type" (change)="selectTreatmentType('','dewatering',dewatering_types)">
                           <label class="form-check-label" for="dewatering_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of dewatering_types">
-                          <input class="form-check-input m-2" type="radio" name="dewatering_{{type.title}}" id="dewatering_{{type.title}}" value="{{type.title}}" [(ngModel)]="dewatering.sel_type" (change)="selectTreatmentType('','dewatering',dewatering_types)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="dewatering_{{type.title}}" id="dewatering_{{type.title}}" value="{{type.title}}" [(ngModel)]="dewatering.sel_type" (change)="selectTreatmentType('','dewatering',dewatering_types)">
                           <label class="form-check-label" for="dewatering_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -1068,7 +1073,7 @@
 
                     <label class="col-md-5 col-form-label " for="dewatering_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="dewatering_rate" name="dewatering_rate" class="form-control" placeholder="0.0" [(ngModel)]="dewatering.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="text" id="dewatering_rate" [disabled]="viewMode" name="dewatering_rate" class="form-control" placeholder="0.0" [(ngModel)]="dewatering.data.default" (ngModelChange)="updateWWTPsize()">
                       <span *ngIf="dewatering.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{dewatering.data.suggested}}<br/>
                       <span *ngIf="dewatering.data.range.min || dewatering.data.range.max">
                         Range value  {{dewatering.data.range.min}} - {{dewatering.data.range.max}}
@@ -1128,11 +1133,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_transportation">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_transportation">
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input m-2" type="radio" name="transportation_0" id="transportation_0" value="0" [(ngModel)]="biosolids_disposals.transportation.sel_type" (change)="selectTreatmentType('biosolids_disposals','transportation',transportation_type)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="transportation_0" id="transportation_0" value="0" [(ngModel)]="biosolids_disposals.transportation.sel_type" (change)="selectTreatmentType('biosolids_disposals','transportation',transportation_type)">
                           <label class="form-check-label" for="transportation_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of transportation_type">
-                          <input class="form-check-input m-2" type="radio" name="transportation_{{type.title}}" id="transportation_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolids_disposals.transportation.sel_type" (change)="selectTreatmentType('biosolids_disposals','transportation',transportation_type)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="transportation_{{type.title}}" id="transportation_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolids_disposals.transportation.sel_type" (change)="selectTreatmentType('biosolids_disposals','transportation',transportation_type)">
                           <label class="form-check-label" for="transportation_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -1144,11 +1149,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_disposal">Please select</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_disposal">
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input m-2" type="radio" name="disposal_0" id="disposal_0" value="0" [(ngModel)]="biosolids_disposals.disposal.sel_type" (change)="selectTreatmentType('biosolids_disposals','disposal',disposal_type)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="disposal_0" id="disposal_0" value="0" [(ngModel)]="biosolids_disposals.disposal.sel_type" (change)="selectTreatmentType('biosolids_disposals','disposal',disposal_type)">
                           <label class="form-check-label" for="disposal_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of disposal_type">
-                          <input class="form-check-input m-2" type="radio" name="disposal_{{type.title}}" id="disposal_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolids_disposals.disposal.sel_type" (change)="selectTreatmentType('biosolids_disposals','disposal',disposal_type)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="disposal_{{type.title}}" id="disposal_{{type.title}}" value="{{type.title}}" [(ngModel)]="biosolids_disposals.disposal.sel_type" (change)="selectTreatmentType('biosolids_disposals','disposal',disposal_type)">
                           <label class="form-check-label" for="disposal_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -1302,11 +1307,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_metalsalts">Please Select Chemicals</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_metalsalts">
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input m-2" type="radio" name="metalsalts_0" id="metalsalts_0" value="0" [(ngModel)]="chemical.metal_salts.sel_type" (change)="selectTreatmentType('chemical','metal_salts',metal_salts_type)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="metalsalts_0" id="metalsalts_0" value="0" [(ngModel)]="chemical.metal_salts.sel_type" (change)="selectTreatmentType('chemical','metal_salts',metal_salts_type)">
                           <label class="form-check-label" for="metalsalts_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of metal_salts_type">
-                          <input class="form-check-input m-2" type="radio" name="metalsalts_{{type.title}}" id="metalsalts_{{type.title}}" value="{{type.title}}" [(ngModel)]="chemical.metal_salts.sel_type" (change)="selectTreatmentType('chemical','metal_salts',metal_salts_type)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="metalsalts_{{type.title}}" id="metalsalts_{{type.title}}" value="{{type.title}}" [(ngModel)]="chemical.metal_salts.sel_type" (change)="selectTreatmentType('chemical','metal_salts',metal_salts_type)">
                           <label class="form-check-label" for="metalsalts_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -1317,11 +1322,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_chlorination">Please Select Chemicals</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_chlorination">
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input m-2" type="radio" name="chlorination_0" id="chlorination_0" value="0" [(ngModel)]="chemical.chlorination.sel_type" (change)="selectTreatmentType('chemical','chlorination',chlorination_type)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="chlorination_0" id="chlorination_0" value="0" [(ngModel)]="chemical.chlorination.sel_type" (change)="selectTreatmentType('chemical','chlorination',chlorination_type)">
                           <label class="form-check-label" for="chlorination_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of chlorination_type">
-                          <input class="form-check-input m-2" type="radio" name="chlorination_{{type.title}}" id="chlorination_{{type.title}}" value="{{type.title}}" [(ngModel)]="chemical.chlorination.sel_type" (change)="selectTreatmentType('chemical','chlorination',chlorination_type)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="chlorination_{{type.title}}" id="chlorination_{{type.title}}" value="{{type.title}}" [(ngModel)]="chemical.chlorination.sel_type" (change)="selectTreatmentType('chemical','chlorination',chlorination_type)">
                           <label class="form-check-label" for="chlorination_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -1332,11 +1337,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_dechlorination">Please Select Chemicals</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_dechlorination">
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input m-2" type="radio" name="dechlorination_0" id="dechlorination_0" value="0" [(ngModel)]="chemical.dechlorination.sel_type" (change)="selectTreatmentType('chemical','dechlorination',dechlorination_type)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="dechlorination_0" id="dechlorination_0" value="0" [(ngModel)]="chemical.dechlorination.sel_type" (change)="selectTreatmentType('chemical','dechlorination',dechlorination_type)">
                           <label class="form-check-label" for="dechlorination_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of dechlorination_type">
-                          <input class="form-check-input m-2" type="radio" name="dechlorination_{{type.title}}" id="dechlorination_{{type.title}}" value="{{type.title}}" [(ngModel)]="chemical.dechlorination.sel_type" (change)="selectTreatmentType('chemical','dechlorination',dechlorination_type)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="dechlorination_{{type.title}}" id="dechlorination_{{type.title}}" value="{{type.title}}" [(ngModel)]="chemical.dechlorination.sel_type" (change)="selectTreatmentType('chemical','dechlorination',dechlorination_type)">
                           <label class="form-check-label" for="dechlorination_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -1347,11 +1352,11 @@
                       <label class="col-md-3 col-form-label" for="inline-radios_chlorine">Please Select Chemicals</label>
                       <div class="col-md-9 col-form-label" id="inline-radios_chlorine">
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input m-2" type="radio" name="chlorine_0" id="chlorine_0" value="0" [(ngModel)]="chemical.chlorine.sel_type" (change)="selectTreatmentType('chemical','chlorine',chlorine_type)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="chlorine_0" id="chlorine_0" value="0" [(ngModel)]="chemical.chlorine.sel_type" (change)="selectTreatmentType('chemical','chlorine',chlorine_type)">
                           <label class="form-check-label" for="Chlorine_0">None</label>
                         </div>
                         <div class="form-check form-check-inline mr-1"  *ngFor="let type of chlorine_type">
-                          <input class="form-check-input m-2" type="radio" name="chlorine_{{type.title}}" id="chlorine_{{type.title}}" value="{{type.title}}" [(ngModel)]="chemical.chlorine.sel_type" (change)="selectTreatmentType('chemical','chlorine',chlorine_type)">
+                          <input class="form-check-input m-2" type="radio" [disabled]="viewMode" name="chlorine_{{type.title}}" id="chlorine_{{type.title}}" value="{{type.title}}" [(ngModel)]="chemical.chlorine.sel_type" (change)="selectTreatmentType('chemical','chlorine',chlorine_type)">
                           <label class="form-check-label" for="chlorine_{{type.title}}">{{type.title}}</label>
                         </div>
                       </div>
@@ -1437,7 +1442,7 @@
                 <div class="offset-md-1 col-md-11 row">
                   <label class="col-md-5 col-form-label " for="metalsalts_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
-                    <input type="text" id="metalsalts_rate" name="metalsalts_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.metal_salts.data.default" (ngModelChange)="updateWWTPsize()">
+                    <input type="text" id="metalsalts_rate" [disabled]="viewMode" name="metalsalts_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.metal_salts.data.default" (ngModelChange)="updateWWTPsize()">
                     <span *ngIf="chemical.metal_salts.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.metal_salts.data.suggested}}<br/>
                     <span *ngIf="chemical.metal_salts.data.range.min || chemical.metal_salts.data.range.max">
                       Range value  {{chemical.metal_salts.data.range.min}} - {{chemical.metal_salts.data.range.max}}
@@ -1474,7 +1479,7 @@
                 <div class="offset-md-1 col-md-11 row">
                   <label class="col-md-5 col-form-label " for="chlorination_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
-                    <input type="text" id="chlorination_rate" name="chlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.chlorination.data.default" (ngModelChange)="updateWWTPsize()">
+                    <input type="text" id="chlorination_rate" [disabled]="viewMode" name="chlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.chlorination.data.default" (ngModelChange)="updateWWTPsize()">
                     <span *ngIf="chemical.chlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.chlorination.data.suggested}}<br/>
                       <span *ngIf="chemical.chlorination.data.range.min || chemical.chlorination.data.range.max">
                         Range value  {{chemical.chlorination.data.range.min}} - {{chemical.chlorination.data.range.max}}
@@ -1511,7 +1516,7 @@
                 <div class="offset-md-1 col-md-11 row">
                   <label class="col-md-5 col-form-label " for="dechlorination_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
-                    <input type="text" id="dechlorination_rate" name="dechlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.dechlorination.data.default" (ngModelChange)="updateWWTPsize()">
+                    <input type="text" id="dechlorination_rate" [disabled]="viewMode" name="dechlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.dechlorination.data.default" (ngModelChange)="updateWWTPsize()">
                     <span *ngIf="chemical.dechlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.dechlorination.data.suggested}}<br/>
                       <span *ngIf="chemical.dechlorination.data.range.min || chemical.dechlorination.data.range.max">
                         Range value  {{chemical.dechlorination.data.range.min}} - {{chemical.dechlorination.data.range.max}}
@@ -1548,7 +1553,7 @@
                 <div class="offset-md-1 col-md-11 row">
                   <label class="col-md-5 col-form-label " for="chlorine_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
-                    <input type="text" id="chlorine_rate" name="metalsalts_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.chlorine.data.default" (ngModelChange)="updateWWTPsize()">
+                    <input type="text" id="chlorine_rate" [disabled]="viewMode" name="chlorine_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.chlorine.data.default" (ngModelChange)="updateWWTPsize()">
                   </div>
                   <div class="col-md-2 p-0 icon-image-span">
                     <span class="help-block">g/m<sup>3</sup></span>
@@ -1611,7 +1616,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Inflow Rate (Qin):</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_Qin"  name="active_sludge_Qin" [(ngModel)]="active_sludgeData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="text" id="active_sludge_Qin"  [disabled]="viewMode" name="active_sludge_Qin" [(ngModel)]="active_sludgeData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -1622,7 +1627,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Influent COD - CODin:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_CODin"  name="active_sludge_CODin" [(ngModel)]="process.active_sludge.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="text" id="active_sludge_CODin"  [disabled]="viewMode" name="active_sludge_CODin" [(ngModel)]="process.active_sludge.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODin.suggested}}</span><br/>
                             <span *ngIf="process.active_sludge.CODin.range.min || process.active_sludge.CODin.range.max">
@@ -1646,7 +1651,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Influent TKN - TKNin:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_TKNin"  name="active_sludge_TKNin" [(ngModel)]="process.active_sludge.TKNin.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="text" id="active_sludge_TKNin"  [disabled]="viewMode" name="active_sludge_TKNin" [(ngModel)]="process.active_sludge.TKNin.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.TKNin.suggested}}</span><br/>
                             <span *ngIf="process.active_sludge.TKNin.range.min || process.active_sludge.TKNin.range.max">
@@ -1673,7 +1678,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">WAS Rate:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_FLOWwas"  name="active_sludge_FLOWwas" [(ngModel)]="process.active_sludge.FLOWwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="text" id="active_sludge_FLOWwas"  [disabled]="viewMode" name="active_sludge_FLOWwas" [(ngModel)]="process.active_sludge.FLOWwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.FLOWwas.suggested}}</span><br/>
                             <span *ngIf="process.active_sludge.FLOWwas.range.min || process.active_sludge.FLOWwas.range.max">
@@ -1697,7 +1702,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">WAS Flow Rate Qwas:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_Qwas"  name="active_sludge_Qwas"  class="form-control readonlyValue" [(ngModel)]="active_sludgeData.Qwas" placeholder="0.0" readonly>
+                        <input type="text" id="active_sludge_Qwas"  [disabled]="viewMode" name="active_sludge_Qwas"  class="form-control readonlyValue" [(ngModel)]="active_sludgeData.Qwas" placeholder="0.0" readonly>
                         <div class="p-1">
                           <!--<p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.FLOWwas.suggested}}</span>-->
                           <!--&lt;!&ndash;<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."&ndash;&gt;-->
@@ -1714,7 +1719,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">WAS COD:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_CODwas"  name="active_sludge_CODwas" [(ngModel)]="process.active_sludge.CODwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="text" id="active_sludge_CODwas"  [disabled]="viewMode" name="active_sludge_CODwas" [(ngModel)]="process.active_sludge.CODwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODwas.suggested}}</span><br/>
                             <span *ngIf="process.active_sludge.FLOWwas.range.min || process.active_sludge.FLOWwas.range.max">
@@ -1738,7 +1743,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">WAS TKN:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_TKNwas"  name="active_sludge_TKNwas" [(ngModel)]="process.active_sludge.TKNwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="text" id="active_sludge_TKNwas"  [disabled]="viewMode" name="active_sludge_TKNwas" [(ngModel)]="process.active_sludge.TKNwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.TKNwas.suggested}}</span><br/>
                             <span *ngIf="process.active_sludge.TKNwas.range.min || process.active_sludge.TKNwas.range.max">
@@ -1754,121 +1759,6 @@
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.TKNwas)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="WAS TKN" />
                         </span>
                         <app-information></app-information>
-<!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
-<!--                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="popTemplate" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
-                        <ng-template #popTemplate style="width: 170%">
-                          <span style="color: #00aced">
-                            <h6><b>Rs:</b></h6> {{primary.pri_treat.data.ref[5]}}<hr>
-                            <h6><b>Rr:</b></h6> {{primary.pri_treat.data.range.ref[6]}}<hr>
-                          </span>
-                        </ng-template>
-                      </div>
-                      <div class="col-md-2 p-0">
-<!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
-<!--                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="secondaryPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
-                        <ng-template #secondaryPopover style="width: 170%">
-                          <span style="color: #00aced">
-                            <h6><b>Rs:</b></h6> {{secondary.data.ref[5]}} {{secondary.data.ref[8]}} {{secondary.data.ref[6]}}<hr>
-                            <h6><b>Rr:</b></h6>{{secondary.data.range.ref[7]}} {{secondary.data.range.ref[6]}}<hr>
-                          </span>
-                        </ng-template>
-                      </div>
-                      <div class="col-md-2 p-0">
-<!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
-<!--                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="secondaryClrPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
-                        <ng-template #secondaryClrPopover style="width: 170%">
-                          <span style="color: #00aced">
-                            <h6><b>Rs:</b></h6> {{sec_clr.data.ref[5]}}<hr>
-                          </span>
-                        </ng-template>
-                      </div>
-                      <div class="col-md-2 p-0">
-<!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
-<!--                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="tertiaryPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
-                        <ng-template #tertiaryPopover style="width: 170%">
-                          <span style="color: #00aced">
-                            <h6><b>Rs:</b></h6> {{tertiary.data.ref[6]}} {{tertiary.data.ref[7]}} {{tertiary.data.ref[9]}}<hr>
-                            <h6><b>Rr:</b></h6>{{tertiary.data.range.ref[7]}} {{tertiary.data.range.ref[9]}}<hr>
-                          </span>
-                        </ng-template>
-                      </div>
-                      <div class="col-md-2 p-0">
-<!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
-<!--                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="disinfectionPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
-                        <ng-template #disinfectionPopover style="width: 170%">
-                          <span style="color: #00aced">
-                            <h6><b>Rs:</b></h6> {{disinfection.data.ref[6]}}<hr>
-                            <h6><b>Rr:</b></h6>{{disinfection.data.range.ref[6]}} {{disinfection.data.range.ref[7]}} {{disinfection.data.range.ref[10]}} {{disinfection.data.range.ref[11]}}<hr>
-                          </span>
-                        </ng-template>
-                      </div>
-                      <div class="col-md-2 p-0">
-<!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
-<!--                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="biosolidThickPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
-                        <ng-template #biosolidThickPopover style="width: 170%">
-                          <span style="color: #00aced">
-                            <h6><b>Rs:</b></h6> {{biosolid.thickener.data.ref[6]}}<hr>
-                            <h6><b>Rr:</b></h6>{{biosolid.thickener.data.range.ref[6]}} {{biosolid.thickener.data.range.ref[7]}} {{biosolid.thickener.data.range.ref[10]}} {{disinfection.data.range.ref[11]}}<hr>
-                          </span>
-                        </ng-template>
-                      </div>
-                      <div class="col-md-2 p-0">
-<!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
-<!--                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="biosolidAreobicPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
-                        <ng-template #biosolidAreobicPopover style="width: 170%">
-                          <span style="color: #00aced">
-                            <h6><b>Rs:</b></h6> {{biosolid.aerobic.data.ref[6]}}<hr>
-                          </span>
-                        </ng-template>
-                      </div>
-                      <div class="col-md-2 p-0">
-<!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
-<!--                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="biosolidanerobicPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
-                        <ng-template #biosolidanerobicPopover style="width: 170%">
-                          <span style="color: #00aced">
-                            <h6><b>Rs:</b></h6> {{biosolid.anaerobic.data.ref[6]}}<hr>
-                            <h6><b>Rr:</b></h6>{{biosolid.anaerobic.data.range.ref[6]}} {{biosolid.anaerobic.data.range.ref[12]}}<hr>
-                          </span>
-                        </ng-template>
-                      </div>
-                      <div class="col-md-2 p-0">
-<!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
-<!--                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="biogasPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
-                        <ng-template #biogasPopover style="width: 170%">
-                          <span style="color: #00aced">
-                            <h6><b>Rr:</b></h6>{{biogas.data.range.ref[1]}}<hr>
-                          </span>
-                        </ng-template>
-                      </div>
-                      <div class="col-md-2 p-0">
-<!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
-<!--                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="dewateringPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
-                        <ng-template #dewateringPopover style="width: 170%">
-                          <span style="color: #00aced">
-                            <h6><b>Rs:</b></h6> {{dewatering.data.ref[5]}}<hr>
-                            <h6><b>Rr:</b></h6>{{dewatering.data.range.ref[10]}} {{dewatering.data.range.ref[12]}} {{dewatering.data.range.ref[13]}}<hr>
-                          </span>
-                        </ng-template>
-                      </div>
-                      <div class="col-md-2 p-0">
-<!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
-<!--                        <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body" [popover]="commonPopover" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
-                        <ng-template #commonPopover style="width: 170%">
-                          <span style="color: #00aced">
-                            <h6><b>Rs:</b></h6><hr>
-                            <h6><b>Rr:</b></h6><hr>
-                          </span>
-                        </ng-template>
-                      </div>
-                      <div class="col-md-2 p-0">
-<!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
-<!--                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body"  [popover]="pumpingPopOver" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
-                      <ng-template #pumpingPopOver style="width: 170%">
-                          <span style="color: #00aced">
-                            <div [innerHtml]="newHtml"></div>
-
-                          </span>
-                      </ng-template>
                       </div>
                     </div>
                   </div>
@@ -1879,7 +1769,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Outflow Rate (Qout):</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_Qout"  name="active_sludge_Qout"  [(ngModel)]="active_sludgeData.Qout" class="form-control readonlyValue" placeholder="0.0"  readonly>
+                        <input type="text" id="active_sludge_Qout"  [disabled]="viewMode" name="active_sludge_Qout"  [(ngModel)]="active_sludgeData.Qout" class="form-control readonlyValue" placeholder="0.0"  readonly>
                         <div class="p-1">
                           <!--<p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{primary.pumping.data.suggested}}</span>-->
                           <!--&lt;!&ndash;<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."&ndash;&gt;-->
@@ -1896,7 +1786,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Outflow COD - CODout:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_CODout"  name="active_sludge_CODout" [(ngModel)]="process.active_sludge.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="text" id="active_sludge_CODout"  [disabled]="viewMode" name="active_sludge_CODout" [(ngModel)]="process.active_sludge.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODout.suggested}}</span><br/>
                             <span *ngIf="process.active_sludge.CODout.range.min || process.active_sludge.CODout.range.max">
@@ -1920,7 +1810,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Outflow TKN - TKNout:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_TKNout"  name="active_sludge_TKNout" [(ngModel)]="process.active_sludge.TKNout.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="text" id="active_sludge_TKNout"  [disabled]="viewMode" name="active_sludge_TKNout" [(ngModel)]="process.active_sludge.TKNout.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.TKNout.suggested}}</span><br/>
                             <span *ngIf="process.active_sludge.TKNout.range.min || process.active_sludge.TKNout.range.max">
@@ -1947,7 +1837,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">COD / TOC Ratio, g-O2/g-C:</label>
                       <div class="col-md-5">
-                        <input type="text" id="constant_COD_TOC"  name="constant_COD_TOC"  [(ngModel)]="constant.COD_TOC.default" class="form-control" placeholder="0.0" (ngModelChange)="createChart()">
+                        <input type="text" id="constant_COD_TOC"  [disabled]="viewMode" name="constant_COD_TOC"  [(ngModel)]="constant.COD_TOC.default" class="form-control" placeholder="0.0" (ngModelChange)="createChart()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{constant.COD_TOC.suggested}}</span><br/>
                             <span *ngIf="constant.COD_TOC.range.min || constant.COD_TOC.range.max">
@@ -1970,7 +1860,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">% Removed TKN emitted as N2O, g N2O-N/g-TKN-N:</label>
                       <div class="col-md-5">
-                        <input type="text" id="constant_Removed_TKN"  name="constant_Removed_TKN" [(ngModel)]="constant.Removed_TKN.default" class="form-control" placeholder="0.0" (ngModelChange)="createChart()">
+                        <input type="text" id="constant_Removed_TKN"  [disabled]="viewMode" name="constant_Removed_TKN" [(ngModel)]="constant.Removed_TKN.default" class="form-control" placeholder="0.0" (ngModelChange)="createChart()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{constant.Removed_TKN.suggested}}</span><br/>
                             <span *ngIf="constant.Removed_TKN.range.min || constant.Removed_TKN.range.max">
@@ -2054,7 +1944,7 @@
                   <div class="row col-lg-6 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">External Biosolids Source?</label>
-                      <select class="form-control col-md-2" if="isBiosolids" name="isBiosolids" (change)="createChart()" [(ngModel)]="process.anarobic.isBiosolids">
+                      <select class="form-control col-md-2" [disabled]="viewMode" if="isBiosolids" name="isBiosolids" (change)="createChart()" [(ngModel)]="process.anarobic.isBiosolids">
                         <option [ngValue]="1">Yes</option>
                         <option [ngValue]="0">No</option>
                       </select>
@@ -2063,7 +1953,7 @@
                   <div class="row col-lg-6 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">External Organics Source?</label>
-                      <select class="form-control col-md-2" if="isOrganic" name="isOrganic" (change)="createChart()" [(ngModel)]="process.anarobic.isOrganic">
+                      <select class="form-control col-md-2" [disabled]="viewMode" if="isOrganic" name="isOrganic" (change)="createChart()" [(ngModel)]="process.anarobic.isOrganic">
                         <option [ngValue]="1">Yes</option>
                         <option [ngValue]="0">No</option>
                       </select>
@@ -2072,7 +1962,7 @@
                   <div class="row col-lg-6 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Is the Biogas Flared?</label>
-                      <select class="form-control col-md-2 readonlyValue" if="isFlaring" name="isFlaring" (change)="calAnarobicFlow()" [(ngModel)]="process.anarobic.isFlaring" disabled>
+                      <select class="form-control col-md-2 readonlyValue" [disabled]="viewMode" if="isFlaring" name="isFlaring" (change)="calAnarobicFlow()" [(ngModel)]="process.anarobic.isFlaring" disabled>
                         <option value=1>Yes</option>
                         <option value=0>No</option>
                       </select>
@@ -2081,7 +1971,7 @@
                   <div class="row col-lg-6 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Energy Recovery from WWTP?</label>
-                      <select class="form-control col-md-2 readonlyValue" id="isInternal" name="isInternal" (change)="createChart()" [(ngModel)]="isInternal"  disabled>
+                      <select class="form-control col-md-2 readonlyValue" [disabled]="viewMode" id="isInternal" name="isInternal" (change)="createChart()" [(ngModel)]="isInternal"  disabled>
                         <option [ngValue]="1">Yes</option>
                         <option [ngValue]="0">No</option>
                       </select>
@@ -2090,7 +1980,7 @@
                   <div class="row col-lg-6 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Energy Recovery from External Sources?</label>
-                      <select class="form-control col-md-2 readonlyValue" id="isExternal" name="isExternal" (change)="createChart()" [(ngModel)]="process.anarobic.isExternal" disabled>
+                      <select class="form-control col-md-2 readonlyValue" [disabled]="viewMode" id="isExternal" name="isExternal" (change)="createChart()" [(ngModel)]="process.anarobic.isExternal" disabled>
                         <option [ngValue]="1">Yes</option>
                         <option [ngValue]="0">No</option>
                       </select>
@@ -2102,7 +1992,7 @@
                   <div class="row col-lg-8 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate Sludge Flow Rate Based on % of Plant Influent?</label>
-                      <select class="form-control col-md-2" id="anarobic_plantinfluent" name="anarobic_plantinfluent" (change)="selectPlantInflent('anarobic')" [(ngModel)]="process.anarobic.plantinfluent">
+                      <select class="form-control col-md-2" [disabled]="viewMode" id="anarobic_plantinfluent" name="anarobic_plantinfluent" (change)="selectPlantInflent('anarobic')" [(ngModel)]="process.anarobic.plantinfluent">
                         <option value=1>Yes</option>
                         <option value=0>No</option>
                       </select>
@@ -2113,7 +2003,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Inflow Node Ap to Anaerobic Digester[Qap]:</label>
                       <div class="col-md-5">
-                        <input type="number" id="anarobic_FLOWin"  name="anarobic_FLOWin" [(ngModel)]="process.anarobic.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
+                        <input type="number" id="anarobic_FLOWin"  [disabled]="viewMode" name="anarobic_FLOWin" [(ngModel)]="process.anarobic.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.FLOWin.suggested}}</span><br/>
                             <span *ngIf="process.anarobic.FLOWin.range.min || process.anarobic.FLOWin.range.max">
@@ -2137,7 +2027,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Inflow Node Ap to Anaerobic Digester[Qap]:</label>
                       <div class="col-md-5">
-                        <input type="number" id="anarobic_Qin"  name="anarobic_Qap" [(ngModel)]="anarobicData.Qap" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()" [class.readonlyValue]="process.anarobic.plantinfluent=='1'" [readonly]="process.anarobic.plantinfluent=='1'">
+                        <input type="number" id="anarobic_Qin"  [disabled]="viewMode" name="anarobic_Qap" [(ngModel)]="anarobicData.Qap" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()" [class.readonlyValue]="process.anarobic.plantinfluent=='1'" [readonly]="process.anarobic.plantinfluent=='1'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -2148,7 +2038,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Inflow COD [CODin]:</label>
                       <div class="col-md-5">
-                        <input type="number" id="aerobic_CODin"  name="aerobic_CODin" [(ngModel)]="process.anarobic.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
+                        <input type="number" id="aerobic_CODin"  [disabled]="viewMode" name="aerobic_CODin" [(ngModel)]="process.anarobic.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.CODin.suggested}}</span><br/>
                             <span *ngIf="process.anarobic.CODin.range.min || process.anarobic.CODin.range.max">
@@ -2175,7 +2065,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">External Biosolids Flow Rate:</label>
                       <div class="col-md-5">
-                        <input type="number" id="biosolids_flow"  name="biosolids_flow" [(ngModel)]="process.biosolids.flow" class="form-control" placeholder="0.0" (ngModelChange)="createChart()" [class.readonlyValue]="process.anarobic.isBiosolids=='0'" [readonly]="process.anarobic.isBiosolids=='0'">
+                        <input type="number" id="biosolids_flow"  [disabled]="viewMode" name="biosolids_flow" [(ngModel)]="process.biosolids.flow" class="form-control" placeholder="0.0" (ngModelChange)="createChart()" [class.readonlyValue]="process.anarobic.isBiosolids=='0'" [readonly]="process.anarobic.isBiosolids=='0'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -2186,7 +2076,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">External Biosolids COD:</label>
                       <div class="col-md-5">
-                        <input type="number" id="biosolids_COD"  name="biosolids_COD" [(ngModel)]="process.biosolids.COD" class="form-control" placeholder="0.0" (ngModelChange)="createChart()" [class.readonlyValue]="process.anarobic.isBiosolids=='0'" [readonly]="process.anarobic.isBiosolids=='0'">
+                        <input type="number" id="biosolids_COD"  [disabled]="viewMode" name="biosolids_COD" [(ngModel)]="process.biosolids.COD" class="form-control" placeholder="0.0" (ngModelChange)="createChart()" [class.readonlyValue]="process.anarobic.isBiosolids=='0'" [readonly]="process.anarobic.isBiosolids=='0'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">mg/L</span>
@@ -2200,7 +2090,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">External Organics Flow Rate:</label>
                       <div class="col-md-5">
-                        <input type="number" id="organics_flow"  name="organics_flow" [(ngModel)]="process.organics.flow" class="form-control" placeholder="0.0" (ngModelChange)="createChart()" [class.readonlyValue]="process.anarobic.isOrganic=='0'" [readonly]="process.anarobic.isOrganic=='0'">
+                        <input type="number" id="organics_flow"  [disabled]="viewMode" name="organics_flow" [(ngModel)]="process.organics.flow" class="form-control" placeholder="0.0" (ngModelChange)="createChart()" [class.readonlyValue]="process.anarobic.isOrganic=='0'" [readonly]="process.anarobic.isOrganic=='0'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -2211,7 +2101,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">External Organics COD:</label>
                       <div class="col-md-5">
-                        <input type="text" id="biosolids_COD"  name="organics_COD" [(ngModel)]="process.organics.COD" class="form-control" placeholder="0.0" (ngModelChange)="createChart()" [class.readonlyValue]="process.anarobic.isOrganic=='0'" [readonly]="process.anarobic.isOrganic=='0'">
+                        <input type="text" id="biosolids_COD"  [disabled]="viewMode" name="organics_COD" [(ngModel)]="process.organics.COD" class="form-control" placeholder="0.0" (ngModelChange)="createChart()" [class.readonlyValue]="process.anarobic.isOrganic=='0'" [readonly]="process.anarobic.isOrganic=='0'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">mg/L</span>
@@ -2272,7 +2162,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Outflow COD (CODout)</label>
                       <div class="col-md-5">
-                        <input type="text" id="anarobic_CODout"  name="anarobic_CODout" [(ngModel)]="process.anarobic.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
+                        <input type="text" id="anarobic_CODout"  [disabled]="viewMode" name="anarobic_CODout" [(ngModel)]="process.anarobic.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.CODout.suggested}}</span><br/>
                             <span *ngIf="process.anarobic.CODout.range.min || process.anarobic.CODout.range.max">
@@ -2299,7 +2189,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Percent Methane in Biogas (kg/kg)</label>
                       <div class="col-md-5">
-                        <input type="text" id="alpha"  name="alpha" [(ngModel)]="process.anarobic.alpha.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
+                        <input type="text" id="alpha"  [disabled]="viewMode" name="alpha" [(ngModel)]="process.anarobic.alpha.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.anarobic.alpha.suggested}}</span><br/>
                             <span *ngIf="process.anarobic.alpha.range.min || process.anarobic.alpha.range.max" >
@@ -2349,7 +2239,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Energy Recovery Factor from CH4 from External Sources:</label>
                       <div class="col-md-5">
-                        <input type="number" id="process_factor" name="process_factor" class="form-control"  (]ngModelChange)="createChart()" placeholder="0.0" [(ngModel)]="process.anarobic.energy.default">
+                        <input type="number" id="process_factor" [disabled]="viewMode" name="process_factor" class="form-control"  (]ngModelChange)="createChart()" placeholder="0.0" [(ngModel)]="process.anarobic.energy.default">
                         <span *ngIf="process.anarobic.energy.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{process.anarobic.energy.suggested}}<br/>
                           <span *ngIf="process.anarobic.energy.range.min || process.anarobic.energy.range.max">
                             Range value  {{process.anarobic.energy.range.min}} - {{process.anarobic.energy.range.max}}
@@ -2453,7 +2343,7 @@
                   <div class="row col-lg-8 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate Sludge Flow Rate Based on % of Plant Influent?</label>
-                      <select class="form-control col-md-2" id="plantinfluent" name="plantinfluent" (change)="selectPlantInflent('aerobic')" [(ngModel)]="process.aerobic.plantinfluent">
+                      <select class="form-control col-md-2" [disabled]="viewMode" id="plantinfluent" name="plantinfluent" (change)="selectPlantInflent('aerobic')" [(ngModel)]="process.aerobic.plantinfluent">
                         <option value=1>Yes</option>
                         <option value=0>No</option>
                       </select>
@@ -2464,7 +2354,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Inflow to Aerobic Digester(Qin):</label>
                       <div class="col-md-5">
-                        <input type="text" id="aerobic_FLOWin"  name="aerobic_FLOWin" [(ngModel)]="process.aerobic.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
+                        <input type="text" id="aerobic_FLOWin"  [disabled]="viewMode" name="aerobic_FLOWin" [(ngModel)]="process.aerobic.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.FLOWin.suggested}}</span><br/>
                             <span *ngIf="process.aerobic.FLOWin.range.min || process.aerobic.FLOWin.range.max">
@@ -2488,7 +2378,7 @@
                     <div class="offset-md-1 col-md-11 row" *ngIf="tempBoolen">
                       <label class="col-md-5 col-form-label" for="text-input">Inflow to Aerobic Digester(Qin):</label>
                       <div class="col-md-5">
-                        <input type="text" id="aerobic_Qin"  name="aerobic_Qin" [(ngModel)]="aerobicData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()" [class.readonlyValue]="process.aerobic.plantinfluent=='1'" [readonly]="process.aerobic.plantinfluent=='1'">
+                        <input type="text" id="aerobic_Qin"  [disabled]="viewMode" name="aerobic_Qin" [(ngModel)]="aerobicData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()" [class.readonlyValue]="process.aerobic.plantinfluent=='1'" [readonly]="process.aerobic.plantinfluent=='1'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -2499,7 +2389,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Inflow COD (CODin):</label>
                       <div class="col-md-5">
-                        <input type="text" id="aerobic_CODin"  name="aerobic_CODin" [(ngModel)]="process.aerobic.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
+                        <input type="text" id="aerobic_CODin"  [disabled]="viewMode" name="aerobic_CODin" [(ngModel)]="process.aerobic.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.CODin.suggested}}</span><br/>
                             <span *ngIf="process.aerobic.CODin.range.min || process.aerobic.CODin.range.min">
@@ -2525,9 +2415,9 @@
                   <label class="col-md-12 col-form-label" ><strong> Node B - Outflow from Aerobic Digester</strong></label>
                   <div class="row col-lg-6">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Outflow Rate (Qout):</label>
+                      <label class="col-md-5 col-form-label" for="aerobic_Qout">Outflow Rate (Qout):</label>
                       <div class="col-md-5">
-                        <input type="text" id="aerobic_Qout"  name="aerobic_Qout" [(ngModel)]="aerobicData.Qout" class="form-control readonlyValue" placeholder="0.0" value="" readonly>
+                        <input type="text" id="aerobic_Qout"  [disabled]="viewMode" name="aerobic_Qout" [(ngModel)]="aerobicData.Qout" class="form-control readonlyValue" placeholder="0.0" value="" readonly>
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">kWh/m<sup>3</sup></span>
@@ -2536,9 +2426,9 @@
                   </div>
                   <div class="row col-lg-6">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Outflow COD (CODout):</label>
+                      <label class="col-md-5 col-form-label" for="aerobic_CODout">Outflow COD (CODout):</label>
                       <div class="col-md-5">
-                        <input type="text" id="aerobic_CODout"  name="aerobic_CODout" [(ngModel)]="process.aerobic.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
+                        <input type="text" id="aerobic_CODout"  [disabled]="viewMode" name="aerobic_CODout" [(ngModel)]="process.aerobic.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.aerobic.CODout.suggested}}</span><br/>
                             <span *ngIf="process.aerobic.CODout.range.min || process.aerobic.CODout.range.max">
@@ -2634,7 +2524,7 @@
                   <div class="row col-lg-8 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate Sludge Flow Rate Based on % of Plant Influent?</label>
-                      <select class="form-control col-md-2" id="transporation_plantinfluent" name="transporation_plantinfluent" (change)="selectPlantInflent('transporation')" [(ngModel)]="process.transporation.plantinfluent">
+                      <select class="form-control col-md-2" [disabled]="viewMode" id="transporation_plantinfluent" name="transporation_plantinfluent" (change)="selectPlantInflent('transporation')" [(ngModel)]="process.transporation.plantinfluent">
                         <option value=1>Yes</option>
                         <option value=0>No</option>
                       </select>
@@ -2645,7 +2535,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Flow Rate of Dewatered Sludge:</label>
                       <div class="col-md-5">
-                        <input type="text" id="transporation_FLOWin"  name="transporation_FLOWin" [(ngModel)]="process.transporation.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
+                        <input type="text" id="transporation_FLOWin"  [disabled]="viewMode" name="transporation_FLOWin" [(ngModel)]="process.transporation.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.transporation.FLOWin.suggested}}</span><br/>
                             <span *ngIf="process.transporation.FLOWin.range.min || process.transporation.FLOWin.range.max">
@@ -2669,7 +2559,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Flow Rate of Dewatered Sludge:</label>
                       <div class="col-md-5">
-                        <input type="number" id="transporation_Qin"  name="transporation_Qin" [(ngModel)]="transporationData.Qin" [class.readonlyValue]="process.transporation.plantinfluent=='1'" class="form-control readonlyValue" placeholder="0.0" (ngModelChange)="calTransporationFlow()" [readonly]="process.transporation.plantinfluent=='1'">
+                        <input type="number" id="transporation_Qin"  [disabled]="viewMode" name="transporation_Qin" [(ngModel)]="transporationData.Qin" [class.readonlyValue]="process.transporation.plantinfluent=='1'" class="form-control readonlyValue" placeholder="0.0" (ngModelChange)="calTransporationFlow()" [readonly]="process.transporation.plantinfluent=='1'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -2683,7 +2573,7 @@
                     <div class="offset-md-1 col-md-11 row mb-4">
                       <label class="col-md-5 col-form-label" for="inline-radios_preliminary">Please select travel type</label>
                       <div class="col-md-5">
-                        <select class="form-control" if="travel_type" name="travel_type" (change)="selectPlantInflent('transporation')" [(ngModel)]="process.transporation.travel_type">
+                        <select class="form-control" [disabled]="viewMode" if="travel_type" name="travel_type" (change)="selectPlantInflent('transporation')" [(ngModel)]="process.transporation.travel_type">
                           <option value='distance'>Distance</option>
                           <option value='time'>Time</option>
                         </select>
@@ -2693,9 +2583,9 @@
                   <div class="row col-lg-6"></div>
                   <div class="row col-lg-6" *ngIf="process.transporation.travel_type=='distance'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Single Travel Distance</label>
+                      <label class="col-md-5 col-form-label" for="distance_distance">Single Travel Distance</label>
                       <div class="col-md-5">
-                        <input type="text" id="distance_distance"  name="distance_distance" [(ngModel)]="process.transporation.distance.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
+                        <input type="text" id="distance_distance"  [disabled]="viewMode" name="distance_distance" [(ngModel)]="process.transporation.distance.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.transporation.distance.suggested}}</span><br/>
                             <span *ngIf="process.transporation.distance.range.min || process.transporation.distance.range.max">
@@ -2791,7 +2681,7 @@
                   <div class="row col-lg-8 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
                       <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate Sludge Flow Rate Based on % of Plant Influent?</label>
-                      <select class="form-control col-md-2" id="disposal_plantinfluent" name="disposal_plantinfluent" (change)="selectPlantInflent('disposal')" [(ngModel)]="process.disposal.plantinfluent">
+                      <select class="form-control col-md-2" [disabled]="viewMode" id="disposal_plantinfluent" name="disposal_plantinfluent" (change)="selectPlantInflent('disposal')" [(ngModel)]="process.disposal.plantinfluent">
                         <option value=1>Yes</option>
                         <option value=0>No</option>
                       </select>
@@ -2800,9 +2690,9 @@
                   <div class="row col-lg-4"></div>
                   <div class="row col-lg-6" *ngIf="process.disposal.plantinfluent=='1'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Flow Rate of Dewatered Sludge:</label>
+                      <label class="col-md-5 col-form-label" for="disposal_FLOWin">Flow Rate of Dewatered Sludge:</label>
                       <div class="col-md-5">
-                        <input type="text" id="disposal_FLOWin"  name="disposal_FLOWin" [(ngModel)]="process.disposal.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" >
+                        <input type="text" id="disposal_FLOWin"  [disabled]="viewMode" name="disposal_FLOWin" [(ngModel)]="process.disposal.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" >
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.FLOWin.suggested}}</span><br/>
                             <span *ngIf="process.disposal.FLOWin.range.min || process.disposal.FLOWin.range.max">
@@ -2824,9 +2714,9 @@
                   </div>
                   <div class="row col-lg-6">
                     <div class="offset-md-1 col-md-11 row" *ngIf="tempBoolen">
-                      <label class="col-md-5 col-form-label" for="text-input">Flow Rate of Dewatered Sludge:</label>
+                      <label class="col-md-5 col-form-label" for="disposal_Qin">Flow Rate of Dewatered Sludge:</label>
                       <div class="col-md-5">
-                        <input type="number" id="disposal_Qin"  name="disposal_Qin" [(ngModel)]="disposalData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" [class.readonlyValue]="process.disposal.plantinfluent=='1'" [readonly]="process.disposal.plantinfluent=='1'">
+                        <input type="number" id="disposal_Qin"  [disabled]="viewMode" name="disposal_Qin" [(ngModel)]="disposalData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" [class.readonlyValue]="process.disposal.plantinfluent=='1'" [readonly]="process.disposal.plantinfluent=='1'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -2837,7 +2727,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">COD of Sludge [CODin]:</label>
                       <div class="col-md-5">
-                        <input type="number" id="disposal_CODin"  name="disposal_CODin" [(ngModel)]="process.disposal.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()">
+                        <input type="number" id="disposal_CODin"  [disabled]="viewMode" name="disposal_CODin" [(ngModel)]="process.disposal.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.CODin.suggested}}</span><br/>
                             <span *ngIf="process.disposal.CODin.range.min || process.disposal.CODin.range.max">
@@ -2864,7 +2754,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Percent Methane in Biogas (kg/kg)</label>
                       <div class="col-md-5">
-                        <input type="number" id="disposal_alpha"  name="disposal_alpha" [(ngModel)]="process.disposal.alpha.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()">
+                        <input type="number" id="disposal_alpha"  [disabled]="viewMode" name="disposal_alpha" [(ngModel)]="process.disposal.alpha.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()">
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.disposal.alpha.suggested}}</span><br/>
                             <span *ngIf="process.disposal.alpha.range.min || process.disposal.alpha.range.min">
@@ -3689,8 +3579,8 @@
                             <th>Activated Sludge</th>
                             <th>Aerobic Digester</th>
                             <th>Anaerobic Digester</th>
-                            <th>Biosolids Disposal</th>
                             <th>Biosolids Transportation</th>
+                            <th>Biosolids Disposal</th>
                             <th>Total</th>
                           </tr>
                           </thead>
@@ -3700,8 +3590,8 @@
                             <td>{{active_sludgeco2}}</td>
                             <td>{{aerobicco2}}</td>
                             <td>{{anarobicco2}}</td>
-                            <td>{{disposalco2}}</td>
                             <td>{{transporationtotalCo2}}</td>
+                            <td>{{disposalco2}}</td>
                             <td>{{(active_sludgeco2+aerobicco2+anarobicco2+disposalco2+transporationtotalCo2).toFixed(2)}}</td>
                           </tr>
                           <tr>
@@ -3718,8 +3608,8 @@
                             <td>0</td>
                             <td>{{aerobicch4}}</td>
                             <td>{{anarobicch4}}</td>
-                            <td>{{disposalch4}}</td>
                             <td>0</td>
+                            <td>{{disposalch4}}</td>
                             <td>{{(aerobicch4+anarobicch4+disposalch4).toFixed(2)}}</td>
                           </tr>
                           <tr style="background-color: lightyellow;">
@@ -3727,8 +3617,8 @@
                             <td><strong>{{active_sludgetotalCo2}}</strong></td>
                             <td><strong>{{aerobictotalCo2}}</strong></td>
                             <td><strong>{{anarobictotalCo2}}</strong></td>
-                            <td><strong>{{disposaltotalCo2}}</strong></td>
                             <td><strong>{{transporationtotalCo2}}</strong></td>
+                            <td><strong>{{disposaltotalCo2}}</strong></td>
                             <td><strong>{{ProcessCo2}}</strong></td>
                           </tr>
                           <tr>
@@ -3739,8 +3629,8 @@
                             <td>{{(active_sludgeco2/ProcessCo2*100).toFixed(2)}}%</td>
                             <td>{{(aerobicco2/ProcessCo2*100).toFixed(2)}}%</td>
                             <td>{{(anarobicco2/ProcessCo2*100).toFixed(2)}}%</td>
-                            <td>{{(disposalco2/ProcessCo2*100).toFixed(2)}}%</td>
                             <td>{{(transporationtotalCo2/ProcessCo2*100).toFixed(2)}}%</td>
+                            <td>{{(disposalco2/ProcessCo2*100).toFixed(2)}}%</td>
                             <td>{{((active_sludgeco2+aerobicco2+anarobicco2+disposalco2+transporationtotalCo2)/ProcessCo2*100).toFixed(2)}}%</td>
                           </tr>
                           <tr>
@@ -3757,8 +3647,8 @@
                             <td>0</td>
                             <td>{{(aerobicch4/ProcessCo2*100).toFixed(2)}}%</td>
                             <td>{{(anarobicch4/ProcessCo2*100).toFixed(2)}}%</td>
-                            <td>{{(disposalch4/ProcessCo2*100).toFixed(2)}}%</td>
                             <td>0</td>
+                            <td>{{(disposalch4/ProcessCo2*100).toFixed(2)}}%</td>
                             <td>{{((aerobicch4+anarobicch4+disposalch4)/ProcessCo2*100).toFixed(2)}}%</td>
                           </tr>
                           <tr style="background-color: greenyellow;">
@@ -3766,8 +3656,8 @@
                             <td><strong>{{(active_sludgetotalCo2/ProcessCo2*100).toFixed(2)}}%</strong></td>
                             <td><strong>{{(aerobictotalCo2/ProcessCo2*100).toFixed(2)}}%</strong></td>
                             <td><strong>{{(anarobictotalCo2/ProcessCo2*100).toFixed(2)}}%</strong></td>
-                            <td><strong>{{(disposaltotalCo2/ProcessCo2*100).toFixed(2)}}%</strong></td>
                             <td><strong>{{(transporationtotalCo2/ProcessCo2*100).toFixed(2)}}%</strong></td>
+                            <td><strong>{{(disposaltotalCo2/ProcessCo2*100).toFixed(2)}}%</strong></td>
                             <td><strong>{{(ProcessCo2/ProcessCo2*100).toFixed(2)}}%</strong></td>
                           </tr>
                           </tbody>

@@ -357,7 +357,8 @@ export class CreateComponent implements OnInit {
 
   ProcessCo2: any = 0;
   isInternal: number=0;
-  newHtml:string="test";
+  newHtml:string="No references";
+  viewMode:boolean=false;
   // *************  barChart Start *************//
 
   public barChart1Colours: Array<any> = [
@@ -471,6 +472,26 @@ export class CreateComponent implements OnInit {
       text: 'CO2 Equivalent Emissions by Category',
       fontSize: 14
     },
+    tooltips: {
+     // mode: 'average',
+    //  intersect:true,
+      position: 'average',
+      callbacks: {
+        label: function(tooltipItem, data) {
+
+          var dataset = data.datasets[tooltipItem.datasetIndex];
+          var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+            return previousValue + currentValue;
+          });
+
+          var currentValue = dataset.data[tooltipItem.index];
+
+          let temp = (currentValue /total) * 100;
+          let percenta = parseFloat(temp.toFixed(2));
+          return data.labels[tooltipItem.index]+":"+percenta + "%";
+        }
+      }
+    },
     legend: {
       display: true,
       position: 'bottom',
@@ -510,6 +531,10 @@ export class CreateComponent implements OnInit {
 
     this.scenarioLength = ( parseInt(this.route.snapshot.paramMap.get('length')) + 1);
     this.scenarioLengthTemp = parseInt(this.route.snapshot.paramMap.get('viewFlag'));
+    console.log(this.scenarioLengthTemp);
+    if(this.scenarioLengthTemp==0){
+      this.viewMode=true;
+    }
     if (this.scenarioLength) {
     this.scenarioName = this.scenarioName + ' '  + this.scenarioLength; }
     this.id = this.route.snapshot.paramMap.get('id') || null;
@@ -1211,7 +1236,7 @@ export class CreateComponent implements OnInit {
 
     this.active_sludgeno2 = parseFloat((this.process.active_sludge.no2 / this.unitDivider).toFixed(2));
 
-    this.aerobicch4 = parseFloat((this.process.aerobic.ch4 / this.unitDivider).toFixed(2));
+    this.aerobicch4 =  parseFloat((this.process.aerobic.ch4 / this.unitDivider).toFixed(2));
     this.anarobicch4 = parseFloat((this.process.anarobic.ch4 / this.unitDivider).toFixed(2));
     this.disposalch4 = parseFloat((this.process.disposal.ch4 / this.unitDivider).toFixed(2));
 
@@ -1351,10 +1376,13 @@ export class CreateComponent implements OnInit {
   }
   testU(data){
     console.log(data);
-    let refs = data.ref;
-    var tempHtml="<h6><b>Rs:</b></h6>";
-    for (let rs in refs) {
-      tempHtml+=refs[rs]+'<br>';
+    var tempHtml;
+    if(Object.keys(data.ref).length !== 0 ) {
+      let refs = data.ref;
+      tempHtml = "<h6><b>Rs:</b></h6>";
+      for (let rs in refs) {
+        tempHtml += refs[rs] + '<br>';
+      }
     }
     if(data.range.ref) {
       if (Object.keys(data.range.ref).length !== 0) {
@@ -1365,6 +1393,9 @@ export class CreateComponent implements OnInit {
         }
         tempHtml = tempHtml + rrHtml;
       }
+    }
+    if(Object.keys(data.ref).length == 0 && Object.keys(data.range.ref).length == 0 ){
+      tempHtml = 'No references';
     }
 
   //  console.log(data.hasOwnProperty("ref"));

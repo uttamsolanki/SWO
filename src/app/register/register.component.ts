@@ -71,6 +71,7 @@ export class RegisterComponent implements OnInit {
 
     if (this.employeeForm.valid) {
       delete this.employeeForm.value['repeat_password'];
+      delete this.employeeForm.value['agree_checkbox'];
       this.UserService.SignUp(this.employeeForm.value).subscribe((res: any) => {
         if(res.status ==0){
           this.alertsDismiss.push({
