@@ -286,8 +286,8 @@
           },
           {
             "title":"Fine Bubble + Mechanical Mixing",
-            "default":0.0641,
-            "suggested":0.0641,
+            "default":0,
+            "suggested":null,
             "ref":{
 
             },
@@ -302,8 +302,8 @@
           },
           {
             "title":"Coarse Bubble + Mechanical Mixing",
-            "default":0.0641,
-            "suggested":0.0641,
+            "default":0,
+            "suggested":null,
             "ref":{
 
             },
@@ -387,8 +387,8 @@
           },
           {
             "title":"Fine Bubble + Mechanical Mixing",
-            "default":0.0641,
-            "suggested":0.0641,
+            "default":0,
+            "suggested":null,
             "ref":{
 
             },
@@ -403,8 +403,8 @@
           },
           {
             "title":"Coarse Bubble + Mechanical Mixing",
-            "default":0.0641,
-            "suggested":0.0641,
+            "default":0,
+            "suggested":null,
             "ref":{
 
             },
@@ -598,8 +598,7 @@
         "min":0.123,
         "max":0.147,
         "ref":{
-          "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>",
-          "11": "Evans, B. and Laughton, P. (1994). Emerging Trends in Electrical Energy Usage at Canadian (Ontario) Municipal Wastewater Treatment Plant Facilities and Strategies for Improving Energy Efficiency. Water Science and Technology, 30(4): 17-23. <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
+          "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
         }
       },
       "co2": ""
@@ -703,7 +702,7 @@
           "min":0,
           "max":0,
           "ref":{
-            "12":"Electric Power Research Institute (EPRI), (1996). Water and Wastewater Industries; Characteristics and Energy Management Opportunities. Prepared by Franklin L. Burton, Burton Environmental Engineering."
+
           }
         },
         "co2": ""
