@@ -715,8 +715,8 @@
           "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation <br/>\n <a class=\"download-color\" target=\"_blank\"  href=\"/assets/pdf/Ref(5).pdf\">Click to Download PDF </a>\n"
         },
         "range":{
-          "min":0,
-          "max":1,
+          "min":null,
+          "max":null,
           "ref":{
 
           }
@@ -816,8 +816,8 @@
         "5":"S. Pabi, A. Amarnath, R. Goldstein, and L. Reekie (2013). “Electricity Use and Management in the Municipal Water Supply and Wastewater Industries”. Electric Power Research Institute, and Water Research Foundation. <br/>\n <a class=\"download-color\" target=\"_blank\"  href=\"/assets/pdf/Ref(5).pdf\">Click to Download PDF </a>\n"
       },
       "range":{
-        "min":0,
-        "max":1,
+        "min":null,
+        "max":null,
         "ref":{
 
         }
