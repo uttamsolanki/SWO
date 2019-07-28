@@ -472,26 +472,6 @@ export class CreateComponent implements OnInit {
       text: 'CO2 Equivalent Emissions by Category',
       fontSize: 14
     },
-    tooltips: {
-     // mode: 'average',
-    //  intersect:true,
-      position: 'average',
-      callbacks: {
-        label: function(tooltipItem, data) {
-
-          var dataset = data.datasets[tooltipItem.datasetIndex];
-          var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
-            return previousValue + currentValue;
-          });
-
-          var currentValue = dataset.data[tooltipItem.index];
-
-          let temp = (currentValue /total) * 100;
-          let percenta = parseFloat(temp.toFixed(2));
-          return data.labels[tooltipItem.index]+":"+percenta + "%";
-        }
-      }
-    },
     legend: {
       display: true,
       position: 'bottom',

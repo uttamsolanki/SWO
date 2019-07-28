@@ -159,7 +159,7 @@
                     <tr>
 <!--                      <td><label class=" col-form-label"><strong>Sub Total Prior to Energy Recovery:</strong></label>-->
 <!--                    <label class=" col-form-label">Energy Recovery Credit (From WWTP)</label>-->
-                      <td><label class=" col-form-label">{{sc.priorElectrical}}</label></td>
+                      <td><label class=" col-form-label">{{sc.priorElectrical.toFixed(1)}}</label></td>
                     </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label">Energy Recovery Credit (From external sources)</label></td>-->
@@ -168,7 +168,7 @@
 <!--                    <label class=" col-form-label">?</label>-->
                       <tr>
 <!--                        <td><label class=" col-form-label"><strong>Net Emissions prior to Biosolids Disposal:</strong></label></td>-->
-                        <td><label class=" col-form-label">{{sc.priorBiosolid}}</label></td>
+                        <td><label class=" col-form-label">{{sc.priorBiosolid.toFixed(1)}}</label></td>
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label">Biosolids Disposal Emissions</label></td>-->

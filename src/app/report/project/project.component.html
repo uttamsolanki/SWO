@@ -1,4 +1,11 @@
 <div class="animated fadeIn">
+  <ng-template #ActionPopOver style="width: 170%">
+                          <span style="color: #00aced">
+                           View - allows to view only;  Saving is disabled
+                            <br>
+Duplicate - allows duplicating the entire scenario; modify options, and save as a new scenario
+                          </span>
+  </ng-template>
   <div class="col-lg-12">
     <div class="card details-border">
       <div class="card-header">
@@ -31,7 +38,10 @@
               <th></th>
               <th>Name</th>
               <th>Date Created</th>
-              <th>Action</th>
+              <th>Action
+                <span>
+                         <img class="icon-image-action " src="assets/img/brand/info-icon.png" container="body" placement="left"  [popover]="ActionPopOver" [outsideClick]="true" popoverTitle="Info" />
+                </span></th>
             </tr>
             </thead>
             <tbody>
