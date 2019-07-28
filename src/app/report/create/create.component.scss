@@ -509,3 +509,9 @@ width: 12%;
 .icon-image-span {
   margin-top: 1.6%
 }
+::ng-deep.download-color {
+  color: blue!important;
+}
+::ng-deep.download-hperlink-color {
+  color: blueviolet!important;
+}

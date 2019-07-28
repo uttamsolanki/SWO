@@ -63,254 +63,359 @@
 <!--            </div>-->
             <hr *ngIf="selectedProject!='0' && count">
             <div class="view-class" *ngIf="selectedProject!='0' && count">
+              <table style="margin-top: 13px">
+                <tr>
+                  <th>Total CO2 Equivalent</th>
+                </tr>
+                <tr>
+                  <td><label class=" col-form-label">Electricity Emissions</label></td>
+                </tr>
+                <tr>
+                  <td><label class=" col-form-label">On-site Process Emissions</label></td>
+                </tr>
+                <tr>
+                  <td><label class=" col-form-label">Chemical Usage</label></td>
+                </tr>
+                <tr>
+                  <td><label class=" col-form-label">Biosolids Transportation</label></td>
+                </tr>
+                <tr>
+                  <td><label class=" col-form-label"><strong>Sub Total Prior to Energy Recovery:</strong></label>
+                </tr>
+                <tr>
+                  <td><label class=" col-form-label">Energy Recovery Credit (From external sources)</label></td>
+                </tr>
+                <tr>
+                  <td><label class=" col-form-label"><strong>Net Emissions prior to Biosolids Disposal:</strong></label></td>
+                </tr>
+                <tr>
+                  <td><label class=" col-form-label">Biosolids Disposal Emissions</label></td>
+                </tr>
+                <tr>
+                  <td><label class=" col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label></td>
+                </tr>
+                <tr *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
+                  <label class="col-form-label " for="text-input"><strong>Electricity Emissions Summary: [<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</strong></label>
+                </tr>
+                <tr *ngIf="primary.pumping.sel_type!='0'">
+                    <label class="col-form-label " for="text-input">{{primary.pumping.sel_type}}</label>
+                </tr>
+                <tr *ngIf="primary.prili_treat.sel_type!='0'">
+                  <label class="col-form-label">{{primary.prili_treat.sel_type}}</label>
+                </tr>
+                <tr *ngIf="primary.pri_treat.sel_type!='0'">
+                  <label class="col-form-label">{{primary.pri_treat.sel_type}}</label>
+                </tr>
+                <tr *ngIf="secondary.sel_growth_type!='0'">
+                  <label class="col-form-label ">{{secondary.sel_growth_type}}</label>
+                </tr>
+                <tr *ngIf="sec_clr.sel_type!='0'">
+                  <label class="col-form-label ">{{sec_clr.sel_type}}</label>
+                </tr>
+                <tr *ngIf="tertiary.sel_type!='0'">
+                  <label class="col-form-label ">{{tertiary.sel_type}}</label>
+                </tr>
+                <tr *ngIf="disinfection.sel_type!='0'">
+                  <label class="col-form-label ">{{disinfection.sel_type}}</label>
+                </tr>
+                <tr *ngIf="biosolid.thickener.sel_type!='0'">
+                  <label class="col-form-label ">{{biosolid.thickener.sel_type}}</label>
+                </tr>
+                <tr *ngIf="biosolid.aerobic.sel_type!='0'">
+                  <label class="col-form-label ">{{biosolid.aerobic.sel_type}}</label>
+                </tr>
+                <tr *ngIf="biosolid.anaerobic.sel_type!='0'">
+                  <label class="col-form-label ">{{biosolid.anaerobic.sel_type}}</label>
+                </tr>
+                <tr *ngIf="dewatering.sel_type!='0'">
+                  <label class="col-form-label ">{{dewatering.sel_type}}</label>
+                </tr>
+              </table>
                 <div *ngFor="let sc of scenarios;let i = index;">
                 <div class="view-components" *ngIf="selectScenario[sc.id]">
 <!--                    <div class="view-components">-->
                   <div class="form-group">
                     <table>
                       <tr>
-                      <th>Total CO2 Equivalent</th>
+<!--                      <th>Total CO2 Equivalent</th>-->
                         <th>{{sc.name}}</th>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label">Electricity Emissions</label></td>
+<!--                        <td><label class=" col-form-label">Electricity Emissions</label></td>-->
                         <td><label class=" col-form-label">{{sc.electical.toFixed(1)}}</label></td>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label">On-site Process Emissions</label></td>
+<!--                        <td><label class=" col-form-label">On-site Process Emissions</label></td>-->
                         <td><label class=" col-form-label">{{sc.OnProcess.toFixed(1)}}</label></td>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label">Chemical Usage</label></td>
+<!--                        <td><label class=" col-form-label">Chemical Usage</label></td>-->
                         <td><label class=" col-form-label">{{sc.chemical.toFixed(1)}}</label></td>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label">Biosolids Transportation</label></td>
+<!--                        <td><label class=" col-form-label">Biosolids Transportation</label></td>-->
                         <td><label class=" col-form-label">{{sc.transporation.toFixed(1)}}</label></td>
                       </tr>
                     <tr>
-                      <td><label class=" col-form-label"><strong>Sub Total Prior to Energy Recovery:</strong></label>
+<!--                      <td><label class=" col-form-label"><strong>Sub Total Prior to Energy Recovery:</strong></label>-->
 <!--                    <label class=" col-form-label">Energy Recovery Credit (From WWTP)</label>-->
                       <td><label class=" col-form-label">{{sc.priorElectrical}}</label></td>
                     </tr>
                       <tr>
-                        <td><label class=" col-form-label">Energy Recovery Credit (From external sources)</label></td>
+<!--                        <td><label class=" col-form-label">Energy Recovery Credit (From external sources)</label></td>-->
                         <td><label class=" col-form-label">{{sc.energy.toFixed(1)}}</label></td>
                       </tr>
 <!--                    <label class=" col-form-label">?</label>-->
                       <tr>
-                        <td><label class=" col-form-label"><strong>Net Emissions prior to Biosolids Disposal:</strong></label></td>
+<!--                        <td><label class=" col-form-label"><strong>Net Emissions prior to Biosolids Disposal:</strong></label></td>-->
                         <td><label class=" col-form-label">{{sc.priorBiosolid}}</label></td>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label">Biosolids Disposal Emissions</label></td>
+<!--                        <td><label class=" col-form-label">Biosolids Disposal Emissions</label></td>-->
                         <td><label class=" col-form-label">{{sc.disposal.toFixed(1)}}</label></td>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label></td>
+<!--                        <td><label class=" col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label></td>-->
                         <td><label class=" col-form-label">{{sc.process.toFixed(1)}}</label></td>
                       </tr>
+                      <tr *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
+                        <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
+                      </tr>
+                      <tr *ngIf="primary.pumping.sel_type!='0'">
+                        <label class="col-form-label">{{(primary.pumping.data.co2/unitDivider).toFixed(2)}} </label>
+                      </tr>
+                      <tr *ngIf="primary.prili_treat.sel_type!='0'">
+                        <label class="col-form-label">{{(primary.prili_treat.data.co2/unitDivider).toFixed(2)}}</label>
+                      </tr>
+                      <tr *ngIf="primary.pri_treat.sel_type!='0'">
+                        <label class="col-form-label">{{(primary.pri_treat.data.co2/unitDivider).toFixed(2)}}</label>
+                      </tr>
+                      <tr *ngIf="secondary.sel_growth_type!='0'">
+                        <label class="col-form-label">{{(secondary.data.co2/unitDivider).toFixed(2)}}</label>
+                      </tr>
+                      <tr *ngIf="sec_clr.sel_type!='0'">
+                        <label class="col-form-label">{{(sec_clr.data.co2/unitDivider).toFixed(2)}}</label>
+                      </tr>
+                      <tr *ngIf="tertiary.sel_type!='0'">
+                        <label class="col-form-label">{{(tertiary.data.co2/unitDivider).toFixed(2)}}</label>
+                      </tr>
+                      <tr *ngIf="disinfection.sel_type!='0'">
+                        <label class="col-form-label">{{(disinfection.data.co2/unitDivider).toFixed(2)}}</label>
+                      </tr>
+                      <tr *ngIf="biosolid.thickener.sel_type!='0'">
+                        <label class="col-form-label">{{(biosolid.thickener.data.co2/unitDivider).toFixed(2)}}</label>
+                      </tr>
+                      <tr *ngIf="biosolid.aerobic.sel_type!='0'">
+                        <label class="col-form-label">{{(biosolid.aerobic.data.co2/unitDivider).toFixed(2)}}</label>
+                      </tr>
+                      <tr *ngIf="biosolid.anaerobic.sel_type!='0'">
+                        <label class="col-form-label">{{(biosolid.anaerobic.data.co2/unitDivider).toFixed(2)}}</label>
+                      </tr>
+                      <tr *ngIf="dewatering.sel_type!='0'">
+                        <label class="col-form-label">{{(dewatering.data.co2/unitDivider).toFixed(2)}}</label>
+                      </tr>
                     </table>
-                    <div class="form-group chart-align" >
-                        <canvas #piChart baseChart class="chart"
-                                [data]="pieChartData"
-                                [options]="pieChartOptions"
-                                [labels]="pieChartLabels"
-                                [legend]="pieChartLegend"
-                                [chartType]="pieChartType"
-                                (chartHover)="chartHovered($event)"
-                                (chartClick)="chartClicked($event)">
-                        </canvas>
-                    </div>
+                  </div>
+<!--                    <div class="form-group chart-align" >-->
+<!--                        <canvas #piChart baseChart class="chart"-->
+<!--                                [data]="pieChartData"-->
+<!--                                [options]="pieChartOptions"-->
+<!--                                [labels]="pieChartLabels"-->
+<!--                                [legend]="pieChartLegend"-->
+<!--                                [chartType]="pieChartType"-->
+<!--                                (chartHover)="chartHovered($event)"-->
+<!--                                (chartClick)="chartClicked($event)">-->
+<!--                        </canvas>-->
+<!--                    </div>-->
 <!--&lt;!&ndash;                  </div>&ndash;&gt;-->
 <!--                      <div class="form-group view-table">-->
-                          <div><strong>
-                            On-site Process Emissions Summary: </strong>[<span class="help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="!unit">kg CO<sub>2</sub>/1000m<sup>3</sup></span>]
-                          </div>
-                          <div>
-                            <table class="table table-bordered view-table">
-                              <thead>
-                              <tr>
-                                <th></th>
-                                <th>Activated Sludge</th>
-                                <th>Aerobic Digester</th>
-                                <th>Anaerobic Digester</th>
-                                <th>Total</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <tr>
-                                <td>CO<sub>2</sub> Emission</td>
-                                <td>{{sc.activeSludge.co2}}</td>
-                                <td>{{sc.aerobic.co2}}</td>
-                                <td>{{sc.anaerobic.co2}}</td>
-                                <td>{{(sc.activeSludge.co2+sc.aerobic.co2+sc.anaerobic.co2).toFixed(2)}}</td>
-                              </tr>
-                              <tr>
-                                <td>N<sub>2</sub>O Emission</td>
-                                <td>{{sc.activeSludge.no2}}</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>{{sc.activeSludge.no2}}</td>
-                              </tr>
-                              <tr>
-                                <td>CH<sub>4</sub> Emission</td>
-                                <td>0</td>
-                                <td>{{sc.aerobic.ch4}}</td>
-                                <td>{{sc.anaerobic.ch4}}</td>
-                                <td>{{(sc.aerobic.ch4+sc.anaerobic.ch4).toFixed(2)}}</td>
-                              </tr>
-                              <tr>
-                                <td><strong>Total</strong></td>
-                                <td><strong>{{sc.activeSludge.totalCo2}}</strong></td>
-                                <td><strong>{{sc.aerobic.totalCo2}}</strong></td>
-                                <td><strong>{{sc.anaerobic.totalCo2}}</strong></td>
-                                <td><strong>{{sc.OnSiteCo2}}</strong></td>
-                              </tr>
-                              <tr>
-                                <td colspan="5"></td>
-                              </tr>
-                              <tr>
-                                <td>CO<sub>2</sub>, %</td>
-                                <td>{{(sc.activeSludge.co2/sc.OnSiteCo2*100).toFixed(2)}}%</td>
-                                <td>{{(sc.aerobic.co2/sc.OnSiteCo2*100).toFixed(2)}}%</td>
-                                <td>{{(sc.anaerobic.co2/sc.OnSiteCo2*100).toFixed(2)}}%</td>
-                                <td>{{((sc.activeSludge.co2+sc.aerobic.co2+sc.anaerobic.co2)/sc.OnSiteCo2*100).toFixed(2)}}%</td>
-                              </tr>
-                              <tr>
-                                <td>N<sub>2</sub>O, %</td>
-                                <td>{{(sc.activeSludge.no2/sc.OnSiteCo2*100).toFixed(2)}}%</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>{{(sc.activeSludge.no2/sc.OnSiteCo2*100).toFixed(2)}}%</td>
-                              </tr>
-                              <tr>
-                                <td>CH<sub>4</sub>, %</td>
-                                <td>0</td>
-                                <td>{{(sc.aerobic.ch4/sc.OnSiteCo2*100).toFixed(2)}}%</td>
-                                <td>{{(sc.anaerobic.ch4/sc.OnSiteCo2*100).toFixed(2)}}%</td>
-                                <td>{{((sc.aerobic.ch4+sc.anaerobic.ch4)/sc.OnSiteCo2*100).toFixed(2)}}%</td>
-                              </tr>
-                              <tr>
-                                <td><strong>Total</strong></td>
-                                <td><strong>{{(sc.activeSludge.totalCo2/sc.OnSiteCo2*100).toFixed(2)}}%</strong></td>
-                                <td><strong>{{(sc.aerobic.totalCo2/sc.OnSiteCo2*100).toFixed(2)}}%</strong></td>
-                                <td><strong>{{(sc.anaerobic.totalCo2/sc.OnSiteCo2*100).toFixed(2)}}%</strong></td>
-                                <td><strong>{{(sc.OnSiteCo2/sc.OnSiteCo2*100).toFixed(2)}}%</strong></td>
-                              </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                      <div>
-                        <div>
-                          Total Process Emissions Summary: [<span class="help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="!unit">kg CO<sub>2</sub>/1000m<sup>3</sup></span>]
-                        </div>
-                        <div>
-                          <table class="table table-bordered view-table">
-                            <thead>
-                            <tr>
-                              <th></th>
-                              <th>Activated Sludge</th>
-                              <th>Aerobic Digester</th>
-                              <th>Anaerobic Digester</th>
-                              <th>Biosolids Disposal</th>
-                              <th>Biosolids Transportation</th>
-                              <th>Total</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                              <td>CO<sub>2</sub> Emission</td>
-                              <td>{{sc.activeSludge.co2}}</td>
-                              <td>{{sc.aerobic.co2}}</td>
-                              <td>{{sc.anaerobic.co2}}</td>
-                              <td>{{sc.disposalData.co2}}</td>
-                              <td>{{sc.transporationData.totalCo2}}</td>
-                              <td>{{(sc.activeSludge.co2+sc.aerobic.co2+sc.anaerobic.co2+sc.disposalData.co2+sc.transporationData.totalCo2).toFixed(2)}}</td>
-                            </tr>
-                            <tr>
-                              <td>N<sub>2</sub>O Emission</td>
-                              <td>{{sc.activeSludge.no2}}</td>
-                              <td>0</td>
-                              <td>0</td>
-                              <td>0</td>
-                              <td>0</td>
-                              <td>{{sc.activeSludge.no2}}</td>
-                            </tr>
-                            <tr>
-                              <td>CH<sub>4</sub> Emission</td>
-                              <td>0</td>
-                              <td>{{sc.aerobic.ch4}}</td>
-                              <td>{{sc.anaerobic.ch4}}</td>
-                              <td>{{sc.disposalData.ch4}}</td>
-                              <td>0</td>
-                              <td>{{(sc.aerobic.ch4+sc.anaerobic.ch4+sc.disposalData.ch4).toFixed(2)}}</td>
-                            </tr>
-                            <tr>
-                              <td><strong>Total</strong></td>
-                              <td><strong>{{sc.activeSludge.totalCo2}}</strong></td>
-                              <td><strong>{{sc.aerobic.totalCo2}}</strong></td>
-                              <td><strong>{{sc.anaerobic.totalCo2}}</strong></td>
-                              <td><strong>{{sc.disposalData.totalCo2}}</strong></td>
-                              <td><strong>{{sc.transporationData.totalCo2}}</strong></td>
-                              <td><strong>{{sc.ProcessCo2}}</strong></td>
-                            </tr>
-                            <tr>
-                              <td colspan="5"></td>
-                            </tr>
-                            <tr>
-                              <td>CO<sub>2</sub>, %</td>
-                              <td>{{(sc.activeSludge.co2/sc.ProcessCo2*100).toFixed(2)}}%</td>
-                              <td>{{(sc.aerobic.co2/sc.ProcessCo2*100).toFixed(2)}}%</td>
-                              <td>{{(sc.anaerobic.co2/sc.ProcessCo2*100).toFixed(2)}}%</td>
-                              <td>{{(sc.disposalData.co2/sc.ProcessCo2*100).toFixed(2)}}%</td>
-                              <td>{{(sc.transporationData.totalCo2/sc.ProcessCo2*100).toFixed(2)}}%</td>
-                              <td>{{((sc.activeSludge.co2+sc.aerobic.co2+sc.anaerobic.co2+sc.disposalData.co2+sc.transporationData.totalCo2)/sc.ProcessCo2*100).toFixed(2)}}%</td>
-                            </tr>
-                            <tr>
-                              <td>N<sub>2</sub>O, %</td>
-                              <td>{{(sc.activeSludge.no2/sc.ProcessCo2*100).toFixed(2)}}%</td>
-                              <td>0</td>
-                              <td>0</td>
-                              <td>0</td>
-                              <td>0</td>
-                              <td>{{(sc.activeSludge.no2/sc.ProcessCo2*100).toFixed(2)}}%</td>
-                            </tr>
-                            <tr>
-                              <td>CH<sub>4</sub>, %</td>
-                              <td>0</td>
-                              <td>{{(sc.aerobic.ch4/sc.ProcessCo2*100).toFixed(2)}}%</td>
-                              <td>{{(sc.anaerobic.ch4/sc.ProcessCo2*100).toFixed(2)}}%</td>
-                              <td>{{(sc.disposalData.ch4/sc.ProcessCo2*100).toFixed(2)}}%</td>
-                              <td>0</td>
-                              <td>{{((sc.aerobic.ch4+sc.anaerobic.ch4+sc.disposalData.ch4)/sc.ProcessCo2*100).toFixed(2)}}%</td>
-                            </tr>
-                            <tr>
-                              <td><strong>Total, %</strong></td>
-                              <td><strong>{{(sc.activeSludge.totalCo2/sc.ProcessCo2*100).toFixed(2)}}%</strong></td>
-                              <td><strong>{{(sc.aerobic.co2/sc.ProcessCo2*100).toFixed(2)}}%</strong></td>
-                              <td><strong>{{(sc.anaerobic.totalCo2/sc.ProcessCo2*100).toFixed(2)}}%</strong></td>
-                              <td><strong>{{(sc.disposalData.totalCo2/sc.ProcessCo2*100).toFixed(2)}}%</strong></td>
-                              <td><strong>{{(sc.transporationData.totalCo2/sc.ProcessCo2*100).toFixed(2)}}%</strong></td>
-                              <td><strong>{{(sc.ProcessCo2/sc.ProcessCo2*100).toFixed(2)}}%</strong></td>
-                            </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div class="form-group chart-align" *ngIf="isChart">
-                          <canvas style="background-color: beige" baseChart #stackChart="base-chart" class="chart"
-                                    [datasets]="stackChartData"
-                                    [labels]="stackChartLabels"
-                                    [options]="stackChartOptions"
-                                    [colors]="stackChart1Colours"
-                                    [legend]="stackChartLegend"
-                                    [chartType]="stackChartType"
-                                    (chartHover)="chartHovered($event)"
-                                    (chartClick)="chartClicked($event)">
-                          </canvas>
-                        </div>
-                      </div>
-                      </div>
+<!--                          <div><strong>-->
+<!--                            On-site Process Emissions Summary: </strong>[<span class="help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="!unit">kg CO<sub>2</sub>/1000m<sup>3</sup></span>]-->
+<!--                          </div>-->
+<!--                          <div>-->
+<!--                            <table class="table table-bordered view-table">-->
+<!--                              <thead>-->
+<!--                              <tr>-->
+<!--                                <th></th>-->
+<!--                                <th>Activated Sludge</th>-->
+<!--                                <th>Aerobic Digester</th>-->
+<!--                                <th>Anaerobic Digester</th>-->
+<!--                                <th>Total</th>-->
+<!--                              </tr>-->
+<!--                              </thead>-->
+<!--                              <tbody>-->
+<!--                              <tr>-->
+<!--                                <td>CO<sub>2</sub> Emission</td>-->
+<!--                                <td>{{sc.activeSludge.co2}}</td>-->
+<!--                                <td>{{sc.aerobic.co2}}</td>-->
+<!--                                <td>{{sc.anaerobic.co2}}</td>-->
+<!--                                <td>{{(sc.activeSludge.co2+sc.aerobic.co2+sc.anaerobic.co2).toFixed(2)}}</td>-->
+<!--                              </tr>-->
+<!--                              <tr>-->
+<!--                                <td>N<sub>2</sub>O Emission</td>-->
+<!--                                <td>{{sc.activeSludge.no2}}</td>-->
+<!--                                <td>0</td>-->
+<!--                                <td>0</td>-->
+<!--                                <td>{{sc.activeSludge.no2}}</td>-->
+<!--                              </tr>-->
+<!--                              <tr>-->
+<!--                                <td>CH<sub>4</sub> Emission</td>-->
+<!--                                <td>0</td>-->
+<!--                                <td>{{sc.aerobic.ch4}}</td>-->
+<!--                                <td>{{sc.anaerobic.ch4}}</td>-->
+<!--                                <td>{{(sc.aerobic.ch4+sc.anaerobic.ch4).toFixed(2)}}</td>-->
+<!--                              </tr>-->
+<!--                              <tr>-->
+<!--                                <td><strong>Total</strong></td>-->
+<!--                                <td><strong>{{sc.activeSludge.totalCo2}}</strong></td>-->
+<!--                                <td><strong>{{sc.aerobic.totalCo2}}</strong></td>-->
+<!--                                <td><strong>{{sc.anaerobic.totalCo2}}</strong></td>-->
+<!--                                <td><strong>{{sc.OnSiteCo2}}</strong></td>-->
+<!--                              </tr>-->
+<!--                              <tr>-->
+<!--                                <td colspan="5"></td>-->
+<!--                              </tr>-->
+<!--                              <tr>-->
+<!--                                <td>CO<sub>2</sub>, %</td>-->
+<!--                                <td>{{(sc.activeSludge.co2/sc.OnSiteCo2*100).toFixed(2)}}%</td>-->
+<!--                                <td>{{(sc.aerobic.co2/sc.OnSiteCo2*100).toFixed(2)}}%</td>-->
+<!--                                <td>{{(sc.anaerobic.co2/sc.OnSiteCo2*100).toFixed(2)}}%</td>-->
+<!--                                <td>{{((sc.activeSludge.co2+sc.aerobic.co2+sc.anaerobic.co2)/sc.OnSiteCo2*100).toFixed(2)}}%</td>-->
+<!--                              </tr>-->
+<!--                              <tr>-->
+<!--                                <td>N<sub>2</sub>O, %</td>-->
+<!--                                <td>{{(sc.activeSludge.no2/sc.OnSiteCo2*100).toFixed(2)}}%</td>-->
+<!--                                <td>0</td>-->
+<!--                                <td>0</td>-->
+<!--                                <td>{{(sc.activeSludge.no2/sc.OnSiteCo2*100).toFixed(2)}}%</td>-->
+<!--                              </tr>-->
+<!--                              <tr>-->
+<!--                                <td>CH<sub>4</sub>, %</td>-->
+<!--                                <td>0</td>-->
+<!--                                <td>{{(sc.aerobic.ch4/sc.OnSiteCo2*100).toFixed(2)}}%</td>-->
+<!--                                <td>{{(sc.anaerobic.ch4/sc.OnSiteCo2*100).toFixed(2)}}%</td>-->
+<!--                                <td>{{((sc.aerobic.ch4+sc.anaerobic.ch4)/sc.OnSiteCo2*100).toFixed(2)}}%</td>-->
+<!--                              </tr>-->
+<!--                              <tr>-->
+<!--                                <td><strong>Total</strong></td>-->
+<!--                                <td><strong>{{(sc.activeSludge.totalCo2/sc.OnSiteCo2*100).toFixed(2)}}%</strong></td>-->
+<!--                                <td><strong>{{(sc.aerobic.totalCo2/sc.OnSiteCo2*100).toFixed(2)}}%</strong></td>-->
+<!--                                <td><strong>{{(sc.anaerobic.totalCo2/sc.OnSiteCo2*100).toFixed(2)}}%</strong></td>-->
+<!--                                <td><strong>{{(sc.OnSiteCo2/sc.OnSiteCo2*100).toFixed(2)}}%</strong></td>-->
+<!--                              </tr>-->
+<!--                              </tbody>-->
+<!--                            </table>-->
+<!--                          </div>-->
+<!--                      <div>-->
+<!--                        <div>-->
+<!--                          Total Process Emissions Summary: [<span class="help-block" *ngIf="unit">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="!unit">kg CO<sub>2</sub>/1000m<sup>3</sup></span>]-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                          <table class="table table-bordered view-table">-->
+<!--                            <thead>-->
+<!--                            <tr>-->
+<!--                              <th></th>-->
+<!--                              <th>Activated Sludge</th>-->
+<!--                              <th>Aerobic Digester</th>-->
+<!--                              <th>Anaerobic Digester</th>-->
+<!--                              <th>Biosolids Disposal</th>-->
+<!--                              <th>Biosolids Transportation</th>-->
+<!--                              <th>Total</th>-->
+<!--                            </tr>-->
+<!--                            </thead>-->
+<!--                            <tbody>-->
+<!--                            <tr>-->
+<!--                              <td>CO<sub>2</sub> Emission</td>-->
+<!--                              <td>{{sc.activeSludge.co2}}</td>-->
+<!--                              <td>{{sc.aerobic.co2}}</td>-->
+<!--                              <td>{{sc.anaerobic.co2}}</td>-->
+<!--                              <td>{{sc.disposalData.co2}}</td>-->
+<!--                              <td>{{sc.transporationData.totalCo2}}</td>-->
+<!--                              <td>{{(sc.activeSludge.co2+sc.aerobic.co2+sc.anaerobic.co2+sc.disposalData.co2+sc.transporationData.totalCo2).toFixed(2)}}</td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                              <td>N<sub>2</sub>O Emission</td>-->
+<!--                              <td>{{sc.activeSludge.no2}}</td>-->
+<!--                              <td>0</td>-->
+<!--                              <td>0</td>-->
+<!--                              <td>0</td>-->
+<!--                              <td>0</td>-->
+<!--                              <td>{{sc.activeSludge.no2}}</td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                              <td>CH<sub>4</sub> Emission</td>-->
+<!--                              <td>0</td>-->
+<!--                              <td>{{sc.aerobic.ch4}}</td>-->
+<!--                              <td>{{sc.anaerobic.ch4}}</td>-->
+<!--                              <td>{{sc.disposalData.ch4}}</td>-->
+<!--                              <td>0</td>-->
+<!--                              <td>{{(sc.aerobic.ch4+sc.anaerobic.ch4+sc.disposalData.ch4).toFixed(2)}}</td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                              <td><strong>Total</strong></td>-->
+<!--                              <td><strong>{{sc.activeSludge.totalCo2}}</strong></td>-->
+<!--                              <td><strong>{{sc.aerobic.totalCo2}}</strong></td>-->
+<!--                              <td><strong>{{sc.anaerobic.totalCo2}}</strong></td>-->
+<!--                              <td><strong>{{sc.disposalData.totalCo2}}</strong></td>-->
+<!--                              <td><strong>{{sc.transporationData.totalCo2}}</strong></td>-->
+<!--                              <td><strong>{{sc.ProcessCo2}}</strong></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                              <td colspan="5"></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                              <td>CO<sub>2</sub>, %</td>-->
+<!--                              <td>{{(sc.activeSludge.co2/sc.ProcessCo2*100).toFixed(2)}}%</td>-->
+<!--                              <td>{{(sc.aerobic.co2/sc.ProcessCo2*100).toFixed(2)}}%</td>-->
+<!--                              <td>{{(sc.anaerobic.co2/sc.ProcessCo2*100).toFixed(2)}}%</td>-->
+<!--                              <td>{{(sc.disposalData.co2/sc.ProcessCo2*100).toFixed(2)}}%</td>-->
+<!--                              <td>{{(sc.transporationData.totalCo2/sc.ProcessCo2*100).toFixed(2)}}%</td>-->
+<!--                              <td>{{((sc.activeSludge.co2+sc.aerobic.co2+sc.anaerobic.co2+sc.disposalData.co2+sc.transporationData.totalCo2)/sc.ProcessCo2*100).toFixed(2)}}%</td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                              <td>N<sub>2</sub>O, %</td>-->
+<!--                              <td>{{(sc.activeSludge.no2/sc.ProcessCo2*100).toFixed(2)}}%</td>-->
+<!--                              <td>0</td>-->
+<!--                              <td>0</td>-->
+<!--                              <td>0</td>-->
+<!--                              <td>0</td>-->
+<!--                              <td>{{(sc.activeSludge.no2/sc.ProcessCo2*100).toFixed(2)}}%</td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                              <td>CH<sub>4</sub>, %</td>-->
+<!--                              <td>0</td>-->
+<!--                              <td>{{(sc.aerobic.ch4/sc.ProcessCo2*100).toFixed(2)}}%</td>-->
+<!--                              <td>{{(sc.anaerobic.ch4/sc.ProcessCo2*100).toFixed(2)}}%</td>-->
+<!--                              <td>{{(sc.disposalData.ch4/sc.ProcessCo2*100).toFixed(2)}}%</td>-->
+<!--                              <td>0</td>-->
+<!--                              <td>{{((sc.aerobic.ch4+sc.anaerobic.ch4+sc.disposalData.ch4)/sc.ProcessCo2*100).toFixed(2)}}%</td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                              <td><strong>Total, %</strong></td>-->
+<!--                              <td><strong>{{(sc.activeSludge.totalCo2/sc.ProcessCo2*100).toFixed(2)}}%</strong></td>-->
+<!--                              <td><strong>{{(sc.aerobic.co2/sc.ProcessCo2*100).toFixed(2)}}%</strong></td>-->
+<!--                              <td><strong>{{(sc.anaerobic.totalCo2/sc.ProcessCo2*100).toFixed(2)}}%</strong></td>-->
+<!--                              <td><strong>{{(sc.disposalData.totalCo2/sc.ProcessCo2*100).toFixed(2)}}%</strong></td>-->
+<!--                              <td><strong>{{(sc.transporationData.totalCo2/sc.ProcessCo2*100).toFixed(2)}}%</strong></td>-->
+<!--                              <td><strong>{{(sc.ProcessCo2/sc.ProcessCo2*100).toFixed(2)}}%</strong></td>-->
+<!--                            </tr>-->
+<!--                            </tbody>-->
+<!--                          </table>-->
+<!--                        </div>-->
+<!--                        <div class="form-group chart-align" *ngIf="isChart">-->
+<!--                          <canvas style="background-color: beige" baseChart #stackChart="base-chart" class="chart"-->
+<!--                                    [datasets]="stackChartData"-->
+<!--                                    [labels]="stackChartLabels"-->
+<!--                                    [options]="stackChartOptions"-->
+<!--                                    [colors]="stackChart1Colours"-->
+<!--                                    [legend]="stackChartLegend"-->
+<!--                                    [chartType]="stackChartType"-->
+<!--                                    (chartHover)="chartHovered($event)"-->
+<!--                                    (chartClick)="chartClicked($event)">-->
+<!--                          </canvas>-->
+<!--                        </div>-->
+<!--                      </div>-->
+
 <!--                    </div>-->
                 </div>
                 </div>
