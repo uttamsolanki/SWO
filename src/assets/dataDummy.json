@@ -203,7 +203,7 @@
             "default":0.8,
             "suggested":0.8,
             "ref":{
-              "8":"Degrémont Limitée (2010). Personal communications between Lynne Maclennan, XCG Consultants Ltd. and Francoise Petitpain Perrin, Degrémont Limitée.  : <a href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
+              "8":"Degrémont Limitée (2010). Personal communications between Lynne Maclennan, XCG Consultants Ltd. and Francoise Petitpain Perrin, Degrémont Limitée.  : <a class=\"download-hperlink-color\" href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
             },
             "range":{
               "min":0,
@@ -380,7 +380,7 @@
               "min":0.107,
               "max":0.628,
               "ref":{
-                "6":"Environment Canada (2006). Energy Consumption Implications for Wastewater Treatment in Canada. Prepared by Hydromantis Inc. in Association with XCG Consultants Ltd. :<br/>\n <a class=\"download-color\" target=\"_blank\"  href=\"/assets/pdf/Ref(6).pdf\">Click to Download PDF </a>\n<br/> <a  class=\"download-hperlink-color\" href=\"https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures\" target=\"_blank\">https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures</a>"
+
               }
             },
             "co2":""
@@ -750,7 +750,7 @@
           "min":0.0331,
           "max":0.0505,
           "ref":{
-            "12":"Electric Power Research Institute (EPRI), (1996). Water and Wastewater Industries; Characteristics and Energy Management Opportunities. Prepared by Franklin L. Burton, Burton Environmental Engineering. <br/>\n <a class=\"download-color\" target=\"_blank\"  href=\"/assets/pdf/Ref(6).pdf\">Click to Download PDF </a>\n"
+            "12":"Electric Power Research Institute (EPRI), (1996). Water and Wastewater Industries; Characteristics and Energy Management Opportunities. Prepared by Franklin L. Burton, Burton Environmental Engineering.\n"
           }
         },
         "co2": ""
@@ -779,7 +779,7 @@
       "default":0.11575,
       "suggested": 0.11575,
       "ref":{
-        "*":"value"
+
       },
       "range":{
         "min":0.0925,
@@ -1081,7 +1081,6 @@
           "min":null,
           "max":null,
           "ref":{
-            "1":"Stillwell, Ashlynn S., David C. Hoppock, and Michael E. Webber. \"Energy recovery from wastewater treatment plants in the United States: a case study of the energy-water nexus.\" Sustainability 2, no. 4 (2010): 945-962 <br/>\n <a class=\"download-color\" target=\"_blank\"  href=\"/assets/pdf/Ref(1).pdf\">Click to Download PDF </a>\n"
 
           }
         },
@@ -1099,7 +1098,6 @@
           "min":null,
           "max":null,
           "ref":{
-            "1":"Stillwell, Ashlynn S., David C. Hoppock, and Michael E. Webber. \"Energy recovery from wastewater treatment plants in the United States: a case study of the energy-water nexus.\" Sustainability 2, no. 4 (2010): 945-962 <br/>\n <a class=\"download-color\" target=\"_blank\"  href=\"/assets/pdf/Ref(1).pdf\">Click to Download PDF </a>\n"
 
           }
         },
@@ -1117,7 +1115,6 @@
           "min":null,
           "max":null,
           "ref":{
-            "1":"Stillwell, Ashlynn S., David C. Hoppock, and Michael E. Webber. \"Energy recovery from wastewater treatment plants in the United States: a case study of the energy-water nexus.\" Sustainability 2, no. 4 (2010): 945-962 <br/>\n <a class=\"download-color\" target=\"_blank\"  href=\"/assets/pdf/Ref(1).pdf\">Click to Download PDF </a>\n"
 
           }
         },
@@ -1130,13 +1127,13 @@
         "default":0,
         "suggested": null,
         "ref":{
-
+          "2": "2016 Elmvale Wastewater Treatment Plant Annual Report, Ontario Water Clean Agency <br/> \n<a class=\"download-hperlink-color\", href=\"http://www.springwater.ca/UserFiles/Servers/Server_229/File/Municipal%20Services/Water%20and%20Sewer/Annual%20Reports/2016/2016%20Elmvale%20WWTP%20Annual%20Report.pdf  \" target=\"_blank\" >http://www.springwater.ca/UserFiles/Servers/Server_229/File/Municipal%20Services/Water%20and%20Sewer/Annual%20Reports/2016/2016%20Elmvale%20WWTP%20Annual%20Report.pdf  </a>\n"
         },
         "range":{
           "min":5,
           "max":20,
           "ref":{
-
+            "2": "2016 Elmvale Wastewater Treatment Plant Annual Report, Ontario Water Clean Agency <br/> \n<a class=\"download-hperlink-color\", href=\"http://www.springwater.ca/UserFiles/Servers/Server_229/File/Municipal%20Services/Water%20and%20Sewer/Annual%20Reports/2016/2016%20Elmvale%20WWTP%20Annual%20Report.pdf  \" target=\"_blank\" >http://www.springwater.ca/UserFiles/Servers/Server_229/File/Municipal%20Services/Water%20and%20Sewer/Annual%20Reports/2016/2016%20Elmvale%20WWTP%20Annual%20Report.pdf  </a>\n"
           }
         },
         "co2_eq":0.92
@@ -1146,13 +1143,13 @@
         "default":0,
         "suggested": null,
         "ref":{
-
+          "2": "2016 Elmvale Wastewater Treatment Plant Annual Report, Ontario Water Clean Agency <br/> \n<a class=\"download-hperlink-color\", href=\"http://www.springwater.ca/UserFiles/Servers/Server_229/File/Municipal%20Services/Water%20and%20Sewer/Annual%20Reports/2016/2016%20Elmvale%20WWTP%20Annual%20Report.pdf  \" target=\"_blank\" >http://www.springwater.ca/UserFiles/Servers/Server_229/File/Municipal%20Services/Water%20and%20Sewer/Annual%20Reports/2016/2016%20Elmvale%20WWTP%20Annual%20Report.pdf  </a>\n"
         },
         "range":{
           "min":5,
           "max":20,
           "ref":{
-
+            "2": "2016 Elmvale Wastewater Treatment Plant Annual Report, Ontario Water Clean Agency <br/> \n<a class=\"download-hperlink-color\", href=\"http://www.springwater.ca/UserFiles/Servers/Server_229/File/Municipal%20Services/Water%20and%20Sewer/Annual%20Reports/2016/2016%20Elmvale%20WWTP%20Annual%20Report.pdf  \" target=\"_blank\" >http://www.springwater.ca/UserFiles/Servers/Server_229/File/Municipal%20Services/Water%20and%20Sewer/Annual%20Reports/2016/2016%20Elmvale%20WWTP%20Annual%20Report.pdf  </a>\n"
           }
         },
         "co2_eq":0.744
