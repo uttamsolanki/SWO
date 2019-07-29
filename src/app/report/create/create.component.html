@@ -1723,7 +1723,7 @@
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODwas.suggested}}</span><br/>
                             <span *ngIf="process.active_sludge.FLOWwas.range.min || process.active_sludge.FLOWwas.range.max">
-                              Range value  {{process.active_sludge.FLOWwas.range.min}} - {{process.active_sludge.FLOWwas.range.max}}
+                              Range value  {{process.active_sludge.CODwas.range.min}} - {{process.active_sludge.CODwas.range.max}}
                             </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -1790,7 +1790,7 @@
                         <div class="p-1">
                           <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODout.suggested}}</span><br/>
                             <span *ngIf="process.active_sludge.CODout.range.min || process.active_sludge.CODout.range.max">
-                              Range value  {{process.active_sludge.CODout.range.min}} - {{process.active_sludge.CODout.range.min}}
+                              Range value  {{process.active_sludge.CODout.range.min}} - {{process.active_sludge.CODout.range.max}}
                             </span>
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
@@ -2441,6 +2441,10 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.aerobic.CODout.unit}}</span>
+                        <span>
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.aerobic.CODout)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Outflow COD (CODout)" />
+                        </span>
+                        <app-information></app-information>
                       </div>
                     </div>
                   </div>
