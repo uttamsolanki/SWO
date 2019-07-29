@@ -168,10 +168,12 @@ export class ViewComponent implements OnInit {
   createChart(id, name){
 
     const processEmission = {co2: 0, no2: 0, totalCo2: 0, ch4: 0};
-    const graphData = { electical: 0, OnProcess: 0, process: 0, disposal: 0, disposalData: processEmission, energy: 0, chemical: 0, id:0,
+    const graphData = { electical: 0, OnProcess: 0, process: 0, disposal: 0, disposalData: processEmission, energy: 0, chemical: 0, id: 0,
      transporation: 0, priorElectrical: 0, priorBiosolid: 0,  activeSludge: processEmission, anaerobic: processEmission, ProcessCo2: 0,
-     aerobic: processEmission, co2Total: 0, no2Total: 0, ch4Totoal: 0, transporationData: processEmission, OnSiteCo2: 0,
-     name: 'Scenario'};
+     aerobic: processEmission, co2Total: 0, no2Total: 0, ch4Totoal: 0, transporationData: processEmission, OnSiteCo2: 0, EnergyRecovery: 0,
+      primaryPumping: 0, name: 'Scenario', priTreat: 0, primaryPrili: 0, secondaryTreat: 0, secClar: 0, tertiaryTreat: 0,
+      disinfectionTreat: 0, aerobicTreat: 0, thickenerTreat: 0, anaerobicTreat: 0, dewateringTreat: 0,
+    };
 
    // let selectedOption={
    //   pumping:'-',
@@ -191,55 +193,66 @@ export class ViewComponent implements OnInit {
       let newData = [];
       if (this.primary.pumping.sel_type !== '0') {
         // this.barChartLabels.push(this.primary.pumping.data.title);
+        graphData.primaryPumping = this.primary.pumping.data.co2;
         newData.push(this.primary.pumping.data.co2);
         this.totalElecricalCo2 += JSON.parse(this.primary.pumping.data.co2);
       }
       if (this.primary.pri_treat.sel_type !== '0') {
+        graphData.priTreat = this.primary.pri_treat.data.co2;
         //this.barChartLabels.push(this.primary.pri_treat.data.title);
         newData.push(this.primary.pri_treat.data.co2);
         this.totalElecricalCo2 += JSON.parse(this.primary.pri_treat.data.co2);
       }
       if (this.primary.prili_treat.sel_type !== '0') {
+        graphData.primaryPrili = this.primary.prili_treat.data.co2;
         //this.barChartLabels.push(this.primary.prili_treat.data.title);
         newData.push(this.primary.prili_treat.data.co2);
         this.totalElecricalCo2 += JSON.parse(this.primary.prili_treat.data.co2);
       }
       if (this.secondary.sel_type !== '0') {
         //this.barChartLabels.push(this.secondary.data.title);
+        graphData.secondaryTreat = this.secondary.data.co2;
         newData.push(this.secondary.data.co2);
         this.totalElecricalCo2 += JSON.parse(this.secondary.data.co2);
       }
       if (this.sec_clr.sel_type !== '0') {
+        graphData.secClar = this.sec_clr.data.co2;
         //this.barChartLabels.push(this.sec_clr.data.title);
         newData.push(this.sec_clr.data.co2);
         this.totalElecricalCo2 += JSON.parse(this.sec_clr.data.co2);
       }
       if (this.tertiary.sel_type !== '0') {
+        graphData.tertiaryTreat =  this.tertiary.data.co2;
         //this.barChartLabels.push(this.tertiary.data.title);
         newData.push(this.tertiary.data.co2);
         this.totalElecricalCo2 += JSON.parse(this.tertiary.data.co2);
       }
       if (this.disinfection.sel_type !== '0') {
         //this.barChartLabels.push(this.disinfection.data.title);
+        graphData.disinfectionTreat  = this.disinfection.data.co2;
         newData.push(this.disinfection.data.co2);
         this.totalElecricalCo2 += JSON.parse(this.disinfection.data.co2);
       }
       if (this.biosolid.aerobic.sel_type !== '0') {
+        graphData.aerobicTreat = this.biosolid.aerobic.data.co2;
         //this.barChartLabels.push(this.biosolid.aerobic.data.title);
         newData.push(this.biosolid.aerobic.data.co2);
         this.totalElecricalCo2 += JSON.parse(this.biosolid.aerobic.data.co2);
       }
       if (this.biosolid.thickener.sel_type !== '0') {
+        graphData.thickenerTreat = this.biosolid.thickener.data.co2;
         //this.barChartLabels.push(this.biosolid.thickener.data.title);
         newData.push(this.biosolid.thickener.data.co2);
         this.totalElecricalCo2 += JSON.parse(this.biosolid.thickener.data.co2);
       }
       if (this.biosolid.anaerobic.sel_type !== '0') {
+        graphData.anaerobicTreat = this.biosolid.anaerobic.data.co2;
         // this.barChartLabels.push(this.biosolid.anaerobic.data.title);
         newData.push(this.biosolid.anaerobic.data.co2);
         this.totalElecricalCo2 += JSON.parse(this.biosolid.anaerobic.data.co2);
       }
       if (this.dewatering.sel_type !== '0') {
+        graphData.dewateringTreat = this.dewatering.data.co2;
         //this.barChartLabels.push(this.dewatering.data.title);
         newData.push(this.dewatering.data.co2);
         this.totalElecricalCo2 += JSON.parse(this.dewatering.data.co2);
@@ -255,6 +268,9 @@ export class ViewComponent implements OnInit {
       }
       if (this.chemical.chlorine.sel_type !== '0') {
         this.totalChemicalCo2 += JSON.parse(this.chemical.chlorine.data.co2);
+      }
+      if (this.biogas.sel_type !== '0') {
+        graphData.EnergyRecovery = this.biogas.data.co2;
       }
       if (this.biogas.sel_type === 'Energy Recovery') {
         graphData.electical = this.biogas.data.co2;
