@@ -188,7 +188,7 @@
 <!--                        <td><label class=" col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label></td>-->
                         <td><label class=" col-form-label">{{sc.process.toFixed(1)}}</label></td>
                       </tr>
-                      <tr *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
+                      <tr *ngIf="sc.primaryPumping!='0' || sc.primaryPrili!='0' || sc.priTreat!='0' || sc.secondaryTreat!='0' || sc.secClar!='0' || sc.tertiaryTreat!='0' || sc.disinfectionTreat!='0' || sc.disinfectionTreat!='0' || sc.thickenerTreat!='0' || sc.aerobicTreat!='0' || sc.dewateringTreat!='0' || sc.EnergyRecovery!='0' ">
                         <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
                       </tr>
                       <tr >
@@ -215,14 +215,14 @@
                       <tr>
                         <label class="col-form-label">{{(sc.thickenerTreat/unitDivider).toFixed(2)}}</label>
                       </tr>
-                      <tr ><!--*ngIf="biosolid.aerobic.sel_type!='0'; else anerobicBlock"-->
+                      <tr *ngIf="sc.aerobicTreat!='0'; else anerobicBlock">
                         <label class="col-form-label">{{(sc.aerobicTreat/unitDivider).toFixed(2)}}</label>
                       </tr>
-                      <!--<ng-template #anerobicBlock>-->
-                        <!--<tr *ngIf="biosolid.anaerobic.sel_type!='0'">-->
-                        <!--<label class="col-form-label">{{(sc.anaerobicTreat/unitDivider).toFixed(2)}}</label>-->
-                      <!--</tr>-->
-                      <!--</ng-template>-->
+                      <ng-template #anerobicBlock>
+                        <tr *ngIf="sc.anaerobicTreat!='0'">
+                        <label class="col-form-label">{{(sc.anaerobicTreat/unitDivider).toFixed(2)}}</label>
+                      </tr>
+                      </ng-template>
 
                       <tr>
                         <label class="col-form-label">{{(sc.dewateringTreat/unitDivider).toFixed(2)}}</label>
@@ -230,12 +230,12 @@
                       <tr>
                         <label class="col-form-label"><strong>{{(sc.electical).toFixed(2)}}</strong></label>
                       </tr>
-                      <tr *ngIf="biogas.sel_type === 'Flaring'; else energyBlock">
-                        <label class="col-form-label">{{(sc.EnergyRecovery/unitDivider).toFixed(2)}}</label>
+                      <tr *ngIf="sc.EnergyRecovery === 'Flaring'; else energyBlock">
+                        <label class="col-form-label">{{-(sc.EnergyRecovery/unitDivider).toFixed(2)}}</label>
                       </tr>
                       <ng-template #energyBlock>
                         <tr>
-                          <label class="col-form-label">{{-(sc.anaerobicTreat/unitDivider).toFixed(2)}}</label>
+                          <label class="col-form-label">{{(sc.EnergyRecovery/unitDivider).toFixed(2)}}</label>
                         </tr>
                       </ng-template>
 <!--                      <tr>-->
