@@ -55,7 +55,6 @@
                   <input type="password" class="form-control" placeholder="Repeat password" formControlName="repeat_password" required>
                   <div class="col-12 text-danger" *ngIf="formErrors.repeat_password">
                     <span class="help-block">{{formErrors.repeat_password}}</span>
-                    <span class="help-block">{{formErrors.repeat_password}}</span>
                   </div>
                 </div>
                 <div class="row" style="padding: 1%;margin-top: -4%;">
@@ -71,7 +70,7 @@
                 </div>
                 <button type="submit" class="btn btn-block btn-success" id="createAccount">Create Account</button>
                 <div class="input-group mb-4">
-                 <p class="text-muted">I already have account!! <a [routerLink]="['/login']" >Login</a></p>
+                 <p class="text-muted">Already have an account? <a [routerLink]="['/login']" >Login</a></p>
                 </div>
               </form>
             </div>

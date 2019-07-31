@@ -285,7 +285,7 @@
                       <div class="brand-card-header bg-header-selected brand-card-header-ct">
                         {{secondary.sel_growth_type}}
                       </div>
-                      <div class="brand-card-body bg-header-sub-selected " *ngIf="secondary.sel_type != '0' ">
+                      <div class="brand-card-body secondary-third-image-background " *ngIf="secondary.sel_type != '0' ">
                         <div>
                           <div>{{secondary.sel_type}}</div>
                         </div>
@@ -2577,7 +2577,7 @@
                     <div class="offset-md-1 col-md-11 row mb-4">
                       <label class="col-md-5 col-form-label" for="inline-radios_preliminary">Please select travel type</label>
                       <div class="col-md-5">
-                        <select class="form-control" [disabled]="viewMode" if="travel_type" name="travel_type" (change)="selectPlantInflent('transporation')" [(ngModel)]="process.transporation.travel_type">
+                        <select class="form-control readonlyValue" [disabled]="viewMode" if="travel_type" name="travel_type" (change)="selectPlantInflent('transporation')" [(ngModel)]="process.transporation.travel_type" readonly>
                           <option value='distance'>Distance</option>
                           <option value='time'>Time</option>
                         </select>
@@ -2626,6 +2626,10 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.transporation.time.unit}}</span>
+                        <span>
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.time)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Single Travel Time" />
+                        </span>
+                        <app-information></app-information>
                       </div>
                     </div>
                   </div>
@@ -2855,7 +2859,7 @@
                 <p class="msg-text-center">Please Select Liquid Line Processes.</p>
               </div>
             </div>
-            <div class="card-body pumping-line" style="margin-top: 2%" *ngIf="this.primary.pumping.sel_type != '0' || this.primary.prili_treat.sel_type != '0' || this.primary.pri_treat.sel_type != '0' || this.secondary.sel_type != '0' || this.sec_clr.sel_type != '0' || this.tertiary.sel_type != '0' || this.disinfection.sel_type != '0'">
+            <div class="card-body pumping-line" *ngIf="this.primary.pumping.sel_type != '0' || this.primary.prili_treat.sel_type != '0' || this.primary.pri_treat.sel_type != '0' || this.secondary.sel_type != '0' || this.sec_clr.sel_type != '0' || this.tertiary.sel_type != '0' || this.disinfection.sel_type != '0'">
               <div class="container" style="padding: 0%;">
                 <div>
                   <div class="row" >
@@ -3049,8 +3053,8 @@
             <div class="card-header cd-header-color dewatering-main-heading" style="background-color: #428BCA">
               Solid Dewatering Line
             </div>
-            <div class="card-body pumping-line" >
-              <div class="form-group row" *ngIf="dewatering.sel_type == '0'">
+            <div class="card-body pumping-line" *ngIf="dewatering.sel_type == '0'">
+              <div class="form-group row">
                 <p class="msg-text-center">Please Select Solids Dewatering Line Processes.</p>
               </div>
             </div>
@@ -3141,8 +3145,8 @@
             <div class="card-header cd-header-color liquid-slude-main-heading" style="background-color: #428BCA">
               Biosolids Line
             </div>
-            <div class="card-body pumping-line">
-              <div class="form-group row" *ngIf="biosolids_disposals.transportation.sel_type == '0' && biosolids_disposals.disposal.sel_type == '0' ">
+            <div class="card-body pumping-line" *ngIf="biosolids_disposals.transportation.sel_type == '0' && biosolids_disposals.disposal.sel_type == '0' ">
+              <div class="form-group row">
                 <p class="msg-text-center">Please Select Biosolids Disposal Line Processes.</p>
               </div>
             </div>

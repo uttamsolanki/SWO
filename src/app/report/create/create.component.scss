@@ -515,3 +515,7 @@ width: 12%;
 ::ng-deep.download-hperlink-color {
   color: blueviolet!important;
 }
+::ng-deep.popover-body>span>div>p{
+  margin-top: 0.57rem !important;
+  margin-bottom: 0.57rem !important;
+}

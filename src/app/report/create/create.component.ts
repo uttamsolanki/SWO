@@ -511,7 +511,6 @@ export class CreateComponent implements OnInit {
 
     this.scenarioLength = ( parseInt(this.route.snapshot.paramMap.get('length')) + 1);
     this.scenarioLengthTemp = parseInt(this.route.snapshot.paramMap.get('viewFlag'));
-    console.log(this.scenarioLengthTemp);
     if(this.scenarioLengthTemp==0){
       this.viewMode=true;
     }
@@ -694,6 +693,7 @@ export class CreateComponent implements OnInit {
         this.sec_clr.sel_type = '0';
         this.selectTreatmentType('', 'sec_clr', this.sec_clr_types);
     }
+
 
     this.co2Calcaltion(this.primary.pumping.data);
     this.co2Calcaltion(this.primary.pri_treat.data);
@@ -1138,6 +1138,7 @@ export class CreateComponent implements OnInit {
    */
   selectTreatmentType(cat, type, treatment_types) {
     if (!cat) {
+
       for (const tr_type of treatment_types) {
         if (this[type].sel_type === '0') {
           this[type].data = this.co2Calcaltion(this.defaulValaue.data);
@@ -1145,8 +1146,25 @@ export class CreateComponent implements OnInit {
         if (tr_type.title === this[type].sel_type) {
           this[type].data = this.co2Calcaltion(tr_type);
         }
+
+        if(this[type].sel_type !== 'Chlorination/De-Chlorination'){
+          this.chemical.chlorination.sel_type = '0';
+          this.chemical.dechlorination.sel_type = '0';
+          this.selectTreatmentType('chemical','chlorination',this.chlorination_type);
+          this.selectTreatmentType('chemical','dechlorination',this.dechlorination_type)
+        }
+
       }
     } else {
+      if(cat === 'biosolids_disposals' && type === 'transportation'){
+        //console.log();
+        if(this[cat][type].sel_type.indexOf('Time')>-1){
+          this.process.transporation.travel_type = 'time';
+        }else if(this[cat][type].sel_type.indexOf('Distance')>-1){
+          this.process.transporation.travel_type = 'distance';
+        }
+        this.selectPlantInflent('transporation');
+      }
       for (const tr_type of treatment_types) {
         if (this[cat][type].sel_type === '0') {
           this[cat][type].data = this.co2Calcaltion(this.defaulValaue.data);
@@ -1355,23 +1373,25 @@ export class CreateComponent implements OnInit {
      this.router.navigate(['dashboard']);
   }
   testU(data){
-    console.log(data);
-    var tempHtml;
+    let referenceArray = [];
+    var tempHtml="";
     if(Object.keys(data.ref).length !== 0 ) {
       let refs = data.ref;
-      tempHtml = "<h6><b>Rs:</b></h6>";
+     // tempHtml = "<h6><b>Ref:</b></h6>";
       for (let rs in refs) {
-        tempHtml += refs[rs] + '<br>';
+        //tempHtml += refs[rs]+"<hr>";
+        referenceArray.push(refs[rs]);
       }
     }
     if(data.range.ref) {
       if (Object.keys(data.range.ref).length !== 0) {
         let refr = data.range.ref;
-        var rrHtml = "<hr><h6><b>Rs:</b></h6>";
+        var rrHtml = "";
         for (let rr in refr) {
-          rrHtml += refr[rr] + '<br>';
+         // rrHtml += refr[rr]+"<hr>";
+          referenceArray.push(refr[rr]);
         }
-        tempHtml = tempHtml + rrHtml;
+        //tempHtml = tempHtml + rrHtml;
       }
     }
     if(Object.keys(data.ref).length == 0 && Object.keys(data.range.ref).length == 0 ){
@@ -1379,7 +1399,12 @@ export class CreateComponent implements OnInit {
     }
 
   //  console.log(data.hasOwnProperty("ref"));
-    this.newHtml=tempHtml;
+    if(referenceArray.length!==0){
+      this.newHtml="<h6><b>Ref:</b></h6>"+referenceArray.join("<hr>");
+    }else{
+      this.newHtml="No references";
+    }
+
 
   }
 }
