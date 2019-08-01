@@ -169,7 +169,7 @@
                     <tr>
 <!--                      <td><label class=" col-form-label"><strong>Sub Total Prior to Energy Recovery:</strong></label>-->
 <!--                    <label class=" col-form-label">Energy Recovery Credit (From WWTP)</label>-->
-                      <td><label class=" col-form-label">{{sc.priorElectrical.toFixed(1)}}</label></td>
+                      <td><label class=" col-form-label"><strong>{{sc.priorElectrical.toFixed(1)}}</strong></label></td>
                     </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label">Energy Recovery Credit (From external sources)</label></td>-->
@@ -178,7 +178,7 @@
 <!--                    <label class=" col-form-label">?</label>-->
                       <tr>
 <!--                        <td><label class=" col-form-label"><strong>Net Emissions prior to Biosolids Disposal:</strong></label></td>-->
-                        <td><label class=" col-form-label">{{sc.priorBiosolid.toFixed(1)}}</label></td>
+                        <td><label class=" col-form-label"><strong>{{sc.priorBiosolid.toFixed(1)}}</strong></label></td>
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label">Biosolids Disposal Emissions</label></td>-->
@@ -186,7 +186,7 @@
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label></td>-->
-                        <td><label class=" col-form-label">{{sc.process.toFixed(1)}}</label></td>
+                        <td><label class=" col-form-label"><strong>{{sc.process.toFixed(1)}}</strong></label></td>
                       </tr>
                       <tr *ngIf="sc.primaryPumping!='0' || sc.primaryPrili!='0' || sc.priTreat!='0' || sc.secondaryTreat!='0' || sc.secClar!='0' || sc.tertiaryTreat!='0' || sc.disinfectionTreat!='0' || sc.disinfectionTreat!='0' || sc.thickenerTreat!='0' || sc.aerobicTreat!='0' || sc.dewateringTreat!='0' || sc.EnergyRecovery!='0' ">
                         <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
