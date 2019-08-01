@@ -122,8 +122,9 @@ export class ViewComponent implements OnInit {
       if (this.selectScenario[s])
         this.count++;
     }
-    this.noOfcolumn = 12 / (this.count + 1);
-    if (this.count > 2) {
+    this.noOfcolumn = Math.ceil(12 / (this.count + 1));
+
+    if (this.count > 3) {
       this.isDisable = true;
     } else {
       this.isDisable = false;

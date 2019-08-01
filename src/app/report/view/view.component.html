@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="card-body">
-          <form class="form-horizontal">
+
             <div class="form-group row">
               <label class="offset-md-2 col-md-3 col-form-label" for="project">Select Project</label>
               <div class="col-md-3">
@@ -141,8 +141,8 @@
 <!--                </tr>-->
 
               </table>
-                <div *ngFor="let sc of scenarios;let i = index;">
-                <div class="view-components" *ngIf="selectScenario[sc.id]">
+                <div *ngFor="let sc of scenarios;let i = index;" class="col-md-{{noOfcolumn}}">
+                <div class="view-components " *ngIf="selectScenario[sc.id]">
 <!--                    <div class="view-components">-->
                   <div class="form-group">
                     <table>
@@ -169,7 +169,7 @@
                     <tr>
 <!--                      <td><label class=" col-form-label"><strong>Sub Total Prior to Energy Recovery:</strong></label>-->
 <!--                    <label class=" col-form-label">Energy Recovery Credit (From WWTP)</label>-->
-                      <td><label class=" col-form-label">{{sc.priorElectrical.toFixed(1)}}</label></td>
+                      <td><label class=" col-form-label"><strong>{{sc.priorElectrical.toFixed(1)}}</strong></label></td>
                     </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label">Energy Recovery Credit (From external sources)</label></td>-->
@@ -178,7 +178,7 @@
 <!--                    <label class=" col-form-label">?</label>-->
                       <tr>
 <!--                        <td><label class=" col-form-label"><strong>Net Emissions prior to Biosolids Disposal:</strong></label></td>-->
-                        <td><label class=" col-form-label">{{sc.priorBiosolid.toFixed(1)}}</label></td>
+                        <td><label class=" col-form-label"><strong>{{sc.priorBiosolid.toFixed(1)}}</strong></label></td>
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label">Biosolids Disposal Emissions</label></td>-->
@@ -186,7 +186,7 @@
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label></td>-->
-                        <td><label class=" col-form-label">{{sc.process.toFixed(1)}}</label></td>
+                        <td><label class=" col-form-label"><strong>{{sc.process.toFixed(1)}}</strong></label></td>
                       </tr>
                       <tr>
                         <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
@@ -439,7 +439,7 @@
                 </div>
                 </div>
             </div>
-          </form>
+
         </div>
       </div>
     </div> <!--/.col-->
