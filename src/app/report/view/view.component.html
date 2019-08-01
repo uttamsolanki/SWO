@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="card-body">
-          <form class="form-horizontal">
+
             <div class="form-group row">
               <label class="offset-md-2 col-md-3 col-form-label" for="project">Select Project</label>
               <div class="col-md-3">
@@ -141,8 +141,8 @@
 <!--                </tr>-->
 
               </table>
-                <div *ngFor="let sc of scenarios;let i = index;">
-                <div class="view-components" *ngIf="selectScenario[sc.id]">
+                <div *ngFor="let sc of scenarios;let i = index;" class="col-md-{{noOfcolumn}}">
+                <div class="view-components " *ngIf="selectScenario[sc.id]">
 <!--                    <div class="view-components">-->
                   <div class="form-group">
                     <table>
@@ -450,7 +450,7 @@
                 </div>
                 </div>
             </div>
-          </form>
+
         </div>
       </div>
     </div> <!--/.col-->
