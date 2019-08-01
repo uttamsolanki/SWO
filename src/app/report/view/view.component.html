@@ -215,14 +215,14 @@
                       <tr>
                         <label class="col-form-label">{{(sc.thickenerTreat/unitDivider).toFixed(2)}}</label>
                       </tr>
-                      <tr *ngIf="sc.aerobicTreat!='0'; else anerobicBlock">
-                        <label class="col-form-label">{{(sc.aerobicTreat/unitDivider).toFixed(2)}}</label>
+                      <tr>
+                        <label class="col-form-label">{{(sc.biosolidnew/unitDivider).toFixed(2)}}</label>
                       </tr>
-                      <ng-template #anerobicBlock>
-                        <tr *ngIf="sc.anaerobicTreat!='0'">
-                        <label class="col-form-label">{{(sc.anaerobicTreat/unitDivider).toFixed(2)}}</label>
-                      </tr>
-                      </ng-template>
+<!--                      <ng-template #anerobicBlock>-->
+<!--                        <tr *ngIf="sc.anaerobicTreat!='0'">-->
+<!--                        <label class="col-form-label">{{(sc.anaerobicTreat/unitDivider).toFixed(2)}}</label>-->
+<!--                      </tr>-->
+<!--                      </ng-template>-->
 
                       <tr>
                         <label class="col-form-label">{{(sc.dewateringTreat/unitDivider).toFixed(2)}}</label>
@@ -230,20 +230,9 @@
                       <tr>
                         <label class="col-form-label"><strong>{{(sc.electical).toFixed(2)}}</strong></label>
                       </tr>
-                      <tr *ngIf="sc.EnergyRecovery === 'Flaring'; else energyBlock">
-                        <label class="col-form-label">{{-(sc.EnergyRecovery/unitDivider).toFixed(2)}}</label>
+                      <tr >
+                        <label class="col-form-label">{{(sc.EnergyRecovery/unitDivider).toFixed(2)}}</label>
                       </tr>
-                      <ng-template #energyBlock>
-                        <tr>
-                          <label class="col-form-label">{{(sc.EnergyRecovery/unitDivider).toFixed(2)}}</label>
-                        </tr>
-                      </ng-template>
-<!--                      <tr>-->
-<!--                        <label class="col-form-label">{{process.anarobic.addEnergy}}</label>-->
-<!--                      </tr>-->
-<!--                      <tr>-->
-<!--                        <label class="col-form-label"><strong>{{(sc.electical + (sc.EnergyRecovery/unitDivider) + process.anarobic.addEnergy).toFixed(2)}} </strong></label>-->
-<!--                      </tr>-->
                     </table>
                   </div>
 <!--                    <div class="form-group chart-align" >-->
