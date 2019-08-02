@@ -353,4 +353,13 @@ console.log(this.scenarios);
       console.log(this.senarioIds);
     }
   }
+  changeUnit() {
+    if (this.unit === 0) {
+      this.unitDivider = this.size.data.default / 1000;
+    } else if (this.unit === 1) {
+      this.unitDivider = 1;
+    } else if (this.unit === 2) {
+      this.unitDivider = 1000 / 365;
+    }
+  }
 }
