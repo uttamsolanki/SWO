@@ -122,6 +122,7 @@ export class ViewComponent implements OnInit {
       if (this.selectScenario[s])
         this.count++;
     }
+    console.log(this.count);
     this.noOfcolumn = Math.ceil(12 / (this.count + 1));
 
     if (this.count > 3) {
