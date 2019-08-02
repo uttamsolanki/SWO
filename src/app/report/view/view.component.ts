@@ -173,8 +173,8 @@ console.log(this.scenarios);
     const graphData = { electical: 0, OnProcess: 0, process: 0, disposal: 0, disposalData: processEmission, energy: 0, chemical: 0, id: 0,
      transporation: 0, priorElectrical: 0, priorBiosolid: 0,  activeSludge: processEmission, anaerobic: processEmission, ProcessCo2: 0,
      aerobic: processEmission, co2Total: 0, no2Total: 0, ch4Totoal: 0, transporationData: processEmission, OnSiteCo2: 0, EnergyRecovery: 0,
-      primaryPumping: 0, name: 'Scenario', priTreat: 0, primaryPrili: 0, secondaryTreat: 0, secClar: 0, tertiaryTreat: 0,
-      disinfectionTreat: 0, aerobicTreat: 0, thickenerTreat: 0, anaerobicTreat: 0, dewateringTreat: 0, biosolidnew: 0
+      primaryPumping: 0, name: 'Scenario', priTreat: 0, primaryPrili: 0, secondaryTreat: 0, secClar: 0, tertiaryTreat: 0, EqCo2: 0,
+      disinfectionTreat: 0, aerobicTreat: 0, thickenerTreat: 0, anaerobicTreat: 0, dewateringTreat: 0, biosolidnew: 0, ElecricalCo2: 0
     };
 
    // let selectedOption={
@@ -315,8 +315,9 @@ console.log(this.scenarios);
       graphData.electical = this.totalElecricalCo2;
       graphData.transporation = this.process.transporation.totalCo2;
       graphData.OnProcess = this.process.aerobic.totalCo2 + this.process.anarobic.totalCo2 + this.process.active_sludge.totalCo2;
-      graphData.chemical = this.totalChemicalCo2;
+      graphData.chemical = this.totalChemicalCo2 / this.unitDivider;
       graphData.priorElectrical = graphData.electical + graphData.transporation + graphData.OnProcess + graphData.chemical;
+      graphData.ElecricalCo2 = parseFloat((this.totalElecricalCo2 / this.unitDivider).toFixed(2));
 
       graphData.priorBiosolid = graphData.priorElectrical - graphData.electical;
       graphData.disposal = this.process.disposal.totalCo2;
@@ -329,7 +330,7 @@ console.log(this.scenarios);
       graphData.aerobic = this.setProcessData(this.process.aerobic);
       graphData.anaerobic = this.setProcessData(this.process.anarobic);
 
-      graphData.ProcessCo2 = parseFloat((this.process.active_sludge.totalCo2 + this.process.aerobic.totalCo2 +
+    graphData.ProcessCo2 = parseFloat((this.process.active_sludge.totalCo2 + this.process.aerobic.totalCo2 +
         this.process.anarobic.totalCo2 + this.process.disposal.totalCo2 + this.process.transporation.totalCo2).toFixed(2));
     graphData.OnSiteCo2 = parseFloat((graphData.ProcessCo2 / this.unitDivider).toFixed(2));
    // this.OnSiteCo2 = parseFloat((graphData.ProcessCo2 / this.unitDivider).toFixed(2));
