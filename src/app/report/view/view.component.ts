@@ -129,7 +129,7 @@ export class ViewComponent implements OnInit {
     } else {
       this.isDisable = false;
     }
-
+console.log(this.scenarios);
   }
 
   getProjectProject(p_id) {
