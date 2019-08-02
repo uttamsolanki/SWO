@@ -7,6 +7,7 @@ import html2canvas from 'html2canvas';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDirective} from 'ngx-bootstrap';
 import 'chartjs-plugin-datalabels';
+import 'chartjs-plugin-piechart-outlabels';
 import {DataServiceService} from '../../data-service.service';
 import {forEach} from '@angular/router/src/utils/collection';
 @Component({
@@ -467,20 +468,32 @@ export class CreateComponent implements OnInit {
   public pieChartType = 'pie';
   public pieChartLegend = true;
   public pieChartOptions: any = {
+    responsive: true,
+    maintainAspectRatio: false,
     title: {
-      display: true,
+      display: false,
       text: 'CO2 Equivalent Emissions by Category',
-      fontSize: 14
+      fontSize: 14,
+      padding:95
     },
     legend: {
-      display: true,
+      display: false,
       position: 'bottom',
       labels: {
         fontColor: 'black',
         fontSize : 12
       }
     },
+    layout: {
+      padding: {
+        left: 0,
+        right: 0,
+        top: 100,
+        bottom: 50
+      }
+    },
     plugins: {
+
       datalabels: {
         formatter: (value, piChart) => {
         //  console.log(piChart.dataset._meta[0].total);
@@ -502,7 +515,18 @@ export class CreateComponent implements OnInit {
         },
         color: '#000',
         font:{
-          size:16
+          size:0
+        }
+      },
+
+      outlabels:{
+        text: '%l: %p',
+        color: ["black", "black",'white','black','black'],
+        stretch:20,
+        font: {
+          resizable: true,
+          minSize: 12,
+          maxSize: 18
         }
       }
     }

@@ -3350,6 +3350,11 @@
                     </div>
                   </div>
                   <hr>
+                  <div class="form-group row" >
+
+                      <p class="msg-text-center"><strong>CO2 Equivalent Emissions by Category </strong></p>
+
+                  </div>
                   <div class="form-group row chart-align">
                     <div class="col-md-11 row">
                       <canvas #piChart baseChart class="chart"
@@ -3359,7 +3364,7 @@
                               [legend]="pieChartLegend"
                               [chartType]="pieChartType"
                               (chartHover)="chartHovered($event)"
-                              (chartClick)="chartClicked($event)"></canvas>
+                              (chartClick)="chartClicked($event)" width="500" height="500" ></canvas>
                     </div>
                   </div>
 

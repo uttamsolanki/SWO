@@ -34,6 +34,7 @@
     "bootstrap": "^4.2.1",
     "chart.js": "^2.8.0",
     "chartjs-plugin-datalabels": "^0.6.0",
+    "chartjs-plugin-piechart-outlabels": "^0.1.4",
     "core-js": "^2.6.2",
     "flag-icon-css": "^3.2.1",
     "font-awesome": "^4.7.0",
