@@ -94,7 +94,7 @@
                 <tr>
                   <td><label class=" col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label></td>
                 </tr>
-                <tr *ngIf="primary.pumping.sel_type!='0' || primary.prili_treat.sel_type!='0' || primary.pri_treat.sel_type!='0' || secondary.sel_growth_type!='0' || sec_clr.sel_type!='0' || tertiary.sel_type!='0' || disinfection.sel_type!='0' || biosolid.thickener.sel_type!='0' || biosolid.aerobic.sel_type!='0' || biosolid.anaerobic.sel_type!='0' || dewatering.sel_type!='0' || biogas.sel_type!='0' ">
+                <tr>
                   <label class="col-form-label " for="text-input"><strong>Electricity Emissions Summary: [<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</strong></label>
                 </tr>
                 <tr>
@@ -188,7 +188,7 @@
 <!--                        <td><label class=" col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label></td>-->
                         <td><label class=" col-form-label"><strong>{{sc.process.toFixed(1)}}</strong></label></td>
                       </tr>
-                      <tr *ngIf="sc.primaryPumping!='0' || sc.primaryPrili!='0' || sc.priTreat!='0' || sc.secondaryTreat!='0' || sc.secClar!='0' || sc.tertiaryTreat!='0' || sc.disinfectionTreat!='0' || sc.disinfectionTreat!='0' || sc.thickenerTreat!='0' || sc.aerobicTreat!='0' || sc.dewateringTreat!='0' || sc.EnergyRecovery!='0' ">
+                      <tr>
                         <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
                       </tr>
                       <tr >
