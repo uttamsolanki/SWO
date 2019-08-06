@@ -48,10 +48,18 @@
                 <label class="form-check-label" for="unit_3"><span>MT CO<sub>2</sub>/Yr</span></label>
               </div>
           </div>
-            <hr *ngIf="selectedProject!='0' && count">
-          <div *ngIf="selectedProject!='0' && count">
-            <p><b>Project:</b> <br>{{projectName}}</p>
-            <p><b>Project Created Date:</b> <br>{{projectCreateDate}}</p>
+          <!--<div class="form-group row" *ngIf="selectedProject!='0' && count">-->
+            <!--<label class="offset-md-2 col-md-3 col-form-label" for="project">Project:</label>-->
+            <!--<div class="col-md-3">-->
+              <!--<label class="col-form-label" for="project">{{projectName}}</label>-->
+            <!--</div>-->
+          <!--</div>-->
+          <div class="form-group row" *ngIf="selectedProject!='0' && count">
+            <label class="offset-md-2 col-md-3 col-form-label" for="project"> Created Date:</label>
+            <div class="col-md-3">
+              <label class="col-form-label" for="project">{{projectCreateDate | date: 'dd-MMM-yyyy' }}</label>
+            </div>
+
           </div>
             <div class="view-class row" *ngIf="selectedProject!='0' && count">
               <div class="col-md-4">

@@ -19,6 +19,7 @@ export class ProjectComponent implements OnInit {
     elements = [];
     deleteID;
     projectName: '';
+    projectDate: '';
     @ViewChild('successModal') public modal: ModalDirective;
     @ViewChild('projectDeleteModal') public pDeleteModal: ModalDirective;
     constructor(private  userService: UserService, private router: Router, private route: ActivatedRoute, private dataServiceService: DataServiceService) { }
@@ -29,6 +30,7 @@ export class ProjectComponent implements OnInit {
         const data = this.userService.getScenario({project_id: this.id}).subscribe((response: any) => {
           this.setScenarioData(response.data.scenario);
           this.projectName = response.data.name;
+          this.projectDate = response.data.created_date;
         });
       }
 
