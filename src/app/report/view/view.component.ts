@@ -48,6 +48,8 @@ export class ViewComponent implements OnInit {
   senarioIds;
   scenariosData;
   unitDivider = 1;
+  projectName: '';
+  projectCreateDate: '';
   // *************  barChart Start *************//
   showContent: boolean = true;
   public barChart1Colours: Array<any> = [
@@ -84,6 +86,8 @@ export class ViewComponent implements OnInit {
   ngOnInit() {
     this.senarioIds = this.dataServiceService.getScenarioId();
     const data = this.userService.getProject().subscribe((rep: any) => {
+      console.log("hhhhhhhhhhhhhhhhhhh");
+      console.log(rep);
       if (rep.status === 1) {
         this.numberOfProject = Object.keys(rep.data).length;
         if (this.numberOfProject > 0) {
@@ -136,6 +140,8 @@ console.log(this.scenarios);
   getProjectProject(p_id) {
     this.scenarios = [];
     const details = this.userService.getProjectDatils({project_id: p_id}).subscribe((resp: any) => {
+      this.projectName = resp.data.name;
+      this.projectCreateDate = resp.data.created_date;
       this.setSenarioData(resp);
       if (resp.status === 1) {
         if (resp.data.scenario) {

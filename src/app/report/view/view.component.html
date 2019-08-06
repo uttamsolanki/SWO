@@ -23,10 +23,6 @@
                   <option *ngFor="let p of projects" value="{{p._id}}" >{{p.name}}</option>
                 </select>
               </div>
-
-              <!--<div class="offset-md-2 col-md-2">-->
-                <!--<button type="button" class="btn btn-block btn-success">Create Scenario</button>-->
-              <!--</div>-->
             </div>
             <div class="form-group row" *ngIf="selectedProject!='0'">
               <label class="offset-md-2 col-md-3 col-form-label" for="project">Select Scenario</label>
@@ -52,31 +48,11 @@
                 <label class="form-check-label" for="unit_3"><span>MT CO<sub>2</sub>/Yr</span></label>
               </div>
           </div>
-
-            <!--<div class="col-lg-12" *ngIf="selectedProject=='0'">-->
-              <!--<p class="msg-text-center">You have not selected any project.</p>-->
-            <!--</div>-->
-            <!--<div class="col-lg-12" *ngIf="selectedProject!='0' && !count">-->
-              <!--<p class="msg-text-center">You have not selected any scenario.</p>-->
-            <!--</div>-->
-
-<!--            <div class="col-lg-12" *ngIf="selectedProject!='0' && count">-->
-<!--              <div class="row">-->
-<!--                <div class="col-lg-{{noOfcolumn}}">-->
-<!--                  <div class="form-group row">-->
-<!--                    <label class="col-md-12 col-form-label"><strong>Total CO2 Equivalent </strong></label>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <ng-container *ngFor="let sc of scenarios;let i = index;">-->
-<!--                <div class="col-lg-{{noOfcolumn}}"  *ngIf="selectScenario[sc.id]">-->
-<!--                  <div class="form-group row" >-->
-<!--                    <label class="col-md-12 col-form-label"><strong>Scenario {{i+1}} </strong></label>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                </ng-container>-->
-<!--              </div>-->
-<!--            </div>-->
             <hr *ngIf="selectedProject!='0' && count">
+          <div *ngIf="selectedProject!='0' && count">
+            <p><b>Project:</b> <br>{{projectName}}</p>
+            <p><b>Project Created Date:</b> <br>{{projectCreateDate}}</p>
+          </div>
             <div class="view-class row" *ngIf="selectedProject!='0' && count">
               <div class="col-md-4">
                 <table style="margin-top: 13px">

@@ -32,6 +32,10 @@ Duplicate - allows duplicating the entire scenario; modify options, and save as 
             <p class="msg-text-center">Please create a Scenario.</p>
             <button type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id]">Create New</button>
           </form>
+          <div>
+                <h6 style="display: inline-block">Project Name: </h6>
+                <p style="display: inline-block">{{projectName}}</p>
+          </div>
           <table class="table" *ngIf="scenarioData.length">
             <thead>
             <tr>
