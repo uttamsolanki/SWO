@@ -8,7 +8,7 @@
 
     <div class="card details-border" *ngIf="isLoad">
       <div class="card-header">
-        Projects
+        <div><p class="projectTitle">Projects</p></div>
         <div *ngIf="projects.length">
           <button style="float: right" type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/new-project']">Add New Project</button>
         </div>

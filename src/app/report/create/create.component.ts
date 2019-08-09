@@ -477,7 +477,7 @@ export class CreateComponent implements OnInit {
       padding:95
     },
     legend: {
-      display: false,
+      display: true,
       position: 'bottom',
       labels: {
         fontColor: 'black',
