@@ -354,7 +354,14 @@
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
                 <div class="form-group row" *ngIf="primary.pumping.sel_type != '0' ">
                   <label class="col-md-12 col-form-label liquid-font-color" ><strong> Pumping</strong></label>
-                  <label class="col-md-12 col-form-label p-0 " ><p class="sub-title-padding m-0 liquid-font-color">{{primary.pumping.sel_type}}</p></label>
+                  <div class="col-md-12 col-form-label p-0" style="margin-bottom: 2%" >
+                    <div style="display: inline-block">
+                      <p class="sub-title-padding m-0 liquid-font-color" style="display: inline-block">{{primary.pumping.sel_type}}</p>
+                    </div>
+                    <div style="display: inline-block;margin-left: 28%" *ngIf="primary.pumping.sel_type === 'User Specified' ">
+                      <input type = "text" class="form-control" [(ngModel)]="primary.pumping.data.uvalue" name="userValue"/>
+                    </div>
+                  </div>
                   <div class="offset-md-1 col-md-11 row">
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
@@ -394,7 +401,15 @@
 
                 <div class="form-group row" *ngIf="primary.prili_treat.sel_type != '0' ">
                   <div class="col-md-12 col-form-label liquid-font-color" for="sel_prili_treat"><strong>Preliminary Treatment</strong></div>
-                  <label class="col-md-12 col-form-label p-0 liquid-font-color" ><p class="sub-title-padding m-0">{{primary.prili_treat.sel_type}}</p></label>
+                  <div class="col-md-12 col-form-label p-0 liquid-font-color"  style="margin-bottom: 2%">
+                    <div style="display: inline-block">
+                    <p class="sub-title-padding m-0"  style="margin-bottom: 2%">{{primary.prili_treat.sel_type}}</p>
+                    </div>
+                    <div style="display: inline-block;margin-left: 28%" *ngIf="primary.prili_treat.sel_type === 'User Specified' ">
+                      <input type = "text" class="form-control" [(ngModel)]="primary.prili_treat.data.uvalue" name="userValuePrelim"/>
+                    </div>
+
+                  </div>
                   <div class="offset-md-1 col-md-11 row">
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
@@ -432,7 +447,14 @@
 
                 <div class="form-group row" *ngIf="primary.pri_treat.sel_type != '0' ">
                   <label class="col-md-12 col-form-label liquid-font-color" for="sel_pri_treat"><strong>Primary Treatment</strong></label>
-                  <label class="col-md-12 col-form-label p-0 liquid-font-color" ><p class="sub-title-padding m-0">{{primary.pri_treat.sel_type}}</p></label>
+                  <label class="col-md-12 col-form-label p-0 liquid-font-color"  style="margin-bottom: 2%">
+                    <div style="display: inline-block">
+                    <p class="sub-title-padding m-0"  style="margin-bottom: 2%">{{primary.pri_treat.sel_type}}</p>
+                    </div>
+                    <div style="display: inline-block;margin-left: 28%" *ngIf="primary.pri_treat.sel_type === 'User Specified' ">
+                      <input type = "text" class="form-control" [(ngModel)]="primary.pri_treat.data.uvalue" name="userValuePriTreat"/>
+                    </div>
+                  </label>
                   <div class="offset-md-1 col-md-11 row">
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
@@ -472,7 +494,15 @@
                 <div class="form-group row" *ngIf="secondary.sel_type != '0' ">
                   <div class="col-md-12 col-form-label liquid-font-color"><strong>Secondary Treatment</strong></div>
                   <label class="col-md-12 col-form-label p-0 liquid-font-color" ><p class="sub-title-padding m-0">{{secondary.sel_growth_type}}</p></label>
-                  <label class="col-md-12 col-form-label liquid-font-color" ><p class="sub-sub-title-padding m-0">{{secondary.sel_type}}</p></label>
+                  <label class="col-md-12 col-form-label liquid-font-color" style="margin-bottom: 2%">
+                    <div style="display: inline-block"  >
+                       <p class="sub-sub-title-padding m-0" style="display: inline-block">{{secondary.sel_type}}</p>
+                    </div>
+                    <div style="display: inline-block;margin-left: 21%"  *ngIf="secondary.sel_type === 'User Specified' ">
+                      <input type = "text" class="form-control" [(ngModel)]="secondary.data.uvalue" name="userValueSecondary"/>
+                    </div>
+
+                  </label>
                   <div class="offset-md-1 col-md-11 row">
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
@@ -511,7 +541,14 @@
 
                 <div class="form-group row" *ngIf="sec_clr.sel_type != '0'">
                   <div class="col-md-12 col-form-label liquid-font-color" for="sec_clr_rate"> <strong>Secondary Clarification </strong></div>
-                  <label class="col-md-12 col-form-label p-0 liquid-font-color" ><p class="sub-title-padding m-0">{{sec_clr.sel_type}}</p></label>
+                  <label class="col-md-12 col-form-label p-0 liquid-font-color"  style="margin-bottom: 2%">
+                    <div style="display: inline-block">
+                    <p class="sub-title-padding m-0"  style="display: inline-block">{{sec_clr.sel_type}}</p>
+                    </div>
+                    <div style="display: inline-block;margin-left: 28%" *ngIf="sec_clr.sel_type === 'User Specified' ">
+                      <input type = "text" class="form-control" [(ngModel)]="sec_clr.data.uvalue" name="userValueClari"/>
+                    </div>
+                  </label>
                   <div class="offset-md-1 col-md-11 row">
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
@@ -549,7 +586,15 @@
 
                 <div class="form-group row" *ngIf="tertiary.sel_type != '0'">
                   <div class="col-md-12 col-form-label liquid-font-color" for="text-input"><strong>Tertiary Treatment</strong></div>
-                  <label class="col-md-12 col-form-label p-0 liquid-font-color" ><p class="sub-title-padding m-0">{{tertiary.sel_type}}</p></label>
+                  <label class="col-md-12 col-form-label p-0 liquid-font-color" style="margin-bottom: 2%">
+                    <div style="display: inline-block">
+                    <p class="sub-title-padding m-0" style="display: inline-block">{{tertiary.sel_type}}</p>
+                    </div>
+                    <div style="display: inline-block;margin-left: 28%" *ngIf="tertiary.sel_type === 'User Specified' ">
+                      <input type = "text" class="form-control" [(ngModel)]="tertiary.data.uvalue" name="userValueTertiary"/>
+                    </div>
+
+                  </label>
                   <div class="offset-md-1 col-md-11 row">
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
@@ -586,7 +631,14 @@
 
                 <div class="form-group row" *ngIf="disinfection.sel_type != '0'">
                   <div class="col-md-12 col-form-label liquid-font-color" for="text-input"><strong>Disinfection</strong></div>
-                  <label class="col-md-12 col-form-label p-0 liquid-font-color" ><p class="sub-title-padding m-0">{{disinfection.sel_type}}</p></label>
+                  <label class="col-md-12 col-form-label p-0 liquid-font-color"  style="margin-bottom: 2%"  >
+                    <div style="display: inline-block">
+                    <p class="sub-title-padding m-0" style="display: inline-block">{{disinfection.sel_type}}</p>
+                    </div>
+                    <div style="display: inline-block;margin-left: 28%" *ngIf="disinfection.sel_type === 'User Specified' ">
+                      <input type = "text" class="form-control" [(ngModel)]="disinfection.data.uvalue" name="userValueDisinfection"/>
+                    </div>
+                  </label>
                   <div class="offset-md-1 col-md-11 row">
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
@@ -759,7 +811,15 @@
 
                 <div class="form-group row" *ngIf="biosolid.thickener.sel_type!='0'">
                   <div class="col-md-12 col-form-label liquid-sludge-font-color" for="text-input"><strong>Thickening</strong></div>
-                  <label class="col-md-12 col-form-label p-0 liquid-sludge-font-color"><p class="sub-title-padding m-0">{{biosolid.thickener.sel_type}}</p></label>
+                  <label class="col-md-12 col-form-label p-0 liquid-sludge-font-color" style="margin-bottom: 2%">
+                    <div style="display: inline-block">
+                      <p class="sub-title-padding m-0" style="display: inline-block">{{biosolid.thickener.sel_type}}</p>
+                    </div>
+                    <div style="display: inline-block;margin-left: 28%" *ngIf="biosolid.thickener.sel_type === 'User Specified' ">
+                      <input type = "text" class="form-control" [(ngModel)]="biosolid.thickener.data.uvalue" name="userValueThickener"/>
+                    </div>
+
+                  </label>
                   <div class="offset-md-1 col-md-11 row">
 
                     <label class="col-md-5 col-form-label " for="anaerobic_rate">Actual Energy Use Rate:</label>
@@ -797,7 +857,15 @@
 
                 <div class="form-group row" *ngIf="biosolid.aerobic.sel_type!='0'">
                   <label class="col-md-12 col-form-label liquid-sludge-font-color" for="text-input"><strong>Aerobic Digestion</strong></label>
-                  <label class="col-md-12 col-form-label p-0 liquid-sludge-font-color"><p class="sub-title-padding m-0">{{biosolid.aerobic.sel_type}}</p></label>
+                  <label class="col-md-12 col-form-label p-0 liquid-sludge-font-color" style="margin-bottom: 2%">
+                    <div style="display: inline-block">
+                      <p class="sub-title-padding m-0" style="display: inline-block">{{biosolid.aerobic.sel_type}}</p>
+                    </div>
+                    <div style="display: inline-block;margin-left: 28%" *ngIf="biosolid.aerobic.sel_type === 'User Specified' ">
+                      <input type = "text" class="form-control" [(ngModel)]="biosolid.aerobic.data.uvalue" name="userValueAerobic"/>
+                    </div>
+
+                  </label>
                   <div class="offset-md-1 col-md-11 row">
 
                     <label class="col-md-5 col-form-label " for="aerobic_rate">Actual Energy Use Rate:</label>
@@ -835,7 +903,15 @@
 
                 <div class="form-group row" *ngIf="biosolid.anaerobic.sel_type!='0'">
                   <div class="col-md-12 col-form-label liquid-sludge-font-color" for="text-input"><strong>Anaerobic Digestion</strong></div>
-                  <label class="col-md-12 col-form-label p-0 liquid-sludge-font-color"><p class="sub-title-padding m-0">{{biosolid.anaerobic.sel_type}}</p></label>
+                  <label class="col-md-12 col-form-label p-0 liquid-sludge-font-color" style="margin-bottom: 2%">
+                    <div style="display: inline-block">
+                      <p class="sub-title-padding m-0" style="display: inline-block">{{biosolid.anaerobic.sel_type}}</p>
+                    </div>
+                    <div style="display: inline-block;margin-left: 28%" *ngIf="biosolid.anaerobic.sel_type === 'User Specified' ">
+                      <input type = "text" class="form-control" [(ngModel)]="biosolid.anaerobic.data.uvalue" name="userValueAnerobic"/>
+                    </div>
+
+                  </label>
                   <div class="offset-md-1 col-md-11 row">
 
                     <label class="col-md-5 col-form-label " for="anaerobic_rate">Actual Energy Use Rate:</label>
@@ -1068,7 +1144,15 @@
 
                 <div class="form-group row" *ngIf="dewatering.sel_type!='0'">
                   <div class="col-md-12 col-form-label dewatering-font-color" for="text-input"><strong>Dewatering</strong></div>
-                  <label class="col-md-12 col-form-label p-0 dewatering-font-color"><p class="sub-title-padding m-0">{{dewatering.sel_type}}</p></label>
+                  <label class="col-md-12 col-form-label p-0 dewatering-font-color"  style="margin-bottom: 2%">
+                    <div style="display: inline-block" >
+                     <p class="sub-title-padding m-0" style="display: inline-block" >{{dewatering.sel_type}}</p>
+                    </div>
+                    <div style="display: inline-block;margin-left: 28%" *ngIf="dewatering.sel_type === 'User Specified' ">
+                      <input type = "text" class="form-control" [(ngModel)]="dewatering.data.uvalue" name="userValueDewatering"/>
+                    </div>
+
+                  </label>
                   <div class="offset-md-1 col-md-11 row">
 
                     <label class="col-md-5 col-form-label " for="dewatering_rate">Actual Energy Use Rate:</label>
