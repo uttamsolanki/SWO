@@ -136,6 +136,10 @@
                 <tr>
                   <label class="col-form-label">Energy Recovery</label>
                 </tr>
+                  <tr>
+                    <label class="col-form-label"> <strong>Net Electricity Emissions:</strong></label>
+                  </tr>
+
 <!--                <tr>-->
 <!--                  <label class="col-form-label">Energy Recovery (From external sources)</label>-->
 <!--                </tr>-->
@@ -235,7 +239,10 @@
                         <label class="col-form-label"><strong>{{(sc.electical/unitDivider).toFixed(2)}}</strong></label>
                       </tr>
                       <tr >
-                        <label class="col-form-label">{{(sc.EnergyRecovery/unitDivider).toFixed(2)}}</label>
+                      <label class="col-form-label">{{(sc.EnergyRecovery/unitDivider).toFixed(2)}}</label>
+                    </tr>
+                      <tr >
+                        <label class="col-form-label">{{((sc.electical+sc.EnergyRecovery)/unitDivider).toFixed(2)}}</label>
                       </tr>
                     </table>
                   </div>
