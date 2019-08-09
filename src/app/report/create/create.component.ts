@@ -67,15 +67,15 @@ export class CreateComponent implements OnInit {
   primary = {
     pumping: {
       sel_type: '0',
-      data: {title: null, default: null, co2: null, suggested: null},
+      data: {title: null, default: null, co2: null, suggested: null, uvalue: null},
     },
     prili_treat: {
       sel_type: '0',
-      data: {title: null, default: null, co2: null, suggested: null},
+      data: {title: null, default: null, co2: null, suggested: null, uvalue: null},
     },
     pri_treat: {
       sel_type: '0',
-      data: {title: null, default: null, co2: null, suggested: null},
+      data: {title: null, default: null, co2: null, suggested: null, uvalue: null},
     }
   };
   secondary = {
@@ -85,28 +85,28 @@ export class CreateComponent implements OnInit {
   };
   sec_clr = {
     sel_type: '0',
-    data: {title: null, default: null, co2: null, suggested: null},
+    data: {title: null, default: null, co2: null, suggested: null,  uvalue: null},
   };
   tertiary = {
     sel_type: '0',
-    data: {title: null, default: null, co2: null, suggested: null},
+    data: {title: null, default: null, co2: null, suggested: null,  uvalue: null},
   };
   disinfection = {
     sel_type: '0',
-    data: {title: null, default: null, co2: null, suggested: null}
+    data: {title: null, default: null, co2: null, suggested: null,  uvalue: null}
   };
   biosolid = {
     aerobic: {
       sel_type: '0',
-      data: {title: null, default: null, co2: null, suggested: null},
+      data: {title: null, default: null, co2: null, suggested: null, uvalue: null},
     },
     anaerobic: {
       sel_type: '0',
-      data: {title: null, default: null, co2: null, suggested: null},
+      data: {title: null, default: null, co2: null, suggested: null, uvalue: null},
     },
     thickener: {
       sel_type: '0',
-      data: {title: null, default: null, co2: null, suggested: null},
+      data: {title: null, default: null, co2: null, suggested: null, uvalue: null},
     }
   };
   biogas = {
@@ -116,11 +116,11 @@ export class CreateComponent implements OnInit {
   biosolids_disposals = {
     transportation: {
       sel_type: '0',
-      data: {title: null, default: null, co2: null, suggested: null},
+      data: {title: null, default: null, co2: null, suggested: null, uvalue: null},
     },
     disposal: {
       sel_type: '0',
-      data: {title: null, default: null, co2: null, suggested: null},
+      data: {title: null, default: null, co2: null, suggested: null, uvalue: null},
     }
   };
   dewatering = {
