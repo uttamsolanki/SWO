@@ -1610,8 +1610,8 @@
       "ref": {
       },
       "range": {
-        "min": null,
-        "max": null,
+        "min": 2,
+        "max": 4,
         "ref": {
 
         }

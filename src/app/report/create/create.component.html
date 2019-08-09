@@ -2577,7 +2577,7 @@
                     <div class="offset-md-1 col-md-11 row mb-4">
                       <label class="col-md-5 col-form-label" for="inline-radios_preliminary">Please select travel type</label>
                       <div class="col-md-5">
-                        <select class="form-control readonlyValue" [disabled]="viewMode" if="travel_type" name="travel_type" (change)="selectPlantInflent('transporation')" [(ngModel)]="process.transporation.travel_type" readonly>
+                        <select class="form-control readonlyValue" [disabled]="true" if="travel_type" name="travel_type" (change)="selectPlantInflent('transporation')" [(ngModel)]="process.transporation.travel_type" readonly>
                           <option value='distance'>Distance</option>
                           <option value='time'>Time</option>
                         </select>

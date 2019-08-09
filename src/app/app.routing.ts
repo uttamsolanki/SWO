@@ -22,6 +22,7 @@ import {reference} from '@angular/core/src/render3';
 import {ReferenceComponent} from './admin/reference/reference.component';
 import {ProjectComponent} from './report/project/project.component';
 import {NewProjectComponent} from './report/new-project/new-project.component';
+import {OverviewComponent} from './overview/overview.component';
 
 export const routes: Routes = [
   {
@@ -71,6 +72,13 @@ export const routes: Routes = [
         component: DashboardComponent,
         data: {
           title: 'Dashboard'
+        }
+      },
+      {
+        path: 'overview',
+        component: OverviewComponent,
+        data: {
+          title: 'Overview'
         }
       },
       {

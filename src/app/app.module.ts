@@ -60,6 +60,7 @@ import { ReferenceComponent } from './admin/reference/reference.component';
 import { ProjectComponent } from './report/project/project.component';
 import { NewProjectComponent } from './report/new-project/new-project.component';
 import { InformationComponent } from './report/information/information.component';
+import { OverviewComponent } from './overview/overview.component';
 
 
 
@@ -109,6 +110,7 @@ import { InformationComponent } from './report/information/information.component
     ProjectComponent,
     NewProjectComponent,
     InformationComponent,
+    OverviewComponent,
    // ScenarioDetailsComponent,
   ],
   providers: [UserService, AuthGuard,
