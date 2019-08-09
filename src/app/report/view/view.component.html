@@ -165,7 +165,7 @@
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label">Chemical Usage</label></td>-->
-                        <td><label class=" col-form-label">{{sc.chemical.toFixed(2)}}</label></td>
+                        <td><label class=" col-form-label">{{(sc.chemical/unitDivider).toFixed(2)}}</label></td>
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label">Biosolids Transportation</label></td>-->
@@ -181,15 +181,15 @@
                         <td><label class=" col-form-label">{{(sc.energy/unitDivider).toFixed(1)}}</label></td>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label"><strong>{{sc.priorBiosolid.toFixed(1)}}</strong></label></td>
+                        <td><label class=" col-form-label"><strong>{{(sc.priorBiosolid/unitDivider).toFixed(1)}}</strong></label></td>
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label">Biosolids Disposal Emissions</label></td>-->
-                        <td><label class=" col-form-label">{{sc.disposal.toFixed(1)}}</label></td>
+                        <td><label class=" col-form-label">{{(sc.disposal/unitDivider).toFixed(1)}}</label></td>
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label></td>-->
-                        <td><label class=" col-form-label"><strong>{{sc.ProcessCo2.toFixed(1)}}</strong></label></td>
+                        <td><label class=" col-form-label"><strong>{{(sc.ProcessCo2/unitDivider).toFixed(1)}}</strong></label></td>
                       </tr>
 
                       <tr>
@@ -232,7 +232,7 @@
                         <label class="col-form-label">{{(sc.dewateringTreat/unitDivider).toFixed(2)}}</label>
                       </tr>
                       <tr>
-                        <label class="col-form-label"><strong>{{(sc.electical).toFixed(2)}}</strong></label>
+                        <label class="col-form-label"><strong>{{(sc.electical/unitDivider).toFixed(2)}}</strong></label>
                       </tr>
                       <tr >
                         <label class="col-form-label">{{(sc.EnergyRecovery/unitDivider).toFixed(2)}}</label>
