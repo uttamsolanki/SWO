@@ -64,77 +64,80 @@
             <div class="view-class row" *ngIf="selectedProject!='0' && count">
               <div class="col-md-4">
                 <table style="margin-top: 13px">
+                  <tr>
+                    <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
+                  </tr>
                 <tr>
                   <th>Total CO2 Equivalent[<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</th>
                 </tr>
                 <tr>
-                  <td><label class=" col-form-label">Electricity Emissions</label></td>
+                  <td><label class=" col-form-label padding-row">Electricity Emissions</label></td>
                 </tr>
                 <tr>
-                  <td><label class=" col-form-label">On-site Process Emissions</label></td>
+                  <td><label class=" col-form-label padding-row">On-site Process Emissions</label></td>
                 </tr>
                 <tr>
-                  <td><label class=" col-form-label">Chemical Usage</label></td>
+                  <td><label class=" col-form-label padding-row">Chemical Usage</label></td>
                 </tr>
                 <tr>
-                  <td><label class=" col-form-label">Biosolids Transportation</label></td>
+                  <td><label class=" col-form-label padding-row">Biosolids Transportation</label></td>
                 </tr>
                 <tr>
                   <td><label class=" col-form-label"><strong>Sub Total Prior to Energy Recovery:</strong></label>
                 </tr>
                   <tr>
-                    <td><label class=" col-form-label">Energy Recovery Credit (From WWTP)</label></td>
+                    <td><label class=" col-form-label padding-row">Energy Recovery Credit (From WWTP)</label></td>
                   </tr>
                 <tr>
-                  <td><label class=" col-form-label">Energy Recovery Credit (From external sources)</label></td>
+                  <td><label class=" col-form-label padding-row">Energy Recovery Credit (From external sources)</label></td>
                 </tr>
                 <tr>
                   <td><label class=" col-form-label"><strong>Net Emissions prior to Biosolids Disposal:</strong></label></td>
                 </tr>
                 <tr>
-                  <td><label class=" col-form-label">Biosolids Disposal Emissions</label></td>
+                  <td><label class=" col-form-label padding-row">Biosolids Disposal Emissions</label></td>
                 </tr>
                 <tr>
                   <td><label class=" col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label></td>
                 </tr>
                 <tr>
-                  <label class="col-form-label " for="text-input"><strong>Electricity Emissions Summary: [<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</strong></label>
+                  <label class="col-form-label"><strong>Electricity Emissions Summary: [<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</strong></label>
                 </tr>
                 <tr>
-                    <label class="col-form-label " for="text-input">Pumping</label>
+                    <label class="col-form-label padding-row">Pumping</label>
                 </tr>
                 <tr>
-                  <label class="col-form-label">Preliminary Treatment</label>
+                  <label class="col-form-label padding-row">Preliminary Treatment</label>
                 </tr>
                 <tr>
-                  <label class="col-form-label">Primary Treatment</label>
+                  <label class="col-form-label padding-row">Primary Treatment</label>
                 </tr>
                 <tr>
-                  <label class="col-form-label ">Secondary Treatment</label>
+                  <label class="col-form-label padding-row">Secondary Treatment</label>
                 </tr>
                 <tr>
-                  <label class="col-form-label ">Secondary Clarification</label>
+                  <label class="col-form-label padding-row">Secondary Clarification</label>
                 </tr>
                 <tr>
-                  <label class="col-form-label ">Tertiary Treatment</label>
+                  <label class="col-form-label padding-row">Tertiary Treatment</label>
                 </tr>
                 <tr>
-                  <label class="col-form-label ">Disinfection</label>
+                  <label class="col-form-label padding-row">Disinfection</label>
                 </tr>
                 <tr>
-                  <label class="col-form-label ">Thickenimg</label>
+                  <label class="col-form-label padding-row">Thickenimg</label>
                 </tr>
                 <tr>
-                  <label class="col-form-label ">Aeration</label>
+                  <label class="col-form-label padding-row">Aeration</label>
                 </tr>
                 <tr>
-                  <label class="col-form-label ">Dewatering</label>
+                  <label class="col-form-label padding-row">Dewatering</label>
                 </tr>
                 <tr>
                   <label class="col-form-label"><strong>Sub Total Prior to Energy Recovery:</strong></label>
                 </tr>
                 <tr>
-                  <label class="col-form-label">Energy Recovery</label>
+                  <label class="col-form-label padding-row">Energy Recovery</label>
                 </tr>
                   <tr>
                     <label class="col-form-label"> <strong>Net Electricity Emissions:</strong></label>
@@ -158,6 +161,9 @@
                       <tr>
 <!--                      <th>Total CO2 Equivalent</th>-->
                         <th><a [routerLink]="['/report/create/',selectedProject,sc.id,undefined,0]">{{sc.name}}</a></th>
+                      </tr>
+                      <tr>
+                        <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label">Electricity Emissions</label></td>-->
@@ -242,7 +248,7 @@
                       <label class="col-form-label">{{(sc.EnergyRecovery/unitDivider).toFixed(2)}}</label>
                     </tr>
                       <tr >
-                        <label class="col-form-label">{{((sc.electical+sc.EnergyRecovery)/unitDivider).toFixed(2)}}</label>
+                        <label class="col-form-label"><strong>{{((sc.electical+sc.EnergyRecovery)/unitDivider).toFixed(2)}}</strong></label>
                       </tr>
                     </table>
                   </div>

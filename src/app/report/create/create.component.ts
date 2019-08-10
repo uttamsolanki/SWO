@@ -478,10 +478,11 @@ export class CreateComponent implements OnInit {
     },
     legend: {
       display: true,
-      position: 'bottom',
+      position: 'right',
       labels: {
         fontColor: 'black',
-        fontSize : 12
+        fontSize : 12,
+        padding:40
       }
     },
     layout: {
