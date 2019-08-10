@@ -10,7 +10,7 @@ Duplicate - allows duplicating the entire scenario; modify options, and save as 
   <div class="col-lg-12">
     <div class="card details-border">
       <div class="card-header">
-        Scenarios
+        <div><p class="projectTitle">Scenarios</p></div>
         <div *ngIf="!scenarioData.length">
           <div *ngIf="elements.length==0">
             <button style="float: right" type="button" class="offset-5 col-md-2 btn btn-block btn-success"  (click)="projectDeleteCon()">Delete Project</button>
@@ -33,7 +33,7 @@ Duplicate - allows duplicating the entire scenario; modify options, and save as 
             <p class="msg-text-center">Please create a Scenario.</p>
             <button type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id]">Create New</button>
           </form>
-          <div class="row">
+          <div class="row" *ngIf="scenarioData.length">
             <label class="offset-md-4 col-md-2 col-form-label" for="ProjectName"> <strong>Project Name:</strong></label>
             <div class="col-md-3">
               <label class="col-form-label" id="ProjectName">{{projectName}}</label>
