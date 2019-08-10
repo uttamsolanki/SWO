@@ -712,8 +712,8 @@ export class CreateComponent implements OnInit {
     if ( this.secondary.sel_growth_type !== '0' ) {
       if (this.sec_clr.sel_type === '0') {
         this.sec_clr.sel_type = 'Secondary Clarifier';
-      }
         this.selectTreatmentType('', 'sec_clr', this.sec_clr_types);
+      }
     } else {
         this.sec_clr.sel_type = '0';
         this.selectTreatmentType('', 'sec_clr', this.sec_clr_types);
