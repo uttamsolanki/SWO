@@ -1,12 +1,19 @@
 
 <div class="animated fadeIn">
-
+  <ng-template #InfoPopOver style="width: 170%">
+                          <span style="color: #00aced">
+                           To view the scenario - Please click the column title of the desired scenario
+                          </span>
+  </ng-template>
   <div class="row" *ngIf="showContent">
 
     <div class="col-lg-12">
       <div class="card details-border">
         <div class="card-header">
-          Comparison of Scenarios
+
+          <div style="display: -webkit-inline-box;"><p class="projectTitle"> Comparison of Scenarios</p>   <span>
+                         <img class="icon-image-action " src="assets/img/brand/info-icon.png" container="body" placement="bottom"  [popover]="InfoPopOver" [outsideClick]="true" popoverTitle="Info" />
+                </span></div>
           <div class="card-header-actions">
             <button type="button" class="card-header-action btn btn-link btn-setting"><i class="icon-settings"></i></button>
             <button type="button" class="card-header-action btn btn-link btn-minimize"><i class={{iconCollapse}}></i></button>
@@ -28,8 +35,8 @@
               <label class="offset-md-2 col-md-3 col-form-label" for="project">Select Scenario</label>
               <div class="col-md-5 col-form-label" >
                 <div class="form-check form-check-inline mr-1" *ngFor="let sc of scenarios;let i = index;">
-                  <input class="form-check-input" [disabled]="!selectScenario[sc.id] && isDisable"  type="checkbox" id="inline-checkbox1" [(ngModel)]="selectScenario[sc.id]" value="{{sc.id}}"(ngModelChange)="selectSenario()" [ngModelOptions]="{standalone: true}">
-                  <label class="form-check-label p-1" for="inline-checkbox1">{{sc.name}}</label>
+                  <input class="form-check-input" [disabled]="!selectScenario[sc.id] && isDisable"  type="checkbox" id="{{sc.id}}" [(ngModel)]="selectScenario[sc.id]" value="{{sc.id}}"(ngModelChange)="selectSenario()" [ngModelOptions]="{standalone: true}">
+                  <label class="form-check-label p-1" for="{{sc.id}}">{{sc.name}}</label>
                 </div>
               </div>
             </div>
@@ -67,8 +74,8 @@
                   <tr>
                     <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
                   </tr>
-                <tr>
-                  <th>Total CO2 Equivalent[<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</th>
+                <tr class="mainTitle">
+                  <td><label class="col-form-label"><strong>Total CO2 Equivalent[<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</strong></label></td>
                 </tr>
                 <tr>
                   <td><label class=" col-form-label padding-row">Electricity Emissions</label></td>
@@ -83,7 +90,7 @@
                   <td><label class=" col-form-label padding-row">Biosolids Transportation</label></td>
                 </tr>
                 <tr>
-                  <td><label class=" col-form-label"><strong>Sub Total Prior to Energy Recovery:</strong></label>
+                  <td><label class=" col-form-label padding-row"><strong class="subTitle">Sub Total Prior to Energy Recovery:</strong></label>
                 </tr>
                   <tr>
                     <td><label class=" col-form-label padding-row">Energy Recovery Credit (From WWTP)</label></td>
@@ -92,16 +99,19 @@
                   <td><label class=" col-form-label padding-row">Energy Recovery Credit (From external sources)</label></td>
                 </tr>
                 <tr>
-                  <td><label class=" col-form-label"><strong>Net Emissions prior to Biosolids Disposal:</strong></label></td>
+                  <td><label class=" col-form-label padding-row"><strong class="subTitle">Net Emissions prior to Biosolids Disposal:</strong></label></td>
                 </tr>
                 <tr>
                   <td><label class=" col-form-label padding-row">Biosolids Disposal Emissions</label></td>
                 </tr>
                 <tr>
-                  <td><label class=" col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label></td>
+                  <td><label class=" col-form-label padding-row"><strong class="subTitle">Total Emissions including Biosolids Disposal: </strong></label></td>
                 </tr>
-                <tr>
-                  <label class="col-form-label"><strong>Electricity Emissions Summary: [<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</strong></label>
+                  <tr>
+                    <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
+                  </tr>
+                <tr class="mainTitle">
+                  <td><label class="col-form-label"><strong>Electricity Emissions Summary: [<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</strong></label></td>
                 </tr>
                 <tr>
                     <label class="col-form-label padding-row">Pumping</label>
@@ -134,13 +144,13 @@
                   <label class="col-form-label padding-row">Dewatering</label>
                 </tr>
                 <tr>
-                  <label class="col-form-label"><strong>Sub Total Prior to Energy Recovery:</strong></label>
+                  <label class="col-form-label padding-row"><strong class="subTitle">Sub Total Prior to Energy Recovery:</strong></label>
                 </tr>
                 <tr>
                   <label class="col-form-label padding-row">Energy Recovery</label>
                 </tr>
                   <tr>
-                    <label class="col-form-label"> <strong>Net Electricity Emissions:</strong></label>
+                    <label class="col-form-label padding-row"> <strong class="subTitle">Net Electricity Emissions:</strong></label>
                   </tr>
 
 <!--                <tr>-->
@@ -160,10 +170,10 @@
                     <table >
                       <tr>
 <!--                      <th>Total CO2 Equivalent</th>-->
-                        <th><a [routerLink]="['/report/create/',selectedProject,sc.id,undefined,0]">{{sc.name}}</a></th>
+                        <td><label class="col-form-label"> <strong><a [routerLink]="['/report/create/',selectedProject,sc.id,undefined,0]">{{sc.name}}</a> </strong></label></td>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
+                        <td><label class="col-form-label" style="visibility: hidden"> <strong>None   </strong></label></td>
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label">Electricity Emissions</label></td>-->
@@ -182,7 +192,7 @@
                         <td><label class=" col-form-label">{{(sc.transporation/unitDivider).toFixed(1)}}</label></td>
                       </tr>
                     <tr>
-                      <td><label class=" col-form-label"><strong>{{(sc.priorElectrical/unitDivider).toFixed(1)}}</strong></label></td>
+                      <td><label class=" col-form-label"><strong class="subTitle">{{(sc.priorElectrical/unitDivider).toFixed(1)}}</strong></label></td>
                     </tr>
                       <tr>
                         <td><label class=" col-form-label">{{(sc.EnergyRecovery/unitDivider).toFixed(1)}}</label></td>
@@ -191,7 +201,7 @@
                         <td><label class=" col-form-label">{{(sc.energy/unitDivider).toFixed(1)}}</label></td>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label"><strong>{{(sc.priorBiosolid/unitDivider).toFixed(1)}}</strong></label></td>
+                        <td><label class=" col-form-label"><strong class="subTitle">{{(sc.priorBiosolid/unitDivider).toFixed(1)}}</strong></label></td>
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label">Biosolids Disposal Emissions</label></td>-->
@@ -199,9 +209,11 @@
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label></td>-->
-                        <td><label class=" col-form-label"><strong>{{(sc.ProcessCo2/unitDivider).toFixed(1)}}</strong></label></td>
+                        <td><label class=" col-form-label"><strong class="subTitle">{{(sc.ProcessCo2/unitDivider).toFixed(1)}}</strong></label></td>
                       </tr>
-
+                      <tr>
+                        <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
+                      </tr>
                       <tr>
                         <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
                       </tr>
@@ -242,13 +254,13 @@
                         <label class="col-form-label">{{(sc.dewateringTreat/unitDivider).toFixed(2)}}</label>
                       </tr>
                       <tr>
-                        <label class="col-form-label"><strong>{{(sc.electical/unitDivider).toFixed(2)}}</strong></label>
+                        <label class="col-form-label"><strong class="subTitle">{{(sc.electical/unitDivider).toFixed(2)}}</strong></label>
                       </tr>
                       <tr >
                       <label class="col-form-label">{{(sc.EnergyRecovery/unitDivider).toFixed(2)}}</label>
                     </tr>
                       <tr >
-                        <label class="col-form-label"><strong>{{((sc.electical+sc.EnergyRecovery)/unitDivider).toFixed(2)}}</strong></label>
+                        <label class="col-form-label"><strong class="subTitle">{{((sc.electical+sc.EnergyRecovery)/unitDivider).toFixed(2)}}</strong></label>
                       </tr>
                     </table>
                   </div>

@@ -16,16 +16,18 @@ Duplicate - allows duplicating the entire scenario; modify options, and save as 
             <button style="float: right" type="button" class="offset-5 col-md-2 btn btn-block btn-success"  (click)="projectDeleteCon()">Delete Project</button>
           </div>
         </div>
-        <div *ngIf="scenarioData.length">
-            <div *ngIf="elements.length> 0">
-              <button style="float: right" type="button" class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/view', id]" (click)="sendScenarioId()">Compare</button>
+        <div *ngIf="scenarioData.length" class="row">
+          <div class="offset-8 col-md-2">
+            <button type="button" class="btn btn-block btn-success" [routerLink]="['/report/create',id,'null',scenarioData.length,1]">Create New</button>
+          </div>
+            <div *ngIf="elements.length> 1" class="col-md-2">
+              <button style="float: right" type="button" class="btn btn-block btn-success" [routerLink]="['/report/view', id]" (click)="sendScenarioId()">Compare</button>
             </div>
 
-          <div *ngIf="elements.length<= 0">
-            <button style="float: right" type="button" disabled class="offset-5 col-md-2 btn btn-block btn-success" [routerLink]="['/report/view',id]" (click)="sendScenarioId()">Compare</button>
+          <div *ngIf="elements.length<= 1" class="col-md-2" >
+            <button style="float: right" type="button" disabled class="btn btn-block btn-success" [routerLink]="['/report/view',id]" (click)="sendScenarioId()">Compare</button>
           </div>
-          <button type="button" class="col-md-2 btn btn-block btn-success" [routerLink]="['/report/create',id,'null',scenarioData.length,1]">Create New</button>
-        </div>
+         </div>
         <div class="card-header-actions"></div>
       </div>
         <div class="card-body">
@@ -57,7 +59,7 @@ Duplicate - allows duplicating the entire scenario; modify options, and save as 
             </thead>
             <tbody>
             <tr *ngFor="let p of scenarioData; index as i">
-              <td><input type="checkbox" (change)="toggleEditable($event, p._id, i)"/></td>
+              <td><input type="checkbox" (change)="toggleEditable($event, p._id, i)" [disabled]="elements.indexOf(p._id) ==-1 && elements.length> 3"/></td>
               <td>{{p.name}}</td>
               <td>{{p.created_date | date: 'dd-MMM-yyyy'}}</td>
               <td>
