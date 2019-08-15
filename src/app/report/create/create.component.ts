@@ -372,7 +372,8 @@ export class CreateComponent implements OnInit {
     title: {
       display: true,
       text: 'CO2 Equivalent from Electricity Emissions',
-      fontSize: 14
+      fontSize: 14,
+      padding:25
     },
     scaleShowVerticalLines: false,
     responsive: true,
@@ -386,6 +387,15 @@ export class CreateComponent implements OnInit {
           autoSkip: false
         }
       }]
+    },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'top',
+        font: {
+          weight: 'bold'
+        }
+      }
     }
   };
 
