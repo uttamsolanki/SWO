@@ -6,7 +6,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-import {AlertModule, ModalModule, PopoverModule} from 'ngx-bootstrap';
+import {AlertModule, CollapseModule, ModalModule, PopoverModule} from 'ngx-bootstrap';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -86,7 +86,8 @@ import { OverviewComponent } from './overview/overview.component';
     TooltipModule.forRoot(),
     FormsModule,
     PopoverModule,
-    PopoverModule.forRoot()
+    PopoverModule.forRoot(),
+    CollapseModule
   ],
   declarations: [
     AppComponent,

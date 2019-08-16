@@ -127,7 +127,7 @@ export class ViewComponent implements OnInit {
         this.count++;
     }
     console.log(this.count);
-    this.noOfcolumn = Math.ceil(12 / (this.count + 1));
+    this.noOfcolumn = Math.floor(12 / (this.count + 1));
 
     if (this.count > 3) {
       this.isDisable = true;
