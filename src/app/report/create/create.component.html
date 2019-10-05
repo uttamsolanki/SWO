@@ -3461,7 +3461,12 @@
 
                   <div class="form-group row" *ngIf="primary.pumping.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{primary.pumping.sel_type}}</label>
+                      <div class="col-md-4 col-form-label " *ngIf="primary.pumping.data.title === 'User Specified' && primary.pumping.data.uvalue;else other_content">
+                        <label>{{primary.pumping.data.uvalue}}</label>
+                      </div>
+                      <ng-template #other_content>
+                        <label class="col-md-4 col-form-label " >{{primary.pumping.sel_type}}</label>
+                      </ng-template>
                       <label class="col-md-3 col-form-label" for="text-input">{{(primary.pumping.data.co2/unitDivider).toFixed(2)}} </label>
                     </div>
                   </div>

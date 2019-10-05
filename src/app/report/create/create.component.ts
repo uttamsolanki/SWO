@@ -1012,7 +1012,11 @@ export class CreateComponent implements OnInit {
     this.totalEnergyCo2 = 0;
     const newData = [];
      if (this.primary.pumping.sel_type !== '0') {
+       if (this.primary.pumping.data.title === 'User Specified') {
+         this.barChartLabels.push(this.primary.pumping.data.uvalue);
+       } else {
          this.barChartLabels.push(this.primary.pumping.data.title);
+       }
          newData.push(this.primary.pumping.data.co2);
          this.totalElecricalCo2 += JSON.parse(this.primary.pumping.data.co2);
      }

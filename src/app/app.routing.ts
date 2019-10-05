@@ -23,6 +23,7 @@ import {ReferenceComponent} from './admin/reference/reference.component';
 import {ProjectComponent} from './report/project/project.component';
 import {NewProjectComponent} from './report/new-project/new-project.component';
 import {OverviewComponent} from './overview/overview.component';
+import {UsersComponent} from './report/users/users.component';
 
 export const routes: Routes = [
   {
@@ -96,7 +97,8 @@ export const routes: Routes = [
          // { path: 'create/:id/:length', component: CreateComponent},
           {path: 'project', component: ProjectComponent},
           {path: 'project/:id', component: ProjectComponent},
-          {path: 'new-project', component: NewProjectComponent}
+          {path: 'new-project', component: NewProjectComponent},
+          {path: 'users', component: UsersComponent}
           ]
       },
       {
