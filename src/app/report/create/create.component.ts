@@ -10,13 +10,14 @@ import 'chartjs-plugin-datalabels';
 import 'chartjs-plugin-piechart-outlabels';
 import {DataServiceService} from '../../data-service.service';
 import {forEach} from '@angular/router/src/utils/collection';
+import {CanComponentDeactivate} from '../../confirmGaurd/confirmation.guard';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
 
-export class CreateComponent implements OnInit {
+export class CreateComponent implements OnInit, CanComponentDeactivate{
   constructor(private userService: UserService, private router: Router,  private route: ActivatedRoute, private dataServiceService: DataServiceService) { }
 
   @ViewChild('tabset') tabset: TabsetComponent;
@@ -360,6 +361,8 @@ export class CreateComponent implements OnInit {
   isInternal: number=0;
   newHtml:string="No references";
   viewMode:boolean=false;
+  scenarioSaved:boolean=false;
+  isSavedScenario:boolean=true;
   // *************  barChart Start *************//
 
   public barChart1Colours: Array<any> = [
@@ -587,6 +590,16 @@ export class CreateComponent implements OnInit {
 
 
   }
+  confirm(): boolean {
+    if(this.scenarioSaved){
+      return true;
+    }else {
+      return confirm("Scenario is not saved! Discard Scenario?");
+    }
+
+
+  }
+
   collapsed(event: any): void {
     // console.log(event);
   }
@@ -1399,12 +1412,20 @@ export class CreateComponent implements OnInit {
     this.modal.show();
     const data = this.userService.saveProject(scenarioData).subscribe((rep: any) => {
       this.modelMsg = rep.message;
+      console.log(rep);
+      if(rep.status==1){
+        this.scenarioSaved=true;
+        this.isSavedScenario=true;
+      }else{
+        this.isSavedScenario=false;
+      }
      // this.modal.show();
     });
 
   }
   successOk() {
     this.modal.hide();
+    if(this.isSavedScenario)
      this.router.navigate(['dashboard']);
   }
   testU(data){

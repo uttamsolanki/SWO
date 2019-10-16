@@ -61,6 +61,7 @@ import { ProjectComponent } from './report/project/project.component';
 import { NewProjectComponent } from './report/new-project/new-project.component';
 import { InformationComponent } from './report/information/information.component';
 import { OverviewComponent } from './overview/overview.component';
+import {ConfirmationGuard} from './confirmGaurd/confirmation.guard';
 
 
 
@@ -113,7 +114,7 @@ import { OverviewComponent } from './overview/overview.component';
     OverviewComponent,
    // ScenarioDetailsComponent,
   ],
-  providers: [UserService, AuthGuard,
+  providers: [UserService, ConfirmationGuard,AuthGuard,
     {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
