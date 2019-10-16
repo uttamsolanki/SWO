@@ -24,6 +24,7 @@ import {ProjectComponent} from './report/project/project.component';
 import {NewProjectComponent} from './report/new-project/new-project.component';
 import {OverviewComponent} from './overview/overview.component';
 import {UsersComponent} from './report/users/users.component';
+import {AdminPanelComponent} from './admin-panel/admin-panel.component';
 
 export const routes: Routes = [
   {
@@ -100,6 +101,13 @@ export const routes: Routes = [
           {path: 'new-project', component: NewProjectComponent},
           {path: 'users', component: UsersComponent}
           ]
+      },
+      {
+        path: 'admin-panel',
+        component: AdminPanelComponent,
+        data: {
+          title: 'Admin'
+        }
       },
       {
         path: 'admin',

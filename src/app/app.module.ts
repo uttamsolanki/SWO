@@ -62,6 +62,7 @@ import { NewProjectComponent } from './report/new-project/new-project.component'
 import { InformationComponent } from './report/information/information.component';
 import { OverviewComponent } from './overview/overview.component';
 import { UsersComponent } from './report/users/users.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 
 
@@ -114,6 +115,7 @@ import { UsersComponent } from './report/users/users.component';
     InformationComponent,
     OverviewComponent,
     UsersComponent,
+    AdminPanelComponent,
    // ScenarioDetailsComponent,
   ],
   providers: [UserService, AuthGuard,

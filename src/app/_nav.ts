@@ -41,6 +41,11 @@ export const navItems: NavData[] = [
     name: 'Users',
     url: '/report/users',
     icon: 'fa fa-eye'
+  },
+  {
+    name: 'Admin',
+    url: '/admin-panel',
+    icon: 'icon-pencil'
   }
   // {
   //   title: true,
