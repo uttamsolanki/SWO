@@ -23,6 +23,7 @@ import {ReferenceComponent} from './admin/reference/reference.component';
 import {ProjectComponent} from './report/project/project.component';
 import {NewProjectComponent} from './report/new-project/new-project.component';
 import {OverviewComponent} from './overview/overview.component';
+import {ConfirmationGuard} from './confirmGaurd/confirmation.guard';
 import {UsersComponent} from './report/users/users.component';
 import {AdminPanelComponent} from './admin-panel/admin-panel.component';
 
@@ -91,10 +92,10 @@ export const routes: Routes = [
           { path: 'view', component: ViewComponent  },
           { path: 'view/:id', component: ViewComponent  },
           // { path: 'create', component: CreateComponent},
-          {path: 'create/:id', component: CreateComponent},
-          { path: 'create/:id/:sid', component: CreateComponent},
-          { path: 'create/:id/:sid/:length/', component: CreateComponent},
-          { path: 'create/:id/:sid/:length/:viewFlag', component: CreateComponent},
+          {path: 'create/:id', component: CreateComponent, canDeactivate: [ConfirmationGuard]},
+          { path: 'create/:id/:sid', component: CreateComponent, canDeactivate: [ConfirmationGuard]},
+          { path: 'create/:id/:sid/:length/', component: CreateComponent, canDeactivate: [ConfirmationGuard]},
+          { path: 'create/:id/:sid/:length/:viewFlag', component: CreateComponent, canDeactivate: [ConfirmationGuard]},
          // { path: 'create/:id/:length', component: CreateComponent},
           {path: 'project', component: ProjectComponent},
           {path: 'project/:id', component: ProjectComponent},

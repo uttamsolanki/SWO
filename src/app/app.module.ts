@@ -61,6 +61,7 @@ import { ProjectComponent } from './report/project/project.component';
 import { NewProjectComponent } from './report/new-project/new-project.component';
 import { InformationComponent } from './report/information/information.component';
 import { OverviewComponent } from './overview/overview.component';
+import {ConfirmationGuard} from './confirmGaurd/confirmation.guard';
 import { UsersComponent } from './report/users/users.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
@@ -118,7 +119,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     AdminPanelComponent,
    // ScenarioDetailsComponent,
   ],
-  providers: [UserService, AuthGuard,
+  providers: [UserService, ConfirmationGuard,AuthGuard,
     {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
