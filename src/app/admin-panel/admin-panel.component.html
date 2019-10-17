@@ -1,0 +1,113 @@
+<div class="card details-border" xmlns="http://www.w3.org/1999/html">
+  <div class="card-header">
+    <div><p class="projectTitle" >Admin</p></div>
+  </div>
+  <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+    <form name="form" (ngSubmit)="f.form.valid && saveProject()" #f="ngForm" novalidate>
+      <div class="form-group row">
+        <div class="col-md-3">
+          <label for="def" class="col-form-label">Select Pumping</label>
+        </div>
+        <div class="col-md-3">
+          <select [(ngModel)]="selectedPumping" name="pump" class="form-control"  (change)="firstDropChange()">
+            <option *ngFor="let first of firstDrop" [value]="first.name"> {{ first.name }} </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row" *ngIf="newSecond">
+        <div class="col-md-3">
+          <label for="def" class="col-form-label">Sub select</label>
+        </div>
+        <div class="col-md-3">
+          <select class="form-control" >
+            <option *ngFor="let second of newSecond">
+              {{ second.description }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row" *ngIf="newSecond">
+        <div class="col-md-3">
+          <label class="col-form-label" for="prilimary">Select Prilimary Treatment</label>
+        </div>
+        <div class="col-md-3">
+          <select id="prilimary" name="prilimary" class="form-control"  [(ngModel)]="selectedItem" (change)="PopulateData()">
+<!--            <option value="0">Project</option>-->
+            <option *ngFor="let p of prilimaryArray" value="{{p.title}}" >{{p.title}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-3">
+          <label for="def" class="col-form-label">Default Value</label>
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" id="def" name="defaults" [(ngModel)]="defaultStructure.default"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-3">
+          <label for="suggested" class="col-form-label">Enter Suggested Value</label>
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" id="suggested" name="suggested" [(ngModel)]="defaultStructure.suggested"/>
+        </div>
+      </div>
+      <div class="form-group row" *ngIf="selectedItem">
+        <div class="col-md-3">
+          <label class="col-form-label">Enter Ref:</label>
+        </div>
+        <div *ngIf="selectedKeys">
+          <div *ngFor="let p of selectedKeys;let i = index" class="col-md-2" style="display: inline-block;">
+            <input type="text" style="widows: 65%;" class="form-control" name="ref" [(ngModel)]="p"/>
+          </div>
+          <div *ngFor="let p of selectedValues;" class="col-md-5" style="display: inline-block; margin-left: -8%;margin-bottom: -1.81%;">
+            <textarea rows="3" cols="60" class="form-control" name="ref2" [(ngModel)]="p">{{p}} </textarea>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <button type="Button" style="width: 68%; margin-left: -374%;" class="form-control" (click)="addfield()">+</button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-3"></div>
+        <div class="col-md-1" id="textboxes"></div>
+        <div class="col-md-2" style="margin-left: -2%;" id="textboxes2"></div>
+      </div>
+      <div class="form-group row" *ngIf="selectedItem">
+        <div class="col-md-3">
+          <label for="minrange" class="col-form-label">Enter Minimum Range:</label>
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" id="minrange" name="minrange" [(ngModel)]="defaultStructure.range.min"/>
+        </div>
+      </div>
+      <div class="form-group row" *ngIf="selectedItem">
+        <div class="col-md-3">
+          <label for="maxrange" class="col-form-label">Enter Maximum Range:</label>
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" id="maxrange" name="maxrange"  [(ngModel)]="defaultStructure.range.max"/>
+        </div>
+      </div>
+      <div class="form-group row" *ngIf="selectedItem">
+        <div class="col-md-3">
+          <label for="rangeref" class="col-form-label">Enter Range Ref:</label>
+        </div>
+        <div *ngIf="selectedKeys">
+          <div *ngFor="let p of selectedRangekeys; index as i;" class="col-md-4" style="margin-bottom: 22%" >
+            <input type="text"  class="form-control" name="ref" [(ngModel)]="p[i]">
+          </div>
+        </div>
+        <div *ngIf="selectedKeys">
+          <div *ngFor="let p of selectedRangeValues;" class="col-md-5" style="margin-left: -9%;margin-bottom: 1.81%;">
+            <textarea rows="3" cols="75" class="form-control" name="ref2" [(ngModel)]="p">{{p[i]}} </textarea>
+          </div>
+        </div>
+<!--        <div class="col-md-3">-->
+<!--          <input type="text" class="form-control" id="rangeref" name="rangeref" [(ngModel)]="defaultStructure.range.ref"/>-->
+<!--        </div>-->
+      </div>
+    </form>
+  </div>
+</div>

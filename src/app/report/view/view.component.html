@@ -15,7 +15,7 @@
                          <img class="icon-image-action " src="assets/img/brand/info-icon.png" container="body" placement="bottom"  [popover]="InfoPopOver" [outsideClick]="true" popoverTitle="Info" />
                 </span></div>
           <div class="card-header-actions">
-            <button type="button" class="card-header-action btn btn-link btn-setting"><i class="icon-settings"></i></button>
+            <button type="button" class="card-header-action btn btn-link btn-seComparison of Scenariostting"><i class="icon-settings"></i></button>
             <button type="button" class="card-header-action btn btn-link btn-minimize"><i class={{iconCollapse}}></i></button>
             <button type="button" class="card-header-action btn btn-link btn-close"><i class="icon-close"></i></button>
           </div>
@@ -71,6 +71,9 @@
             <div class="view-class row" *ngIf="selectedProject!='0' && count">
               <div class="col-md-4">
                 <table style="margin-top: 13px">
+                  <tr>
+                    <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
+                  </tr>
                   <tr>
                     <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
                   </tr>
@@ -162,33 +165,33 @@
 
               </table>
               </div>
-              <div class="col-md-8 row">
-                <div *ngFor="let sc of scenarios;let i = index;" class="col-md-{{noOfcolumn}}">
-                    <div class="view-components " *ngIf="selectScenario[sc.id]">
+              <div class="row" style="margin-top: 1%">
+                <div *ngFor="let sc of scenarios;let i = index;">
+
+                    <div class="view-components col-form-label" *ngIf="selectScenario[sc.id]">
 <!--                    <div class="view-components">-->
-                  <div class="form-group">
-                    <table >
+                  <div class="form-group ">
+                    <table>
                       <tr>
 <!--                      <th>Total CO2 Equivalent</th>-->
-                        <td><label class="col-form-label"> <strong><a [routerLink]="['/report/create/',selectedProject,sc.id,undefined,0]">{{sc.name}}</a> </strong></label></td>
+                        <td width="200" style="max-height: 200px;height: 60px;">
+                          <label class="col-form-label">
+                            <strong><a  [routerLink]="['/report/create/',selectedProject,sc.id,undefined,0]">{{sc.name}}</a> </strong>
+                        </label></td>
                       </tr>
                       <tr>
                         <td><label class="col-form-label" style="visibility: hidden"> <strong>None   </strong></label></td>
                       </tr>
                       <tr>
-<!--                        <td><label class=" col-form-label">Electricity Emissions</label></td>-->
                         <td><label class=" col-form-label">{{(sc.electical/unitDivider).toFixed(2)}}</label></td>
                       </tr>
                       <tr>
-<!--                        <td><label class=" col-form-label">On-site Process Emissions</label></td>-->
                         <td><label class=" col-form-label">{{(sc.OnProcess/unitDivider).toFixed(2)}}</label></td>
                       </tr>
                       <tr>
-<!--                        <td><label class=" col-form-label">Chemical Usage</label></td>-->
                         <td><label class=" col-form-label">{{(sc.chemical/unitDivider).toFixed(2)}}</label></td>
                       </tr>
                       <tr>
-<!--                        <td><label class=" col-form-label">Biosolids Transportation</label></td>-->
                         <td><label class=" col-form-label">{{(sc.transporation/unitDivider).toFixed(1)}}</label></td>
                       </tr>
                     <tr>
@@ -264,6 +267,7 @@
                       </tr>
                     </table>
                   </div>
+
 <!--                    <div class="form-group chart-align" >-->
 <!--                        <canvas #piChart baseChart class="chart"-->
 <!--                                [data]="pieChartData"-->

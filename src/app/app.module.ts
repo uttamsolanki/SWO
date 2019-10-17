@@ -6,7 +6,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-import {AlertModule, ModalModule, PopoverModule} from 'ngx-bootstrap';
+import {AlertModule, CollapseModule, ModalModule, PopoverModule} from 'ngx-bootstrap';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -62,6 +62,8 @@ import { NewProjectComponent } from './report/new-project/new-project.component'
 import { InformationComponent } from './report/information/information.component';
 import { OverviewComponent } from './overview/overview.component';
 import {ConfirmationGuard} from './confirmGaurd/confirmation.guard';
+import { UsersComponent } from './report/users/users.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 
 
@@ -87,7 +89,8 @@ import {ConfirmationGuard} from './confirmGaurd/confirmation.guard';
     TooltipModule.forRoot(),
     FormsModule,
     PopoverModule,
-    PopoverModule.forRoot()
+    PopoverModule.forRoot(),
+    CollapseModule
   ],
   declarations: [
     AppComponent,
@@ -112,6 +115,8 @@ import {ConfirmationGuard} from './confirmGaurd/confirmation.guard';
     NewProjectComponent,
     InformationComponent,
     OverviewComponent,
+    UsersComponent,
+    AdminPanelComponent,
    // ScenarioDetailsComponent,
   ],
   providers: [UserService, ConfirmationGuard,AuthGuard,

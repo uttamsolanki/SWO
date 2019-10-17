@@ -362,7 +362,7 @@
                       <p class="sub-title-padding m-0 liquid-font-color" style="display: inline-block">{{primary.pumping.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="primary.pumping.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="primary.pumping.data.uvalue" name="userValue"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" name="userpump" [(ngModel)]="primary.pumping.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValue"/>
                     </div>
                   </div>
                   <div class="offset-md-1 col-md-11 row">
@@ -409,7 +409,7 @@
                     <p class="sub-title-padding m-0"  style="margin-bottom: 2%">{{primary.prili_treat.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="primary.prili_treat.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="primary.prili_treat.data.uvalue" name="userValuePrelim"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="primary.prili_treat.data.uvalue" name="userValuePrelim" (ngModelChange)="updateWWTPsize()"/>
                     </div>
 
                   </div>
@@ -455,7 +455,7 @@
                     <p class="sub-title-padding m-0"  style="margin-bottom: 2%">{{primary.pri_treat.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="primary.pri_treat.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="primary.pri_treat.data.uvalue" name="userValuePriTreat"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="primary.pri_treat.data.uvalue" name="userValuePriTreat" (ngModelChange)="updateWWTPsize()"/>
                     </div>
                   </label>
                   <div class="offset-md-1 col-md-11 row">
@@ -502,7 +502,7 @@
                        <p class="sub-sub-title-padding m-0" style="display: inline-block">{{secondary.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 21%"  *ngIf="secondary.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="secondary.data.uvalue" name="userValueSecondary"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="secondary.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueSecondary"/>
                     </div>
 
                   </label>
@@ -549,7 +549,7 @@
                     <p class="sub-title-padding m-0"  style="display: inline-block">{{sec_clr.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="sec_clr.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="sec_clr.data.uvalue" name="userValueClari"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="sec_clr.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueClari"/>
                     </div>
                   </label>
                   <div class="offset-md-1 col-md-11 row">
@@ -594,7 +594,7 @@
                     <p class="sub-title-padding m-0" style="display: inline-block">{{tertiary.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="tertiary.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="tertiary.data.uvalue" name="userValueTertiary"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="tertiary.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueTertiary"/>
                     </div>
 
                   </label>
@@ -639,7 +639,7 @@
                     <p class="sub-title-padding m-0" style="display: inline-block">{{disinfection.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="disinfection.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="disinfection.data.uvalue" name="userValueDisinfection"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="disinfection.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueDisinfection"/>
                     </div>
                   </label>
                   <div class="offset-md-1 col-md-11 row">
@@ -819,7 +819,7 @@
                       <p class="sub-title-padding m-0" style="display: inline-block">{{biosolid.thickener.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="biosolid.thickener.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.thickener.data.uvalue" name="userValueThickener"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.thickener.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueThickener"/>
                     </div>
 
                   </label>
@@ -865,7 +865,7 @@
                       <p class="sub-title-padding m-0" style="display: inline-block">{{biosolid.aerobic.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="biosolid.aerobic.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.aerobic.data.uvalue" name="userValueAerobic"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.aerobic.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueAerobic"/>
                     </div>
 
                   </label>
@@ -911,7 +911,7 @@
                       <p class="sub-title-padding m-0" style="display: inline-block">{{biosolid.anaerobic.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="biosolid.anaerobic.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.anaerobic.data.uvalue" name="userValueAnerobic"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.anaerobic.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueAnerobic"/>
                     </div>
 
                   </label>
@@ -1152,7 +1152,7 @@
                      <p class="sub-title-padding m-0" style="display: inline-block" >{{dewatering.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="dewatering.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="dewatering.data.uvalue" name="userValueDewatering"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="dewatering.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueDewatering"/>
                     </div>
 
                   </label>
@@ -3473,21 +3473,36 @@
 
                   <div class="form-group row" *ngIf="primary.pumping.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{primary.pumping.sel_type}}</label>
+                      <div class="col-md-4 col-form-label " *ngIf="primary.pumping.data.title === 'User Specified' && primary.pumping.data.uvalue;else other_content">
+                        <label>{{primary.pumping.data.uvalue}}</label>
+                      </div>
+                      <ng-template #other_content>
+                        <label class="col-md-4 col-form-label " >{{primary.pumping.sel_type}}</label>
+                      </ng-template>
                       <label class="col-md-3 col-form-label" for="text-input">{{(primary.pumping.data.co2/unitDivider).toFixed(2)}} </label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="primary.prili_treat.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{primary.prili_treat.sel_type}}</label>
+                      <div class="col-md-4 col-form-label " *ngIf="primary.prili_treat.data.title === 'User Specified' && primary.prili_treat.data.uvalue;else other_content">
+                        <label>{{primary.prili_treat.data.uvalue}}</label>
+                      </div>
+                      <ng-template #other_content>
+                        <label class="col-md-4 col-form-label " for="text-input">{{primary.prili_treat.sel_type}}</label>
+                      </ng-template>
                       <label class="col-md-3 col-form-label" for="text-input">{{(primary.prili_treat.data.co2/unitDivider).toFixed(2)}}</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="primary.pri_treat.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{primary.pri_treat.sel_type}}</label>
+                      <div class="col-md-4 col-form-label " *ngIf="primary.pri_treat.data.title === 'User Specified' && primary.pri_treat.data.uvalue;else other_content">
+                        <label>{{primary.pri_treat.data.uvalue}}</label>
+                      </div>
+                      <ng-template #other_content>
+                        <label class="col-md-4 col-form-label " for="text-input">{{primary.pri_treat.sel_type}}</label>
+                      </ng-template>
                       <label class="col-md-3 col-form-label" for="text-input">{{(primary.pri_treat.data.co2/unitDivider).toFixed(2)}}</label>
                     </div>
                   </div>
@@ -3501,49 +3516,84 @@
 
                   <div class="form-group row" *ngIf="sec_clr.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{sec_clr.sel_type}}</label>
+                      <div class="col-md-4 col-form-label " *ngIf="sec_clr.data.title === 'User Specified' && sec_clr.data.uvalue;else other_content">
+                        <label>{{sec_clr.data.uvalue}}</label>
+                      </div>
+                      <ng-template #other_content>
+                        <label class="col-md-4 col-form-label " for="text-input">{{sec_clr.sel_type}}</label>
+                      </ng-template>
                       <label class="col-md-3 col-form-label" for="text-input">{{(sec_clr.data.co2/unitDivider).toFixed(2)}}</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="tertiary.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
+                      <div class="col-md-4 col-form-label " *ngIf="tertiary.data.title === 'User Specified' && tertiary.data.uvalue;else other_content">
+                        <label>{{tertiary.data.uvalue}}</label>
+                      </div>
+                      <ng-template #other_content>
                       <label class="col-md-4 col-form-label " for="text-input">{{tertiary.sel_type}}</label>
+                      </ng-template>
                       <label class="col-md-3 col-form-label" for="text-input">{{(tertiary.data.co2/unitDivider).toFixed(2)}}</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="disinfection.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{disinfection.sel_type}}</label>
+                      <div class="col-md-4 col-form-label " *ngIf="disinfection.data.title === 'User Specified' && disinfection.data.uvalue;else other_content">
+                        <label>{{disinfection.data.uvalue}}</label>
+                      </div>
+                      <ng-template #other_content>
+                        <label class="col-md-4 col-form-label " for="text-input">{{disinfection.sel_type}}</label>
+                      </ng-template>
                       <label class="col-md-3 col-form-label" for="text-input">{{(disinfection.data.co2/unitDivider).toFixed(2)}}</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="biosolid.thickener.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{biosolid.thickener.sel_type}}</label>
+                      <div class="col-md-4 col-form-label " *ngIf="biosolid.thickener.data.title === 'User Specified' && biosolid.thickener.data.uvalue;else other_content">
+                        <label>{{biosolid.thickener.data.uvalue}}</label>
+                      </div>
+                      <ng-template #other_content>
+                        <label class="col-md-4 col-form-label " for="text-input">{{biosolid.thickener.sel_type}}</label>
+                      </ng-template>
                       <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.thickener.data.co2/unitDivider).toFixed(2)}}</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="biosolid.aerobic.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{biosolid.aerobic.sel_type}}</label>
+                      <div class="col-md-4 col-form-label " *ngIf="biosolid.aerobic.data.title === 'User Specified' && biosolid.aerobic.data.uvalue;else other_content">
+                        <label>{{biosolid.aerobic.data.uvalue}}</label>
+                      </div>
+                      <ng-template #other_content>
+                        <label class="col-md-4 col-form-label " for="text-input">{{biosolid.aerobic.sel_type}}</label>
+                      </ng-template>
                       <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.aerobic.data.co2/unitDivider).toFixed(2)}}</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="biosolid.anaerobic.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{biosolid.anaerobic.sel_type}}</label>
+                      <div class="col-md-4 col-form-label " *ngIf="biosolid.anaerobic.data.title === 'User Specified' && biosolid.anaerobic.data.uvalue;else other_content">
+                        <label>{{biosolid.anaerobic.data.uvalue}}</label>
+                      </div>
+                      <ng-template #other_content>
+                        <label class="col-md-4 col-form-label " for="text-input">{{biosolid.anaerobic.sel_type}}</label>
+                      </ng-template>
                       <label class="col-md-3 col-form-label" for="text-input">{{(biosolid.anaerobic.data.co2/unitDivider).toFixed(2)}}</label>
                     </div>
                   </div>
 
                   <div class="form-group row" *ngIf="dewatering.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{dewatering.sel_type}}</label>
+                      <div class="col-md-4 col-form-label " *ngIf="dewatering.data.title === 'User Specified' && dewatering.data.uvalue;else other_content">
+                        <label>{{dewatering.data.uvalue}}</label>
+                      </div>
+                      <ng-template #other_content>
+                        <label class="col-md-4 col-form-label " for="text-input">{{dewatering.sel_type}}</label>
+                      </ng-template>
                       <label class="col-md-3 col-form-label" for="text-input">{{(dewatering.data.co2/unitDivider).toFixed(2)}}</label>
                     </div>
                   </div>
@@ -3557,7 +3607,7 @@
 
                   <div class="form-group row" *ngIf="biogas.sel_type!='0'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-4 col-form-label " for="text-input">{{biogas.sel_type}}</label>
+                        <label class="col-md-4 col-form-label " for="text-input">{{biogas.sel_type}}</label>
                       <label class="col-md-3 col-form-label" for="text-input">{{(biogas.data.co2/unitDivider).toFixed(2)}}</label>
                     </div>
                   </div>
