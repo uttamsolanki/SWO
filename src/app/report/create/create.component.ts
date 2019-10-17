@@ -1131,7 +1131,11 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
       this.totalOnSiteCo2 = this.totalOnSiteCo2 + this.process.anarobic.totalCo2;
     }
     if (this.dewatering.sel_type !== '0') {
-      this.barChartLabels.push(this.dewatering.data.title);
+      if (this.dewatering.data.title === 'User Specified') {
+        this.barChartLabels.push(this.dewatering.data.uvalue);
+      } else {
+        this.barChartLabels.push(this.dewatering.data.title);
+      }
       newData.push(this.dewatering.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.dewatering.data.co2);
     }
