@@ -82,7 +82,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   secondary = {
     sel_growth_type: '0',
     sel_type: '0',
-    data: {title: null, default: null, co2: null, suggested: null},
+    data: {title: null, default: null, co2: null, suggested: null, uvalue: null},
   };
   sec_clr = {
     sel_type: '0',
@@ -148,7 +148,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   };
   defaulValaue = {
     sel_type: '0',
-    data: {title: '0', default: 0, co2: 0, suggested: 0},
+    data: {title: '0', default: 0, co2: 0, suggested: 0, uvalue: null},
   };
 
    process = {
@@ -1065,8 +1065,11 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     }
 
     if (this.secondary.sel_type !== '0') {
-
-      this.barChartLabels.push(this.secondary.data.title);
+      if (this.secondary.data.title === 'User Specified') {
+        this.barChartLabels.push(this.secondary.data.uvalue);
+      } else {
+        this.barChartLabels.push(this.secondary.data.title);
+      }
      // this.barChartLabels.push(this.secondary.data.title);
       newData.push(this.secondary.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.secondary.data.co2);
