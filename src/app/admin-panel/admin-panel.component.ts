@@ -12,6 +12,7 @@ export class AdminPanelComponent implements OnInit {
   _trainUrl = '/assets/dataDummy.json';
   newSecond;
   items;
+  saveProject;
   prilimaryArray;
   selectedItem;
   selectedData;
