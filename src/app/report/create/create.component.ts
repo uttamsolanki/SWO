@@ -125,7 +125,7 @@ export class CreateComponent implements OnInit {
   };
   dewatering = {
     sel_type: '0',
-    data: {title: null, default: null, co2: null, suggested: null},
+    data: {title: null, default: null, co2: null, suggested: null,  uvalue: null},
   };
   chemical = {
     metal_salts: {
@@ -1022,50 +1022,84 @@ export class CreateComponent implements OnInit {
      }
 
     if (this.primary.prili_treat.sel_type !== '0') {
-      this.barChartLabels.push(this.primary.prili_treat.data.title);
+      if (this.primary.prili_treat.data.title === 'User Specified') {
+        this.barChartLabels.push(this.primary.prili_treat.data.uvalue);
+      } else {
+        this.barChartLabels.push(this.primary.prili_treat.data.title);
+      }
       newData.push(this.primary.prili_treat.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.primary.prili_treat.data.co2);
     }
 
     if (this.primary.pri_treat.sel_type !== '0') {
-      this.barChartLabels.push(this.primary.pri_treat.data.title);
+      if (this.primary.pri_treat.data.title === 'User Specified') {
+        this.barChartLabels.push(this.primary.pri_treat.data.uvalue);
+      } else {
+        this.barChartLabels.push(this.primary.pri_treat.data.title);
+      }
       newData.push(this.primary.pri_treat.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.primary.pri_treat.data.co2);
     }
 
     if (this.secondary.sel_type !== '0') {
+
       this.barChartLabels.push(this.secondary.data.title);
+     // this.barChartLabels.push(this.secondary.data.title);
       newData.push(this.secondary.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.secondary.data.co2);
     }
     if (this.sec_clr.sel_type !== '0') {
-      this.barChartLabels.push(this.sec_clr.data.title);
+      if (this.sec_clr.data.title === 'User Specified') {
+        this.barChartLabels.push(this.sec_clr.data.uvalue);
+      } else {
+        this.barChartLabels.push(this.sec_clr.data.title);
+      }
       newData.push(this.sec_clr.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.sec_clr.data.co2);
     }
     if (this.tertiary.sel_type !== '0') {
-      this.barChartLabels.push(this.tertiary.data.title);
+      if (this.tertiary.data.title === 'User Specified') {
+        this.barChartLabels.push(this.tertiary.data.uvalue);
+      } else {
+        this.barChartLabels.push(this.tertiary.data.title);
+      }
       newData.push(this.tertiary.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.tertiary.data.co2);
     }
     if (this.disinfection.sel_type !== '0') {
-      this.barChartLabels.push(this.disinfection.data.title);
+      if (this.disinfection.data.title === 'User Specified') {
+        this.barChartLabels.push(this.disinfection.data.uvalue);
+      } else {
+        this.barChartLabels.push(this.disinfection.data.title);
+      }
       newData.push(this.disinfection.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.disinfection.data.co2);
     }
     if (this.biosolid.aerobic.sel_type !== '0') {
-      this.barChartLabels.push(this.biosolid.aerobic.data.title);
+      if (this.biosolid.aerobic.data.title === 'User Specified') {
+        this.barChartLabels.push(this.biosolid.aerobic.data.uvalue);
+      } else {
+        this.barChartLabels.push(this.biosolid.aerobic.data.title);
+      }
       newData.push(this.biosolid.aerobic.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.biosolid.aerobic.data.co2);
       this.totalOnSiteCo2 = this.totalOnSiteCo2 + this.process.aerobic.totalCo2;
     }
     if (this.biosolid.thickener.sel_type !== '0') {
-      this.barChartLabels.push(this.biosolid.thickener.data.title);
+      if (this.biosolid.thickener.data.title === 'User Specified') {
+        this.barChartLabels.push(this.biosolid.thickener.data.uvalue);
+      } else {
+        this.barChartLabels.push(this.biosolid.thickener.data.title);
+      }
       newData.push(this.biosolid.thickener.data.co2);
        this.totalElecricalCo2 += JSON.parse(this.biosolid.thickener.data.co2);
     }
     if (this.biosolid.anaerobic.sel_type !== '0') {
-      this.barChartLabels.push(this.biosolid.anaerobic.data.title);
+      if (this.biosolid.anaerobic.data.title === 'User Specified') {
+        this.barChartLabels.push(this.biosolid.anaerobic.data.uvalue);
+      } else {
+        this.barChartLabels.push(this.biosolid.anaerobic.data.title);
+      }
       newData.push(this.biosolid.anaerobic.data.co2);
       this.totalElecricalCo2 += JSON.parse(this.biosolid.anaerobic.data.co2);
       this.totalOnSiteCo2 = this.totalOnSiteCo2 + this.process.anarobic.totalCo2;
