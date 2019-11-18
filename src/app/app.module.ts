@@ -64,6 +64,7 @@ import { OverviewComponent } from './overview/overview.component';
 import {ConfirmationGuard} from './confirmGaurd/confirmation.guard';
 import { UsersComponent } from './report/users/users.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { CeilPipe } from './ceil.pipe';
 
 
 
@@ -117,6 +118,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     OverviewComponent,
     UsersComponent,
     AdminPanelComponent,
+    CeilPipe,
    // ScenarioDetailsComponent,
   ],
   providers: [UserService, ConfirmationGuard,AuthGuard,

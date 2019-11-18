@@ -966,7 +966,7 @@
         }
       },
       {
-        "title":"Overland Application",
+        "title":"Land Application",
         "default":null,
         "ref":{
 
@@ -1048,7 +1048,7 @@
     ],
     "chlorination":[
       {
-        "title":"Sodium Hypochlorite(15%)",
+        "title":"Sodium Hypochlorite (15%)",
         "default":12.5,
         "suggested": 12.5,
         "ref":{
@@ -1595,7 +1595,7 @@
         }
       },
       "distance": {
-        "title":"Single Travel Distance",
+        "title":"One-way Trip Distance",
         "unit": "km",
         "default":100,
         "suggested":100,
