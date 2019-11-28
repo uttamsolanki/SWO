@@ -46,7 +46,7 @@ export const navItems: NavData[] = [
     name: 'Admin',
     url: '/admin-panel',
     icon: 'icon-pencil'
-  }
+  },
   // {
   //   title: true,
   //   name: 'Admin'
@@ -79,7 +79,6 @@ export const navItems: NavData[] = [
   //   title: true,
   //   name: 'Components'
   // }
-  ,
   {
     name: 'Base',
     url: '/base',

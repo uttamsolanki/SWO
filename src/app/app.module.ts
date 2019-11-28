@@ -65,6 +65,7 @@ import {ConfirmationGuard} from './confirmGaurd/confirmation.guard';
 import { UsersComponent } from './report/users/users.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
+import {QuillModule} from 'ngx-quill';
 
 
 
@@ -90,7 +91,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     FormsModule,
     PopoverModule,
     PopoverModule.forRoot(),
-    CollapseModule
+    CollapseModule,
+    QuillModule.forRoot()
   ],
   declarations: [
     AppComponent,
@@ -116,10 +118,10 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     InformationComponent,
     OverviewComponent,
     UsersComponent,
-    AdminPanelComponent,
+    AdminPanelComponent
    // ScenarioDetailsComponent,
   ],
-  providers: [UserService, ConfirmationGuard,AuthGuard,
+  providers: [UserService, ConfirmationGuard, AuthGuard,
     {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
