@@ -392,7 +392,7 @@
                           <div>Suggested value {{primary.pumping.data.suggested}}
                             <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <span>
-                               <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(primary.pumping.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{primary.pumping.sel_type}}" />
+                               <img class="icon-image suggested-value-icon-image"  container="body" placement="left" (click)="testU(primary.pumping.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{primary.pumping.sel_type}}" />
                             </span>
                             </div>
                           </div>
@@ -403,7 +403,7 @@
                           </span>
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                         <div *ngIf="primary.pumping.data.range.min || primary.pumping.data.range.max">
-                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(primary.pumping.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{primary.pumping.sel_type}}"/>
+                           <img class="icon-image range-icon-image"  container="body" placement="left" (click)="testU(primary.pumping.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{primary.pumping.sel_type}}"/>
                         </div>
                           </div>
                         </div>

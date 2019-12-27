@@ -9,7 +9,7 @@
           <label for="def" class="col-form-label">Select Heading</label>
         </div>
         <div class="col-md-3">
-          <select id="firstKey" name="firstKey" class="form-control"  [(ngModel)]="firstItem">
+          <select id="firstKey" name="firstKey" class="form-control"  [(ngModel)]="firstItem" (change)="firstDropdownChange()">
             <option *ngFor="let first of firstDrop" value="{{first}}" >
               {{ first }}
             </option>
@@ -23,7 +23,7 @@
         </div>
         <div class="col-md-3">
           <select id="secondKey" name="secondKey" class="form-control"  [(ngModel)]="newSecond" (change)="secondDropData()" >
-            <option *ngFor="let p of primaryData" value="{{p.title}}" >
+            <option *ngFor="let p of selectedData" value="{{p.title}}" >
               {{p.title}}
             </option>
           </select>
@@ -34,7 +34,7 @@
           <label class="col-form-label" for="prilimary">Select Unit</label>
         </div>
         <div class="col-md-3">
-          <select id="prilimary" name="prilimary" class="form-control"  [(ngModel)]="selectedItem" (change)="PopulateData()">
+          <select id="prilimary1" name="prilimary" class="form-control"  [(ngModel)]="selectedItem" (change)="PopulateData()">
             <option *ngFor="let p of thirdArray" value="{{p.title}}" >{{p.title}}</option>
           </select>
         </div>
