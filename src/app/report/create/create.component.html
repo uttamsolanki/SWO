@@ -30,6 +30,24 @@
                           </span>
     </ng-template>
   </div>
+  <div class="col-md-2 p-0">
+    <ng-template #rangePopOver style="width: 170%">
+                          <span style="color: #00aced">
+                            <div [innerHtml]="rangeHTML"></div>
+
+                          </span>
+    </ng-template>
+  </div> 
+  <div class="col-md-2 p-0">
+    <!--                        <span class="help-block">{{process.active_sludge.TKNwas.unit}}</span>-->
+    <!--                      <span><button type="button" class="btn btn-pill btn-block btn-info btn-sm tooltip-width" container="body"  [popover]="pumpingPopOver" popoverTitle="WAS TKN" triggers="mouseenter:mouseleave">I</button></span>-->
+    <ng-template #infoPopOver style="width: 170%">
+                          <span style="color: #00aced">
+                            <div [innerHtml]="infoHTML"></div>
+
+                          </span>
+    </ng-template>
+  </div>
   <div class="row">
   <div class="col-md-12 mb-4">
   <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -391,23 +409,36 @@
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="pumping_rate"  [disabled]="viewMode" name="pumping_rate" [(ngModel)]="primary.pumping.data.default" class="form-control" placeholder="0.0" (ngModelChange)="updateWWTPsize()">
-                      <div class="p-1">
-                        <p *ngIf="primary.pumping.data.suggested !==null" class="help-block p-1 m-0" style="color:#4dbd74">
-                          <span>Suggested value {{primary.pumping.data.suggested}}</span><br/>
+                      <div>
+                        <div *ngIf="primary.pumping.data.suggested !==null"  style="color:#4dbd74">
+                          <div>Suggested value {{primary.pumping.data.suggested}}
+                            <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <span>
+                               <img class="icon-image suggested-value-icon-image"  container="body" placement="left" (click)="testU(primary.pumping.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{primary.pumping.sel_type}}" />
+                            </span>
+                            </div>
+                          </div>
+
+                          <br/>
                           <span *ngIf="primary.pumping.data.range.min || primary.pumping.data.range.max">
                             Range value  {{primary.pumping.data.range.min}} - {{primary.pumping.data.range.max}}
                           </span>
-                        </p>
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                        <div *ngIf="primary.pumping.data.range.min || primary.pumping.data.range.max">
+                           <img class="icon-image range-icon-image"  container="body" placement="left" (click)="testU(primary.pumping.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{primary.pumping.sel_type}}"/>
+                        </div>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
                       <span>
-                         <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(primary.pumping.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{primary.pumping.sel_type}}" />
+                         <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(primary.pumping.data)"  [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{primary.pumping.sel_type}}" />
                       </span>
                       <app-information></app-information>
                     </div>
-
                   </div>
                 </div>
                 <div class="form-group row" *ngIf="primary.pumping.sel_type != '0' ">
@@ -440,16 +471,31 @@
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="prili_treat_rate" [disabled]="viewMode" name="prili_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.prili_treat.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="primary.prili_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.prili_treat.data.suggested}}<br/>
+                      <div *ngIf="primary.prili_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">
+                        <div>
+                        Suggested value {{primary.prili_treat.data.suggested}}
+                        <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                          <span>
+                             <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(primary.prili_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{primary.prili_treat.sel_type}}" />
+                          </span>
+                        </div>
+                       </div> 
+                       <br/>
                         <span *ngIf="primary.prili_treat.data.range.min || primary.prili_treat.data.range.max">
                           Range value  {{primary.prili_treat.data.range.min}} - {{primary.prili_treat.data.range.max}}
                         </span>
-                      </span>
+              
+                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                        <div *ngIf="primary.prili_treat.data.range.min || primary.prili_treat.data.range.max">
+                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(primary.prili_treat.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{primary.prili_treat.sel_type}}"/>
+                        </div>
+                      </div>
+                    </div>
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
                       <span>
-                        <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(primary.prili_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{primary.prili_treat.sel_type}}" />
+                        <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(primary.prili_treat.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{primary.prili_treat.sel_type}}" />
                       </span>
                       <app-information></app-information>
                     </div>
@@ -485,16 +531,31 @@
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="pri_treat_rate" [disabled]="viewMode" name="pri_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.pri_treat.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="primary.pri_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{primary.pri_treat.data.suggested}}<br/>
-                        <span *ngIf="primary.pri_treat.data.range.min || primary.pri_treat.data.range.max">
+                      <div *ngIf="primary.pri_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">
+                        <div>
+                          Suggested value {{primary.pri_treat.data.suggested}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <span>
+                               <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{primary.pri_treat.sel_type}}" />
+                            </span>
+                          </div>
+                         </div> 
+                        <br/>
+                        <div *ngIf="primary.pri_treat.data.range.min || primary.pri_treat.data.range.max">
                           Range value {{primary.pri_treat.data.range.min}} - {{primary.pri_treat.data.range.max}}
-                        </span>
-                      </span>
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                             <div *ngIf="primary.pri_treat.data.range.min || primary.pri_treat.data.range.max">
+                                <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(primary.pri_treat.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{primary.pri_treat.sel_type}}"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
                       <span>
-                         <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(primary.pri_treat.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{primary.pri_treat.sel_type}}" />
+                         <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(primary.pri_treat.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{primary.pri_treat.sel_type}}" />
                       </span>
                       <app-information></app-information>
                     </div>
@@ -533,16 +594,30 @@
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="second_rate" [disabled]="viewMode" name="second_rate" class="form-control" placeholder="0.0" [(ngModel)]="secondary.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="secondary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{secondary.data.suggested}}<br/>
+                      <div *ngIf="secondary.data.suggested !==null" class="help-block" style="color:#4dbd74">
+                       <div>
+                          Suggested value {{secondary.data.suggested}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <span>
+                               <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(secondary.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{secondary.sel_type}}" />
+                            </span>
+                          </div>
+                         </div> 
+                        <br/>
                         <span *ngIf="secondary.data.range.min || secondary.data.range.max">
                           Range value  {{secondary.data.range.min}} - {{secondary.data.range.max}}
                         </span>
-                      </span>
+                      </div>
+                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                        <div *ngIf="secondary.data.range.min || secondary.data.range.max">
+                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(secondary.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{secondary.sel_type}}"/>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
                       <span>
-                        <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(secondary.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{secondary.sel_type}}" />
+                        <img class="icon-image info-icon-image"  container="body" placement="left" (click)="testU(secondary.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{secondary.sel_type}}" />
                       </span>
                       <app-information></app-information>
                     </div>
@@ -579,16 +654,31 @@
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="sec_clr_rate" [disabled]="viewMode" name="sec_clr_rate" class="form-control" placeholder="0.0" [(ngModel)]="sec_clr.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="sec_clr.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{sec_clr.data.suggested}}<br/>
+                      <div *ngIf="sec_clr.data.suggested !==null" class="help-block" style="color:#4dbd74">
+                        
+                        <div>
+                          Suggested value {{sec_clr.data.suggested}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <span>
+                               <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(sec_clr.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{sec_clr.sel_type}}" />
+                            </span>
+                          </div>
+                         </div> 
+                        <br/>
                         <span *ngIf="sec_clr.data.range.min || sec_clr.data.range.max">
                           Range value  {{sec_clr.data.range.min}} - {{sec_clr.data.range.max}}
                         </span>
-                      </span>
+                      </div>
+                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                        <div *ngIf="sec_clr.data.range.min || sec_clr.data.range.max">
+                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(sec_clr.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{sec_clr.sel_type}}"/>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
                       <span>
-                        <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(sec_clr.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{sec_clr.sel_type}}" />
+                        <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(sec_clr.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{sec_clr.sel_type}}" />
                       </span>
                       <app-information></app-information>
                     </div>
@@ -624,16 +714,30 @@
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="tertiary_rate" [disabled]="viewMode" name="tertiary_rate" class="form-control" placeholder="0.0" [(ngModel)]="tertiary.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="tertiary.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{tertiary.data.suggested}}<br/>
+                      <div *ngIf="tertiary.data.suggested !==null" class="help-block" style="color:#4dbd74">
+                        <div>
+                          Suggested value {{tertiary.data.suggested}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <span>
+                               <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(tertiary.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{tertiary.sel_type}}" />
+                            </span>
+                          </div>
+                         </div> 
+                        <br/>
                         <span *ngIf="tertiary.data.range.min || tertiary.data.range.max">
                           Range value  {{tertiary.data.range.min}} - {{tertiary.data.range.max}}
                         </span>
-                      </span>
+                      </div>
+                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                        <div *ngIf="tertiary.data.range.min || tertiary.data.range.max">
+                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(tertiary.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{tertiary.sel_type}}"/>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
                       <span>
-                        <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(tertiary.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{tertiary.sel_type}}" />
+                        <img class="icon-image info-icon-image"  container="body" placement="left" (click)="testU(tertiary.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{tertiary.sel_type}}" />
                       </span>
                       <app-information></app-information>
                     </div>
@@ -669,16 +773,30 @@
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="disinfection_rate" [disabled]="viewMode" name="disinfection_rate" class="form-control" placeholder="0.0" [(ngModel)]="disinfection.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="disinfection.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{disinfection.data.suggested}}<br/>
+                      <div *ngIf="disinfection.data.suggested !==null" class="help-block" style="color:#4dbd74">
+                         <div>
+                          Suggested value {{disinfection.data.suggested}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <span>
+                               <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(disinfection.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{disinfection.sel_type}}" />
+                            </span>
+                          </div>
+                         </div> 
+                        <br/>
                         <span *ngIf="disinfection.data.range.min || disinfection.data.range.max">
                           Range value  {{disinfection.data.range.min}} - {{disinfection.data.range.max}}
                         </span>
-                      </span>
+                      </div>
+                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                        <div *ngIf="disinfection.data.range.min || disinfection.data.range.max">
+                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(disinfection.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{disinfection.sel_type}}"/>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
                       <span>
-                        <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(disinfection.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{disinfection.sel_type}}" />
+                        <img class="icon-image info-icon-image"  container="body" placement="left" (click)="testU(disinfection.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{disinfection.sel_type}}" />
                       </span>
                       <app-information></app-information>
                     </div>
@@ -859,16 +977,30 @@
                     <label class="col-md-5 col-form-label " for="anaerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="thickener_rate" [disabled]="viewMode" name="thickener_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.thickener.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="biosolid.thickener.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.thickener.data.suggested}}<br/>
+                      <div *ngIf="biosolid.thickener.data.suggested !==null" class="help-block" style="color:#4dbd74">
+                        <div>
+                          Suggested value {{biosolid.thickener.data.suggested}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <span>
+                               <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(biosolid.thickener.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biosolid.thickener.sel_type}}" />
+                            </span>
+                          </div>
+                         </div> 
+                        <br/>
                         <span *ngIf="biosolid.thickener.data.range.min || biosolid.thickener.data.range.max">
                           Range value  {{biosolid.thickener.data.range.min}} - {{biosolid.thickener.data.range.max}}
                         </span>
-                      </span>
+                      </div>
+                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                        <div *ngIf="biosolid.thickener.data.range.min || biosolid.thickener.data.range.max">
+                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(biosolid.thickener.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{biosolid.thickener.sel_type}}"/>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
                       <span>
-                        <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(biosolid.thickener.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biosolid.thickener.sel_type}}" />
+                        <img class="icon-image info-icon-image"  container="body" placement="left" (click)="testU(biosolid.thickener.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{biosolid.thickener.sel_type}}" />
                       </span>
                       <app-information></app-information>
                     </div>
@@ -905,16 +1037,30 @@
                     <label class="col-md-5 col-form-label " for="aerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="aerobic_rate" [disabled]="viewMode" name="aerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.aerobic.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="biosolid.aerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.aerobic.data.suggested}}<br/>
+                      <div *ngIf="biosolid.aerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">
+                        <div>
+                          Suggested value {{biosolid.aerobic.data.suggested}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <span>
+                               <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(biosolid.aerobic.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biosolid.aerobic.sel_type}}" />
+                            </span>
+                          </div>
+                         </div> 
+                        <br/>
                         <span *ngIf="biosolid.aerobic.data.range.min || biosolid.aerobic.data.range.max">
                           Range value  {{biosolid.aerobic.data.range.min}} - {{biosolid.aerobic.data.range.max}}
                         </span>
-                      </span>
+                      </div>
+                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                        <div *ngIf="biosolid.aerobic.data.range.min || biosolid.aerobic.data.range.max">
+                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(biosolid.aerobic.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{biosolid.aerobic.sel_type}}"/>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
                       <span>
-                        <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(biosolid.aerobic.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biosolid.aerobic.sel_type}}" />
+                        <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(biosolid.aerobic.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{biosolid.aerobic.sel_type}}" />
                       </span>
                       <app-information></app-information>
                     </div>
@@ -951,16 +1097,30 @@
                     <label class="col-md-5 col-form-label " for="anaerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="anaerobic_rate" [disabled]="viewMode" name="anaerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.anaerobic.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="biosolid.anaerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biosolid.anaerobic.data.suggested}}<br/>
+                      <div *ngIf="biosolid.anaerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">
+                        <div>
+                          Suggested value {{biosolid.anaerobic.data.suggested}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <span>
+                               <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(biosolid.anaerobic.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biosolid.anaerobic.sel_type}}" />
+                            </span>
+                          </div>
+                         </div>
+                        <br/>
                         <span *ngIf="biosolid.anaerobic.data.range.min || biosolid.anaerobic.data.range.max">
                           Range value  {{biosolid.anaerobic.data.range.min}} - {{biosolid.anaerobic.data.range.max}}
                         </span>
-                      </span>
+                      </div>
+                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                        <div *ngIf="biosolid.anaerobic.data.range.min || biosolid.anaerobic.data.range.max">
+                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(biosolid.anaerobic.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{biosolid.anaerobic.sel_type}}"/>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
                       <span>
-                        <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(biosolid.anaerobic.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biosolid.anaerobic.sel_type}}" />
+                        <img class="icon-image info-icon-image"  container="body" placement="left" (click)="testU(biosolid.anaerobic.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{biosolid.anaerobic.sel_type}}" />
                       </span>
                       <app-information></app-information>
                     </div>
@@ -1073,16 +1233,30 @@
                     <label class="col-md-5 col-form-label " for="biogas_rate">Actual Biogas Energy Factor:</label>
                     <div class="col-md-5">
                       <input type="text" id="biogas_rate" [disabled]="viewMode" name="biogas_rate" class="form-control" placeholder="0.0" [(ngModel)]="biogas.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="biogas.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{biogas.data.suggested}}<br/>
+                      <div *ngIf="biogas.data.suggested !==null" class="help-block" style="color:#4dbd74">
+                        <div>
+                          Suggested value {{biogas.data.suggested}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <span>
+                               <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(biogas.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biogas.sel_type}}" />
+                            </span>
+                          </div>
+                         </div>
+                        <br/>
                       <span *ngIf="biogas.data.range.min || biogas.data.range.max">
                         Range value  {{biogas.data.range.min}}- {{biogas.data.range.max}}
                       </span>
-                      </span>
+                    </div>
+                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                        <div *ngIf="biogas.data.range.min || biogas.data.range.max">
+                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(biogas.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{biogas.sel_type}}"/>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
                       <span>
-                        <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(biogas.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{biogas.sel_type}}" />
+                        <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(biogas.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{biogas.sel_type}}" />
                       </span>
                       <app-information></app-information>
                     </div>
@@ -1198,16 +1372,30 @@
                     <label class="col-md-5 col-form-label " for="dewatering_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
                       <input type="text" id="dewatering_rate" [disabled]="viewMode" name="dewatering_rate" class="form-control" placeholder="0.0" [(ngModel)]="dewatering.data.default" (ngModelChange)="updateWWTPsize()">
-                      <span *ngIf="dewatering.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{dewatering.data.suggested}}<br/>
+                      <div *ngIf="dewatering.data.suggested !==null" class="help-block" style="color:#4dbd74">
+                        <div>
+                          Suggested value {{dewatering.data.suggested}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <span>
+                               <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(dewatering.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{dewatering.sel_type}}" />
+                            </span>
+                          </div>
+                         </div>
+                        <br/>
                       <span *ngIf="dewatering.data.range.min || dewatering.data.range.max">
                         Range value  {{dewatering.data.range.min}} - {{dewatering.data.range.max}}
                       </span>
-                      </span>
+                    </div>
+                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                        <div *ngIf="dewatering.data.range.min || dewatering.data.range.max">
+                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(dewatering.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{dewatering.sel_type}}"/>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
                       <span>
-                        <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(dewatering.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{dewatering.sel_type}}" />
+                        <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(dewatering.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{dewatering.sel_type}}" />
                       </span>
                       <app-information></app-information>
                     </div>
@@ -1574,16 +1762,30 @@
                   <label class="col-md-5 col-form-label " for="metalsalts_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
                     <input type="text" id="metalsalts_rate" [disabled]="viewMode" name="metalsalts_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.metal_salts.data.default" (ngModelChange)="updateWWTPsize()">
-                    <span *ngIf="chemical.metal_salts.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.metal_salts.data.suggested}}<br/>
+                    <div *ngIf="chemical.metal_salts.data.suggested !==null" class="help-block" style="color:#4dbd74">
+                     <div>
+                      Suggested value {{chemical.metal_salts.data.suggested}}
+                        <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                          <span>
+                             <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(chemical.metal_salts.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.metal_salts.sel_type}}" />
+                          </span>
+                        </div>
+                       </div>
+                      <br/>
                     <span *ngIf="chemical.metal_salts.data.range.min || chemical.metal_salts.data.range.max">
                       Range value  {{chemical.metal_salts.data.range.min}} - {{chemical.metal_salts.data.range.max}}
                     </span>
-                    </span>
+                  </div>
+                    <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                      <div *ngIf="chemical.metal_salts.data.range.min || chemical.metal_salts.data.range.max">
+                        <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(chemical.metal_salts.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{chemical.metal_salts.sel_type}}"/>
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-2 p-0 icon-image-span">
                     <span class="help-block">g/m<sup>3</sup></span>
                     <span>
-                      <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(chemical.metal_salts.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.metal_salts.sel_type}}" />
+                      <img class="icon-image info-icon-image"  container="body" placement="left" (click)="testU(chemical.metal_salts.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{chemical.metal_salts.sel_type}}" />
                     </span>
                     <app-information></app-information>
                   </div>
@@ -1611,16 +1813,30 @@
                   <label class="col-md-5 col-form-label " for="chlorination_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
                     <input type="text" id="chlorination_rate" [disabled]="viewMode" name="chlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.chlorination.data.default" (ngModelChange)="updateWWTPsize()">
-                    <span *ngIf="chemical.chlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.chlorination.data.suggested}}<br/>
+                    <div *ngIf="chemical.chlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">
+                      <div>
+                        Suggested value {{chemical.chlorination.data.suggested}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <span>
+                               <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(chemical.chlorination.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.chlorination.sel_type}}" />
+                            </span>
+                          </div>
+                         </div>
+                      <br/>
                       <span *ngIf="chemical.chlorination.data.range.min || chemical.chlorination.data.range.max">
                         Range value  {{chemical.chlorination.data.range.min}} - {{chemical.chlorination.data.range.max}}
                       </span>
-                    </span>
+                    </div>
+                    <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                      <div *ngIf="chemical.chlorination.data.range.min || chemical.chlorination.data.range.max">
+                        <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(chemical.chlorination.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{chemical.chlorination.sel_type}}"/>
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-2 p-0 icon-image-span">
                     <span class="help-block">g/m<sup>3</sup></span>
                     <span>
-                      <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(chemical.chlorination.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.chlorination.sel_type}}" />
+                      <img class="icon-image info-icon-image"  container="body" placement="left" (click)="testU(chemical.chlorination.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{chemical.chlorination.sel_type}}" />
                     </span>
                     <app-information></app-information>
                   </div>
@@ -1648,11 +1864,25 @@
                   <label class="col-md-5 col-form-label " for="dechlorination_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
                     <input type="text" id="dechlorination_rate" [disabled]="viewMode" name="dechlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.dechlorination.data.default" (ngModelChange)="updateWWTPsize()">
-                    <span *ngIf="chemical.dechlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">Suggested value {{chemical.dechlorination.data.suggested}}<br/>
+                    <div *ngIf="chemical.dechlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">
+                      <div>
+                        Suggested value {{chemical.dechlorination.data.suggested}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <span>
+                               <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(chemical.dechlorination.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.dechlorination.sel_type}}" />
+                            </span>
+                          </div>
+                         </div>
+                      <br/>
                       <span *ngIf="chemical.dechlorination.data.range.min || chemical.dechlorination.data.range.max">
                         Range value  {{chemical.dechlorination.data.range.min}} - {{chemical.dechlorination.data.range.max}}
                       </span>
-                    </span>
+                    </div>
+                    <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                      <div *ngIf="chemical.dechlorination.data.range.min || chemical.dechlorination.data.range.max">
+                        <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(chemical.dechlorination.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{chemical.dechlorination.sel_type}}"/>
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-2 p-0 icon-image-span">
                     <span class="help-block">g/m<sup>3</sup></span>
@@ -1689,7 +1919,7 @@
                   <div class="col-md-2 p-0 icon-image-span">
                     <span class="help-block">g/m<sup>3</sup></span>
                     <span>
-                      <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(chemical.chlorine.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.chlorine.sel_type}}" />
+                      <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(chemical.chlorine.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{chemical.chlorine.sel_type}}" />
                     </span>
                     <app-information></app-information>
                   </div>
@@ -1760,10 +1990,12 @@
                       <div class="col-md-5">
                         <input type="text" id="active_sludge_CODin"  [disabled]="viewMode" name="active_sludge_CODin" [(ngModel)]="process.active_sludge.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
-                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>Suggested value {{process.active_sludge.CODin.suggested}}</span><br/>
+                          <p class="help-block p-1 m-0" style="color:#4dbd74"><span>
+                            Suggested value {{process.active_sludge.CODin.suggested}}</span><br/>
                             <span *ngIf="process.active_sludge.CODin.range.min || process.active_sludge.CODin.range.max">
                               Range value  {{process.active_sludge.CODin.range.min}} - {{process.active_sludge.CODin.range.max}}
                             </span>
+
                             <!--<span><i class="cui-info icons font-1xl" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."-->
                             <!--placement="left" style="float: right;color: black;background: yellow;"></i></span>-->
                           </p>
@@ -1864,7 +2096,7 @@
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.active_sludge.CODwas.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.CODwas)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="WAS COD" />
+                          <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.CODwas)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="WAS COD" />
                         </span>
                         <app-information></app-information>
                       </div>

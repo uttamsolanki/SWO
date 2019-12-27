@@ -66,6 +66,7 @@ import { UsersComponent } from './report/users/users.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { CeilPipe } from './ceil.pipe';
 
+import {QuillModule} from 'ngx-quill';
 
 
 
@@ -91,7 +92,8 @@ import { CeilPipe } from './ceil.pipe';
     FormsModule,
     PopoverModule,
     PopoverModule.forRoot(),
-    CollapseModule
+    CollapseModule,
+    QuillModule.forRoot()
   ],
   declarations: [
     AppComponent,
@@ -121,7 +123,7 @@ import { CeilPipe } from './ceil.pipe';
     CeilPipe,
    // ScenarioDetailsComponent,
   ],
-  providers: [UserService, ConfirmationGuard,AuthGuard,
+  providers: [UserService, ConfirmationGuard, AuthGuard,
     {
     provide: LocationStrategy,
     useClass: HashLocationStrategy

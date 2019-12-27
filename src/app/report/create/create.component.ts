@@ -47,6 +47,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   setProjectData = 'Project 1';
   setProjectDescription ='Project Description 1';
   scenarioNewName;
+  primarNewData;
   // ****************** This for data related variable ***********************//
 
   defaultStructure = {
@@ -360,6 +361,8 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   ProcessCo2: any = 0;
   isInternal: number=0;
   newHtml:string="No references";
+  rangeHTML: string="No references";
+  infoHTML: string="No Info";
   viewMode:boolean=false;
   scenarioSaved:boolean=false;
   isSavedScenario:boolean=true;
@@ -546,7 +549,6 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     }
   };
   ngOnInit() {
-
     this.scenarioLength = ( parseInt(this.route.snapshot.paramMap.get('length')) + 1);
     this.scenarioLengthTemp = parseInt(this.route.snapshot.paramMap.get('viewFlag'));
     if(this.scenarioLengthTemp==0){
@@ -614,20 +616,37 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   }
 
   assignFormValue(data) {
+    this.userService.getPrimaryAllData().subscribe((response: any) => {
+      // this.primarNewData = response.data;
+      this.secondaryData(response.data.secondary);
+      this.primaryData(response.data.primary);
+      this.secondaryClarification(response.data.secondary_clarification);
+      this.tertiaryData(response.data.tertiary);
+      this.disinfectionData(response.data.disinfection);
+      this.biosolidsData(response.data.biosolids);
+      this.biogasData(response.data.biogas);
+      this.dewateringData(response.data.dewatering);
+      this.biosolids_disposalData(response.data.biosolids_disposals);
+     // this.chemicalData(response.data.chemical);
+     // this.processData(response.data.process);
+     // this.constantData(response.data.constant);
+      this.updateWWTPsize();
+    });
     this.sizeData(data.size);
-    this.primaryData(data.primary);
-    this.secondaryData(data.secondary);
-    this.secondaryClarification(data.secondary_clarification);
-    this.tertiaryData(data.tertiary);
-    this.disinfectionData(data.disinfection);
-    this.biosolidsData(data.biosolids);
-    this.biogasData(data.biogas);
-    this.dewateringData(data.dewatering);
-    this.biosolids_disposalData(data.biosolids_disposals);
-    this.chemicalData(data.chemical);
-    this.processData(data.process);
-    this.constantData(data.constant);
-    this.createChart();
+
+      this.secondaryData(data.secondary);
+      this.primaryData(data.primary);
+      this.secondaryClarification(data.secondary_clarification);
+      this.tertiaryData(data.tertiary);
+      this.disinfectionData(data.disinfection);
+      this.biosolidsData(data.biosolids);
+      this.biogasData(data.biogas);
+      this.dewateringData(data.dewatering);
+      this.biosolids_disposalData(data.biosolids_disposals);
+      this.chemicalData(data.chemical);
+      this.processData(data.process);
+      this.constantData(data.constant);
+      this.createChart();
   }
   assignEditFormValue(editData) {
     if (editData.data) {
@@ -1473,39 +1492,57 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     if(this.isSavedScenario)
      this.router.navigate(['dashboard']);
   }
-  testU(data){
+  testU(data) {
     let referenceArray = [];
-    var tempHtml="";
-    if(Object.keys(data.ref).length !== 0 ) {
-      let refs = data.ref;
-     // tempHtml = "<h6><b>Ref:</b></h6>";
-      for (let rs in refs) {
-        //tempHtml += refs[rs]+"<hr>";
-        referenceArray.push(refs[rs]);
+    var tempHtml = "";
+    if(data.ref) {
+      if (Object.keys(data.ref).length !== 0) {
+        let refs = data.ref;
+        for (let rs in refs) {
+          referenceArray.push(refs[rs]);
+        }
       }
     }
-    if(data.range.ref) {
+    if (data.range.ref) {
       if (Object.keys(data.range.ref).length !== 0) {
         let refr = data.range.ref;
         var rrHtml = "";
         for (let rr in refr) {
-         // rrHtml += refr[rr]+"<hr>";
           referenceArray.push(refr[rr]);
         }
-        //tempHtml = tempHtml + rrHtml;
       }
     }
-    if(Object.keys(data.ref).length == 0 && Object.keys(data.range.ref).length == 0 ){
-      tempHtml = 'No references';
+    if (data.ref) {
+      if (Object.keys(data.ref).length == 0 && Object.keys(data.range.ref).length == 0) {
+        tempHtml = 'No references';
+      }
     }
 
-  //  console.log(data.hasOwnProperty("ref"));
-    if(referenceArray.length!==0){
-      this.newHtml="<h6><b>Ref:</b></h6>"+referenceArray.join("<hr>");
-    }else{
-      this.newHtml="No references";
+    //  console.log(data.hasOwnProperty("ref"));
+    if (data.ref !== null) {
+      if (typeof (data.ref) === 'object') {
+        if (referenceArray.length !== 0) {
+          this.newHtml = "<h6><b>Ref:</b></h6>" + referenceArray.join("<hr>");
+        } else {
+          this.newHtml = "No references";
+        }
+      } else if (typeof (data.ref) === 'string') {
+          this.newHtml = data.ref;
+        }
+    } else {
+      this.newHtml = 'No references';
     }
-
-
+      if (data.range.ref !== null) {
+        if (typeof (data.range.ref) === 'string') {
+          this.rangeHTML = data.range.ref;
+        }
+      } else {
+          this.rangeHTML = 'No references';
+        }
+    if (data.info) {
+        this.infoHTML = data.info;
+      } else {
+        this.infoHTML = 'No Info';
+      }
   }
 }

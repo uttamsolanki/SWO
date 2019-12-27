@@ -92,4 +92,21 @@ export class UserService {
     this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
     return  this._http.post(this._baseURL + 'projects/saveProject', data,{headers: this._headers});
   }
+
+  getPrimaryData(): Observable<any> {
+    this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
+    return  this._http.get('http://localhost:8042/primary/get', {headers: this._headers});
+  }
+  getProcessData(): Observable<any> {
+    this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
+    return  this._http.get('http://localhost:8042/process', {headers: this._headers});
+  }
+  getPrimaryAllData(): Observable<any> {
+    this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
+    return  this._http.get('http://localhost:8042/primary/getAll', {headers: this._headers});
+  }
+  saveAdminData(data, adminid): Observable<any> {
+    this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
+    return  this._http.put( `http://localhost:8042/master/${adminid}`, data,{headers: this._headers});
+  }
 }
