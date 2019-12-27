@@ -47,6 +47,7 @@ export const navItems: NavData[] = [
     url: '/admin-panel',
     icon: 'icon-pencil'
   },
+
   // {
   //   title: true,
   //   name: 'Admin'
@@ -141,6 +142,7 @@ export const navItems: NavData[] = [
       }
     ]
   },
+
   // {
   //   name: 'Buttons',
   //   url: '/buttons',
