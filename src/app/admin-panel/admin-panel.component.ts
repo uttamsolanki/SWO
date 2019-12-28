@@ -13,6 +13,9 @@ export class AdminPanelComponent implements OnInit {
   thirdArray;
   items;
   firstItem;
+  saveProject;
+  prilimaryArray;
+
   selectedItem;
   secondaryData;
   secondaryNewData;

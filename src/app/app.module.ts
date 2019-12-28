@@ -64,6 +64,7 @@ import { OverviewComponent } from './overview/overview.component';
 import {ConfirmationGuard} from './confirmGaurd/confirmation.guard';
 import { UsersComponent } from './report/users/users.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { CeilPipe } from './ceil.pipe';
 
 import {QuillModule} from 'ngx-quill';
 
@@ -118,7 +119,8 @@ import {QuillModule} from 'ngx-quill';
     InformationComponent,
     OverviewComponent,
     UsersComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    CeilPipe,
    // ScenarioDetailsComponent,
   ],
   providers: [UserService, ConfirmationGuard, AuthGuard,
