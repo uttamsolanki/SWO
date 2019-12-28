@@ -56,6 +56,8 @@ export class AdminPanelComponent implements OnInit {
   }
 
   firstDropdownChange() {
+    this.defaultStructure = this.initialStructure;
+    this.selectedItem = null;
     if ( this.firstItem === 'Process') {
       this.selectedData = this.processData;
     } else if (this.firstItem === 'Liquid Line list') {
@@ -72,12 +74,6 @@ export class AdminPanelComponent implements OnInit {
   }
 
   processingThirdArray(data) {
-    // if (this.firstItem) {
-    //   data.map(second =>  {
-    //     if (second.title === this.newSecond) {
-    //       this.thirdArray = second.value;
-    //     } });
-    // }
     for (const newvalue in data) {
       if (data[newvalue].title === this.newSecond) {
               this.thirdArray = data[newvalue].value;
