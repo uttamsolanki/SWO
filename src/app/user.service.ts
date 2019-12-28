@@ -38,6 +38,7 @@ export class UserService {
     return this._http.get(this._baseURL+'users/profile', {headers:this._headers});
   }
 
+
   setToken(token: string) {
     localStorage.setItem('token', token);
   }
@@ -49,6 +50,10 @@ export class UserService {
     return this.getToken() !== null;
   };
 
+  getUserList(): Observable<any> {
+    this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
+    return this._http.get(this._baseURL + 'users/list', {headers: this._headers});
+  }
   getData(): Observable<any> {
     this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
     return this._http.get('assets/dataDummy.json', {headers: this._headers});
@@ -95,18 +100,18 @@ export class UserService {
 
   getPrimaryData(): Observable<any> {
     this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
-    return  this._http.get('http://localhost:8042/primary/get', {headers: this._headers});
+    return  this._http.get(this._baseURL +'primary/get', {headers: this._headers});
   }
   getProcessData(): Observable<any> {
     this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
-    return  this._http.get('http://localhost:8042/process', {headers: this._headers});
+    return  this._http.get(this._baseURL +'process/get', {headers: this._headers});
   }
   getPrimaryAllData(): Observable<any> {
     this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
-    return  this._http.get('http://localhost:8042/primary/getAll', {headers: this._headers});
+    return  this._http.get(this._baseURL +'primary/getAll', {headers: this._headers});
   }
   saveAdminData(data, adminid): Observable<any> {
     this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
-    return  this._http.put( `http://localhost:8042/master/${adminid}`, data,{headers: this._headers});
+    return  this._http.put( this._baseURL +`master/${adminid}`, data,{headers: this._headers});
   }
 }
