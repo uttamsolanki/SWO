@@ -34,7 +34,7 @@
           <label class="col-form-label" for="prilimary">Select Unit</label>
         </div>
         <div class="col-md-3">
-          <select id="prilimary1" name="prilimary" class="form-control"  [(ngModel)]="selectedItem" (change)="PopulateData()">
+          <select id="prilimary1" name="prilimary" class="form-control"  [(ngModel)]="selectedItem" (change)="PopulateData();">
             <option *ngFor="let p of thirdArray" value="{{p.title}}" >{{p.title}}</option>
           </select>
         </div>

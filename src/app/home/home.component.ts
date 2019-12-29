@@ -34,14 +34,17 @@ export class HomeComponent implements OnInit {
 
     if(localStorage.getItem('currentUser')){
       let user = JSON.parse(localStorage.getItem('currentUser'));
-
+        console.log(user);
       if(user.first_name !== undefined ){
         this.loginUser = user.first_name;
       }
       if(user.last_name !== undefined){
         this.loginUser += ' ' +user.last_name;
       }
-      console.log(this.loginUser);
+      if(user.role_id==1){
+        this.navItems.push({name: 'Users', url: '/report/users', icon: 'fa fa-eye'});
+        this.navItems.push({name: 'Admin', url: '/admin-panel', icon: 'icon-pencil'});
+      }
     }
   }
 

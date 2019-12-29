@@ -50,7 +50,6 @@ export class AdminPanelComponent implements OnInit {
       });
       this.userService.getProcessData().subscribe((response: any) => {
         this.processData = response.data;
-        console.log(this.processData);
       });
       }
 

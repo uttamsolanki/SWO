@@ -644,7 +644,9 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
       this.dewateringData(data.dewatering);
       this.biosolids_disposalData(data.biosolids_disposals);
       this.chemicalData(data.chemical);
-      this.processData(data.process);
+    this.userService.getProcessAllData().subscribe((response: any) => {
+      this.processData(response.data);
+    });
       this.constantData(data.constant);
       this.createChart();
   }
