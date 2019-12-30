@@ -104,7 +104,11 @@ export class UserService {
   }
   getProcessData(): Observable<any> {
     this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
-    return  this._http.get(this._baseURL +'process/get', {headers: this._headers});
+    return  this._http.get(this._baseURL +'process', {headers: this._headers});
+  }
+  getProcessAllData(): Observable<any> {
+    this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
+    return  this._http.get(this._baseURL +'process/getAll', {headers: this._headers});
   }
   getPrimaryAllData(): Observable<any> {
     this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});

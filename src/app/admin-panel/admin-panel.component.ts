@@ -12,7 +12,7 @@ export class AdminPanelComponent implements OnInit {
   newSecond;
   thirdArray;
   items;
-  firstItem="0";
+  firstItem;
   saveProject;
   prilimaryArray;
 
@@ -42,10 +42,9 @@ export class AdminPanelComponent implements OnInit {
 
   constructor( private  userService: UserService) {
       }
-  firstDrop = [{id:0,title:"Please select"},{id:1,title:"Electrical and Chemical line"},{id:2,title:"Process Line"}];
+  firstDrop = [ 'Liquid Line list', 'Process'];
 
-
-  ngOnInit() {
+    ngOnInit() {
       this.userService.getPrimaryData().subscribe((response: any) => {
         this.primaryData = response.data;
       });
@@ -59,31 +58,24 @@ export class AdminPanelComponent implements OnInit {
   }
 
   firstDropdownChange() {
-    if ( this.firstItem === '2') {
+    this.defaultStructure = this.initialStructure;
+    this.selectedItem = null;
+    if ( this.firstItem === 'Process') {
       this.selectedData = this.processData;
-    } else if (this.firstItem === '1') {
+    } else if (this.firstItem === 'Liquid Line list') {
       this.selectedData = this.primaryData;
     }
-    this.newSecond=null;
-    this.selectedItem=null;
   }
   secondDropData() {
     this.defaultStructure = this.initialStructure;
-    if ( this.firstItem === '2') {
+    if ( this.firstItem === 'Process') {
       this.processingThirdArray(this.processData);
-    } else if (this.firstItem === '1') {
+    } else if (this.firstItem === 'Liquid Line list') {
       this.processingThirdArray(this.primaryData);
     }
-    this.selectedItem=null;
   }
 
   processingThirdArray(data) {
-    // if (this.firstItem) {
-    //   data.map(second =>  {
-    //     if (second.title === this.newSecond) {
-    //       this.thirdArray = second.value;
-    //     } });
-    // }
     for (const newvalue in data) {
       if (data[newvalue].title === this.newSecond) {
               this.thirdArray = data[newvalue].value;

@@ -10,14 +10,14 @@
         </div>
         <div class="col-md-3">
           <select id="firstKey" name="firstKey" class="form-control"  [(ngModel)]="firstItem" (change)="firstDropdownChange()">
-            <option *ngFor="let first of firstDrop" value="{{first.id}}" >
-              {{ first.title }}
+            <option *ngFor="let first of firstDrop" value="{{first}}" >
+              {{ first }}
             </option>
           </select>
 
         </div>
       </div>
-      <div class="form-group row" *ngIf="firstItem!='0'">
+      <div class="form-group row" *ngIf="firstItem">
         <div class="col-md-3">
           <label for="def" class="col-form-label">Sub select</label>
         </div>
@@ -63,6 +63,14 @@
         </div>
         <div class="col-md-3">
           <input type="text" class="form-control" id="suggested" name="suggested"  [(ngModel)]="defaultStructure.suggested"/>
+        </div>
+      </div>
+      <div class="form-group row" *ngIf="selectedItem && firstItem === 'Process'">
+        <div class="col-md-3">
+          <label for="suggested" class="col-form-label">Co2 Value</label>
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" id="co2val" name="suggested"  [(ngModel)]="defaultStructure.co2"/>
         </div>
       </div>
       <div class="form-group row" style="margin-bottom: 4%" *ngIf="selectedItem">
