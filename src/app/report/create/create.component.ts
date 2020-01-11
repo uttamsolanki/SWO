@@ -1495,6 +1495,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
      this.router.navigate(['dashboard']);
   }
   testU(data) {
+    console.log(data);
     let referenceArray = [];
     var tempHtml = "";
     if(data.ref) {

@@ -420,14 +420,15 @@
                           </div>
 
                           <br/>
-                          <span *ngIf="primary.pumping.data.range.min || primary.pumping.data.range.max">
+                          <div *ngIf="primary.pumping.data.range.min || primary.pumping.data.range.max">
                             Range value  {{primary.pumping.data.range.min}} - {{primary.pumping.data.range.max}}
-                          </span>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
-                        <div *ngIf="primary.pumping.data.range.min || primary.pumping.data.range.max">
-                           <img class="icon-image range-icon-image"  container="body" placement="left" (click)="testU(primary.pumping.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{primary.pumping.sel_type}}"/>
-                        </div>
+                            <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <div *ngIf="primary.pumping.data.range.min || primary.pumping.data.range.max">
+                               <img class="icon-image range-icon-image"  container="body" placement="left" (click)="testU(primary.pumping.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{primary.pumping.sel_type}}"/>
+                            </div>
                           </div>
+                          </div>
+
                         </div>
 
                       </div>
@@ -481,15 +482,16 @@
                         </div>
                        </div> 
                        <br/>
-                        <span *ngIf="primary.prili_treat.data.range.min || primary.prili_treat.data.range.max">
-                          Range value  {{primary.prili_treat.data.range.min}} - {{primary.prili_treat.data.range.max}}
-                        </span>
-              
-                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                         <div *ngIf="primary.prili_treat.data.range.min || primary.prili_treat.data.range.max">
-                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(primary.prili_treat.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{primary.prili_treat.sel_type}}"/>
+                          Range value  {{primary.prili_treat.data.range.min}} - {{primary.prili_treat.data.range.max}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <div *ngIf="primary.prili_treat.data.range.min || primary.prili_treat.data.range.max">
+                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(primary.prili_treat.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{primary.prili_treat.sel_type}}"/>
+                            </div>
+                          </div>
                         </div>
-                      </div>
+              
+
                     </div>
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
@@ -604,15 +606,16 @@
                           </div>
                          </div> 
                         <br/>
-                        <span *ngIf="secondary.data.range.min || secondary.data.range.max">
-                          Range value  {{secondary.data.range.min}} - {{secondary.data.range.max}}
-                        </span>
-                      </div>
-                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                         <div *ngIf="secondary.data.range.min || secondary.data.range.max">
-                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(secondary.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{secondary.sel_type}}"/>
+                          Range value  {{secondary.data.range.min}} - {{secondary.data.range.max}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <div *ngIf="secondary.data.range.min || secondary.data.range.max">
+                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(secondary.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{secondary.sel_type}}"/>
+                            </div>
+                          </div>
                         </div>
                       </div>
+
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
@@ -665,15 +668,16 @@
                           </div>
                          </div> 
                         <br/>
-                        <span *ngIf="sec_clr.data.range.min || sec_clr.data.range.max">
-                          Range value  {{sec_clr.data.range.min}} - {{sec_clr.data.range.max}}
-                        </span>
-                      </div>
-                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                         <div *ngIf="sec_clr.data.range.min || sec_clr.data.range.max">
-                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(sec_clr.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{sec_clr.sel_type}}"/>
+                          Range value  {{sec_clr.data.range.min}} - {{sec_clr.data.range.max}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <div *ngIf="sec_clr.data.range.min || sec_clr.data.range.max">
+                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(sec_clr.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{sec_clr.sel_type}}"/>
+                            </div>
+                          </div>
                         </div>
                       </div>
+
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
@@ -724,15 +728,16 @@
                           </div>
                          </div> 
                         <br/>
-                        <span *ngIf="tertiary.data.range.min || tertiary.data.range.max">
-                          Range value  {{tertiary.data.range.min}} - {{tertiary.data.range.max}}
-                        </span>
-                      </div>
-                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                         <div *ngIf="tertiary.data.range.min || tertiary.data.range.max">
-                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(tertiary.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{tertiary.sel_type}}"/>
+                          Range value  {{tertiary.data.range.min}} - {{tertiary.data.range.max}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <div *ngIf="tertiary.data.range.min || tertiary.data.range.max">
+                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(tertiary.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{tertiary.sel_type}}"/>
+                            </div>
+                          </div>
                         </div>
                       </div>
+
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
@@ -783,15 +788,16 @@
                           </div>
                          </div> 
                         <br/>
-                        <span *ngIf="disinfection.data.range.min || disinfection.data.range.max">
-                          Range value  {{disinfection.data.range.min}} - {{disinfection.data.range.max}}
-                        </span>
-                      </div>
-                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                         <div *ngIf="disinfection.data.range.min || disinfection.data.range.max">
-                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(disinfection.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{disinfection.sel_type}}"/>
+                          Range value  {{disinfection.data.range.min}} - {{disinfection.data.range.max}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <div *ngIf="disinfection.data.range.min || disinfection.data.range.max">
+                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(disinfection.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{disinfection.sel_type}}"/>
+                            </div>
+                          </div>
                         </div>
                       </div>
+
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
@@ -987,15 +993,16 @@
                           </div>
                          </div> 
                         <br/>
-                        <span *ngIf="biosolid.thickener.data.range.min || biosolid.thickener.data.range.max">
-                          Range value  {{biosolid.thickener.data.range.min}} - {{biosolid.thickener.data.range.max}}
-                        </span>
-                      </div>
-                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                         <div *ngIf="biosolid.thickener.data.range.min || biosolid.thickener.data.range.max">
-                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(biosolid.thickener.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{biosolid.thickener.sel_type}}"/>
+                          Range value  {{biosolid.thickener.data.range.min}} - {{biosolid.thickener.data.range.max}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <div *ngIf="biosolid.thickener.data.range.min || biosolid.thickener.data.range.max">
+                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(biosolid.thickener.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{biosolid.thickener.sel_type}}"/>
+                            </div>
+                          </div>
                         </div>
                       </div>
+
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
@@ -1047,15 +1054,16 @@
                           </div>
                          </div> 
                         <br/>
-                        <span *ngIf="biosolid.aerobic.data.range.min || biosolid.aerobic.data.range.max">
-                          Range value  {{biosolid.aerobic.data.range.min}} - {{biosolid.aerobic.data.range.max}}
-                        </span>
-                      </div>
-                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                         <div *ngIf="biosolid.aerobic.data.range.min || biosolid.aerobic.data.range.max">
-                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(biosolid.aerobic.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{biosolid.aerobic.sel_type}}"/>
+                          Range value  {{biosolid.aerobic.data.range.min}} - {{biosolid.aerobic.data.range.max}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <div *ngIf="biosolid.aerobic.data.range.min || biosolid.aerobic.data.range.max">
+                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(biosolid.aerobic.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{biosolid.aerobic.sel_type}}"/>
+                            </div>
+                          </div>
                         </div>
                       </div>
+
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
@@ -1107,15 +1115,16 @@
                           </div>
                          </div>
                         <br/>
-                        <span *ngIf="biosolid.anaerobic.data.range.min || biosolid.anaerobic.data.range.max">
-                          Range value  {{biosolid.anaerobic.data.range.min}} - {{biosolid.anaerobic.data.range.max}}
-                        </span>
-                      </div>
-                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                         <div *ngIf="biosolid.anaerobic.data.range.min || biosolid.anaerobic.data.range.max">
-                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(biosolid.anaerobic.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{biosolid.anaerobic.sel_type}}"/>
+                          Range value  {{biosolid.anaerobic.data.range.min}} - {{biosolid.anaerobic.data.range.max}}
+                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <div *ngIf="biosolid.anaerobic.data.range.min || biosolid.anaerobic.data.range.max">
+                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(biosolid.anaerobic.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{biosolid.anaerobic.sel_type}}"/>
+                            </div>
+                          </div>
                         </div>
                       </div>
+
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
@@ -1243,15 +1252,16 @@
                           </div>
                          </div>
                         <br/>
-                      <span *ngIf="biogas.data.range.min || biogas.data.range.max">
+                      <div *ngIf="biogas.data.range.min || biogas.data.range.max">
                         Range value  {{biogas.data.range.min}}- {{biogas.data.range.max}}
-                      </span>
-                    </div>
-                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
-                        <div *ngIf="biogas.data.range.min || biogas.data.range.max">
-                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(biogas.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{biogas.sel_type}}"/>
+                        <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                          <div *ngIf="biogas.data.range.min || biogas.data.range.max">
+                            <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(biogas.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{biogas.sel_type}}"/>
+                          </div>
                         </div>
                       </div>
+                    </div>
+
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
@@ -1382,15 +1392,16 @@
                           </div>
                          </div>
                         <br/>
-                      <span *ngIf="dewatering.data.range.min || dewatering.data.range.max">
+                      <div *ngIf="dewatering.data.range.min || dewatering.data.range.max">
                         Range value  {{dewatering.data.range.min}} - {{dewatering.data.range.max}}
-                      </span>
-                    </div>
-                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                        <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                         <div *ngIf="dewatering.data.range.min || dewatering.data.range.max">
                           <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(dewatering.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{dewatering.sel_type}}"/>
                         </div>
                       </div>
+                      </div>
+                    </div>
+
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
@@ -1772,15 +1783,16 @@
                         </div>
                        </div>
                       <br/>
-                    <span *ngIf="chemical.metal_salts.data.range.min || chemical.metal_salts.data.range.max">
+                    <div *ngIf="chemical.metal_salts.data.range.min || chemical.metal_salts.data.range.max">
                       Range value  {{chemical.metal_salts.data.range.min}} - {{chemical.metal_salts.data.range.max}}
-                    </span>
-                  </div>
-                    <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
-                      <div *ngIf="chemical.metal_salts.data.range.min || chemical.metal_salts.data.range.max">
-                        <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(chemical.metal_salts.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{chemical.metal_salts.sel_type}}"/>
+                      <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                        <div *ngIf="chemical.metal_salts.data.range.min || chemical.metal_salts.data.range.max">
+                          <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(chemical.metal_salts.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{chemical.metal_salts.sel_type}}"/>
+                        </div>
                       </div>
                     </div>
+                  </div>
+
                   </div>
                   <div class="col-md-2 p-0 icon-image-span">
                     <span class="help-block">g/m<sup>3</sup></span>
@@ -1823,15 +1835,16 @@
                           </div>
                          </div>
                       <br/>
-                      <span *ngIf="chemical.chlorination.data.range.min || chemical.chlorination.data.range.max">
-                        Range value  {{chemical.chlorination.data.range.min}} - {{chemical.chlorination.data.range.max}}
-                      </span>
-                    </div>
-                    <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                       <div *ngIf="chemical.chlorination.data.range.min || chemical.chlorination.data.range.max">
-                        <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(chemical.chlorination.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{chemical.chlorination.sel_type}}"/>
+                        Range value  {{chemical.chlorination.data.range.min}} - {{chemical.chlorination.data.range.max}}
+                        <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                          <div *ngIf="chemical.chlorination.data.range.min || chemical.chlorination.data.range.max">
+                            <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(chemical.chlorination.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{chemical.chlorination.sel_type}}"/>
+                          </div>
+                        </div>
                       </div>
                     </div>
+
                   </div>
                   <div class="col-md-2 p-0 icon-image-span">
                     <span class="help-block">g/m<sup>3</sup></span>
@@ -1874,20 +1887,21 @@
                           </div>
                          </div>
                       <br/>
-                      <span *ngIf="chemical.dechlorination.data.range.min || chemical.dechlorination.data.range.max">
-                        Range value  {{chemical.dechlorination.data.range.min}} - {{chemical.dechlorination.data.range.max}}
-                      </span>
-                    </div>
-                    <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                       <div *ngIf="chemical.dechlorination.data.range.min || chemical.dechlorination.data.range.max">
-                        <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(chemical.dechlorination.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{chemical.dechlorination.sel_type}}"/>
+                        Range value  {{chemical.dechlorination.data.range.min}} - {{chemical.dechlorination.data.range.max}}
+                        <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                          <div *ngIf="chemical.dechlorination.data.range.min || chemical.dechlorination.data.range.max">
+                            <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(chemical.dechlorination.data)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{chemical.dechlorination.sel_type}}"/>
+                          </div>
+                        </div>
                       </div>
                     </div>
+
                   </div>
                   <div class="col-md-2 p-0 icon-image-span">
                     <span class="help-block">g/m<sup>3</sup></span>
                     <span>
-                      <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(chemical.dechlorination.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{chemical.dechlorination.sel_type}}" />
+                      <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(chemical.dechlorination.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{chemical.dechlorination.sel_type}}" />
                     </span>
                     <app-information></app-information>
                   </div>
@@ -1998,23 +2012,24 @@
                                <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.CODin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.CODin.title}}" />
                               </span>
                             </div>
-
-                        </div><br/>
-                            <span *ngIf="process.active_sludge.CODin.range.min || process.active_sludge.CODin.range.max">
-                              Range value  {{process.active_sludge.CODin.range.min}} - {{process.active_sludge.CODin.range.max}}
-                            </span>
                           </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                            <br/>
                             <div *ngIf="process.active_sludge.CODin.range.min || process.active_sludge.CODin.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.CODin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.CODin.title}}"/>
+                              Range value  {{process.active_sludge.CODin.range.min}} - {{process.active_sludge.CODin.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.active_sludge.CODin.range.min || process.active_sludge.CODin.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.CODin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.CODin.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.active_sludge.CODin.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.CODin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Influent COD - CODin" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.CODin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Influent COD - CODin" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -2033,20 +2048,21 @@
                               </span>
                           </div>
                           </div><br/>
-                            <span *ngIf="process.active_sludge.TKNin.range.min || process.active_sludge.TKNin.range.max">
+                            <div *ngIf="process.active_sludge.TKNin.range.min || process.active_sludge.TKNin.range.max">
                               Range value  {{process.active_sludge.TKNin.range.min}} - {{process.active_sludge.TKNin.range.max}}
-                            </span>
-                          </div><div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
-                          <div *ngIf="process.active_sludge.TKNin.range.min || process.active_sludge.TKNin.range.max">
-                            <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.TKNin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.TKNin.title}}"/>
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.active_sludge.TKNin.range.min || process.active_sludge.TKNin.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.TKNin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.TKNin.title}}"/>
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                        </div>
                           </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.active_sludge.TKNin.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.TKNin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Influent TKN - TKNin" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.TKNin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Influent TKN - TKNin" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -2068,21 +2084,22 @@
                               </span>
                           </div>
                           </div><br/>
-                            <span *ngIf="process.active_sludge.FLOWwas.range.min || process.active_sludge.FLOWwas.range.max">
-                              Range value  {{process.active_sludge.FLOWwas.range.min}} - {{process.active_sludge.FLOWwas.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <div *ngIf="process.active_sludge.FLOWwas.range.min || process.active_sludge.FLOWwas.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.FLOWwas)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.FLOWwas.title}}"/>
+                              Range value  {{process.active_sludge.FLOWwas.range.min}} - {{process.active_sludge.FLOWwas.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.active_sludge.FLOWwas.range.min || process.active_sludge.FLOWwas.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.FLOWwas)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.FLOWwas.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.active_sludge.FLOWwas.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.FLOWwas)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="WAS Rate" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.FLOWwas)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="WAS Rate" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -2118,15 +2135,16 @@
                               </span>
                           </div>
                           </div><br/>
-                            <span *ngIf="process.active_sludge.FLOWwas.range.min || process.active_sludge.FLOWwas.range.max">
+                            <div *ngIf="process.active_sludge.FLOWwas.range.min || process.active_sludge.FLOWwas.range.max">
                               Range value  {{process.active_sludge.CODwas.range.min}} - {{process.active_sludge.CODwas.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
-                            <div *ngIf="process.active_sludge.CODwas.range.min || process.active_sludge.CODwas.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.CODwas)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.CODwas.title}}"/>
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.active_sludge.CODwas.range.min || process.active_sludge.CODwas.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.CODwas)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.CODwas.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
@@ -2151,20 +2169,21 @@
                               </span>
                           </div>
                           </div><br/>
-                            <span *ngIf="process.active_sludge.TKNwas.range.min || process.active_sludge.TKNwas.range.max">
-                              Range value  {{process.active_sludge.TKNwas.range.min}} - {{process.active_sludge.TKNwas.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <div *ngIf="process.active_sludge.TKNwas.range.min || process.active_sludge.TKNwas.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.TKNwas)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.TKNwas.title}}"/>
+                              Range value  {{process.active_sludge.TKNwas.range.min}} - {{process.active_sludge.TKNwas.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.active_sludge.TKNwas.range.min || process.active_sludge.TKNwas.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.TKNwas)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.TKNwas.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.TKNwas)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="WAS TKN" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.TKNwas)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="WAS TKN" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -2202,21 +2221,22 @@
                                <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.CODout)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.CODout.title}}" />
                               </span>
                           </div></div><br/>
-                            <span *ngIf="process.active_sludge.CODout.range.min || process.active_sludge.CODout.range.max">
-                              Range value  {{process.active_sludge.CODout.range.min}} - {{process.active_sludge.CODout.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <div *ngIf="process.active_sludge.CODout.range.min || process.active_sludge.CODout.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.CODout)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.CODout.title}}"/>
+                              Range value  {{process.active_sludge.CODout.range.min}} - {{process.active_sludge.CODout.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.active_sludge.CODout.range.min || process.active_sludge.CODout.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.CODout)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.CODout.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.active_sludge.CODout.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.CODout)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Outflow COD - CODout" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.CODout)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Outflow COD - CODout" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -2234,21 +2254,22 @@
                                <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.TKNout)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.TKNout.title}}" />
                               </span>
                           </div></div><br/>
-                            <span *ngIf="process.active_sludge.TKNout.range.min || process.active_sludge.TKNout.range.max">
-                              Range value  {{process.active_sludge.TKNout.range.min}} - {{process.active_sludge.TKNout.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <div *ngIf="process.active_sludge.TKNout.range.min || process.active_sludge.TKNout.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.TKNout)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.TKNout.title}}"/>
+                              Range value  {{process.active_sludge.TKNout.range.min}} - {{process.active_sludge.TKNout.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.active_sludge.TKNout.range.min || process.active_sludge.TKNout.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.TKNout)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.active_sludge.TKNout.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.active_sludge.TKNout.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.TKNout)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Outflow TKN - TKNout" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.TKNout)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Outflow TKN - TKNout" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -2270,20 +2291,21 @@
                               </span>
                           </div>
                         </div><br/>
-                            <span *ngIf="constant.COD_TOC.range.min || constant.COD_TOC.range.max">
-                              Range value  {{constant.COD_TOC.range.min}} - {{constant.COD_TOC.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <div *ngIf="constant.COD_TOC.range.min || constant.COD_TOC.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(constant.COD_TOC)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{constant.COD_TOC.title}}"/>
+                              Range value  {{constant.COD_TOC.range.min}} - {{constant.COD_TOC.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="constant.COD_TOC.range.min || constant.COD_TOC.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(constant.COD_TOC)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{constant.COD_TOC.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                           <span>
-                            <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(constant.COD_TOC)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="COD / TOC Ratio, g-O<sub>2</sub>/g-C" />
+                            <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(constant.COD_TOC)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="COD / TOC Ratio, g-O<sub>2</sub>/g-C" />
                           </span>
                           <app-information></app-information>
                       </div>
@@ -2302,21 +2324,22 @@
                               </span>
                           </div>
                         </div><br/>
-                            <span *ngIf="constant.Removed_TKN.range.min || constant.Removed_TKN.range.max">
-                              Range value  {{constant.Removed_TKN.range.min}} - {{constant.Removed_TKN.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <div *ngIf="constant.Removed_TKN.range.min || constant.Removed_TKN.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(constant.Removed_TKN)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{constant.Removed_TKN.title}}"/>
+                              Range value  {{constant.Removed_TKN.range.min}} - {{constant.Removed_TKN.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="constant.Removed_TKN.range.min || constant.Removed_TKN.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(constant.Removed_TKN)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{constant.Removed_TKN.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
 
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(chemical.chlorination.data)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="% Removed TKN emitted as N<sub>2</sub>O, g N<sub>2</sub>O-N/g-TKN-N" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(constant.Removed_TKN)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{constant.Removed_TKN.title}}" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -2453,21 +2476,22 @@
                               </span>
                           </div>
                         </div><br/>
-                            <span *ngIf="process.anarobic.FLOWin.range.min || process.anarobic.FLOWin.range.max">
-                              Range value  {{process.anarobic.FLOWin.range.min}} - {{process.anarobic.FLOWin.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <div *ngIf="process.anarobic.FLOWin.range.min || process.anarobic.FLOWin.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.FLOWin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.FLOWin.title}}"/>
+                              Range value  {{process.anarobic.FLOWin.range.min}} - {{process.anarobic.FLOWin.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.anarobic.FLOWin.range.min || process.anarobic.FLOWin.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.FLOWin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.FLOWin.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.aerobic.FLOWin.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.FLOWin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Inflow Node Ap to Anaerobic Digester[Qap]" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.FLOWin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Inflow Node Ap to Anaerobic Digester[Qap]" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -2496,21 +2520,22 @@
                                <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.anarobic.CODin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.CODin.title}}" />
                               </span>
                           </div></div><br/>
-                            <span *ngIf="process.anarobic.CODin.range.min || process.anarobic.CODin.range.max">
-                              Range value  {{process.anarobic.CODin.range.min}} - {{process.anarobic.CODin.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <div *ngIf="process.anarobic.CODin.range.min || process.anarobic.CODin.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.CODin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.CODin.title}}"/>
+                              Range value  {{process.anarobic.CODin.range.min}} - {{process.anarobic.CODin.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.anarobic.CODin.range.min || process.anarobic.CODin.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.CODin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.CODin.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.aerobic.CODin.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.CODin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Inflow COD [CODin]" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.CODin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Inflow COD [CODin]" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -2628,21 +2653,22 @@
                                <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.anarobic.CODout)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.CODout.title}}" />
                               </span>
                           </div></div><br/>
-                            <span *ngIf="process.anarobic.CODout.range.min || process.anarobic.CODout.range.max">
-                              Range value  {{process.anarobic.CODout.range.min}} - {{process.anarobic.CODout.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <div *ngIf="process.anarobic.CODout.range.min || process.anarobic.CODout.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.CODout)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.CODout.title}}"/>
+                              Range value  {{process.anarobic.CODout.range.min}} - {{process.anarobic.CODout.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.anarobic.CODout.range.min || process.anarobic.CODout.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.CODout)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.CODout.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.anarobic.CODout.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.CODout)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Outflow COD (CODout)" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.CODout)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Outflow COD (CODout)" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -2663,21 +2689,22 @@
                                <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.anarobic.alpha)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.alpha.title}}" />
                               </span>
                           </div></div><br/>
-                            <span *ngIf="process.anarobic.alpha.range.min || process.anarobic.alpha.range.max" >
+                            <div *ngIf="process.anarobic.alpha.range.min || process.anarobic.alpha.range.max" >
                               Range value  {{process.anarobic.alpha.range.min}} - {{process.anarobic.alpha.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
-                            <div *ngIf="process.anarobic.alpha.range.min || process.anarobic.alpha.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.alpha)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.alpha.title}}"/>
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.anarobic.alpha.range.min || process.anarobic.alpha.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.alpha)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.alpha.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.anarobic.alpha.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.alpha)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Percent Methane in Biogas (kg/kg)" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.alpha)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Percent Methane in Biogas (kg/kg)" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -2720,20 +2747,21 @@
                                <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.anarobic.energy)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.energy.title}}" />
                               </span>
                           </div><br/>
-                          <span *ngIf="process.anarobic.energy.range.min || process.anarobic.energy.range.max">
-                            Range value  {{process.anarobic.energy.range.min}} - {{process.anarobic.energy.range.max}}
-                          </span>
-                        </div>
-                        <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                           <div *ngIf="process.anarobic.energy.range.min || process.anarobic.energy.range.max">
-                            <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.energy)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.energy.title}}"/>
+                            Range value  {{process.anarobic.energy.range.min}} - {{process.anarobic.energy.range.max}}
+                            <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                              <div *ngIf="process.anarobic.energy.range.min || process.anarobic.energy.range.max">
+                                <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.energy)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.energy.title}}"/>
+                              </div>
+                            </div>
                           </div>
                         </div>
+
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">kg CO<sub>2</sub>/kg CH<sub>4</sub></span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.energy)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Energy Recovery Factor from CH<sub>4</sub> from External Sources" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.energy)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Energy Recovery Factor from CH<sub>4</sub> from External Sources" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -2847,21 +2875,22 @@
                               </span>
                           </div>
                         </div><br/>
-                            <span *ngIf="process.aerobic.FLOWin.range.min || process.aerobic.FLOWin.range.max">
+                            <div *ngIf="process.aerobic.FLOWin.range.min || process.aerobic.FLOWin.range.max">
                               Range value  {{process.aerobic.FLOWin.range.min}} - {{process.aerobic.FLOWin.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
-                            <div *ngIf="process.anarobic.FLOWin.range.min || process.anarobic.FLOWin.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.FLOWin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.FLOWin.title}}"/>
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.anarobic.FLOWin.range.min || process.anarobic.FLOWin.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.FLOWin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.FLOWin.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.aerobic.FLOWin.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.aerobic.FLOWin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Inflow to Aerobic Digester(Qin)" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.aerobic.FLOWin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Inflow to Aerobic Digester(Qin)" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -2891,21 +2920,22 @@
                               </span>
                           </div>
                         </div><br/>
-                            <span *ngIf="process.aerobic.CODin.range.min || process.aerobic.CODin.range.min">
+                            <div *ngIf="process.aerobic.CODin.range.min || process.aerobic.CODin.range.min">
                               Range value  {{process.aerobic.CODin.range.min}} - {{process.aerobic.CODin.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
-                            <div *ngIf="process.anarobic.CODin.range.min || process.anarobic.CODin.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.CODin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.CODin.title}}"/>
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.anarobic.CODin.range.min || process.anarobic.CODin.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.CODin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.CODin.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.aerobic.CODin.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.aerobic.CODin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Inflow COD (CODin)" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.aerobic.CODin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Inflow COD (CODin)" />
                         </span>
                         <app-information></app-information>
 
@@ -2939,15 +2969,16 @@
                               </span>
                           </div>
                         </div><br/>
-                            <span *ngIf="process.aerobic.CODout.range.min || process.aerobic.CODout.range.max">
+                            <div *ngIf="process.aerobic.CODout.range.min || process.aerobic.CODout.range.max">
                               Range value  {{process.aerobic.CODout.range.min}} - {{process.aerobic.CODout.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
-                            <div *ngIf="process.anarobic.CODout.range.min || process.anarobic.CODout.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.CODout)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.CODout.title}}"/>
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.anarobic.CODout.range.min || process.anarobic.CODout.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.CODout)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.CODout.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0">
@@ -3058,21 +3089,22 @@
                                <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.transporation.FLOWin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.transporation.FLOWin.title}}" />
                               </span>
                           </div></div><br/>
-                            <span *ngIf="process.transporation.FLOWin.range.min || process.transporation.FLOWin.range.max">
-                              Range value  {{process.transporation.FLOWin.range.min}} - {{process.transporation.FLOWin.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <div *ngIf="process.transporation.FLOWin.range.min || process.transporation.FLOWin.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.transporation.FLOWin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.transporation.FLOWin.title}}"/>
+                              Range value  {{process.transporation.FLOWin.range.min}} - {{process.transporation.FLOWin.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.transporation.FLOWin.range.min || process.transporation.FLOWin.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.transporation.FLOWin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.transporation.FLOWin.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.transporation.FLOWin.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.FLOWin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Flow Rate of Dewatered Sludge" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.FLOWin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{process.transporation.FLOWin.title}}" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -3116,21 +3148,22 @@
                                <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.transporation.distance)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.transporation.distance.title}}" />
                               </span>
                           </div></div><br/>
-                            <span *ngIf="process.transporation.distance.range.min || process.transporation.distance.range.max">
-                              Range value  {{process.transporation.distance.range.min}} - {{process.transporation.distance.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <div *ngIf="process.transporation.distance.range.min || process.transporation.distance.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.transporation.distance)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.transporation.distance.title}}"/>
+                              Range value  {{process.transporation.distance.range.min}} - {{process.transporation.distance.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.transporation.distance.range.min || process.transporation.distance.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.transporation.distance)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.transporation.distance.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.transporation.distance.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.distance)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Single Travel Distance" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.distance)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{process.transporation.time.title}}" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -3148,21 +3181,22 @@
                                <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.transporation.time)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.transporation.time.title}}" />
                               </span>
                           </div></div><br/>
-                            <span *ngIf="process.transporation.time.range.min || process.transporation.time.range.max">
-                              Range value  {{process.transporation.time.range.min}} - {{process.transporation.time.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <div *ngIf="process.transporation.time.range.min || process.transporation.time.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.transporation.time)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.transporation.time.title}}"/>
+                              Range value  {{process.transporation.time.range.min}} - {{process.transporation.time.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.transporation.time.range.min || process.transporation.time.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.transporation.time)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.transporation.time.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.transporation.time.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.time)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Single Travel Time" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.time)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Single Travel Time" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -3243,15 +3277,16 @@
                                <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.disposal.FLOWin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.disposal.FLOWin.title}}" />
                               </span>
                           </div><</div><br/>
-                            <span *ngIf="process.disposal.FLOWin.range.min || process.disposal.FLOWin.range.max">
-                              Range value  {{process.disposal.FLOWin.range.min}} - {{process.disposal.FLOWin.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <div *ngIf="process.disposal.FLOWin.range.min || process.disposal.FLOWin.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.disposal.FLOWin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.disposal.FLOWin.title}}"/>
+                              Range value  {{process.disposal.FLOWin.range.min}} - {{process.disposal.FLOWin.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.disposal.FLOWin.range.min || process.disposal.FLOWin.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.disposal.FLOWin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.disposal.FLOWin.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
@@ -3286,21 +3321,22 @@
                                <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.disposal.CODin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.disposal.CODin.title}}" />
                               </span>
                           </div></div><br/>
-                            <span *ngIf="process.disposal.CODin.range.min || process.disposal.CODin.range.max">
-                              Range value  {{process.disposal.CODin.range.min}} - {{process.disposal.CODin.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                             <div *ngIf="process.disposal.CODin.range.min || process.disposal.CODin.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.disposal.CODin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.disposal.CODin.title}}"/>
+                              Range value  {{process.disposal.CODin.range.min}} - {{process.disposal.CODin.range.max}}
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                                <div *ngIf="process.disposal.CODin.range.min || process.disposal.CODin.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.disposal.CODin)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.disposal.CODin.title}}"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.disposal.CODin.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.disposal.CODin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="COD of Sludge [CODin]" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.disposal.CODin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="COD of Sludge [CODin]" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -3321,21 +3357,22 @@
                                <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.disposal.alpha)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.disposal.alpha.title}}" />
                               </span>
                           </div></div><br/>
-                            <span *ngIf="process.disposal.alpha.range.min || process.disposal.alpha.range.min">
+                            <div *ngIf="process.disposal.alpha.range.min || process.disposal.alpha.range.min">
                               Range value  {{process.disposal.alpha.range.min}} - {{process.disposal.alpha.range.max}}
-                            </span>
-                          </div>
-                          <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
-                            <div *ngIf="process.disposal.alpha.range.min || process.disposal.alpha.range.max">
-                              <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.disposal.alpha)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.disposal.alpha.title}}"/>
+                              <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
+                              <div *ngIf="process.disposal.alpha.range.min || process.disposal.alpha.range.max">
+                                <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.disposal.alpha)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.disposal.alpha.title}}"/>
+                              </div>
+                            </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.disposal.alpha.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.disposal.alpha)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Percent Methane in Biogas" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.disposal.alpha)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Percent Methane in Biogas" />
                         </span>
                         <app-information></app-information>
                       </div>
