@@ -1,6 +1,6 @@
 import {Component, OnInit,  ViewChild} from '@angular/core';
 import {UserService} from '../../user.service';
-import {forEach} from '@angular/router/src/utils/collection';
+//import {forEach} from '@angular/router/src/utils/collection';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CreateComponent} from '../create/create.component';
 import {DataServiceService} from '../../data-service.service';
@@ -20,8 +20,8 @@ export class ProjectComponent implements OnInit {
     deleteID;
     projectName: '';
     projectDate: '';
-    @ViewChild('successModal') public modal: ModalDirective;
-    @ViewChild('projectDeleteModal') public pDeleteModal: ModalDirective;
+    @ViewChild('successModal',{static: true}) public modal: ModalDirective;
+    @ViewChild('projectDeleteModal',{static: true}) public pDeleteModal: ModalDirective;
     constructor(private  userService: UserService, private router: Router, private route: ActivatedRoute, private dataServiceService: DataServiceService) { }
 
     ngOnInit() {

@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   alertsDismiss: any = [];
   dismissible = true;
   employeeForm: FormGroup;
-  @ViewChild('successModal') public modal: ModalDirective;
+  @ViewChild('successModal',{static: true}) public modal: ModalDirective;
   formErrors={
     'first_name': '',
     'last_name': '',

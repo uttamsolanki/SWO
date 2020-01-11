@@ -16,7 +16,7 @@ export class NewProjectComponent implements OnInit {
   sucessMessage;
   responseDataID;
   constructor(private  userService: UserService) { }
-  @ViewChild('successModal') public modal: ModalDirective;
+  @ViewChild('successModal',{static: true}) public modal: ModalDirective;
 
   ngOnInit() {
   }

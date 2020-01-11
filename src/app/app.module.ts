@@ -35,13 +35,13 @@ import {
 
 // Import routing module
 import { AppRoutingModule } from './app.routing';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Import 3rd party components
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { ChartsModule } from 'ng2-charts';
 import {UserService} from './user.service';
 import { HomeComponent } from './home/home.component';
 import {AuthGuard} from './auth/auth.guard';
@@ -72,6 +72,7 @@ import {QuillModule} from 'ngx-quill';
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     AppAsideModule,

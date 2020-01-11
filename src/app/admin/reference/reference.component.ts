@@ -9,7 +9,7 @@ import {ModalDirective} from 'ngx-bootstrap';
 export class ReferenceComponent implements OnInit {
 
   constructor() { }
-  @ViewChild('infoModal') public modal: ModalDirective;
+  @ViewChild('infoModal',{static: true}) public modal: ModalDirective;
   ngOnInit() {
   }
 

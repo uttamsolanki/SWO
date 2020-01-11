@@ -38,7 +38,7 @@ export class AdminPanelComponent implements OnInit {
     unit: null,
   };
   defaultStructure = JSON.parse(JSON.stringify(this.initialStructure))
-  @ViewChild('successModal') public modal: ModalDirective;
+  @ViewChild('successModal',{static: true}) public modal: ModalDirective;
 
   constructor( private  userService: UserService) {
       }

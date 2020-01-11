@@ -18,7 +18,7 @@ import {CreateComponent} from './report/create/create.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {AdminComponent} from './admin/admin.component';
 import {MasterDataComponent} from './admin/master-data/master-data.component';
-import {reference} from '@angular/core/src/render3';
+//import {reference} from '@angular/core/src/render3';
 import {ReferenceComponent} from './admin/reference/reference.component';
 import {ProjectComponent} from './report/project/project.component';
 import {NewProjectComponent} from './report/new-project/new-project.component';

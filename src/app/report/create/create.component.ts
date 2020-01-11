@@ -9,7 +9,7 @@ import {ModalDirective} from 'ngx-bootstrap';
 import 'chartjs-plugin-datalabels';
 import 'chartjs-plugin-piechart-outlabels';
 import {DataServiceService} from '../../data-service.service';
-import {forEach} from '@angular/router/src/utils/collection';
+//import {forEach} from '@angular/router/src/utils/collection';
 import {CanComponentDeactivate} from '../../confirmGaurd/confirmation.guard';
 @Component({
   selector: 'app-create',
@@ -20,10 +20,10 @@ import {CanComponentDeactivate} from '../../confirmGaurd/confirmation.guard';
 export class CreateComponent implements OnInit, CanComponentDeactivate{
   constructor(private userService: UserService, private router: Router,  private route: ActivatedRoute, private dataServiceService: DataServiceService) { }
 
-  @ViewChild('tabset') tabset: TabsetComponent;
-  @ViewChild('baseChart') public chart: BaseChartDirective;
-  @ViewChild('piChart') public piChart: BaseChartDirective;
-  @ViewChild('successModal') public modal: ModalDirective;
+  @ViewChild('tabset',{static: true}) tabset: TabsetComponent;
+  @ViewChild('baseChart',{static: true}) public chart: BaseChartDirective;
+  @ViewChild('piChart',{static: true}) public piChart: BaseChartDirective;
+  @ViewChild('successModal',{static: true}) public modal: ModalDirective;
   liquidClass = 'liquid-custom-class';
   liquidSludeClass="liquid-slude-custom-heading";
   biogasClass="biogas-custom-heading";
