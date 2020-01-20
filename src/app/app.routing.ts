@@ -69,7 +69,7 @@ export const routes: Routes = [
     },
     canActivate: [AuthGuard],
     children: [
-      { path: '',  redirectTo: 'dashboard' , pathMatch: 'full'},
+      { path: '',  redirectTo: 'overview' , pathMatch: 'full'},
       {
         path: 'dashboard',
         component: DashboardComponent,

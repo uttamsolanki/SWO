@@ -1,6 +1,7 @@
-import { Component, OnInit, Inject , OnDestroy} from '@angular/core';
+import {Component, OnInit, Inject, OnDestroy, ViewChild} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { navItems } from './../_nav';
+import {ModalDirective} from 'ngx-bootstrap';
 import {AlertComponent} from '../alert/alert.component';
 import {Router} from '@angular/router';
 
@@ -29,7 +30,7 @@ export class HomeComponent implements OnInit {
       attributeFilter: ['class']
     });
   }
-
+  @ViewChild('overviewModal',{static: true}) public modal: ModalDirective;
   ngOnInit() {
 
     if(localStorage.getItem('currentUser')){

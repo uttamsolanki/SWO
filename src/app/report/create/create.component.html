@@ -130,7 +130,7 @@
         <div class="col-lg-6">
           <div class="card liquid-border">
             <div class="card-header cd-header-color liquid-main-heading" style="background-color: #428BCA">
-              Liquid Line
+              Liquid Line Processes
               <div class="card-header-actions">
                 <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
               </div>
@@ -2455,7 +2455,7 @@
                   <label class="col-md-12 col-form-label" ><strong> Node Ap - Inflow Node Ap to Anaerobic Digester</strong></label>
                   <div class="row col-lg-8 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
-                      <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate Sludge Flow Rate Based on % of Plant Influent?</label>
+                      <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate quantity of Based on % of Plant Influent?</label>
                       <select class="form-control col-md-2" [disabled]="viewMode" id="anarobic_plantinfluent" name="anarobic_plantinfluent" (change)="selectPlantInflent('anarobic')" [(ngModel)]="process.anarobic.plantinfluent">
                         <option value=1>Yes</option>
                         <option value=0>No</option>
@@ -2854,7 +2854,7 @@
                   <label class="col-md-12 col-form-label" ><strong> Node A - Inflow to Aerobic Digester</strong></label>
                   <div class="row col-lg-8 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
-                      <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate Sludge Flow Rate Based on % of Plant Influent?</label>
+                      <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate Quantity of Sludge Based on % of Plant Influent?</label>
                       <select class="form-control col-md-2" [disabled]="viewMode" id="plantinfluent" name="plantinfluent" (change)="selectPlantInflent('aerobic')" [(ngModel)]="process.aerobic.plantinfluent">
                         <option value=1>Yes</option>
                         <option value=0>No</option>
@@ -3066,10 +3066,10 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-md-12 col-form-label" ><strong> Node A - Flow Rate of Dewatered Sludge Transported</strong></label>
+                  <label class="col-md-12 col-form-label" ><strong> Node A - Quantity of Dewatered Sludge Transported</strong></label>
                   <div class="row col-lg-8 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
-                      <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate Sludge Flow Rate Based on % of Plant Influent?</label>
+                      <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate Quantity of Sludge Based on % of Plant Influent?</label>
                       <select class="form-control col-md-2" [disabled]="viewMode" id="transporation_plantinfluent" name="transporation_plantinfluent" (change)="selectPlantInflent('transporation')" [(ngModel)]="process.transporation.plantinfluent">
                         <option value=1>Yes</option>
                         <option value=0>No</option>
@@ -3079,7 +3079,7 @@
                   <div class="row col-lg-4"></div>
                   <div class="row col-lg-6" *ngIf="process.transporation.plantinfluent=='1'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Flow Rate of Dewatered Sludge:</label>
+                      <label class="col-md-5 col-form-label" for="text-input">Quantity of Dewatered Sludge:</label>
                       <div class="col-md-5">
                         <input type="text" id="transporation_FLOWin"  [disabled]="viewMode" name="transporation_FLOWin" [(ngModel)]="process.transporation.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
@@ -3112,7 +3112,7 @@
                   </div>
                   <div class="row col-lg-6" >
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Flow Rate of Dewatered Sludge:</label>
+                      <label class="col-md-5 col-form-label" for="text-input">Quantity of Dewatered Sludge:</label>
                       <div class="col-md-5">
                         <input type="number" id="transporation_Qin"  [disabled]="viewMode" name="transporation_Qin" [(ngModel)]="transporationData.Qin" [class.readonlyValue]="process.transporation.plantinfluent=='1'" class="form-control readonlyValue" placeholder="0.0" (ngModelChange)="calTransporationFlow()" [readonly]="process.transporation.plantinfluent=='1'">
                       </div>
@@ -3254,10 +3254,10 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-md-12 col-form-label" ><strong> Node A - Flow Rate of Dewatered Sludge to {{biosolids_disposals.disposal.sel_type}}</strong></label>
+                  <label class="col-md-12 col-form-label" ><strong> Node A - Quantity of Dewatered Sludge to {{biosolids_disposals.disposal.sel_type}}</strong></label>
                   <div class="row col-lg-8 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
-                      <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate Sludge Flow Rate Based on % of Plant Influent?</label>
+                      <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate Quantity of Sludge Based on % of Plant Influent?</label>
                       <select class="form-control col-md-2" [disabled]="viewMode" id="disposal_plantinfluent" name="disposal_plantinfluent" (change)="selectPlantInflent('disposal')" [(ngModel)]="process.disposal.plantinfluent">
                         <option value=1>Yes</option>
                         <option value=0>No</option>
@@ -3267,7 +3267,7 @@
                   <div class="row col-lg-4"></div>
                   <div class="row col-lg-6" *ngIf="process.disposal.plantinfluent=='1'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="disposal_FLOWin">Flow Rate of Dewatered Sludge:</label>
+                      <label class="col-md-5 col-form-label" for="disposal_FLOWin">Quantity of Dewatered Sludge:</label>
                       <div class="col-md-5">
                         <input type="text" id="disposal_FLOWin"  [disabled]="viewMode" name="disposal_FLOWin" [(ngModel)]="process.disposal.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" >
                         <div class="p-1">
@@ -3292,7 +3292,7 @@
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.disposal.FLOWin.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.disposal.FLOWin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Flow Rate of Dewatered Sludge" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.disposal.FLOWin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Quantity of Dewatered Sludge" />
                         </span>
                         <app-information></app-information>
                       </div>
@@ -3300,7 +3300,7 @@
                   </div>
                   <div class="row col-lg-6">
                     <div class="offset-md-1 col-md-11 row" *ngIf="tempBoolen">
-                      <label class="col-md-5 col-form-label" for="disposal_Qin">Flow Rate of Dewatered Sludge:</label>
+                      <label class="col-md-5 col-form-label" for="disposal_Qin">Quantity of Dewatered Sludge:</label>
                       <div class="col-md-5">
                         <input type="number" id="disposal_Qin"  [disabled]="viewMode" name="disposal_Qin" [(ngModel)]="disposalData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" [class.readonlyValue]="process.disposal.plantinfluent=='1'" [readonly]="process.disposal.plantinfluent=='1'">
                       </div>
@@ -3448,7 +3448,7 @@
         <div class="col-lg-12">
           <div class="card liquid-border">
             <div class="card-header cd-header-color liquid-main-heading" style="background-color: #428BCA">
-              Liquid Line
+              Liquid Line Processes
             </div>
             <div class="card-body pumping-line" *ngIf="this.primary.pumping.sel_type == '0' && this.primary.prili_treat.sel_type == '0' && this.primary.pri_treat.sel_type == '0' && this.secondary.sel_type == '0' && this.sec_clr.sel_type == '0' && this.tertiary.sel_type == '0' && this.disinfection.sel_type == '0'">
               <div class="form-group row">
@@ -3825,12 +3825,12 @@
         </div>
       </div>
     </tab>
-    <tab heading="Summary" (select)="tabClick()">
+    <tab heading="Results" (select)="tabClick()">
       <div class="row">
         <div class="col-lg-12">
           <div class="card summary-border">
             <div class="card-header bg-primary text-white">
-              Summary
+              Results
               <div class="card-header-actions">
                 <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
               </div>

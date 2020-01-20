@@ -33,7 +33,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering', 'chemical', 'process','constant', 'size'];
   setScenarioData;
   modelMsg;
-  co2_eq = 135.5;
+  co2_eq = 40.0;
   COD_TOC = 3.33;
   COD_TOC_PER_MOL = 32;
   Removed_TKN = 0.34;
@@ -616,24 +616,8 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   }
 
   assignFormValue(data) {
-    this.userService.getPrimaryAllData().subscribe((response: any) => {
-      // this.primarNewData = response.data;
-      this.secondaryData(response.data.secondary);
-      this.primaryData(response.data.primary);
-      this.secondaryClarification(response.data.secondary_clarification);
-      this.tertiaryData(response.data.tertiary);
-      this.disinfectionData(response.data.disinfection);
-      this.biosolidsData(response.data.biosolids);
-      this.biogasData(response.data.biogas);
-      this.dewateringData(response.data.dewatering);
-      this.biosolids_disposalData(response.data.biosolids_disposals);
-     // this.chemicalData(response.data.chemical);
-     // this.processData(response.data.process);
-     // this.constantData(response.data.constant);
-      this.updateWWTPsize();
-    });
-    this.sizeData(data.size);
 
+      this.sizeData(data.size);
       this.secondaryData(data.secondary);
       this.primaryData(data.primary);
       this.secondaryClarification(data.secondary_clarification);
@@ -644,10 +628,26 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
       this.dewateringData(data.dewatering);
       this.biosolids_disposalData(data.biosolids_disposals);
       this.chemicalData(data.chemical);
-    this.userService.getProcessAllData().subscribe((response: any) => {
-      this.processData(response.data);
-    });
       this.constantData(data.constant);
+      this.updateWWTPsize();
+      this.userService.getPrimaryAllData().subscribe((response: any) => {
+      // this.primarNewData = response.data;
+      this.secondaryData(response.data.secondary);
+      this.primaryData(response.data.primary);
+      this.secondaryClarification(response.data.secondary_clarification);
+      this.tertiaryData(response.data.tertiary);
+      this.disinfectionData(response.data.disinfection);
+      this.biosolidsData(response.data.biosolids);
+      this.biogasData(response.data.biogas);
+      this.dewateringData(response.data.dewatering);
+      this.biosolids_disposalData(response.data.biosolids_disposals);
+      this.chemicalData(response.data.chemical);
+      this.updateWWTPsize();
+    });
+      this.userService.getProcessAllData().subscribe((response: any) => {
+        this.processData(response.data);
+        this.updateWWTPsize();
+      });
       this.createChart();
   }
   assignEditFormValue(editData) {
@@ -1362,7 +1362,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
 
     this.stackChartData= [
       {
-        label: 'CO2 Emission',
+        label: 'CO2e Emission',
         data: [this.active_sludgeco2,this.aerobicco2,this.anarobicco2,Math.ceil(this.active_sludgeco2+this.aerobicco2+this.anarobicco2)],
         backgroundColor: '#00A2E8' // green
       },
@@ -1397,8 +1397,6 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
 
 
     html2canvas(div, {allowTaint: true}).then(function(canvas) {
-
-
 
       const HTML_Width = canvas.width;
       const HTML_Height = canvas.height;
