@@ -377,7 +377,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   public barChartOptions: any = {
     title: {
       display: true,
-      text: 'CO2 Equivalent from Electricity Emissions',
+      text: 'CO2 Equivalent(CO2e) from Electricity Emissions',
       fontSize: 14,
       padding:25
     },
@@ -425,7 +425,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   public stackChartOptions: any = {
     title: {
       display: true,
-      text: 'CO2 Equivalent of On-Site Emissions',
+      text: 'CO2 Equivalent(CO2e) of On-Site Emissions',
       fontSize: 14
     },
     scaleShowVerticalLines: false,
@@ -488,7 +488,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     maintainAspectRatio: false,
     title: {
       display: false,
-      text: 'CO2 Equivalent Emissions by Category',
+      text: 'CO2 Equivalent(CO2e) Emissions by Category',
       fontSize: 14,
       padding:95
     },

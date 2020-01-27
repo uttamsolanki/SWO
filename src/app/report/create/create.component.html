@@ -3826,16 +3826,21 @@
       </div>
     </tab>
     <tab heading="Results" (select)="tabClick()">
+      <div class="row" style="margin-bottom: 12px;">
+        <div class="col-sm-12 offset-lg-11 offset-md-10 col-md-2 col-lg-2">
+          <button class="btn btn-success btn-minimize" type="button" (click)="generatePdf()">Generate PDF</button>
+        </div>
+      </div>
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12" id="printSection">
           <div class="card summary-border">
             <div class="card-header bg-primary text-white">
               Results
               <div class="card-header-actions">
-                <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+                <button class="card-header-action btn btn-link btn-minimize" type="button" (click)="generatePdf()"><i class="icon-arrow-up"></i></button>
               </div>
             </div>
-            <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+            <div  class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
 
 
@@ -3844,7 +3849,7 @@
                 <!--<button type="button" class="btn btn-block btn-success" (click)='generatePdf()'>Generate PDF</button>-->
                 <!--</div>-->
                 <!--</div>-->
-                <div id="printSection">
+
                   <!--<div class="form-group row">-->
                   <!--<div class="offset-md-2 col-md-9 row">-->
                   <!--&lt;!&ndash;<label class="col-md-5 col-form-label " for="text-input">WWTP size:</label>&ndash;&gt;-->
@@ -4380,7 +4385,6 @@
                               (chartClick)="chartClicked($event)"></canvas>
                     </div>
                   </div>
-                </div>
 
               </form>
             </div>
