@@ -13,7 +13,7 @@ export interface NavData {
 
 export const navItems: NavData[] = [
   {
-    name: 'Overview',
+    name: 'Home',
     url: '/overview',
     icon: 'icon-speedometer'
   },

@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../user.service';
 import {ModalDirective} from 'ngx-bootstrap';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-panel',
@@ -40,7 +41,7 @@ export class AdminPanelComponent implements OnInit {
   defaultStructure = JSON.parse(JSON.stringify(this.initialStructure))
   @ViewChild('successModal',{static: true}) public modal: ModalDirective;
 
-  constructor( private  userService: UserService) {
+  constructor( private  userService: UserService,private router: Router) {
       }
   firstDrop = [ 'Liquid Line list', 'Process'];
 
@@ -107,6 +108,11 @@ export class AdminPanelComponent implements OnInit {
           }
         }
       }
+  }
+  success(){
+      this.modal.hide();
+     // this.router.navigateByUrl('/admin-panel');
+      window.location.reload();
   }
   SaveData() {
     this.userService.saveAdminData(this.defaultStructure, this.defaultStructure._id).subscribe((rep: any) => {
