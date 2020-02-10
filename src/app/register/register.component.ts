@@ -28,12 +28,12 @@ export class RegisterComponent implements OnInit {
     'first_name':{
       'required': 'Full name is required',
       'minlength': 'Full name must be greater then 2 character',
-      'maxlength': 'Full name must be less then 10 character'
+      'maxlength': 'Full name must be less then 30 character'
     },
     'last_name':{
       'required': 'Last name is required',
       'minlength': 'Last name must be greater then 2 character',
-      'maxlength': 'Last name must be less then 10 character'
+      'maxlength': 'Last name must be less then 30 character'
     },
     'email':{
       'required': 'Email is required'

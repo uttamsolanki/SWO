@@ -3138,7 +3138,7 @@
                   <div class="row col-lg-6"></div>
                   <div class="row col-lg-6" *ngIf="process.transporation.travel_type=='distance'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="distance_distance">Single Travel Distance</label>
+                      <label class="col-md-5 col-form-label" for="distance_distance">One-way Trip Distance</label>
                       <div class="col-md-5">
                         <input type="text" id="distance_distance"  [disabled]="viewMode" name="distance_distance" [(ngModel)]="process.transporation.distance.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
@@ -3171,7 +3171,7 @@
                   </div>
                   <div class="row col-lg-6" *ngIf="process.transporation.travel_type=='time'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Single Travel Time</label>
+                      <label class="col-md-5 col-form-label" for="text-input">One-way Trip Distance</label>
                       <div class="col-md-5">
                         <input type="text" id="time_distance"  name="time_distance" [(ngModel)]="process.transporation.time.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
@@ -3196,7 +3196,7 @@
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.transporation.time.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.time)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Single Travel Time" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.time)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="One-way Travel Time" />
                         </span>
                         <app-information></app-information>
                       </div>

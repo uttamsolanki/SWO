@@ -425,7 +425,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   public stackChartOptions: any = {
     title: {
       display: true,
-      text: 'CO2 Equivalent(CO2e) of On-Site Emissions',
+      text: 'CO2 Equivalent (CO2e) of On-Site Emissions',
       fontSize: 14
     },
     scaleShowVerticalLines: false,
@@ -1362,7 +1362,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
 
     this.stackChartData= [
       {
-        label: 'CO2e Emission',
+        label: 'CO2 Emission',
         data: [this.active_sludgeco2,this.aerobicco2,this.anarobicco2,Math.ceil(this.active_sludgeco2+this.aerobicco2+this.anarobicco2)],
         backgroundColor: '#00A2E8' // green
       },

@@ -43,7 +43,7 @@ export class AdminPanelComponent implements OnInit {
 
   constructor( private  userService: UserService,private router: Router) {
       }
-  firstDrop = [ 'Liquid Line list', 'Process'];
+  firstDrop = [ 'Liquid Line Units List', 'Process Emissions List'];
 
     ngOnInit() {
       this.userService.getPrimaryData().subscribe((response: any) => {
@@ -61,17 +61,17 @@ export class AdminPanelComponent implements OnInit {
   firstDropdownChange() {
     this.defaultStructure = this.initialStructure;
     this.selectedItem = null;
-    if ( this.firstItem === 'Process') {
+    if ( this.firstItem === 'Process Emissions List') {
       this.selectedData = this.processData;
-    } else if (this.firstItem === 'Liquid Line list') {
+    } else if (this.firstItem === 'Liquid Line Units List') {
       this.selectedData = this.primaryData;
     }
   }
   secondDropData() {
     this.defaultStructure = this.initialStructure;
-    if ( this.firstItem === 'Process') {
+    if ( this.firstItem === 'Process Emissions List') {
       this.processingThirdArray(this.processData);
-    } else if (this.firstItem === 'Liquid Line list') {
+    } else if (this.firstItem === 'Liquid Line Units List') {
       this.processingThirdArray(this.primaryData);
     }
   }
