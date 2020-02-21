@@ -366,6 +366,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   viewMode:boolean=false;
   scenarioSaved:boolean=false;
   isSavedScenario:boolean=true;
+  hideBiogas:boolean=false;
   // *************  barChart Start *************//
 
   public barChart1Colours: Array<any> = [
@@ -763,7 +764,6 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
         this.selectTreatmentType('', 'sec_clr', this.sec_clr_types);
     }
 
-
     this.co2Calcaltion(this.primary.pumping.data);
     this.co2Calcaltion(this.primary.pri_treat.data);
     this.co2Calcaltion(this.primary.prili_treat.data);
@@ -1040,6 +1040,14 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     else{
       this.process.anarobic.isFlaring = 0;
     }
+    if(this.biosolid.anaerobic.sel_type!='0'){
+      this.hideBiogas=true;
+    }else {
+      this.biogas.sel_type='0';
+      this.co2Calcaltion(this.biogas);
+      this.hideBiogas=false;
+    }
+
     this.calActiveFlow();
     this.calAerobicFlow();
     this.calAnarobicFlow();
