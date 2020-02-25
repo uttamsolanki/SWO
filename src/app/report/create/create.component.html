@@ -2452,10 +2452,10 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-md-12 col-form-label" ><strong> Node Ap - Inflow Node Ap to Anaerobic Digester</strong></label>
+                  <label class="col-md-12 col-form-label" ><strong> Node Ap - WWTP Sludge to Anaerobic Digester</strong></label>
                   <div class="row col-lg-8 ">
                     <div class="offset-md-1 col-md-12 row pb-4">
-                      <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate quantity of Based on % of Plant Influent?</label>
+                      <label class="col-md-8 col-form-label" for="inline-radios_preliminary">Would you like to calculate quantity of plant sludge based on % of Plant's Influent?</label>
                       <select class="form-control col-md-2" [disabled]="viewMode" id="anarobic_plantinfluent" name="anarobic_plantinfluent" (change)="selectPlantInflent('anarobic')" [(ngModel)]="process.anarobic.plantinfluent">
                         <option value=1>Yes</option>
                         <option value=0>No</option>
@@ -2465,7 +2465,7 @@
                   <div class="row col-lg-4"></div>
                   <div class="row col-lg-6" *ngIf="process.anarobic.plantinfluent=='1'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Inflow Node Ap to Anaerobic Digester[Qap]:</label>
+                      <label class="col-md-5 col-form-label" for="text-input">Ap - WWTP Sludge to Anaerobic Digester:</label>
                       <div class="col-md-5">
                         <input type="number" id="anarobic_FLOWin"  [disabled]="viewMode" name="anarobic_FLOWin" [(ngModel)]="process.anarobic.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
@@ -2499,7 +2499,7 @@
                   </div>
                   <div class="row col-lg-6">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Inflow Node Ap to Anaerobic Digester[Qap]:</label>
+                      <label class="col-md-5 col-form-label" for="text-input">Ap - WWTP Sludge Flow Rate to Anaerobic Digester:</label>
                       <div class="col-md-5">
                         <input type="number" id="anarobic_Qin"  [disabled]="viewMode" name="anarobic_Qap" [(ngModel)]="anarobicData.Qap" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()" [class.readonlyValue]="process.anarobic.plantinfluent=='1'" [readonly]="process.anarobic.plantinfluent=='1'">
                       </div>
@@ -2510,7 +2510,7 @@
                   </div>
                   <div class="row col-lg-6">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Inflow COD [CODin]:</label>
+                      <label class="col-md-5 col-form-label" for="text-input">WWTP Sludge COD [CODin]:</label>
                       <div class="col-md-5">
                         <input type="number" id="aerobic_CODin"  [disabled]="viewMode" name="aerobic_CODin" [(ngModel)]="process.anarobic.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
@@ -3276,7 +3276,8 @@
                               <span>
                                <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.disposal.FLOWin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.disposal.FLOWin.title}}" />
                               </span>
-                          </div><</div><br/>
+                          </div>
+                          </div><br/>
                             <div *ngIf="process.disposal.FLOWin.range.min || process.disposal.FLOWin.range.max">
                               Range value  {{process.disposal.FLOWin.range.min}} - {{process.disposal.FLOWin.range.max}}
                               <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
