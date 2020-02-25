@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     if (this.UserService.isLoggednIn()) {
      // console.log('Uttan')
-     this.router.navigateByUrl('/dashboard');
+     this.router.navigateByUrl('/overview');
     }
     this.lognForm = this.fb.group({
       email: ['', Validators.required],
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
             timeout: 2000
           });
            setTimeout(() => {
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['overview']);
           }, 2000);
 
         }

@@ -87,7 +87,7 @@ export class RegisterComponent implements OnInit {
             msg: res.message,
             timeout: 5000
           });
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/overview']);
         }
       }, (error: HttpErrorResponse) => {
         if(error.status<=0) {
