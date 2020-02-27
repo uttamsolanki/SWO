@@ -991,10 +991,10 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   }
   calTransporationFlow() {
     if (this.process.transporation.plantinfluent == '1') {
-      this.transporationData.Qin = this.process.transporation.FLOWin.default * this.size.data.default / 100;
+      this.transporationData.Qin = Math.ceil(this.process.transporation.FLOWin.default * this.size.data.default / 100);
     } else {
       if (this.process.transporation.Qin !== undefined) {
-        this.transporationData.Qin = this.process.transporation.Qin;
+        this.transporationData.Qin = Math.ceil(this.process.transporation.Qin);
       }
     }
     this.calTransporationCo2();
