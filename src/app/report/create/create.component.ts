@@ -861,10 +861,10 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   }
   calAnarobicFlow() {
     if (this.process.anarobic.plantinfluent == '1') {
-      this.anarobicData.Qap = this.process.anarobic.FLOWin.default * this.size.data.default / 100;
+      this.anarobicData.Qap = Math.ceil(this.process.anarobic.FLOWin.default * this.size.data.default / 100);
     } else {
       if (this.process.anarobic.Qin !== undefined) {
-      this.anarobicData.Qin = this.process.anarobic.Qin;
+      this.anarobicData.Qin =  Math.ceil(this.process.anarobic.Qin);
       }
     }
 
@@ -872,7 +872,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     this.anarobicData.CODLod = (this.anarobicData.Qap * this.process.anarobic.CODin.default) / 1000;
 
     if (this.process.anarobic.isOrganic == 1) {
-      this.anarobicData.Qin = this.anarobicData.Qin + this.process.organics.flow;
+      this.anarobicData.Qin =  Math.ceil(this.anarobicData.Qin + this.process.organics.flow);
       this.anarobicData.CODLod = this.anarobicData.CODLod + (this.process.organics.flow * this.process.organics.COD / 1000);
     }else{
       this.process.organics.flow=0;
@@ -880,7 +880,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     }
 
     if (this.process.anarobic.isBiosolids == 1) {
-      this.anarobicData.Qin = this.anarobicData.Qin + this.process.biosolids.flow;
+      this.anarobicData.Qin =  Math.ceil(this.anarobicData.Qin + this.process.biosolids.flow);
       this.anarobicData.CODLod = this.anarobicData.CODLod + (this.process.biosolids.flow * this.process.biosolids.COD / 1000);
     }else{
       this.process.biosolids.flow=0;
@@ -952,10 +952,10 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   }
   calDisposalFlow() {
     if (this.process.disposal.plantinfluent == '1') {
-      this.disposalData.Qin = this.process.disposal.FLOWin.default * this.size.data.default / 100;
+      this.disposalData.Qin = Math.ceil(this.process.disposal.FLOWin.default * this.size.data.default / 100);
     } else {
       if (this.process.disposal.Qin !== undefined) {
-      this.disposalData.Qin = this.process.disposal.Qin;
+      this.disposalData.Qin = Math.ceil(this.process.disposal.Qin);
       }
     }
     this.calDisposalCo2();
