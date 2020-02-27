@@ -793,8 +793,8 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   }
 
   calActiveFlow() {
-    this.active_sludgeData.Qwas = this.active_sludgeData.Qin * this.process.active_sludge.FLOWwas.default / 100;
-    this.active_sludgeData.Qout = this.active_sludgeData.Qin - this.active_sludgeData.Qwas;
+    this.active_sludgeData.Qwas = Math.ceil(this.active_sludgeData.Qin * this.process.active_sludge.FLOWwas.default / 100);
+    this.active_sludgeData.Qout = Math.ceil(this.active_sludgeData.Qin - this.active_sludgeData.Qwas);
     this.calcActiveCo2();
   }
   calcActiveCo2() {
