@@ -223,7 +223,8 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
       travel_type: 'distance',
       FLOWin: this.defaultStructure,
       distance: this.defaultStructure,
-      time: this.defaultStructure
+      time: this.defaultStructure,
+      trip: this.defaultStructure
     },
   };
   constant: any = {
@@ -1000,12 +1001,14 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   }
   calTransporationCo2() {
     if (this.process.transporation.travel_type === 'time') {
-      const calCo2 = this.transporationData.Qin  * this.process.transporation.time.default * this.delta;
+      let calCo2 = this.transporationData.Qin  * this.process.transporation.time.default * this.delta;
+      calCo2 = calCo2 * this.process.transporation.trip.default;
       this.process.transporation.totalCo2 = Math.ceil(calCo2);
     }
 
     if (this.process.transporation.travel_type === 'distance') {
-      const calCo2 = this.transporationData.Qin  * this.process.transporation.distance.default * this.gamma;
+      let calCo2 = this.transporationData.Qin  * this.process.transporation.distance.default * this.gamma;
+      calCo2 = calCo2 * this.process.transporation.trip.default;
       this.process.transporation.totalCo2 = Math.ceil(calCo2);
     }
   this.UpdateProcessValue();

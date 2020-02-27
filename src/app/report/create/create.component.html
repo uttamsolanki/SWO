@@ -1983,7 +1983,7 @@
             <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
               <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
                 <div class="row activeSludgeImage">
-                 <img src="assets/img/avatars/activated_sludge.png" alt="Active Sludge"/>
+                 <img src="assets/img/avatars/activated_sludge_new.png" alt="Active Sludge"/>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-12 col-form-label" ><strong> Node A - Inflow to Secondary Treatment </strong></label>
@@ -3197,6 +3197,32 @@
                         <span class="help-block">{{process.transporation.time.unit}}</span>
                         <span>
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.time)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="One-way Travel Time" />
+                        </span>
+                        <app-information></app-information>
+                      </div>
+                    </div>
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="trip">Number of Trips/day</label>
+                      <div class="col-md-5">
+                        <input type="text" id="trip"  name="trip" [(ngModel)]="process.transporation.trip.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span>
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.trip)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Trip" />
+                        </span>
+                        <app-information></app-information>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row col-lg-6">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="trip">Number of Trips/day</label>
+                      <div class="col-md-5">
+                        <input type="text" id="trip"  name="trip" [(ngModel)]="process.transporation.trip.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span>
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.trip)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Trip" />
                         </span>
                         <app-information></app-information>
                       </div>
