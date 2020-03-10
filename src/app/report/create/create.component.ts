@@ -379,7 +379,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   public barChartOptions: any = {
     title: {
       display: true,
-      text: 'CO2 Equivalent(CO2e) from Electricity Emissions',
+      text: 'Categorized CO2 Emission - Electricity Usage (CO2e)',
       fontSize: 14,
       padding:25
     },
@@ -427,7 +427,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   public stackChartOptions: any = {
     title: {
       display: true,
-      text: 'CO2 Equivalent (CO2e) of On-Site Emissions',
+      text: 'On-Site Process Emissions (CO2e)',
       fontSize: 14
     },
     scaleShowVerticalLines: false,
@@ -490,7 +490,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     maintainAspectRatio: false,
     title: {
       display: false,
-      text: 'CO2 Equivalent(CO2e) Emissions by Category',
+      text: 'CO2 Emissions by Category',
       fontSize: 14,
       padding:95
     },
@@ -976,7 +976,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     if (this.biosolids_disposals.disposal.sel_type === 'Landfill with Methane Recovery' || this.biosolids_disposals.disposal.sel_type === 'Incineration' ) {
       this.disposalData.ch4 = 0;
     }
-    else if (this.biosolids_disposals.disposal.sel_type === 'Overland Application') {
+    else if (this.biosolids_disposals.disposal.sel_type === 'Land Application') {
       this.disposalData.totalCo2 = 0;
       this.disposalData.ch4 = 0;
       this.disposalData.co2 = 0;
@@ -1002,13 +1002,13 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   calTransporationCo2() {
     if (this.process.transporation.travel_type === 'time') {
       let calCo2 = this.transporationData.Qin  * this.process.transporation.time.default * this.delta;
-      calCo2 = calCo2 * this.process.transporation.trip.default;
+     // calCo2 = calCo2 * this.process.transporation.trip.default;
       this.process.transporation.totalCo2 = Math.ceil(calCo2);
     }
 
     if (this.process.transporation.travel_type === 'distance') {
       let calCo2 = this.transporationData.Qin  * this.process.transporation.distance.default * this.gamma;
-      calCo2 = calCo2 * this.process.transporation.trip.default;
+      //calCo2 = calCo2 * this.process.transporation.trip.default;
       this.process.transporation.totalCo2 = Math.ceil(calCo2);
     }
   this.UpdateProcessValue();

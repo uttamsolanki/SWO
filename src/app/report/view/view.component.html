@@ -44,11 +44,11 @@
               <label class="offset-md-2 col-md-3 col-form-label ">Select Unit:</label>
               <div class="form-check form-check-inline mr-4">
                 <input class="form-check-input m-2" type="radio" name="unit_1" id="unit_1" [value]=1 [(ngModel)]="unit" (change)="changeUnit()">
-                <label class="form-check-label" for="unit_1"><span>kg CO<sub>2</sub>/d</span></label>
+                <label class="form-check-label" for="unit_1"><span>kg CO<sub>2e</sub>/d</span></label>
               </div>
               <div class="form-check form-check-inline mr-4">
                 <input class="form-check-input m-2" type="radio" name="unit_2" id="unit_2" [value]=0 [(ngModel)]="unit" (change)="changeUnit()">
-                <label class="form-check-label" for="unit_2"><span>kg CO<sub>2</sub>/1000m<sup>3</sup></span></label>
+                <label class="form-check-label" for="unit_2"><span>kg CO<sub>2e</sub>/1000m<sup>3</sup></span></label>
               </div>
               <div class="form-check form-check-inline mr-1">
                 <input class="form-check-input m-2" type="radio" name="unit_3" id="unit_3" [value]=2 [(ngModel)]="unit" (change)="changeUnit()">
@@ -78,7 +78,7 @@
                     <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
                   </tr>
                 <tr class="mainTitle">
-                  <td><label class="col-form-label"><strong>Total CO2 Equivalent[<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</strong></label></td>
+                  <td><label class="col-form-label"><strong>Total CO2 Equivalent[<span class="help-block" *ngIf="unit == 1">kg CO<sub>2e</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2e</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</strong></label></td>
                 </tr>
                 <tr>
                   <td><label class=" col-form-label padding-row">Electricity Emissions</label></td>
@@ -114,7 +114,7 @@
                     <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
                   </tr>
                 <tr class="mainTitle">
-                  <td><label class="col-form-label"><strong>Electricity Emissions Summary: [<span class="help-block" *ngIf="unit == 1">kg CO<sub>2</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</strong></label></td>
+                  <td><label class="col-form-label"><strong>Electricity Emissions Summary: [<span class="help-block" *ngIf="unit == 1">kg CO<sub>2e</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2e</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</strong></label></td>
                 </tr>
                 <tr>
                     <label class="col-form-label padding-row">Pumping</label>
@@ -183,36 +183,36 @@
                         <td><label class="col-form-label" style="visibility: hidden"> <strong>None   </strong></label></td>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label">{{(sc.electical/unitDivider).toFixed(2)}}</label></td>
+                        <td><label class=" col-form-label">{{sc.electical/unitDivider | ceil | number}}</label></td>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label">{{(sc.OnProcess/unitDivider).toFixed(2)}}</label></td>
+                        <td><label class=" col-form-label">{{sc.OnProcess/unitDivider | ceil | number}}</label></td>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label">{{(sc.chemical/unitDivider).toFixed(2)}}</label></td>
+                        <td><label class=" col-form-label">{{sc.chemical/unitDivider | ceil | number}}</label></td>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label">{{(sc.transporation/unitDivider).toFixed(1)}}</label></td>
+                        <td><label class=" col-form-label">{{sc.transporation/unitDivider | ceil | number}}</label></td>
                       </tr>
                     <tr>
-                      <td><label class=" col-form-label"><strong class="subTitle">{{(sc.priorElectrical/unitDivider).toFixed(1)}}</strong></label></td>
+                      <td><label class=" col-form-label"><strong class="subTitle">{{sc.priorElectrical/unitDivider | ceil | number}}</strong></label></td>
                     </tr>
                       <tr>
-                        <td><label class=" col-form-label">{{(sc.EnergyRecovery/unitDivider).toFixed(1)}}</label></td>
+                        <td><label class=" col-form-label">{{sc.EnergyRecovery/unitDivider | ceil | number}}</label></td>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label">{{(sc.energy/unitDivider).toFixed(1)}}</label></td>
+                        <td><label class=" col-form-label">{{sc.energy/unitDivider | ceil | number}}</label></td>
                       </tr>
                       <tr>
-                        <td><label class=" col-form-label"><strong class="subTitle">{{(sc.priorBiosolid/unitDivider).toFixed(1)}}</strong></label></td>
+                        <td><label class=" col-form-label"><strong class="subTitle">{{sc.priorBiosolid/unitDivider | ceil | number}}</strong></label></td>
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label">Biosolids Disposal Emissions</label></td>-->
-                        <td><label class=" col-form-label">{{(sc.disposal/unitDivider).toFixed(1)}}</label></td>
+                        <td><label class=" col-form-label">{{sc.disposal/unitDivider | ceil | number}}</label></td>
                       </tr>
                       <tr>
 <!--                        <td><label class=" col-form-label"><strong>Total Emissions including Biosolids Disposal: </strong></label></td>-->
-                        <td><label class=" col-form-label"><strong class="subTitle">{{(sc.ProcessCo2/unitDivider).toFixed(1)}}</strong></label></td>
+                        <td><label class=" col-form-label"><strong class="subTitle">{{sc.ProcessCo2/unitDivider | ceil | number}}</strong></label></td>
                       </tr>
                       <tr>
                         <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
@@ -221,31 +221,31 @@
                         <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
                       </tr>
                       <tr >
-                        <label class="col-form-label">{{(sc.primaryPumping/unitDivider).toFixed(2)}} </label>
+                        <label class="col-form-label">{{sc.primaryPumping/unitDivider | ceil | number}} </label>
                       </tr>
                       <tr >
-                        <label class="col-form-label">{{(sc.primaryPrili/unitDivider).toFixed(2)}}</label>
+                        <label class="col-form-label">{{sc.primaryPrili/unitDivider | ceil | number}}</label>
                       </tr>
                       <tr>
-                        <label class="col-form-label">{{(sc.priTreat/unitDivider).toFixed(2)}}</label>
+                        <label class="col-form-label">{{sc.priTreat/unitDivider | ceil | number}}</label>
                       </tr>
                       <tr >
-                        <label class="col-form-label">{{(sc.secondaryTreat/unitDivider).toFixed(2)}}</label>
+                        <label class="col-form-label">{{sc.secondaryTreat/unitDivider | ceil | number}}</label>
                       </tr>
                       <tr>
-                        <label class="col-form-label">{{(sc.secClar/unitDivider).toFixed(2)}}</label>
+                        <label class="col-form-label">{{sc.secClar/unitDivider | ceil | number}}</label>
                       </tr>
                       <tr>
-                        <label class="col-form-label">{{(sc.tertiaryTreat/unitDivider).toFixed(2)}}</label>
+                        <label class="col-form-label">{{sc.tertiaryTreat/unitDivider | ceil | number}}</label>
                       </tr>
                       <tr>
-                        <label class="col-form-label">{{(sc.disinfectionTreat/unitDivider).toFixed(2)}}</label>
+                        <label class="col-form-label">{{sc.disinfectionTreat/unitDivider | ceil | number}}</label>
                       </tr>
                       <tr>
-                        <label class="col-form-label">{{(sc.thickenerTreat/unitDivider).toFixed(2)}}</label>
+                        <label class="col-form-label">{{sc.thickenerTreat/unitDivider | ceil | number}}</label>
                       </tr>
                       <tr>
-                        <label class="col-form-label">{{(sc.biosolidnew/unitDivider).toFixed(2)}}</label>
+                        <label class="col-form-label">{{sc.biosolidnew/unitDivider | ceil | number}}</label>
                       </tr>
 <!--                      <ng-template #anerobicBlock>-->
 <!--                        <tr *ngIf="sc.anaerobicTreat!='0'">-->
@@ -254,16 +254,16 @@
 <!--                      </ng-template>-->
 
                       <tr>
-                        <label class="col-form-label">{{(sc.dewateringTreat/unitDivider).toFixed(2)}}</label>
+                        <label class="col-form-label">{{sc.dewateringTreat/unitDivider | ceil | number}}</label>
                       </tr>
                       <tr>
-                        <label class="col-form-label"><strong class="subTitle">{{(sc.electical/unitDivider).toFixed(2)}}</strong></label>
+                        <label class="col-form-label"><strong class="subTitle">{{sc.electical/unitDivider | ceil | number}}</strong></label>
                       </tr>
                       <tr >
-                      <label class="col-form-label">{{(sc.EnergyRecovery/unitDivider).toFixed(2)}}</label>
+                      <label class="col-form-label">{{sc.EnergyRecovery/unitDivider | ceil | number}}</label>
                     </tr>
                       <tr >
-                        <label class="col-form-label"><strong class="subTitle">{{((sc.electical+sc.EnergyRecovery)/unitDivider).toFixed(2)}}</strong></label>
+                        <label class="col-form-label"><strong class="subTitle">{{(sc.electical+sc.EnergyRecovery)/unitDivider | ceil | number}}</strong></label>
                       </tr>
                     </table>
                   </div>
