@@ -2965,15 +2965,15 @@
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.aerobic.CODout.suggested}}
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
                               <span>
-                               <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.anarobic.CODout)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.CODout.title}}" />
+                               <img class="icon-image suggested-value-icon-image" container="body" placement="left" (click)="testU(process.aerobic.CODout)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="{{process.aerobic.CODout.title}}" />
                               </span>
                           </div>
                         </div><br/>
                             <div *ngIf="process.aerobic.CODout.range.min || process.aerobic.CODout.range.max">
                               Range value  {{process.aerobic.CODout.range.min}} - {{process.aerobic.CODout.range.max}}
                               <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
-                                <div *ngIf="process.anarobic.CODout.range.min || process.anarobic.CODout.range.max">
-                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.anarobic.CODout)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.CODout.title}}"/>
+                                <div *ngIf="process.aerobic.CODout.range.min || process.aerobic.CODout.range.max">
+                                  <img class="icon-image range-icon-image" container="body" placement="left" (click)="testU(process.aerobic.CODout)" [popover]="rangePopOver" [outsideClick]="true" popoverTitle="{{process.aerobic.CODout.title}}"/>
                                 </div>
                               </div>
                             </div>
