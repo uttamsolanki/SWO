@@ -22,7 +22,7 @@ export const navItems: NavData[] = [
     url: '/dashboard',
     icon: 'icon-speedometer'
   },
-  // {
+  // {report
   //   name: 'New Project',
   //   url: '/report/create',
   //   icon: 'icon-pencil'

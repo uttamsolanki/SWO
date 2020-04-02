@@ -63,6 +63,7 @@
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
           <!--<button type="button"  ><i class="icon-speech"></i></button>-->
           <a class="btn" href="javascript:void(0)" (click)="overviewModal.show()"><i class="icon-speech"></i> &nbsp;Overview</a>
+          <a class="btn" href="javascript:void(0)" (click)="BasisModal.show()"><i class="icon-speech"></i> &nbsp;Calculator-Basis</a>
           <!--<a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>-->
           <!--<a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>-->
         </div>
@@ -152,7 +153,135 @@
           </div>
         </div>
       </div>
+      <div bsModal  #BasisModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-success modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Calculator-Basis</h4>
+              <button type="button" class="close" (click)="BasisModal.hide()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="">
+                <p><strong>Calculator-Basis</strong></p>
+              </div>
+              <div>
+                <p class="overviewTitle">Basis of Calculations in this calculator:</p>
+              </div>
+              <div class="">
+                <ul>
+                  <li>CO<sub>2</sub> equivalence for electricity (Ontario) due to Nuclear Power, g CO<sub>2</sub>e/kWh  => 40</li>
+                  <li>COD/TOC Ratio, g-O<sub>2</sub>/g-C  => 3.33</li>
+                  <li>COD/TOC Ratio, g-O<sub>2</sub>/g.mole-C  => 32</li>
+                  <li>N<sub>2</sub>O emitted (as % TKN removed)  => 0.34</li>
+                </ul>
+              </div>
+              <div>
+                <p class="overviewTitle">General Reference:</p>
+              </div>
+              <div class="">
+                <p>
+                  User is referred to the following reference for general methodologies.
+                </p>
+                <ul>
+                  <li>Sen, Shurui, Quantification of Greenhouse Gas Emissions from Wastewater Treatment Plants, M. Eng Thesis, McMaster University, April 2018.</li>
+                  <ul><li><a href="/assets/pdf/SSR.pdf" target="_blank">SSR GHG…..PDF</a></li></ul>
+                </ul>
+                <p>
+                  Operating data from the following wastewater treatment plants were utilized in this calculator to provide the recommended values and range of values.  The following references were utilized in the calculator:
+                </p>
+                <ul>
+                  <li><a href="/assets/pdf/A.pdf" target="_blank">North Toronto WWTP 2016 Annual Report</a></li>
+                  <li><a href="/assets/pdf/B.pdf" target="_blank">Humber Annual Report 2016</a></li>
+                  <li><a href="/assets/pdf/C.pdf" target="_blank">Highland Creek Annual Report 2016</a></li>
+                  <li><a href="/assets/pdf/D.pdf" target="_blank">2015 Performance Report for Shelburne Wastewater Treatment Facility</a></li>
+                  <li><a href="/assets/pdf/E.pdf" target="_blank">2016 Elmvale Wastewater Treatment Plant Annual Report</a></li>
+                  <li><a href="/assets/pdf/F.pdf" target="_blank">2016 Annual Report Adelaide Wastewater Treatment Plant</a></li>
+                  <li><a href="/assets/pdf/G.pdf" target="_blank">2016 Royal Oaks Wastewater Treatment Plant Annual Report</a></li>
+                  <li><a href="/assets/pdf/H.pdf" target="_blank">2016 Sudbury Annual Wastewater Report</a></li>
+                  <li><a href="/assets/pdf/I.pdf" target="_blank">2017 Snow Valley Highlands Wastewater Treatment Plant</a></li>
+                  <li><a href="/assets/pdf/J.pdf" target="_blank">2015 Annual Wastewater Treatment System Summary Report Drumbo Wastewater Treatment Plant</a></li>
+                  <li><a href="/assets/pdf/K.pdf" target="_blank">Collingwood Wastewater Treatment Plant 2015 Annual Compliance Report</a></li>
+                  <li><a href="/assets/pdf/L.pdf" target="_blank">Municipality of West Elgin Rodney Wastewater Treatment Plant</a></li>
+                  <li><a href="/assets/pdf/M.pdf" target="_blank">Guelph Wastewater Treatment Plant</a></li>
+
+                </ul>
+              </div>
+              <div>
+                <p class="overviewTitle">Biosolids Disposal – Basis of Calculation for biosolids disposal are:</p>
+              </div>
+              <div class="">
+                <ul>
+                  <li>Land Application – Beneficial use of biosolids results in 0 emission of CO<sub>2</sub>e and CH<sub>4</sub>.</li>
+                  <li>Landfill without methane recovery – emitted methane from the landfill is converted to 25x CO2e per unit mass of methane and added to the rest of the carbon that is converted to CO<sub>2</sub> by natural process.</li>
+                  <li>Landfill with methane recovery – all the 100% of methane is converted to CO<sub>2</sub>e [1 mole of methane to one mole of CO<sub>2</sub>] and added to the rest of the carbon that is converted to CO<sub>2</sub> by natural process.</li>
+                  <li>Incineration – all the 100% of the carbon in the sludge is converted to CO<sub>2</sub>e [1 mole of carbon to 1 mole of CO<sub>2</sub>]
+                    <ol type="a">
+                      <li>
+                        Incineration within the wastewater treatment facility will not require transportation.  User can deselect the transportation option.
+                      </li>
+                    </ol>
+                  </li>
+                  <li>Transportation of sludge is calculated independent of disposal and the user can select either transport distance or transport duration.</li>
+                </ul>
+              </div>
+              <div>
+                <p class="overviewTitle">Notes on References & Hyperlinks:</p>
+              </div>
+              <div class="">
+                <ul>
+                  <li>Available hyperlinks for references are provided in the calculator at specific unit operations/processes input cells. [Note – if the hyperlinks are broken, then please inform OWC]</li>
+                  <li>Available references are provided in PDF documents </li>
+                </ul>
+              </div>
+              <div>
+                <p class="overviewTitle">Abbreviations:</p>
+              </div>
+              <div>
+                <table class="table tableCenter">
+                  <!--<thead>-->
+                  <!--<tr>-->
+                  <!--<th></th>-->
+                  <!--<th>Date registered</th>-->
+
+                  <!--</tr>-->
+                  <!--</thead>-->
+                  <tbody>
+                  <tr><td>BAF</td><td>Biological Aerated Filter</td></tr>
+                  <tr><td>BOD5</td><td>Biochemical Oxygen Demand</td></tr>
+                  <tr><td>CH<sub>4</sub></td><td>Methane</td></tr>
+                  <tr><td>CO<sub>2</sub>e</td><td>Carbon dioxide equivalent emission</td></tr>
+                  <tr><td>COD</td><td>Chemical Oxygen Demand</td></tr>
+                  <tr><td>MBBR</td><td>Moving Bed Biofilm Reactor</td></tr>
+                  <tr><td>MF</td><td>Microfiltration</td></tr>
+                  <tr><td>N<sub>2</sub>O</td><td>Nitrous Oxide</td></tr>
+                  <tr><td>RAS</td><td>Return Activated Sludge</td></tr>
+                  <tr><td>RBC</td><td>Rotating Biological Contactor</td></tr>
+                  <tr><td>TKN</td><td>Total Kjeldhal Nitrogen</td></tr>
+                  <tr><td>TOC</td><td>Total Organic Carbon</td></tr>
+                  <tr><td>TSS</td><td>Total Suspended Solids</td></tr>
+                  <tr><td>UF</td><td>Ultrafiltration</td></tr>
+                  <tr><td>UV</td><td>Ultraviolet</td></tr>
+                  <tr><td>VSS</td><td>Volatile Suspended Solids</td></tr>
+                  <tr><td>WAS</td><td>Waste Activated Sludge</td></tr>
+                  <tr><td>WWTP</td><td>Wastewater Treatment Plant</td></tr>
+                  <tr><td>WWTP</td><td>Information / Tips</td></tr>
+                  <tr><td>WWTP</td><td>Reference for Suggested Range of Values</td></tr>
+                  </tbody></table>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" (click)="BasisModal.hide()">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <router-outlet></router-outlet>
+    </div>
+    <div class="container-fluid">
+
+
     </div><!-- /.container-fluid -->
   </main>
 
