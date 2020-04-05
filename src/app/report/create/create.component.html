@@ -2305,7 +2305,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                           <span>
-                            <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(constant.COD_TOC)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="COD / TOC Ratio, g-O<sub>2</sub>/g-C" />
+                            <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(constant.COD_TOC)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="COD / TOC Ratio, g-O2/g-C" />
                           </span>
                           <app-information></app-information>
                       </div>
@@ -2535,7 +2535,7 @@
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.aerobic.CODin.unit}}</span>
                         <span>
-                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.CODin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Inflow COD [CODin]" />
+                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.CODin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.CODin.title}}" />
                         </span>
                         <app-information></app-information>
                       </div>

@@ -565,7 +565,6 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     } else  {
       if (this.id) {
         this.userService.getScenario({project_id: this.id}).subscribe((response: any) => {
-          console.log(response.data.scenario);
           this.setProjectData = response.data.name;
           this.setProjectDescription = response.data.desc;
         });
@@ -1262,6 +1261,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
    * @param treatment_types
    */
   selectTreatmentType(cat, type, treatment_types) {
+
     if (!cat) {
 
       for (const tr_type of treatment_types) {
@@ -1411,9 +1411,9 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
 
       const HTML_Width = canvas.width;
       const HTML_Height = canvas.height;
-      const top_left_margin = 20;
+      const top_left_margin = 50;
       const PDF_Width = HTML_Width + (top_left_margin * 2);
-      const PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+      const PDF_Height = (PDF_Width*1.3) -50;
       const canvas_image_width = HTML_Width;
       const canvas_image_height = HTML_Height;
 
@@ -1430,9 +1430,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
         img = new Image();
       img.onload = split_4;
       function split_4() {
-        const w2 = img.width,
-          h2 = PDF_Height;
-        hy = 0;
+        const w2 = img.width;
         for (let i = 0; i <= totalPDFPages; i++) {
           incanvas.width = w2;
           // incanvas.height = PDF_Height;
@@ -1504,7 +1502,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
      this.router.navigate(['dashboard']);
   }
   testU(data) {
-    console.log(data);
+
     let referenceArray = [];
     var tempHtml = "";
     if(data.ref) {
