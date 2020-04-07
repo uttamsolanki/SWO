@@ -37,8 +37,8 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   COD_TOC = 3.33;
   COD_TOC_PER_MOL = 32;
   Removed_TKN = 0.34;
-  gamma = 70;
-  delta = 126.33;
+  gamma = 0.14;
+  delta = 8.422;
   scenarioName = 'Scenario';
   scenarioDesc = 'Scenario Description';
   scenarioDate = new Date();
