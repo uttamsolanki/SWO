@@ -3079,7 +3079,7 @@
                   <div class="row col-lg-4"></div>
                   <div class="row col-lg-6" *ngIf="process.transporation.plantinfluent=='1'">
                     <div class="offset-md-1 col-md-11 row">
-                      <label class="col-md-5 col-form-label" for="text-input">Quantity of Dewatered Sludge:</label>
+                      <label class="col-md-5 col-form-label" for="transporation_FLOWin">Quantity of Dewatered Sludge:</label>
                       <div class="col-md-5">
                         <input type="text" id="transporation_FLOWin"  [disabled]="viewMode" name="transporation_FLOWin" [(ngModel)]="process.transporation.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
@@ -3124,7 +3124,7 @@
                   <div class="row col-lg-6" *ngIf="process.transporation.plantinfluent=='0'">
 
                   </div>
-                  <div class="row col-lg-6 ">
+                  <div class="row col-lg-6 mt-3">
                     <div class="offset-md-1 col-md-11 row mb-4">
                       <label class="col-md-5 col-form-label" for="inline-radios_preliminary">Please select travel type</label>
                       <div class="col-md-5">
@@ -3199,6 +3199,28 @@
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.time)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="One-way Travel Time" />
                         </span>
                         <app-information></app-information>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row col-lg-6 mt-3" *ngIf="process.transporation.travel_type=='distance'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">Conversion factor:</label>
+                      <div class="col-md-5">
+                        <input type="number" id="distance_factor"  [disabled]="viewMode" name="gamma" [(ngModel)]="gamma" [class.readonlyValue]="true" class="form-control readonlyValue" placeholder="0.0"  [readonly]="true">
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">kg CO<sub>2e</sub>/km.m<sup>3</sup></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row col-lg-6 mt-3" *ngIf="process.transporation.travel_type=='time'">
+                    <div class="offset-md-1 col-md-11 row">
+                      <label class="col-md-5 col-form-label" for="text-input">Conversion factor:</label>
+                      <div class="col-md-5">
+                        <input type="number" id="time_factor"  [disabled]="viewMode" name="delta" [(ngModel)]="delta" [class.readonlyValue]="true" class="form-control readonlyValue" placeholder="0.0"  [readonly]="true">
+                      </div>
+                      <div class="col-md-2 p-0">
+                        <span class="help-block">kg CO<sub>2e</sub>/hr.m<sup>3</sup></span>
                       </div>
                     </div>
                   </div>
