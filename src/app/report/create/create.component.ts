@@ -60,7 +60,8 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
         min: 0,
         max: 0,
         ref: null
-    }
+    },
+    info:null
   };
   size = {
     sel_size: 'Small WWTP',
