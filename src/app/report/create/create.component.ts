@@ -632,6 +632,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
       this.constantData(data.constant);
       this.updateWWTPsize();
       this.userService.getPrimaryAllData().subscribe((response: any) => {
+        console.log(response);
       // this.primarNewData = response.data;
       this.secondaryData(response.data.secondary);
       this.primaryData(response.data.primary);

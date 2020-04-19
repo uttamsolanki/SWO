@@ -56,75 +56,75 @@
 
 
     <tab heading="Scenario">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="card details-border">
-          <div class="card-header">
-            Scenario Details
-            <div class="card-header-actions">
-              <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card details-border">
+            <div class="card-header">
+              Scenario Details
+              <div class="card-header-actions">
+                <button class="card-header-action btn btn-link btn-minimize" type="button"><i class="icon-arrow-up"></i></button>
+              </div>
+            </div>
+            <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
+              <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="p_name" >Enter Scenario name</label>
+                  <div class="col-md-4">
+                    <input type="text" id="p_name" [disabled]="viewMode" name="p_name" class="form-control" placeholder="Scenario Name"  [(ngModel)]="scenarioName">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="description_name" >Description</label>
+                  <div class="col-md-4">
+                    <input type="text" id="description_name" [disabled]="viewMode" name="desc_name" class="form-control" placeholder="Description" [(ngModel)]="scenarioDesc">
+                  </div>
+                </div>
+                <!--<div class="form-group row ">-->
+                <!--<label class="col-md-3 col-form-label" for="sel_size" >Select WWTP Size</label>-->
+                <!--<div class="col-md-6">-->
+                <!--<div class="form-check form-check-inline mr-1" *ngFor="let type of size_types">-->
+                <!--<input class="form-check-input m-2" type="radio" name="sel_size" id="sel_size" value="{{type.title}}" [(ngModel)]="size.sel_size"  (change)="selectSize(size_types)">-->
+                <!--<label class="form-check-label" for="sel_size">{{type.title}}</label>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div class="form-group row">
+                  <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
+                  <label class="col-md-3 col-form-label" for="text-input">WWTP Inflow</label>
+                  <div class="col-md-9 row">
+
+                    <!--<label class="col-md-4 col-form-label" for="text-input">Actual WWTP inflow(Qin)</label>-->
+                    <div class="col-md-4">
+                      <input type="text" id="WWTP_size" [disabled]="viewMode" name="WWTP_size" class="form-control" placeholder="0.0" [(ngModel)]="size.data.default" (ngModelChange)="updateWWTPsize()">
+                      <!--<span  *ngIf="size.data.suggested!==0" class="help-block" style="color:#4dbd74">Suggested value {{size.data.suggested}}</span>-->
+                    </div>
+                    <div class="col-md-1">
+                      <span class="help-block">m<sup>3</sup>/d</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="description_name" >Created Date:</label>
+                  <div class="col-md-4">
+                    <label id="created_date" name="created_date" class="col-form-label">{{scenarioDate |  date: 'dd-MMM-yyyy'}}</label>
+                  </div>
+                </div>
+
+              </form>
             </div>
           </div>
-          <div class="card-body collapse in show" ng-reflect-collapse="false" aria-expanded="true" aria-hidden="false" style="overflow: visible; height: auto; display: block;">
-            <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
-
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="p_name" >Enter Scenario name</label>
-                <div class="col-md-4">
-                  <input type="text" id="p_name" [disabled]="viewMode" name="p_name" class="form-control" placeholder="Scenario Name"  [(ngModel)]="scenarioName">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="description_name" >Description</label>
-                <div class="col-md-4">
-                  <input type="text" id="description_name" [disabled]="viewMode" name="desc_name" class="form-control" placeholder="Description" [(ngModel)]="scenarioDesc">
-                </div>
-              </div>
-              <!--<div class="form-group row ">-->
-              <!--<label class="col-md-3 col-form-label" for="sel_size" >Select WWTP Size</label>-->
-              <!--<div class="col-md-6">-->
-              <!--<div class="form-check form-check-inline mr-1" *ngFor="let type of size_types">-->
-              <!--<input class="form-check-input m-2" type="radio" name="sel_size" id="sel_size" value="{{type.title}}" [(ngModel)]="size.sel_size"  (change)="selectSize(size_types)">-->
-              <!--<label class="form-check-label" for="sel_size">{{type.title}}</label>-->
-              <!--</div>-->
-              <!--</div>-->
-              <!--</div>-->
-              <div class="form-group row">
-                <!--<label class="col-md-3 col-form-label" for="text-input"></label>-->
-                <label class="col-md-3 col-form-label" for="text-input">WWTP Inflow</label>
-                <div class="col-md-9 row">
-
-                  <!--<label class="col-md-4 col-form-label" for="text-input">Actual WWTP inflow(Qin)</label>-->
-                  <div class="col-md-4">
-                    <input type="text" id="WWTP_size" [disabled]="viewMode" name="WWTP_size" class="form-control" placeholder="0.0" [(ngModel)]="size.data.default" (ngModelChange)="updateWWTPsize()">
-                    <!--<span  *ngIf="size.data.suggested!==0" class="help-block" style="color:#4dbd74">Suggested value {{size.data.suggested}}</span>-->
-                  </div>
-                  <div class="col-md-1">
-                    <span class="help-block">m<sup>3</sup>/d</span>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="description_name" >Created Date:</label>
-                <div class="col-md-4">
-                  <label id="created_date" name="created_date" class="col-form-label">{{scenarioDate |  date: 'dd-MMM-yyyy'}}</label>
-                </div>
-              </div>
-
-            </form>
-          </div>
+        </div>
+        <div class="col-lg-12 mb-3">
+          <span class="important">Important Reminder:</span> Remember to save your scenario by clicking the ‘Save Scenario’ button located at the bottom of the Summary page; otherwise, your calculator entries will be lost.
         </div>
       </div>
-      <div class="col-lg-12 mb-3">
-        <span class="important">Important Reminder:</span> Remember to save your scenario by clicking the ‘Save Scenario’ button located at the bottom of the Summary page; otherwise, your calculator entries will be lost.
+      <div class="row">
+        <div class="offset-lg-10 col-lg-2">
+          <button type="button" class="btn btn-block btn-success" (click)='goto(1)'>Next</button>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="offset-lg-10 col-lg-2">
-        <button type="button" class="btn btn-block btn-success" (click)='goto(1)'>Next</button>
-      </div>
-    </div>
-  </tab>
+    </tab>
     <tab heading="Electrical Emission" >
       <div class="row">
         <div class="col-lg-6">
@@ -257,7 +257,6 @@
                     </div>
                   </accordion-group>
                 </accordion>
-
                 <div class="row">
                   <div class="col-sm-6 col-lg-3" *ngIf="primary.pumping.sel_type != '0' ">
                     <div class="brand-card">
@@ -376,7 +375,6 @@
                   </div>
 
                 </div>
-
               </form>
             </div>
           </div>
@@ -435,7 +433,7 @@
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span>
+                      <span  *ngIf="primary.pumping.data.info && primary.pumping.data.info !=null">
                          <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(primary.pumping.data)"  [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{primary.pumping.sel_type}}" />
                       </span>
                       <app-information></app-information>
@@ -496,7 +494,7 @@
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span>
+                      <span *ngIf="primary.prili_treat.data.info && primary.prili_treat.data.info !=null">
                         <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(primary.prili_treat.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{primary.prili_treat.sel_type}}" />
                       </span>
                       <app-information></app-information>
@@ -556,7 +554,7 @@
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span>
+                      <span *ngIf="primary.pri_treat.data.info && primary.pri_treat.data.info !=null">
                          <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(primary.pri_treat.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{primary.pri_treat.sel_type}}" />
                       </span>
                       <app-information></app-information>
@@ -619,7 +617,7 @@
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span>
+                      <span *ngIf="secondary.data.info && secondary.data.info !=null">
                         <img class="icon-image info-icon-image"  container="body" placement="left" (click)="testU(secondary.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{secondary.sel_type}}" />
                       </span>
                       <app-information></app-information>
@@ -681,7 +679,7 @@
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span>
+                      <span *ngIf="sec_clr.data.info && sec_clr.data.info !=null">
                         <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(sec_clr.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{sec_clr.sel_type}}" />
                       </span>
                       <app-information></app-information>
@@ -741,7 +739,7 @@
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span>
+                      <span *ngIf="tertiary.data.info && tertiary.data.info !=null">
                         <img class="icon-image info-icon-image"  container="body" placement="left" (click)="testU(tertiary.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{tertiary.sel_type}}" />
                       </span>
                       <app-information></app-information>
@@ -801,7 +799,7 @@
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span>
+                      <span *ngIf="disinfection.data.info && disinfection.data.info !=null">
                         <img class="icon-image info-icon-image"  container="body" placement="left" (click)="testU(disinfection.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{disinfection.sel_type}}" />
                       </span>
                       <app-information></app-information>
@@ -1006,7 +1004,7 @@
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span>
+                      <span *ngIf="biosolid.thickener.data.info && biosolid.thickener.data.info !=null">
                         <img class="icon-image info-icon-image"  container="body" placement="left" (click)="testU(biosolid.thickener.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{biosolid.thickener.sel_type}}" />
                       </span>
                       <app-information></app-information>
@@ -1067,7 +1065,7 @@
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span>
+                      <span *ngIf="biosolid.aerobic.data.info && biosolid.aerobic.data.info !=null">
                         <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(biosolid.aerobic.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{biosolid.aerobic.sel_type}}" />
                       </span>
                       <app-information></app-information>
@@ -1128,7 +1126,7 @@
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span>
+                      <span *ngIf="biosolid.anaerobic.data.info && biosolid.anaerobic.data.info !=null">
                         <img class="icon-image info-icon-image"  container="body" placement="left" (click)="testU(biosolid.anaerobic.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{biosolid.anaerobic.sel_type}}" />
                       </span>
                       <app-information></app-information>
@@ -1265,7 +1263,7 @@
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span>
+                      <span *ngIf="biogas.data.info && biogas.data.info !=null">
                         <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(biogas.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{biogas.sel_type}}" />
                       </span>
                       <app-information></app-information>
@@ -1405,7 +1403,7 @@
                     </div>
                     <div class="col-md-2 p-0 icon-image-span">
                       <span class="help-block">kWh/m<sup>3</sup></span>
-                      <span>
+                      <span *ngIf="dewatering.data.info && dewatering.data.info !=null">
                         <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(dewatering.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{dewatering.sel_type}}" />
                       </span>
                       <app-information></app-information>
@@ -1796,7 +1794,7 @@
                   </div>
                   <div class="col-md-2 p-0 icon-image-span">
                     <span class="help-block">g/m<sup>3</sup></span>
-                    <span>
+                    <span *ngIf="chemical.metal_salts.data.info && chemical.metal_salts.data.info !=null">
                       <img class="icon-image info-icon-image"  container="body" placement="left" (click)="testU(chemical.metal_salts.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{chemical.metal_salts.sel_type}}" />
                     </span>
                     <app-information></app-information>
@@ -1848,7 +1846,7 @@
                   </div>
                   <div class="col-md-2 p-0 icon-image-span">
                     <span class="help-block">g/m<sup>3</sup></span>
-                    <span>
+                    <span *ngIf="chemical.chlorination.data.info && chemical.chlorination.data.info !=null">
                       <img class="icon-image info-icon-image"  container="body" placement="left" (click)="testU(chemical.chlorination.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{chemical.chlorination.sel_type}}" />
                     </span>
                     <app-information></app-information>
@@ -1900,7 +1898,7 @@
                   </div>
                   <div class="col-md-2 p-0 icon-image-span">
                     <span class="help-block">g/m<sup>3</sup></span>
-                    <span>
+                    <span *ngIf="chemical.dechlorination.data.info || chemical.dechlorination.data.info !=null">
                       <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(chemical.dechlorination.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{chemical.dechlorination.sel_type}}" />
                     </span>
                     <app-information></app-information>
@@ -1932,7 +1930,7 @@
                   </div>
                   <div class="col-md-2 p-0 icon-image-span">
                     <span class="help-block">g/m<sup>3</sup></span>
-                    <span>
+                    <span *ngIf="chemical.chlorine.data.info && chemical.chlorine.data.info !=null">
                       <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(chemical.chlorine.data)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{chemical.chlorine.sel_type}}" />
                     </span>
                     <app-information></app-information>
@@ -2028,7 +2026,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.active_sludge.CODin.unit}}</span>
-                        <span>
+                        <span *ngIf="process.active_sludge.CODin.info && process.active_sludge.CODin.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.CODin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Influent COD - CODin" />
                         </span>
                         <app-information></app-information>
@@ -2061,7 +2059,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.active_sludge.TKNin.unit}}</span>
-                        <span>
+                        <span *ngIf="process.active_sludge.TKNin.info && process.active_sludge.TKNin.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.TKNin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Influent TKN" />
                         </span>
                         <app-information></app-information>
@@ -2098,7 +2096,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.active_sludge.FLOWwas.unit}}</span>
-                        <span>
+                        <span *ngIf="process.active_sludge.FLOWwas.info && process.active_sludge.FLOWwas.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.FLOWwas)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="WAS Rate" />
                         </span>
                         <app-information></app-information>
@@ -2149,7 +2147,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.active_sludge.CODwas.unit}}</span>
-                        <span>
+                        <span *ngIf="process.active_sludge.CODwas.info && process.active_sludge.CODwas.info !=null">
                           <img class="icon-image info-icon-image" container="body" placement="left" (click)="testU(process.active_sludge.CODwas)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="WAS COD" />
                         </span>
                         <app-information></app-information>
@@ -2182,7 +2180,7 @@
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
-                        <span>
+                        <span *ngIf="process.active_sludge.TKNwas.info && process.active_sludge.TKNwas.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.TKNwas)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="WAS TKN" />
                         </span>
                         <app-information></app-information>
@@ -2235,7 +2233,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.active_sludge.CODout.unit}}</span>
-                        <span>
+                        <span *ngIf="process.active_sludge.CODout.info && process.active_sludge.CODout.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.CODout)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Outflow COD - CODout" />
                         </span>
                         <app-information></app-information>
@@ -2268,7 +2266,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.active_sludge.TKNout.unit}}</span>
-                        <span>
+                        <span *ngIf="process.active_sludge.TKNout.info && process.active_sludge.TKNout.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.active_sludge.TKNout)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Outflow TKN" />
                         </span>
                         <app-information></app-information>
@@ -2304,7 +2302,7 @@
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
-                          <span>
+                          <span *ngIf="constant.COD_TOC.info && constant.COD_TOC.info !=null">
                             <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(constant.COD_TOC)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="COD / TOC Ratio, g-O2/g-C" />
                           </span>
                           <app-information></app-information>
@@ -2338,7 +2336,7 @@
 
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
-                        <span>
+                        <span *ngIf="constant.Removed_TKN.info && constant.Removed_TKN.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(constant.Removed_TKN)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{constant.Removed_TKN.title}}" />
                         </span>
                         <app-information></app-information>
@@ -2490,7 +2488,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.aerobic.FLOWin.unit}}</span>
-                        <span>
+                        <span *ngIf="process.aerobic.FLOWin.info && process.aerobic.FLOWin.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.FLOWin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Inflow Node Ap to Anaerobic Digester[Qap]" />
                         </span>
                         <app-information></app-information>
@@ -2534,7 +2532,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.aerobic.CODin.unit}}</span>
-                        <span>
+                        <span *ngIf="process.aerobic.CODin.info && process.aerobic.CODin.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.CODin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{process.anarobic.CODin.title}}" />
                         </span>
                         <app-information></app-information>
@@ -2667,7 +2665,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.anarobic.CODout.unit}}</span>
-                        <span>
+                        <span *ngIf="process.anarobic.CODout.info && process.anarobic.CODout.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.CODout)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Outflow COD" />
                         </span>
                         <app-information></app-information>
@@ -2703,7 +2701,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.anarobic.alpha.unit}}</span>
-                        <span>
+                        <span *ngIf="process.anarobic.alpha.info && process.anarobic.alpha.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.alpha)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Percent Methane in Biogas (kg/kg)" />
                         </span>
                         <app-information></app-information>
@@ -2760,7 +2758,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">kg CO<sub>2</sub>/kg CH<sub>4</sub></span>
-                        <span>
+                        <span *ngIf="process.anarobic.energy.info && process.anarobic.energy.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.energy)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Energy Recovery Factor from CH<sub>4</sub> from External Sources" />
                         </span>
                         <app-information></app-information>
@@ -2889,7 +2887,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.aerobic.FLOWin.unit}}</span>
-                        <span>
+                        <span *ngIf="process.aerobic.FLOWin.info && process.aerobic.FLOWin.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.aerobic.FLOWin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Inflow to Aerobic Digester" />
                         </span>
                         <app-information></app-information>
@@ -2934,7 +2932,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.aerobic.CODin.unit}}</span>
-                        <span>
+                        <span *ngIf="process.aerobic.CODin.info && process.aerobic.CODin.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.aerobic.CODin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Inflow COD" />
                         </span>
                         <app-information></app-information>
@@ -2983,7 +2981,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.aerobic.CODout.unit}}</span>
-                        <span>
+                        <span *ngIf="process.aerobic.CODout.info && process.aerobic.CODout.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.aerobic.CODout)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Outflow COD" />
                         </span>
                         <app-information></app-information>
@@ -3103,7 +3101,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.transporation.FLOWin.unit}}</span>
-                        <span>
+                        <span *ngIf="process.transporation.FLOWin.info && process.transporation.FLOWin.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.FLOWin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{process.transporation.FLOWin.title}}" />
                         </span>
                         <app-information></app-information>
@@ -3162,7 +3160,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.transporation.distance.unit}}</span>
-                        <span>
+                        <span *ngIf="process.transporation.distance.info && process.transporation.distance.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.distance)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="{{process.transporation.time.title}}" />
                         </span>
                         <app-information></app-information>
@@ -3195,7 +3193,7 @@
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">{{process.transporation.time.unit}}</span>
-                        <span>
+                        <span *ngIf="process.transporation.time.info && process.transporation.time.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.transporation.time)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="One-way Travel Time" />
                         </span>
                         <app-information></app-information>
@@ -3328,7 +3326,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.disposal.FLOWin.unit}}</span>
-                        <span>
+                        <span *ngIf="process.disposal.FLOWin.info && process.disposal.FLOWin.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.disposal.FLOWin)" [popover]="pumpingPopOver" [outsideClick]="true" popoverTitle="Quantity of Dewatered Sludge" />
                         </span>
                         <app-information></app-information>
@@ -3372,7 +3370,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.disposal.CODin.unit}}</span>
-                        <span>
+                        <span *ngIf="process.disposal.CODin.info && process.disposal.CODin.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.disposal.CODin)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="COD of Sludge" />
                         </span>
                         <app-information></app-information>
@@ -3408,7 +3406,7 @@
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
                         <span class="help-block">{{process.disposal.alpha.unit}}</span>
-                        <span>
+                        <span *ngIf="process.disposal.alpha.info && process.disposal.alpha.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.disposal.alpha)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Percent Methane in Biogas" />
                         </span>
                         <app-information></app-information>
