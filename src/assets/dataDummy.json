@@ -1632,30 +1632,24 @@
       "title": "COD / TOC Ratio, g-O2/g-C",
       "default": 3.33,
       "suggested": 3.33,
-      "ref": {
-      },
+      "ref": null,
       "range": {
         "min": 2,
         "max": 4,
-        "ref": {
-
-        }
+        "ref": null
       }
     },
     "Removed_TKN":{
       "title": "% Removed TKN emitted as N2O, g N2O-N/g-TKN-N",
       "default": 0.34,
       "suggested": 0.34,
-      "ref": {
-
-      },
+      "ref": "<p>Sen, Shurui, Quantification of Greenhouse Gas Emissions from Wastewater Treatment Plants, M. Eng Thesis, McMaster University, April 2018. </p><p><a class=\"download-color\" target=\"_blank\"  href=\"/assets/pdf/SSR.pdf\">Click to Download PDF </a></p>",
       "range": {
         "min": null,
         "max": null,
-        "ref": {
-
-        }
-      }
+        "ref": null
+      },
+      "info": "<p>N2O emission ranges from 0.03 to 1.3% depending on the operating conditions of the biological treatment system.  A Typical range for conventional and extended aeration systems is from 0.1 to 0.4%</p>"
     }
   }
 }
