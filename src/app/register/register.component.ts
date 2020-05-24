@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
   formErrors={
     'first_name': '',
     'last_name': '',
+    'company_name': '',
     'email': '',
     'password': '',
     'repeat_password': '',
@@ -34,6 +35,11 @@ export class RegisterComponent implements OnInit {
       'required': 'Last name is required',
       'minlength': 'Last name must be greater then 2 character',
       'maxlength': 'Last name must be less then 30 character'
+    },
+    'company_name':{
+      'required': 'Company name is required',
+      'minlength': 'Company name must be greater then 2 character',
+      'maxlength': 'Company name must be less then 30 character'
     },
     'email':{
       'required': 'Email is required'
@@ -56,6 +62,7 @@ export class RegisterComponent implements OnInit {
     this.employeeForm = this.fb.group({
       first_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       last_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      company_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       email: ['', Validators.required],
       password: ['', Validators.required],
       repeat_password: ['', Validators.required],
@@ -72,6 +79,7 @@ export class RegisterComponent implements OnInit {
     if (this.employeeForm.valid) {
       delete this.employeeForm.value['repeat_password'];
       delete this.employeeForm.value['agree_checkbox'];
+      console.log(this.employeeForm.value);
       this.UserService.SignUp(this.employeeForm.value).subscribe((res: any) => {
         if(res.status ==0){
           this.alertsDismiss.push({
