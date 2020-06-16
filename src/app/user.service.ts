@@ -34,8 +34,9 @@ export class UserService {
   }
 
 
-  getUser(){
-    return this._http.get(this._baseURL+'users/profile', {headers:this._headers});
+  getUser():Observable<any>{
+    this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
+    return this._http.post(this._baseURL+'users/profile',{}, {headers:this._headers});
   }
 
 
@@ -62,6 +63,11 @@ export class UserService {
   saveProject(data): Observable<any> {
     this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
     return  this._http.post(this._baseURL + 'projects/save', data,{headers: this._headers});
+  }
+
+  saveProfile(data): Observable<any> {
+    this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});
+    return  this._http.post(this._baseURL + 'users/saveProfile', data,{headers: this._headers});
   }
 
   getProject(): Observable<any> {

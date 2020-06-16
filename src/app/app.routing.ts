@@ -26,6 +26,10 @@ import {OverviewComponent} from './overview/overview.component';
 import {ConfirmationGuard} from './confirmGaurd/confirmation.guard';
 import {UsersComponent} from './report/users/users.component';
 import {AdminPanelComponent} from './admin-panel/admin-panel.component';
+import {ProfilesComponent} from './profiles/profiles.component';
+import {EditComponent} from './profiles/edit/edit.component';
+import {ShowComponent} from './profiles/show/show.component';
+
 
 export const routes: Routes = [
   {
@@ -153,6 +157,15 @@ export const routes: Routes = [
       {
         path: 'widgets',
         loadChildren: './views/widgets/widgets.module#WidgetsModule'
+      },
+      {
+        path: 'profile',
+        component: ProfilesComponent,
+        children: [
+          { path: '',  redirectTo: 'show' , pathMatch: 'full'},
+          { path: 'show', component: ShowComponent  },
+          { path: 'edit', component: EditComponent  },
+        ]
       }
     ]
   },

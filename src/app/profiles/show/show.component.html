@@ -1,0 +1,85 @@
+<div class="card details-border">
+  <div class="card-header">
+    <!--<p class="projectTitle">Profile</p>-->
+
+    <span class="projectTitle">Profile</span>
+    <div class="card-header-actions ">
+      <button type="button" [routerLink]="['/profile/edit']" class="card-header-action btn btn-link btn-setting projectTitle"><i class="fa fa-edit" style="color: #3c763d !important;"></i></button>
+    </div>
+
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="row">
+          <label class="col-md-3 col-form-label">
+            First Name
+          </label>
+          <label class="col-md-9 col-form-label">
+            {{first_name}}
+          </label>
+        </div>
+        <div class="row">
+          <label class="col-md-3 col-form-label">
+            Last Name
+          </label>
+          <label class="col-md-9 col-form-label">
+            {{last_name}}
+          </label>
+        </div>
+        <div class="row">
+          <label class="col-md-3 col-form-label">
+            Organization Name
+          </label>
+          <label class="col-md-9 col-form-label">
+            {{company_name}}
+          </label>
+        </div>
+        <div class="row">
+          <label class="col-md-3 col-form-label">
+            Email
+          </label>
+          <label class="col-md-9 col-form-label">
+            {{email}}
+          </label>
+        </div>
+
+          <!--<div class="input-group mb-3">-->
+            <!--<div class="input-group-prepend">-->
+              <!--<span class="input-group-text"><i class="icon-user"></i></span>-->
+            <!--</div>-->
+            <!--<input type="text" class="form-control" placeholder="First name" formControlName="first_name">-->
+
+          <!--</div>-->
+          <!--<div class="input-group mb-3">-->
+            <!--<div class="input-group-prepend">-->
+              <!--<span class="input-group-text"><i class="icon-user"></i></span>-->
+            <!--</div>-->
+            <!--<input type="text" class="form-control" placeholder="Last name" formControlName="last_name" required>-->
+            <!--<div class="col-12 text-danger" *ngIf="formErrors.last_name">-->
+              <!--<span class="help-block">{{formErrors.last_name}}</span>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="input-group mb-3">-->
+            <!--<div class="input-group-prepend">-->
+              <!--<span class="input-group-text"><i class="icon-user"></i></span>-->
+            <!--</div>-->
+            <!--<input type="text" class="form-control" placeholder="Company name" formControlName="company_name" required>-->
+            <!--<div class="col-12 text-danger" *ngIf="formErrors.company_name">-->
+              <!--<span class="help-block">{{formErrors.company_name}}</span>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="input-group mb-3">-->
+            <!--<div class="input-group-prepend">-->
+              <!--<span class="input-group-text">@</span>-->
+            <!--</div>-->
+            <!--<input type="text" class="form-control" placeholder="Email" formControlName="email" disabled required>-->
+            <!--<div class="col-12 text-danger" *ngIf="formErrors.email">-->
+              <!--<span class="help-block">{{formErrors.email}}</span>-->
+            <!--</div>-->
+          <!--</div>-->
+
+      </div>
+    </div>
+  </div>
+</div>

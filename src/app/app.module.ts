@@ -67,6 +67,9 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { CeilPipe } from './ceil.pipe';
 
 import {QuillModule} from 'ngx-quill';
+import { ProfilesComponent } from './profiles/profiles.component';
+import { EditComponent } from './profiles/edit/edit.component';
+import { ShowComponent } from './profiles/show/show.component';
 
 
 
@@ -122,6 +125,9 @@ import {QuillModule} from 'ngx-quill';
     UsersComponent,
     AdminPanelComponent,
     CeilPipe,
+    ProfilesComponent,
+    EditComponent,
+    ShowComponent,
    // ScenarioDetailsComponent,
   ],
   providers: [UserService, ConfirmationGuard, AuthGuard,

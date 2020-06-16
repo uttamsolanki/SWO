@@ -1,0 +1,155 @@
+<!--<div class="app-body">-->
+  <!--<main class="main d-flex align-items-center">-->
+    <!--<main class="d-flex card">-->
+    <!--<div class="container-fluid">-->
+      <!--<div class="row">-->
+        <!--<div class="col-md-6 mx-auto">-->
+          <!--<div *ngFor="let alert of alertsDismiss">-->
+            <!--<alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" [dismissible]="dismissible">{{ alert.msg }}</alert>-->
+          <!--</div>-->
+          <!--<div class="card mx-4">-->
+            <div class="card details-border">
+            <div class="card-header">
+              <div><p class="projectTitle">Edit Profile</p></div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6 mx-auto">
+                  <div *ngFor="let alert of alertsDismiss">
+                    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" [dismissible]="dismissible">{{ alert.msg }}</alert>
+                  </div>
+              <form role="form" [formGroup]="employeeEditForm" (ngSubmit)="onSubmit()" id="EditForm">
+                <!--<h1>Edit</h1>-->
+                <!--<p class="text-muted">Edit your profile</p>-->
+                <div class="input-group mb-3 row">
+                  <div class="col-md-3">
+                    <label class="col-form-label ">
+                      First Name
+                    </label>
+                  </div>
+                  <div class="col-md-9">
+                  <input type="text" class="form-control" placeholder="First name" formControlName="first_name">
+                  <div class="col-12 text-danger" *ngIf="formErrors.first_name">
+                    <span class="help-block">{{formErrors.first_name}}</span>
+                  </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3 row">
+                  <div class="col-md-3">
+                  <label class="col-form-label ">
+                    Last Name
+                  </label>
+                  </div>
+                  <div class="col-md-9">
+                  <input type="text" class="form-control" placeholder="Last name" formControlName="last_name" required>
+                  <div class="col-12 text-danger" *ngIf="formErrors.last_name">
+                    <span class="help-block">{{formErrors.last_name}}</span>
+                  </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3 row">
+                  <div class="col-md-3">
+                    <label class="col-form-label ">
+                      Organization Name
+                    </label>
+                  </div>
+                  <div class="col-md-9">
+                  <input type="text" class="form-control" placeholder="Organization name" formControlName="company_name" required>
+                  <div class="col-12 text-danger" *ngIf="formErrors.company_name">
+                    <span class="help-block">{{formErrors.company_name}}</span>
+                  </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3 row">
+                  <div class="col-md-3">
+                    <label class="col-form-label ">
+                      Email
+                    </label>
+                  </div>
+                  <div class="col-md-9">
+                  <input type="text" class="form-control" placeholder="Email" formControlName="email" disabled required>
+                  <div class="col-12 text-danger" *ngIf="formErrors.email">
+                    <span class="help-block">{{formErrors.email}}</span>
+                  </div>
+                  </div>
+                </div>
+                <!--<div class="input-group mb-3">-->
+                  <!--<div class="input-group-prepend">-->
+                    <!--<span class="input-group-text"><i class="icon-lock"></i></span>-->
+                  <!--</div>-->
+                  <!--<input type="password" class="form-control" placeholder="Password" formControlName="password" required>-->
+                  <!--<div class="col-12 text-danger" *ngIf="formErrors.password">-->
+                    <!--<span class="help-block">{{formErrors.password}}</span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="input-group mb-4">-->
+                  <!--<div class="input-group-prepend">-->
+                    <!--<span class="input-group-text"><i class="icon-lock"></i></span>-->
+                  <!--</div>-->
+                  <!--<input type="password" class="form-control" placeholder="Repeat password" formControlName="repeat_password" required>-->
+                  <!--<div class="col-12 text-danger" *ngIf="formErrors.repeat_password">-->
+                    <!--<span class="help-block">{{formErrors.repeat_password}}</span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row" style="padding: 1%;margin-top: -4%;">-->
+                  <!--<div class="col-sm-1" style="margin-right: -3%;margin-top: 2%">-->
+                    <!--<input type="checkbox" class="form-control" formControlName="agree_checkbox" required style="width: 198%;display: inline-block;width: 19px;height: 19px;">-->
+                  <!--</div>-->
+                  <!--<div class="col-sm-3 custom-link" style="margin-top: 1.5%">-->
+                    <!--<a style="color: #20a8d8; cursor: pointer;" (click)="this.modal.show();" data-toggle="modal" data-target="#successModal">Disclaimer</a>-->
+                  <!--</div>-->
+                  <!--<div class="col-12 text-danger" *ngIf="formErrors.agree_checkbox">-->
+                    <!--<span class="help-block">{{formErrors.agree_checkbox}}</span>-->
+                  <!--</div>-->
+                <!--</div>-->
+
+                <div class="input-group mb-3 row">
+                  <div class="col-md-3">
+
+                  </div>
+                  <div class="offset-md-3 col-md-9">
+                    <button type="submit" class="btn btn-block btn-success" id="editProfile">Save Profile</button>
+                  </div>
+                </div>
+
+                <!--<div class="input-group mb-4">-->
+                  <!--<p class="text-muted">Already have an account? <a [routerLink]="['/login']" >Login</a></p>-->
+                <!--</div>-->
+              </form>
+            </div>
+            <!--<div class="card-footer p-4">-->
+            <!--<div class="row">-->
+            <!--<div class="col-6">-->
+              <!--<button class="btn btn-block btn-facebook" type="button"><span>facebook</span></button>-->
+            <!--</div>-->
+            <!--<div class="col-6">-->
+            <!--<button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+          </div>
+        </div>
+      </div>
+    <!--</div>-->
+  <!--</main>-->
+<!--</div>-->
+<!--<div class="animated fadeIn">-->
+  <!--<div bsModal  #successModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+    <!--<div class="modal-dialog modal-success" role="document">-->
+      <!--<div class="modal-content">-->
+        <!--<div class="modal-header">-->
+          <!--<h4 class="modal-title">Disclaimer</h4>-->
+          <!--<button type="button" class="close" aria-label="Close" (click)="this.modal.hide();">-->
+            <!--<span aria-hidden="true">&times;</span>-->
+          <!--</button>-->
+        <!--</div>-->
+        <!--<div class="modal-body new-project-modal">-->
+          <!--<p>USER UNDERSTANDS AND AGREES THAT THIS SOFTWARE IS PROVIDED “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. USE OF THIS SOFTWARE.  USER CONSENTS TO THIS DISCLAIMER TO USE THIS CALCULATOR.</p>-->
+        <!--</div>-->
+        <!--<div class="modal-footer">-->
+          <!--<button type="button" class="btn btn-success yes-button" (click)="this.modal.hide();">Ok</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->

@@ -37,9 +37,9 @@ export class RegisterComponent implements OnInit {
       'maxlength': 'Last name must be less then 30 character'
     },
     'company_name':{
-      'required': 'Company name is required',
-      'minlength': 'Company name must be greater then 2 character',
-      'maxlength': 'Company name must be less then 30 character'
+      'required': 'Organization name is required',
+      'minlength': 'Organization name must be greater then 2 character',
+      'maxlength': 'Organization name must be less then 30 character'
     },
     'email':{
       'required': 'Email is required'
