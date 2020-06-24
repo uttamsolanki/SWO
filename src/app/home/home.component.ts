@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit {
 
     if(localStorage.getItem('currentUser')){
       let user = JSON.parse(localStorage.getItem('currentUser'));
-        console.log(user);
       if(user.first_name !== undefined ){
         this.loginUser = user.first_name;
       }

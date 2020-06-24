@@ -57,9 +57,9 @@ export class LoginComponent implements OnInit {
             msg: res.errors,
             timeout: 5000
           });
-          console.log(res.errors);
+
         } else {
-          console.log(res.data.token);
+
           localStorage.setItem('token', res.data.token);
           localStorage.setItem('currentUser', JSON.stringify(res.data.user));
           this.alertsDismiss.push({
@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
                timeout: 5000,
              });
            } else if (error instanceof Object) {
-             console.log(error.error);
+
              if (error.error.status == 0) {
                this.alertsDismiss.push({
                  type: 'danger',

@@ -38,14 +38,13 @@ export class ForgotPasswordComponent implements OnInit {
   onSubmit(): void {
     if (this.employeeForm.valid) {
       this.UserService.forgotPassword(this.employeeForm.value).subscribe((res: any) => {
-        console.log(res);
+      console.log(res)
         if(res.status ==0){
           this.alertsDismiss.push({
             type: 'danger',
-            msg: res.errors,
+            msg: res.errors==null ? res.message: res.errors,
             timeout: 5000
           });
-          console.log(res.errors);
         } else{
           this.alertsDismiss.push({
             type: 'success',

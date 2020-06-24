@@ -33,6 +33,13 @@ export class UserService {
     return this._http.post(this._baseURL+'users/forgotPassword', user,{headers:this._headers});
   }
 
+  resetPassword(user): Observable<any>{
+    this._headers = new HttpHeaders({'Content-Type':'application/json','No-Auth':'True'});
+    this._baseURL = AppConstants.baseURL;
+    console.log(user);
+    return this._http.post(this._baseURL+'users/resetPassword', user,{headers:this._headers});
+  }
+
 
   getUser():Observable<any>{
     this._headers = new HttpHeaders({'Content-Type': 'application/json', 'No-Auth': 'False'});

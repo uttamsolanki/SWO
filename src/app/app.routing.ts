@@ -29,12 +29,18 @@ import {AdminPanelComponent} from './admin-panel/admin-panel.component';
 import {ProfilesComponent} from './profiles/profiles.component';
 import {EditComponent} from './profiles/edit/edit.component';
 import {ShowComponent} from './profiles/show/show.component';
+import {ResetPasswordComponent} from './reset-password/reset-password.component';
 
 
 export const routes: Routes = [
   {
     path: 'forgotPassword',
     component: ForgotPasswordComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'resetPassword/:token',
+    component: ResetPasswordComponent,
     pathMatch: 'full'
   },
   {

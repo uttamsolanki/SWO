@@ -118,7 +118,7 @@ export class MasterDataComponent implements OnInit {
     });
 
     const data = this.userService.getData().subscribe((rep: any) => {
-      console.log(rep);
+
       //this.logKeyValuePair(this.sizeForm,rep);
     });
   }
@@ -134,7 +134,7 @@ export class MasterDataComponent implements OnInit {
 
   onSubmit():void {
     const merged = {...this.liquidForm.value, biosolids:this.liquidSludgeForm.value, ...this.solidsDewateringForm.value, ...this.biogasForm.value, biosolids_disposals:this.diosolidsDisposalForm.value};
-    console.log(merged);
+
     //console.log(this.primaryForm.value);
   }
   logKeyValuePair(group:FormGroup,res:any):void{
@@ -143,11 +143,11 @@ export class MasterDataComponent implements OnInit {
       if(abstractcontrol instanceof FormGroup){
         this.logKeyValuePair(abstractcontrol ,res);
       } if(abstractcontrol instanceof FormArray){
-        console.log(res.primary.pumping);
+
         abstractcontrol.patchValue(res.primary.pumping);
-        console.log(abstractcontrol.controls[0]);
+
       }else{
-       console.log(key);
+
 
       }
     })
