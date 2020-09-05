@@ -174,7 +174,7 @@ export class ViewComponent implements OnInit {
 
     const processEmission = {co2: 0, no2: 0, totalCo2: 0, ch4: 0};
     const graphData = { size:0, electical: 0, OnProcess: 0, process: 0, disposal: 0, disposalData: processEmission, energy: 0, chemical: 0, id: 0,
-     transporation: 0, priorElectrical: 0, priorBiosolid: 0,  activeSludge: processEmission, anaerobic: processEmission, ProcessCo2: 0,
+     transporation: 0, priorElectrical: 0, priorBiosolid: 0, includeBiosolid:0,  activeSludge: processEmission, anaerobic: processEmission, ProcessCo2: 0,
      aerobic: processEmission, co2Total: 0, no2Total: 0, ch4Totoal: 0, transporationData: processEmission, OnSiteCo2: 0, EnergyRecovery: 0,
       primaryPumping: 0, name: 'Scenario', priTreat: 0, primaryPrili: 0, secondaryTreat: 0, secClar: 0, tertiaryTreat: 0, EqCo2: 0,
       disinfectionTreat: 0, aerobicTreat: 0, thickenerTreat: 0, anaerobicTreat: 0, dewateringTreat: 0, biosolidnew: 0, ElecricalCo2: 0
@@ -307,7 +307,7 @@ export class ViewComponent implements OnInit {
         graphData.EnergyRecovery = 0;
       }
       if (this.biogas.sel_type === 'Energy Recovery') {
-        graphData.electical = this.biogas.data.co2;
+        graphData.energy = this.biogas.data.co2;
       }
       // this.barChartData = [
       //   {data: newData, label: 'CO2 Equalvalent from Electricity Emissions'}
@@ -322,8 +322,9 @@ export class ViewComponent implements OnInit {
       graphData.priorElectrical = graphData.electical + graphData.transporation + graphData.OnProcess + graphData.chemical;
       graphData.ElecricalCo2 = parseFloat((this.totalElecricalCo2 / this.unitDivider).toFixed(2));
 
-      graphData.priorBiosolid = graphData.priorElectrical - graphData.electical;
+      graphData.priorBiosolid = graphData.priorElectrical - ( graphData.EnergyRecovery+graphData.energy);
       graphData.disposal = this.process.disposal.totalCo2;
+      graphData.includeBiosolid =  graphData.priorBiosolid+ graphData.disposal;
       graphData.disposalData = this.setProcessData(this.process.disposal);
       graphData.process = graphData.priorBiosolid + graphData.disposal;
       graphData.id = id;
