@@ -2700,7 +2700,7 @@
                         </div>
                       </div>
                       <div class="col-md-2 p-0 icon-image-span">
-                        <span class="help-block">{{process.anarobic.alpha.unit}}</span>
+                        <span class="help-block">%</span>
                         <span *ngIf="process.anarobic.alpha.info && process.anarobic.alpha.info !=null">
                           <img class="icon-image" src="assets/img/brand/info-icon.png" container="body" placement="left" (click)="testU(process.anarobic.alpha)" [popover]="infoPopOver" [outsideClick]="true" popoverTitle="Percent Methane in Biogas (kg/kg)" />
                         </span>
@@ -2950,7 +2950,7 @@
                         <input type="text" id="aerobic_Qout"  [disabled]="viewMode" name="aerobic_Qout" [(ngModel)]="aerobicData.Qout" class="form-control readonlyValue" placeholder="0.0" value="" readonly>
                       </div>
                       <div class="col-md-2 p-0">
-                        <span class="help-block">kWh/m<sup>3</sup></span>
+                        <span class="help-block">m<sup>3</sup>/d</span>
                       </div>
                     </div>
                   </div>

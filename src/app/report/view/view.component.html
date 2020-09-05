@@ -14,11 +14,11 @@
           <div style="display: -webkit-inline-box;"><p class="projectTitle"> Comparison of Scenarios</p>   <span>
                          <img class="icon-image-action " src="assets/img/brand/info-icon.png" container="body" placement="bottom"  [popover]="InfoPopOver" [outsideClick]="true" popoverTitle="Info" />
                 </span></div>
-          <div class="card-header-actions">
-            <button type="button" class="card-header-action btn btn-link btn-seComparison of Scenariostting"><i class="icon-settings"></i></button>
-            <button type="button" class="card-header-action btn btn-link btn-minimize"><i class={{iconCollapse}}></i></button>
-            <button type="button" class="card-header-action btn btn-link btn-close"><i class="icon-close"></i></button>
-          </div>
+          <!--<div class="card-header-actions">-->
+            <!--<button type="button" class="card-header-action btn btn-link btn-seComparison of Scenariostting"><i class="icon-settings"></i></button>-->
+            <!--<button type="button" class="card-header-action btn btn-link btn-minimize"><i class={{iconCollapse}}></i></button>-->
+            <!--<button type="button" class="card-header-action btn btn-link btn-close"><i class="icon-close"></i></button>-->
+          <!--</div>-->
         </div>
         <div class="card-body">
 
@@ -74,8 +74,12 @@
                   <tr>
                     <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
                   </tr>
+
                   <tr>
                     <td><label class=" col-form-label" style="visibility: hidden"> None   </label></td>
+                  </tr>
+                  <tr>
+                    <td><label class=" col-form-label padding-row">Wastewater Plant Influent Flow [m<sup>3</sup>/d]</label></td>
                   </tr>
                 <tr class="mainTitle">
                   <td><label class="col-form-label"><strong>Total CO2 Equivalent[<span class="help-block" *ngIf="unit == 1">kg CO<sub>2e</sub>/d</span><span class="help-block" *ngIf="unit === 0">kg CO<sub>2e</sub>/1000m<sup>3</sup></span><span class="help-block" *ngIf="unit === 2">MT CO<sub>2</sub>/Yr</span>]</strong></label></td>
@@ -172,12 +176,16 @@
 <!--                    <div class="view-components">-->
                   <div class="form-group ">
                     <table>
+
                       <tr>
 <!--                      <th>Total CO2 Equivalent</th>-->
-                        <td width="200" style="max-height: 200px;height: 60px;">
+                        <td width="200" style="max-height: 200px;height: 63px;">
                           <label class="col-form-label">
                             <strong><a  [routerLink]="['/report/create/',selectedProject,sc.id,undefined,0]">{{sc.name}}</a> </strong>
                         </label></td>
+                      </tr>
+                      <tr>
+                        <td><label class=" col-form-label">{{sc.size}}</label></td>
                       </tr>
                       <tr>
                         <td><label class="col-form-label" style="visibility: hidden"> <strong>None   </strong></label></td>

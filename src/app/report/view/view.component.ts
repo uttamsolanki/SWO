@@ -86,8 +86,6 @@ export class ViewComponent implements OnInit {
   ngOnInit() {
     this.senarioIds = this.dataServiceService.getScenarioId();
     const data = this.userService.getProject().subscribe((rep: any) => {
-      console.log("hhhhhhhhhhhhhhhhhhh");
-      console.log(rep);
       if (rep.status === 1) {
         this.numberOfProject = Object.keys(rep.data).length;
         if (this.numberOfProject > 0) {
@@ -126,7 +124,7 @@ export class ViewComponent implements OnInit {
       if (this.selectScenario[s])
         this.count++;
     }
-    console.log(this.count);
+
     this.noOfcolumn = Math.floor(12 / (this.count + 1));
 
     if (this.count > 3) {
@@ -134,7 +132,7 @@ export class ViewComponent implements OnInit {
     } else {
       this.isDisable = false;
     }
-console.log(this.scenarios);
+
   }
 
   getProjectProject(p_id) {
@@ -146,7 +144,6 @@ console.log(this.scenarios);
       if (resp.status === 1) {
         if (resp.data.scenario) {
           for (let s of resp.data.scenario) {
-            console.log(s);
            // this.scenarioname = s.name['scenarioname'];
             let scenarioData = s.data;
             for (const field of this.fields) {
@@ -176,7 +173,7 @@ console.log(this.scenarios);
   createChart(id, name){
 
     const processEmission = {co2: 0, no2: 0, totalCo2: 0, ch4: 0};
-    const graphData = { electical: 0, OnProcess: 0, process: 0, disposal: 0, disposalData: processEmission, energy: 0, chemical: 0, id: 0,
+    const graphData = { size:0, electical: 0, OnProcess: 0, process: 0, disposal: 0, disposalData: processEmission, energy: 0, chemical: 0, id: 0,
      transporation: 0, priorElectrical: 0, priorBiosolid: 0,  activeSludge: processEmission, anaerobic: processEmission, ProcessCo2: 0,
      aerobic: processEmission, co2Total: 0, no2Total: 0, ch4Totoal: 0, transporationData: processEmission, OnSiteCo2: 0, EnergyRecovery: 0,
       primaryPumping: 0, name: 'Scenario', priTreat: 0, primaryPrili: 0, secondaryTreat: 0, secClar: 0, tertiaryTreat: 0, EqCo2: 0,
@@ -340,8 +337,10 @@ console.log(this.scenarios);
         this.process.anarobic.totalCo2 + this.process.disposal.totalCo2 + this.process.transporation.totalCo2).toFixed(2));
     graphData.OnSiteCo2 = parseFloat((graphData.ProcessCo2 / this.unitDivider).toFixed(2));
    // this.OnSiteCo2 = parseFloat((graphData.ProcessCo2 / this.unitDivider).toFixed(2));
-    this.scenarios.push(graphData);
 
+    graphData.size=this.size.data.default;
+
+    this.scenarios.push(graphData);
   }
 
   // set process data to make json for graphData and push that into the this.scenarios
@@ -357,7 +356,6 @@ console.log(this.scenarios);
     for (let id of this.senarioIds) {
       this.selectScenario.push(id);
       this.selectScenario[id] = true;
-      console.log(this.senarioIds);
     }
   }
   changeUnit() {
