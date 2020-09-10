@@ -2,10 +2,10 @@
 
 <div class="animated fadeIn">
   <div bsModal  #successModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-success" role="document">
+    <div class="modal-dialog" role="document" [class.modal-warning]="modelTitle=='Alert'" [class.modal-success]="modelTitle=='Success'" >
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Success</h4>
+          <h4 class="modal-title">{{modelTitle}}</h4>
           <button type="button" class="close" (click)="successModal.hide()" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

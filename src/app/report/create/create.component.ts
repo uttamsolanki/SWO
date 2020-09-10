@@ -33,6 +33,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   fields: any = ['primary', 'secondary', 'sec_clr', 'tertiary', 'disinfection', 'biosolid', 'biogas', 'biosolids_disposals', 'dewatering', 'chemical', 'process','constant', 'size'];
   setScenarioData;
   modelMsg;
+  modelTitle;
   co2_eq = 40.0;
   COD_TOC = 3.33;
   COD_TOC_PER_MOL = 32;
@@ -595,7 +596,7 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
 
   }
   confirm(): boolean {
-    if(this.scenarioSaved){
+    if(this.scenarioSaved || this.viewMode){
       return true;
     }else {
       return confirm("Scenario is not saved! Discard Scenario?");
@@ -1484,14 +1485,17 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     const scenarioData = {name: this.scenarioName, desc: this.scenarioDesc, data: test, project_id: this.id};
 
     this.modelMsg = "Wait.....";
+    this.modelTitle = "Success";
     this.modal.show();
     const data = this.userService.saveProject(scenarioData).subscribe((rep: any) => {
       this.modelMsg = rep.message;
-      console.log(rep);
       if(rep.status==1){
         this.scenarioSaved=true;
         this.isSavedScenario=true;
-      }else{
+      }else {
+        if(rep.status==205){
+          this.modelTitle = "Alert";
+        }
         this.isSavedScenario=false;
       }
      // this.modal.show();
