@@ -306,8 +306,8 @@ export class ViewComponent implements OnInit {
       } else {
         graphData.EnergyRecovery = 0;
       }
-      if (this.biogas.sel_type === 'Energy Recovery') {
-        graphData.energy = this.biogas.data.co2;
+      if (this.process.anarobic!=undefined && this.process.anarobic.addEnergy != undefined) {
+        graphData.energy = this.process.anarobic.addEnergy ;
       }
       // this.barChartData = [
       //   {data: newData, label: 'CO2 Equalvalent from Electricity Emissions'}
@@ -322,7 +322,7 @@ export class ViewComponent implements OnInit {
       graphData.priorElectrical = graphData.electical + graphData.transporation + graphData.OnProcess + graphData.chemical;
       graphData.ElecricalCo2 = parseFloat((this.totalElecricalCo2 / this.unitDivider).toFixed(2));
 
-      graphData.priorBiosolid = graphData.priorElectrical - ( graphData.EnergyRecovery+graphData.energy);
+      graphData.priorBiosolid = graphData.priorElectrical - ( Math.abs(graphData.EnergyRecovery) + Math.abs(graphData.energy));
       graphData.disposal = this.process.disposal.totalCo2;
       graphData.includeBiosolid =  graphData.priorBiosolid+ graphData.disposal;
       graphData.disposalData = this.setProcessData(this.process.disposal);
