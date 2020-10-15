@@ -96,7 +96,7 @@
 
                     <!--<label class="col-md-4 col-form-label" for="text-input">Actual WWTP inflow(Qin)</label>-->
                     <div class="col-md-4">
-                      <input type="text" id="WWTP_size" [disabled]="viewMode" name="WWTP_size" class="form-control" placeholder="0.0" [(ngModel)]="size.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="number" id="WWTP_size" [disabled]="viewMode" name="WWTP_size" class="form-control" placeholder="0.0" [(ngModel)]="size.data.default" (ngModelChange)="updateWWTPsize()">
                       <!--<span  *ngIf="size.data.suggested!==0" class="help-block" style="color:#4dbd74">Suggested value {{size.data.suggested}}</span>-->
                     </div>
                     <div class="col-md-1">
@@ -400,13 +400,13 @@
                       <p class="sub-title-padding m-0 liquid-font-color" style="display: inline-block">{{primary.pumping.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="primary.pumping.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" name="userpump" [(ngModel)]="primary.pumping.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValue"/>
+                      <input type = "number" class="form-control" [disabled]="viewMode" name="userpump" [(ngModel)]="primary.pumping.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValue"/>
                     </div>
                   </div>
                   <div class="offset-md-1 col-md-11 row">
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="pumping_rate"  [disabled]="viewMode" name="pumping_rate" [(ngModel)]="primary.pumping.data.default" class="form-control" placeholder="0.0" (ngModelChange)="updateWWTPsize()">
+                      <input type="number" id="pumping_rate"  [disabled]="viewMode" name="pumping_rate" [(ngModel)]="primary.pumping.data.default" class="form-control" placeholder="0.0" (ngModelChange)="updateWWTPsize()" pattern="^[0-9]+$">
                       <div>
                         <div *ngIf="primary.pumping.data.suggested !==null"  style="color:#4dbd74">
                           <div>Suggested value {{primary.pumping.data.suggested}}
@@ -461,7 +461,7 @@
                     <p class="sub-title-padding m-0"  style="margin-bottom: 2%">{{primary.prili_treat.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="primary.prili_treat.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="primary.prili_treat.data.uvalue" name="userValuePrelim" (ngModelChange)="updateWWTPsize()"/>
+                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="primary.prili_treat.data.uvalue" name="userValuePrelim" (ngModelChange)="updateWWTPsize()"/>
                     </div>
 
                   </div>
@@ -469,7 +469,7 @@
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="prili_treat_rate" [disabled]="viewMode" name="prili_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.prili_treat.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="number" id="prili_treat_rate" [disabled]="viewMode" name="prili_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.prili_treat.data.default" (ngModelChange)="updateWWTPsize()">
                       <div *ngIf="primary.prili_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">
                         <div>
                         Suggested value {{primary.prili_treat.data.suggested}}
@@ -523,14 +523,14 @@
                     <p class="sub-title-padding m-0"  style="margin-bottom: 2%">{{primary.pri_treat.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="primary.pri_treat.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="primary.pri_treat.data.uvalue" name="userValuePriTreat" (ngModelChange)="updateWWTPsize()"/>
+                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="primary.pri_treat.data.uvalue" name="userValuePriTreat" (ngModelChange)="updateWWTPsize()"/>
                     </div>
                   </label>
                   <div class="offset-md-1 col-md-11 row">
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="pri_treat_rate" [disabled]="viewMode" name="pri_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.pri_treat.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="number" id="pri_treat_rate" [disabled]="viewMode" name="pri_treat_rate" class="form-control" placeholder="0.0" [(ngModel)]="primary.pri_treat.data.default" (ngModelChange)="updateWWTPsize()">
                       <div *ngIf="primary.pri_treat.data.suggested !==null" class="help-block" style="color:#4dbd74">
                         <div>
                           Suggested value {{primary.pri_treat.data.suggested}}
@@ -585,7 +585,7 @@
                        <p class="sub-sub-title-padding m-0" style="display: inline-block">{{secondary.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 21%"  *ngIf="secondary.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="secondary.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueSecondary"/>
+                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="secondary.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueSecondary"/>
                     </div>
 
                   </label>
@@ -593,7 +593,7 @@
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="second_rate" [disabled]="viewMode" name="second_rate" class="form-control" placeholder="0.0" [(ngModel)]="secondary.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="number" id="second_rate" [disabled]="viewMode" name="second_rate" class="form-control" placeholder="0.0" [(ngModel)]="secondary.data.default" (ngModelChange)="updateWWTPsize()">
                       <div *ngIf="secondary.data.suggested !==null" class="help-block" style="color:#4dbd74">
                        <div>
                           Suggested value {{secondary.data.suggested}}
@@ -647,14 +647,14 @@
                     <p class="sub-title-padding m-0"  style="display: inline-block">{{sec_clr.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="sec_clr.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="sec_clr.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueClari"/>
+                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="sec_clr.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueClari"/>
                     </div>
                   </label>
                   <div class="offset-md-1 col-md-11 row">
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="sec_clr_rate" [disabled]="viewMode" name="sec_clr_rate" class="form-control" placeholder="0.0" [(ngModel)]="sec_clr.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="number" id="sec_clr_rate" [disabled]="viewMode" name="sec_clr_rate" class="form-control" placeholder="0.0" [(ngModel)]="sec_clr.data.default" (ngModelChange)="updateWWTPsize()">
                       <div *ngIf="sec_clr.data.suggested !==null" class="help-block" style="color:#4dbd74">
                         
                         <div>
@@ -708,14 +708,14 @@
                     <p class="sub-title-padding m-0" style="display: inline-block">{{tertiary.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="tertiary.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="tertiary.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueTertiary"/>
+                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="tertiary.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueTertiary"/>
                     </div>
 
                   </label>
                   <div class="offset-md-1 col-md-11 row">
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="tertiary_rate" [disabled]="viewMode" name="tertiary_rate" class="form-control" placeholder="0.0" [(ngModel)]="tertiary.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="number" id="tertiary_rate" [disabled]="viewMode" name="tertiary_rate" class="form-control" placeholder="0.0" [(ngModel)]="tertiary.data.default" (ngModelChange)="updateWWTPsize()">
                       <div *ngIf="tertiary.data.suggested !==null" class="help-block" style="color:#4dbd74">
                         <div>
                           Suggested value {{tertiary.data.suggested}}
@@ -768,14 +768,14 @@
                     <p class="sub-title-padding m-0" style="display: inline-block">{{disinfection.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="disinfection.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="disinfection.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueDisinfection"/>
+                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="disinfection.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueDisinfection"/>
                     </div>
                   </label>
                   <div class="offset-md-1 col-md-11 row">
 
                     <label class="col-md-5 col-form-label " for="text-input">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="disinfection_rate" [disabled]="viewMode" name="disinfection_rate" class="form-control" placeholder="0.0" [(ngModel)]="disinfection.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="number" id="disinfection_rate" [disabled]="viewMode" name="disinfection_rate" class="form-control" placeholder="0.0" [(ngModel)]="disinfection.data.default" (ngModelChange)="updateWWTPsize()">
                       <div *ngIf="disinfection.data.suggested !==null" class="help-block" style="color:#4dbd74">
                          <div>
                           Suggested value {{disinfection.data.suggested}}
@@ -972,7 +972,7 @@
                       <p class="sub-title-padding m-0" style="display: inline-block">{{biosolid.thickener.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="biosolid.thickener.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.thickener.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueThickener"/>
+                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.thickener.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueThickener"/>
                     </div>
 
                   </label>
@@ -980,7 +980,7 @@
 
                     <label class="col-md-5 col-form-label " for="anaerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="thickener_rate" [disabled]="viewMode" name="thickener_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.thickener.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="number" id="thickener_rate" [disabled]="viewMode" name="thickener_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.thickener.data.default" (ngModelChange)="updateWWTPsize()">
                       <div *ngIf="biosolid.thickener.data.suggested !==null" class="help-block" style="color:#4dbd74">
                         <div>
                           Suggested value {{biosolid.thickener.data.suggested}}
@@ -1033,7 +1033,7 @@
                       <p class="sub-title-padding m-0" style="display: inline-block">{{biosolid.aerobic.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="biosolid.aerobic.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.aerobic.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueAerobic"/>
+                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.aerobic.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueAerobic"/>
                     </div>
 
                   </label>
@@ -1041,7 +1041,7 @@
 
                     <label class="col-md-5 col-form-label " for="aerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="aerobic_rate" [disabled]="viewMode" name="aerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.aerobic.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="number" id="aerobic_rate" [disabled]="viewMode" name="aerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.aerobic.data.default" (ngModelChange)="updateWWTPsize()">
                       <div *ngIf="biosolid.aerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">
                         <div>
                           Suggested value {{biosolid.aerobic.data.suggested}}
@@ -1094,7 +1094,7 @@
                       <p class="sub-title-padding m-0" style="display: inline-block">{{biosolid.anaerobic.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="biosolid.anaerobic.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.anaerobic.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueAnerobic"/>
+                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.anaerobic.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueAnerobic"/>
                     </div>
 
                   </label>
@@ -1102,7 +1102,7 @@
 
                     <label class="col-md-5 col-form-label " for="anaerobic_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="anaerobic_rate" [disabled]="viewMode" name="anaerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.anaerobic.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="number" id="anaerobic_rate" [disabled]="viewMode" name="anaerobic_rate" class="form-control" placeholder="0.0" [(ngModel)]="biosolid.anaerobic.data.default" (ngModelChange)="updateWWTPsize()">
                       <div *ngIf="biosolid.anaerobic.data.suggested !==null" class="help-block" style="color:#4dbd74">
                         <div>
                           Suggested value {{biosolid.anaerobic.data.suggested}}
@@ -1239,7 +1239,7 @@
 
                     <label class="col-md-5 col-form-label " for="biogas_rate">Actual Biogas Energy Factor:</label>
                     <div class="col-md-5">
-                      <input type="text" id="biogas_rate" [disabled]="viewMode" name="biogas_rate" class="form-control" placeholder="0.0" [(ngModel)]="biogas.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="number" id="biogas_rate" [disabled]="viewMode" name="biogas_rate" class="form-control" placeholder="0.0" [(ngModel)]="biogas.data.default" (ngModelChange)="updateWWTPsize()">
                       <div *ngIf="biogas.data.suggested !==null" class="help-block" style="color:#4dbd74">
                         <div>
                           Suggested value {{biogas.data.suggested}}
@@ -1371,7 +1371,7 @@
                      <p class="sub-title-padding m-0" style="display: inline-block" >{{dewatering.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="dewatering.sel_type === 'User Specified' ">
-                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="dewatering.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueDewatering"/>
+                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="dewatering.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueDewatering"/>
                     </div>
 
                   </label>
@@ -1379,7 +1379,7 @@
 
                     <label class="col-md-5 col-form-label " for="dewatering_rate">Actual Energy Use Rate:</label>
                     <div class="col-md-5">
-                      <input type="text" id="dewatering_rate" [disabled]="viewMode" name="dewatering_rate" class="form-control" placeholder="0.0" [(ngModel)]="dewatering.data.default" (ngModelChange)="updateWWTPsize()">
+                      <input type="number" id="dewatering_rate" [disabled]="viewMode" name="dewatering_rate" class="form-control" placeholder="0.0" [(ngModel)]="dewatering.data.default" (ngModelChange)="updateWWTPsize()">
                       <div *ngIf="dewatering.data.suggested !==null" class="help-block" style="color:#4dbd74">
                         <div>
                           Suggested value {{dewatering.data.suggested}}
@@ -1770,7 +1770,7 @@
                 <div class="offset-md-1 col-md-11 row">
                   <label class="col-md-5 col-form-label " for="metalsalts_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
-                    <input type="text" id="metalsalts_rate" [disabled]="viewMode" name="metalsalts_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.metal_salts.data.default" (ngModelChange)="updateWWTPsize()">
+                    <input type="number" id="metalsalts_rate" [disabled]="viewMode" name="metalsalts_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.metal_salts.data.default" (ngModelChange)="updateWWTPsize()">
                     <div *ngIf="chemical.metal_salts.data.suggested !==null" class="help-block" style="color:#4dbd74">
                      <div>
                       Suggested value {{chemical.metal_salts.data.suggested}}
@@ -1822,7 +1822,7 @@
                 <div class="offset-md-1 col-md-11 row">
                   <label class="col-md-5 col-form-label " for="chlorination_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
-                    <input type="text" id="chlorination_rate" [disabled]="viewMode" name="chlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.chlorination.data.default" (ngModelChange)="updateWWTPsize()">
+                    <input type="number" id="chlorination_rate" [disabled]="viewMode" name="chlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.chlorination.data.default" (ngModelChange)="updateWWTPsize()">
                     <div *ngIf="chemical.chlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">
                       <div>
                         Suggested value {{chemical.chlorination.data.suggested}}
@@ -1874,7 +1874,7 @@
                 <div class="offset-md-1 col-md-11 row">
                   <label class="col-md-5 col-form-label " for="dechlorination_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
-                    <input type="text" id="dechlorination_rate" [disabled]="viewMode" name="dechlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.dechlorination.data.default" (ngModelChange)="updateWWTPsize()">
+                    <input type="number" id="dechlorination_rate" [disabled]="viewMode" name="dechlorination_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.dechlorination.data.default" (ngModelChange)="updateWWTPsize()">
                     <div *ngIf="chemical.dechlorination.data.suggested !==null" class="help-block" style="color:#4dbd74">
                       <div>
                         Suggested value {{chemical.dechlorination.data.suggested}}
@@ -1926,7 +1926,7 @@
                 <div class="offset-md-1 col-md-11 row">
                   <label class="col-md-5 col-form-label " for="chlorine_rate">Actual Dosage Rate:</label>
                   <div class="col-md-5">
-                    <input type="text" id="chlorine_rate" [disabled]="viewMode" name="chlorine_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.chlorine.data.default" (ngModelChange)="updateWWTPsize()">
+                    <input type="number" id="chlorine_rate" [disabled]="viewMode" name="chlorine_rate" class="form-control" placeholder="0.0" [(ngModel)]="chemical.chlorine.data.default" (ngModelChange)="updateWWTPsize()">
                   </div>
                   <div class="col-md-2 p-0 icon-image-span">
                     <span class="help-block">g/m<sup>3</sup></span>
@@ -1989,7 +1989,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Inflow Rate:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_Qin"  [disabled]="viewMode" name="active_sludge_Qin" [(ngModel)]="active_sludgeData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="number" id="active_sludge_Qin"  [disabled]="viewMode" name="active_sludge_Qin" [(ngModel)]="active_sludgeData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -2000,7 +2000,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Inflow COD:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_CODin"  [disabled]="viewMode" name="active_sludge_CODin" [(ngModel)]="process.active_sludge.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="number" id="active_sludge_CODin"  [disabled]="viewMode" name="active_sludge_CODin" [(ngModel)]="process.active_sludge.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74">
                           <div>
@@ -2037,7 +2037,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Influent TKN:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_TKNin"  [disabled]="viewMode" name="active_sludge_TKNin" [(ngModel)]="process.active_sludge.TKNin.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="number" id="active_sludge_TKNin"  [disabled]="viewMode" name="active_sludge_TKNin" [(ngModel)]="process.active_sludge.TKNin.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.active_sludge.TKNin.suggested}}
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -2073,7 +2073,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">WAS Rate:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_FLOWwas"  [disabled]="viewMode" name="active_sludge_FLOWwas" [(ngModel)]="process.active_sludge.FLOWwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="number" id="active_sludge_FLOWwas"  [disabled]="viewMode" name="active_sludge_FLOWwas" [(ngModel)]="process.active_sludge.FLOWwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.active_sludge.FLOWwas.suggested}}
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -2124,7 +2124,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">WAS COD:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_CODwas"  [disabled]="viewMode" name="active_sludge_CODwas" [(ngModel)]="process.active_sludge.CODwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="number" id="active_sludge_CODwas"  [disabled]="viewMode" name="active_sludge_CODwas" [(ngModel)]="process.active_sludge.CODwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.active_sludge.CODwas.suggested}}
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -2158,7 +2158,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">WAS TKN:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_TKNwas"  [disabled]="viewMode" name="active_sludge_TKNwas" [(ngModel)]="process.active_sludge.TKNwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="number" id="active_sludge_TKNwas"  [disabled]="viewMode" name="active_sludge_TKNwas" [(ngModel)]="process.active_sludge.TKNwas.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.active_sludge.TKNwas.suggested}}
                             <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -2211,7 +2211,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Outflow COD:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_CODout"  [disabled]="viewMode" name="active_sludge_CODout" [(ngModel)]="process.active_sludge.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="number" id="active_sludge_CODout"  [disabled]="viewMode" name="active_sludge_CODout" [(ngModel)]="process.active_sludge.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.active_sludge.CODout.suggested}}
                             <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -2244,7 +2244,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Outflow TKN:</label>
                       <div class="col-md-5">
-                        <input type="text" id="active_sludge_TKNout"  [disabled]="viewMode" name="active_sludge_TKNout" [(ngModel)]="process.active_sludge.TKNout.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
+                        <input type="number" id="active_sludge_TKNout"  [disabled]="viewMode" name="active_sludge_TKNout" [(ngModel)]="process.active_sludge.TKNout.default" class="form-control" placeholder="0.0" (ngModelChange)="calActiveFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.active_sludge.TKNout.suggested}}
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -2280,7 +2280,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">COD / TOC Ratio, g-O<sub>2</sub>/g-C:</label>
                       <div class="col-md-5">
-                        <input type="text" id="constant_COD_TOC"  [disabled]="viewMode" name="constant_COD_TOC"  [(ngModel)]="constant.COD_TOC.default" class="form-control" placeholder="0.0" (ngModelChange)="createChart()">
+                        <input type="number" id="constant_COD_TOC"  [disabled]="viewMode" name="constant_COD_TOC"  [(ngModel)]="constant.COD_TOC.default" class="form-control" placeholder="0.0" (ngModelChange)="createChart()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{constant.COD_TOC.suggested}}
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -2313,7 +2313,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">% Removed TKN emitted as N<sub>2</sub>O, g N<sub>2</sub>O-N/g-TKN-N:</label>
                       <div class="col-md-5">
-                        <input type="text" id="constant_Removed_TKN"  [disabled]="viewMode" name="constant_Removed_TKN" [(ngModel)]="constant.Removed_TKN.default" class="form-control" placeholder="0.0" (ngModelChange)="createChart()">
+                        <input type="number" id="constant_Removed_TKN"  [disabled]="viewMode" name="constant_Removed_TKN" [(ngModel)]="constant.Removed_TKN.default" class="form-control" placeholder="0.0" (ngModelChange)="createChart()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{constant.Removed_TKN.suggested}}
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -2582,7 +2582,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">External Organics COD:</label>
                       <div class="col-md-5">
-                        <input type="text" id="biosolids_COD"  [disabled]="viewMode" name="organics_COD" [(ngModel)]="process.organics.COD" class="form-control" placeholder="0.0" (ngModelChange)="createChart()" [class.readonlyValue]="process.anarobic.isOrganic=='0'" [readonly]="process.anarobic.isOrganic=='0'">
+                        <input type="number" id="biosolids_COD"  [disabled]="viewMode" name="organics_COD" [(ngModel)]="process.organics.COD" class="form-control" placeholder="0.0" (ngModelChange)="createChart()" [class.readonlyValue]="process.anarobic.isOrganic=='0'" [readonly]="process.anarobic.isOrganic=='0'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">mg/L</span>
@@ -2643,7 +2643,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Outflow COD:</label>
                       <div class="col-md-5">
-                        <input type="text" id="anarobic_CODout"  [disabled]="viewMode" name="anarobic_CODout" [(ngModel)]="process.anarobic.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
+                        <input type="number" id="anarobic_CODout"  [disabled]="viewMode" name="anarobic_CODout" [(ngModel)]="process.anarobic.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.anarobic.CODout.suggested}}
                             <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -2679,7 +2679,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Percent Methane in Biogas (kg/kg)</label>
                       <div class="col-md-5">
-                        <input type="text" id="alpha"  [disabled]="viewMode" name="alpha" [(ngModel)]="process.anarobic.alpha.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
+                        <input type="number" id="alpha"  [disabled]="viewMode" name="alpha" [(ngModel)]="process.anarobic.alpha.default" class="form-control" placeholder="0.0" (ngModelChange)="calAnarobicFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.anarobic.alpha.suggested}}
                             <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -2864,7 +2864,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Inflow to Aerobic Digester:</label>
                       <div class="col-md-5">
-                        <input type="text" id="aerobic_FLOWin"  [disabled]="viewMode" name="aerobic_FLOWin" [(ngModel)]="process.aerobic.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
+                        <input type="number" id="aerobic_FLOWin"  [disabled]="viewMode" name="aerobic_FLOWin" [(ngModel)]="process.aerobic.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.aerobic.FLOWin.suggested}}
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -2898,7 +2898,7 @@
                     <div class="offset-md-1 col-md-11 row" *ngIf="tempBoolen">
                       <label class="col-md-5 col-form-label" for="text-input">Inflow to Aerobic Digester:</label>
                       <div class="col-md-5">
-                        <input type="text" id="aerobic_Qin"  [disabled]="viewMode" name="aerobic_Qin" [(ngModel)]="aerobicData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()" [class.readonlyValue]="process.aerobic.plantinfluent=='1'" [readonly]="process.aerobic.plantinfluent=='1'">
+                        <input type="number" id="aerobic_Qin"  [disabled]="viewMode" name="aerobic_Qin" [(ngModel)]="aerobicData.Qin" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()" [class.readonlyValue]="process.aerobic.plantinfluent=='1'" [readonly]="process.aerobic.plantinfluent=='1'">
                       </div>
                       <div class="col-md-2 p-0">
                         <span class="help-block">m<sup>3</sup>/d</span>
@@ -2909,7 +2909,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">Inflow COD:</label>
                       <div class="col-md-5">
-                        <input type="text" id="aerobic_CODin"  [disabled]="viewMode" name="aerobic_CODin" [(ngModel)]="process.aerobic.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
+                        <input type="number" id="aerobic_CODin"  [disabled]="viewMode" name="aerobic_CODin" [(ngModel)]="process.aerobic.CODin.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.aerobic.CODin.suggested}}
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -2958,7 +2958,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="aerobic_CODout">Outflow COD:</label>
                       <div class="col-md-5">
-                        <input type="text" id="aerobic_CODout"  [disabled]="viewMode" name="aerobic_CODout" [(ngModel)]="process.aerobic.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
+                        <input type="number" id="aerobic_CODout"  [disabled]="viewMode" name="aerobic_CODout" [(ngModel)]="process.aerobic.CODout.default" class="form-control" placeholder="0.0" (ngModelChange)="calAerobicFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.aerobic.CODout.suggested}}
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -3079,7 +3079,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="transporation_FLOWin">Quantity of Dewatered Sludge:</label>
                       <div class="col-md-5">
-                        <input type="text" id="transporation_FLOWin"  [disabled]="viewMode" name="transporation_FLOWin" [(ngModel)]="process.transporation.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
+                        <input type="number" id="transporation_FLOWin"  [disabled]="viewMode" name="transporation_FLOWin" [(ngModel)]="process.transporation.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.transporation.FLOWin.suggested}}
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -3138,7 +3138,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="distance_distance">One-way Trip</label>
                       <div class="col-md-5">
-                        <input type="text" id="distance_distance"  [disabled]="viewMode" name="distance_distance" [(ngModel)]="process.transporation.distance.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
+                        <input type="number" id="distance_distance"  [disabled]="viewMode" name="distance_distance" [(ngModel)]="process.transporation.distance.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.transporation.distance.suggested}}
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -3171,7 +3171,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="text-input">One-way Trip</label>
                       <div class="col-md-5">
-                        <input type="text" id="time_distance"  name="time_distance" [(ngModel)]="process.transporation.time.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
+                        <input type="number" id="time_distance"  name="time_distance" [(ngModel)]="process.transporation.time.default" class="form-control" placeholder="0.0" (ngModelChange)="calTransporationFlow()">
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.transporation.time.suggested}}
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">
@@ -3303,7 +3303,7 @@
                     <div class="offset-md-1 col-md-11 row">
                       <label class="col-md-5 col-form-label" for="disposal_FLOWin">Quantity of Dewatered Sludge:</label>
                       <div class="col-md-5">
-                        <input type="text" id="disposal_FLOWin"  [disabled]="viewMode" name="disposal_FLOWin" [(ngModel)]="process.disposal.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" >
+                        <input type="number" id="disposal_FLOWin"  [disabled]="viewMode" name="disposal_FLOWin" [(ngModel)]="process.disposal.FLOWin.default" class="form-control" placeholder="0.0" (ngModelChange)="calDisposalFlow()" >
                         <div class="p-1">
                           <div class="help-block p-1 m-0" style="color:#4dbd74"><div>Suggested value {{process.disposal.FLOWin.suggested}}
                           <div class="col-md-2 p-0 icon-image-span" style="display: inline-block;">

@@ -577,14 +577,6 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     const data = this.userService.getData().subscribe((resp: any) => {
       Object.assign(this.primary.pumping, this.defaulValaue.data);
       this.assignFormValue(resp);
-
-      if (this.sid !== null) {
-        const details = this.userService.getScenarioDatils({s_id: this.sid}).subscribe((resp: any) => {
-          if (resp.status == 1) {
-            this.assignEditFormValue(resp.data);
-          }
-        });
-      }
     });
 
     this.sid = this.route.snapshot.paramMap.get('sid') || null;
@@ -617,6 +609,17 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     this.isCollapsed = !this.isCollapsed;
     this.iconCollapse = this.isCollapsed ? 'icon-arrow-down' : 'icon-arrow-up';
   }
+  callbackAssign(){
+    if (this.sid !== null) {
+      const details = this.userService.getScenarioDatils({s_id: this.sid}).subscribe((res: any) => {
+        if (res.status == 1) {
+          this.assignEditFormValue(res.data);
+        }
+      });
+    }else {
+      this.updateWWTPsize();
+    }
+  }
 
   assignFormValue(data) {
 
@@ -632,25 +635,26 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
       this.biosolids_disposalData(data.biosolids_disposals);
       this.chemicalData(data.chemical);
       this.constantData(data.constant);
-      this.updateWWTPsize();
+      //this.updateWWTPsize();
+
       this.userService.getPrimaryAllData().subscribe((response: any) => {
-        console.log(response);
-      // this.primarNewData = response.data;
-      this.secondaryData(response.data.secondary);
-      this.primaryData(response.data.primary);
-      this.secondaryClarification(response.data.secondary_clarification);
-      this.tertiaryData(response.data.tertiary);
-      this.disinfectionData(response.data.disinfection);
-      this.biosolidsData(response.data.biosolids);
-      this.biogasData(response.data.biogas);
-      this.dewateringData(response.data.dewatering);
-      this.biosolids_disposalData(response.data.biosolids_disposals);
-      this.chemicalData(response.data.chemical);
-      this.updateWWTPsize();
-    });
+          // this.primarNewData = response.data;
+              this.secondaryData(response.data.secondary);
+              this.primaryData(response.data.primary);
+              this.secondaryClarification(response.data.secondary_clarification);
+              this.tertiaryData(response.data.tertiary);
+              this.disinfectionData(response.data.disinfection);
+              this.biosolidsData(response.data.biosolids);
+              this.biogasData(response.data.biogas);
+              this.dewateringData(response.data.dewatering);
+              this.biosolids_disposalData(response.data.biosolids_disposals);
+              this.chemicalData(response.data.chemical);
+         // this.updateWWTPsize();
+        });
+
       this.userService.getProcessAllData().subscribe((response: any) => {
         this.processData(response.data);
-        this.updateWWTPsize();
+        this.callbackAssign();
       });
       this.createChart();
   }
@@ -942,7 +946,6 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
       this.anarobicData.ch4WWTP = (this.anarobicData.Qap * (this.process.anarobic.CODin.default - this.process.anarobic.CODout.default) / this.COD_TOC_PER_MOL) * alpha * 0.016;
       this.anarobicData.ch4WWTP = Math.ceil(this.anarobicData.ch4WWTP);
       const tempEnergy = this.anarobicData.Qin * (this.anarobicData.CODin - this.process.anarobic.CODout.default) - this.anarobicData.Qap * (this.process.anarobic.CODin.default - this.process.anarobic.CODout.default);
-      //  console.log(tempEnergy,this.anarobicData.Qin,this.anarobicData.Qap);
       this.anarobicData.ch4External = Math.ceil((tempEnergy / this.COD_TOC_PER_MOL) * alpha * 0.016);
       this.anarobicData.addEnergy = Math.ceil((this.anarobicData.ch4External * this.process.anarobic.energy.default));
     } else {
@@ -1481,7 +1484,6 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
       this.result[field] = this[field];
     }
     test = this.result;
-
     const scenarioData = {name: this.scenarioName, desc: this.scenarioDesc, data: test, project_id: this.id};
 
     this.modelMsg = "Wait.....";
