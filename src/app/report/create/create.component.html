@@ -400,7 +400,7 @@
                       <p class="sub-title-padding m-0 liquid-font-color" style="display: inline-block">{{primary.pumping.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="primary.pumping.sel_type === 'User Specified' ">
-                      <input type = "number" class="form-control" [disabled]="viewMode" name="userpump" [(ngModel)]="primary.pumping.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValue"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" name="userpump" [(ngModel)]="primary.pumping.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValue"/>
                     </div>
                   </div>
                   <div class="offset-md-1 col-md-11 row">
@@ -461,7 +461,7 @@
                     <p class="sub-title-padding m-0"  style="margin-bottom: 2%">{{primary.prili_treat.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="primary.prili_treat.sel_type === 'User Specified' ">
-                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="primary.prili_treat.data.uvalue" name="userValuePrelim" (ngModelChange)="updateWWTPsize()"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="primary.prili_treat.data.uvalue" name="userValuePrelim" (ngModelChange)="updateWWTPsize()"/>
                     </div>
 
                   </div>
@@ -523,7 +523,7 @@
                     <p class="sub-title-padding m-0"  style="margin-bottom: 2%">{{primary.pri_treat.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="primary.pri_treat.sel_type === 'User Specified' ">
-                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="primary.pri_treat.data.uvalue" name="userValuePriTreat" (ngModelChange)="updateWWTPsize()"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="primary.pri_treat.data.uvalue" name="userValuePriTreat" (ngModelChange)="updateWWTPsize()"/>
                     </div>
                   </label>
                   <div class="offset-md-1 col-md-11 row">
@@ -585,7 +585,7 @@
                        <p class="sub-sub-title-padding m-0" style="display: inline-block">{{secondary.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 21%"  *ngIf="secondary.sel_type === 'User Specified' ">
-                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="secondary.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueSecondary"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="secondary.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueSecondary"/>
                     </div>
 
                   </label>
@@ -647,7 +647,7 @@
                     <p class="sub-title-padding m-0"  style="display: inline-block">{{sec_clr.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="sec_clr.sel_type === 'User Specified' ">
-                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="sec_clr.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueClari"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="sec_clr.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueClari"/>
                     </div>
                   </label>
                   <div class="offset-md-1 col-md-11 row">
@@ -708,7 +708,7 @@
                     <p class="sub-title-padding m-0" style="display: inline-block">{{tertiary.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="tertiary.sel_type === 'User Specified' ">
-                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="tertiary.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueTertiary"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="tertiary.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueTertiary"/>
                     </div>
 
                   </label>
@@ -768,7 +768,7 @@
                     <p class="sub-title-padding m-0" style="display: inline-block">{{disinfection.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="disinfection.sel_type === 'User Specified' ">
-                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="disinfection.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueDisinfection"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="disinfection.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueDisinfection"/>
                     </div>
                   </label>
                   <div class="offset-md-1 col-md-11 row">
@@ -972,7 +972,7 @@
                       <p class="sub-title-padding m-0" style="display: inline-block">{{biosolid.thickener.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="biosolid.thickener.sel_type === 'User Specified' ">
-                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.thickener.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueThickener"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.thickener.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueThickener"/>
                     </div>
 
                   </label>
@@ -1033,7 +1033,7 @@
                       <p class="sub-title-padding m-0" style="display: inline-block">{{biosolid.aerobic.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="biosolid.aerobic.sel_type === 'User Specified' ">
-                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.aerobic.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueAerobic"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.aerobic.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueAerobic"/>
                     </div>
 
                   </label>
@@ -1094,7 +1094,7 @@
                       <p class="sub-title-padding m-0" style="display: inline-block">{{biosolid.anaerobic.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="biosolid.anaerobic.sel_type === 'User Specified' ">
-                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.anaerobic.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueAnerobic"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="biosolid.anaerobic.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueAnerobic"/>
                     </div>
 
                   </label>
@@ -1371,7 +1371,7 @@
                      <p class="sub-title-padding m-0" style="display: inline-block" >{{dewatering.sel_type}}</p>
                     </div>
                     <div style="display: inline-block;margin-left: 28%" *ngIf="dewatering.sel_type === 'User Specified' ">
-                      <input type = "number" class="form-control" [disabled]="viewMode" [(ngModel)]="dewatering.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueDewatering"/>
+                      <input type = "text" class="form-control" [disabled]="viewMode" [(ngModel)]="dewatering.data.uvalue" (ngModelChange)="updateWWTPsize()" name="userValueDewatering"/>
                     </div>
 
                   </label>
