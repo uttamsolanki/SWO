@@ -11,6 +11,7 @@ import 'chartjs-plugin-piechart-outlabels';
 import {DataServiceService} from '../../data-service.service';
 //import {forEach} from '@angular/router/src/utils/collection';
 import {CanComponentDeactivate} from '../../confirmGaurd/confirmation.guard';
+import  * as html2pdf from 'html2pdf.js'
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -370,6 +371,8 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
   scenarioSaved:boolean=false;
   isSavedScenario:boolean=true;
   hideBiogas:boolean=false;
+  showrunTimeChart:boolean=false;
+  showrunTimeImg:boolean=true;
   // *************  barChart Start *************//
 
   public barChart1Colours: Array<any> = [
@@ -382,8 +385,8 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     title: {
       display: true,
       text: 'Categorized CO2 Emission - Electricity Usage (CO2e)',
-      fontSize: 14,
-      padding:25
+      fontSize: 16,
+      padding:50
     },
     scaleShowVerticalLines: false,
     responsive: true,
@@ -394,7 +397,15 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
         categoryPercentage: 1.0,
         barThickness: 50,
         ticks: {
-          autoSkip: false
+          autoSkip: false,
+          fontSize: 16,
+          fontStyle: "bold"
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          fontSize: 16,
+          fontStyle: "bold"
         }
       }]
     },
@@ -403,7 +414,8 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
         anchor: 'end',
         align: 'top',
         font: {
-          weight: 'bold'
+          size: 16,
+          weight: 'bold',
         }
       }
     }
@@ -430,7 +442,13 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     title: {
       display: true,
       text: 'On-Site Process Emissions (CO2e)',
-      fontSize: 14
+      fontSize: 16
+    },
+    legend: {
+      labels: {
+        fontColor: 'black',
+        fontSize : 16,
+      }
     },
     scaleShowVerticalLines: false,
     responsive: true,
@@ -442,12 +460,18 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
         categoryPercentage: 1.0,
         barThickness: 50,
         ticks: {
-          autoSkip: false
+          autoSkip: false,
+          fontSize: 16,
+          fontStyle: "bold"
         },
         stacked: true
       }],
       yAxes: [{
-        stacked: true
+        stacked: true,
+        ticks: {
+          fontSize: 16,
+          fontStyle: "bold"
+        }
       }]
     },
     plugins: {
@@ -455,7 +479,11 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
         display: function(context) {
           return context.dataset.data[context.dataIndex] !== 0; // or >= 1 or ...
         },
-        color:'#000000'
+        color:'#000000',
+        font: {
+          size: 16,
+          weight: 'bold',
+        }
       }
     }
   };
@@ -501,8 +529,8 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
       position: 'right',
       labels: {
         fontColor: 'black',
-        fontSize : 12,
-        padding:40
+        fontSize : 17,
+        padding:10
       }
     },
     layout: {
@@ -546,8 +574,8 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
         stretch:20,
         font: {
           resizable: true,
-          minSize: 12,
-          maxSize: 18
+          minSize: 16,
+          maxSize: 20
         }
       }
     }
@@ -1408,6 +1436,36 @@ export class CreateComponent implements OnInit, CanComponentDeactivate{
     this.tabset.tabs[id].active = true;
   }
 
+  test2(){
+    this.showrunTimeImg=false;
+    var pieChart = document.getElementById('pieChart') as HTMLCanvasElement;
+    var barChart =document.getElementById('barChart') as HTMLCanvasElement;
+    var stackChart =document.getElementById('stackChart') as HTMLCanvasElement;
+
+
+
+    document.getElementById('pieChartImg').setAttribute('src', pieChart.toDataURL("image/png"));
+    document.getElementById('barChartImg').setAttribute('src', barChart.toDataURL("image/png"));
+    document.getElementById('stackChartImg').setAttribute('src', stackChart.toDataURL("image/png"));
+    this.showrunTimeChart=true;
+    var element = document.getElementById('printSection');
+    var opt = {
+      margin: [5,1,5,1],
+      filename:     'Report.pdf',
+      image:        { type: 'jpeg' },
+      html2canvas:  {  },
+      jsPDF:        { orientation: 'p' }
+    };
+
+// New Promise-based usage:
+    html2pdf().set(opt).from(element).save().then((pdf) => {
+      //This logs the right base64
+      console.log("dd");
+      console.log(this.showrunTimeChart,this.showrunTimeImg)
+      this.showrunTimeChart=false;
+      this.showrunTimeImg=true;
+    });
+  }
   generatePdf() {
     const div = document.getElementById('printSection');
     const options = {};
